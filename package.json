@@ -1,0 +1,40 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "axios": "^0.21.4",
+        "@popperjs/core": "^2.10.2",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "bootstrap": "^5.1.3",
+        "concurrently": "^6.5.1",
+        "laravel-mix": "^6.0.49",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.32.11",
+        "sass-loader": "^11.0.1",
+        "vue": "^2.6.12",
+        "vue-loader": "^15.9.8",
+        "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "idb": "^7.1.1",
+        "moment": "^2.29.4",
+        "vue-clipboard2": "^0.3.3",
+        "vue-credit-card-validation": "^0.1.10",
+        "vue-cryptojs": "^2.3.1",
+        "vue-meta": "^2.4.0",
+        "vue-recaptcha-v3": "^1.9.0",
+        "vue-router": "^3.5.3",
+        "vue-star-rating": "^1.7.0",
+        "vue-sweetalert2": "^5.0.2",
+        "vue2-datepicker": "^3.11.0"
+      }
+}
