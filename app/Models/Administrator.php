@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Administrator extends Model
 {
     use HasFactory;
+
+    protected $table = 'tblAdministrator';
+    protected $primaryKey = 'fldAdministratorID';
+    public $timestamps = false;
 }
