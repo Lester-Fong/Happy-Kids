@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     onSubmitForm() {
-      console.log("test");
       this.$admin_queries("admin_outside_action", {
         admin: {
           email: this.admin_email,
