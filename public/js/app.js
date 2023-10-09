@@ -2074,7 +2074,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onSubmitForm: function onSubmitForm() {
-      console.log("test");
       this.$admin_queries("admin_outside_action", {
         admin: {
           email: this.admin_email,
