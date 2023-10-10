@@ -79,7 +79,7 @@ return [
             ],
             'mutation' => [
                 // ExampleMutation::class,
-                'administrator_mutation' => \App\GraphQL\Mutations\AdministratorMutation::class,
+                'administrator' => \App\GraphQL\Mutations\AdministratorMutation::class,
             ],
             // The types only available in this schema
             'types' => [

@@ -33,6 +33,8 @@ export default {
           password: this.admin_password,
           action_type: "login",
         },
+      }).then((res) => {
+        console.log(res);
       });
     },
   },

@@ -2074,13 +2074,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onSubmitForm: function onSubmitForm() {
-      console.log("test");
       this.$admin_queries("admin_outside_action", {
         admin: {
           email: this.admin_email,
           password: this.admin_password,
           action_type: "login"
         }
+      }).then(function (res) {
+        console.log(res);
       });
     }
   }
@@ -2210,7 +2211,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var admin_queries = {
-  admin_outside_action: "mutation postAdminRequest($admin: AdministratorInput) {\n        administrator_mutation(admin: $admin) {\n            error,\n            message,\n        }\n    }"
+  admin_outside_action: "mutation postAdminRequest($admin: AdministratorInput) {\n        administrator(admin: $admin) {\n            error,\n            message,\n            access_token,\n            refresh_token,\n            token_expiration,\n            admin {\n                administrator_id,\n                firstname,\n                lastname,\n                email,\n                mobile,\n            },\n        }\n    }"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (admin_queries);
 

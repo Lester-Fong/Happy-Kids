@@ -26,6 +26,25 @@ class ResponseType extends GraphQLType
             'message' => [
                 'type' => Type::string(),
             ],
+
+            'access_token' => [
+                'type' => Type::string(),
+            ],
+
+            'refresh_token' => [
+                'type' => Type::string(),
+            ],
+
+            'token_expiration' => [
+                'type' => Type::string(),
+            ],
+
+            'reset_password_security' => [
+                'type' => Type::string(),
+            ],
+            'admin' => [
+                'type' => GraphQL::type('admin_type'),
+            ],
         ];
     }
 }
