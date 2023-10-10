@@ -133,10 +133,6 @@ class AdministratorMutation extends Mutation
 
         $admin_model = new Administrator();
 
-        if ($admin['action_type'] == "login") {
-            Log::debug(print_r($admin, true));
-            dd('test');
-        }
 
         if ($admin['action_type'] == "check_email_address") {
             $response_obj = $admin_model->checkAdministratorEmail($admin['email']);
