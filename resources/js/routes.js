@@ -1,5 +1,39 @@
-import Login from "./Administrator/login.vue";
+import Front from "./Portal/Administrator/Front/front.vue";
+import Login from "./Portal/Administrator/Front/login.vue";
+import ForgotPassword from "./Portal/Administrator/Front/forgot_password.vue";
+import ForgotPasswordOTP from "./Portal/Administrator/Front/forgot_password_otp.vue";
+import ResetPassword from "./Portal/Administrator/Front/reset_password.vue";
+import AdminDashboard from "./Portal/Administrator/dashboard.vue";
+import AdminEvents from "./Portal/Administrator/events.vue";
+import AdminGallery from "./Portal/Administrator/gallery.vue";
+import AdminBlogs from "./Portal/Administrator/blog.vue";
+import AdminFAQ from "./Portal/Administrator/faq.vue";
+import AdminTestimonials from "./Portal/Administrator/testimonial.vue";
+import AdminOurTeam from "./Portal/Administrator/team.vue";
+import AdminPages from "./Portal/Administrator/pages.vue";
+import AdminSMS from "./Portal/Administrator/sms.vue";
+import AdminDonation from "./Portal/Administrator/donation.vue";
 
 export default [
-    {path: '/', component: Login, name: 'login'}
-]
+    {
+        path: "",
+        component: Front,
+        meta: { isAdminAuthentication: false, isAdmin: true },
+        children: [
+            { path: "/admin", component: Login, name: "AdminLogin" },
+            { path: "/admin/forgot-password", component: ForgotPassword, name: "ForgotPassword" },
+            { path: "/admin/forgot-password-otp", component: ForgotPasswordOTP, name: "ForgotPasswordOTP" },
+            { path: "/admin/reset-password/:security", component: ResetPassword, name: "ResetPassword", params: true },
+        ],
+    },
+    { path: "/admin/dashboard", component: AdminDashboard, name: "AdminDashboard", meta: { isAdminAuthentication: true } },
+    { path: "/admin/events", component: AdminEvents, name: "AdminEvents", meta: { isAdminAuthentication: true } },
+    { path: "/admin/gallery", component: AdminGallery, name: "AdminGallery", meta: { isAdminAuthentication: true } },
+    { path: "/admin/blogs", component: AdminBlogs, name: "AdminBlogs", meta: { isAdminAuthentication: true } },
+    { path: "/admin/faq", component: AdminFAQ, name: "AdminFAQ", meta: { isAdminAuthentication: true } },
+    { path: "/admin/testimonials", component: AdminTestimonials, name: "AdminTestimonials", meta: { isAdminAuthentication: true } },
+    { path: "/admin/our-team", component: AdminOurTeam, name: "AdminOurTeam", meta: { isAdminAuthentication: true } },
+    { path: "/admin/pages", component: AdminPages, name: "AdminPages", meta: { isAdminAuthentication: true } },
+    { path: "/admin/sms", component: AdminSMS, name: "AdminSMS", meta: { isAdminAuthentication: true } },
+    { path: "/admin/donations", component: AdminDonation, name: "AdminDonation", meta: { isAdminAuthentication: true } },
+];

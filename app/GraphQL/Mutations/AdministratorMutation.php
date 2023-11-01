@@ -87,6 +87,7 @@ class AdministratorMutation extends Mutation
         } else if ($admin['action_type'] == "reset_password") {
             $rules['admin.email'] = ['required', 'email'];
             $rules['admin.password'] = ['required', 'min:8', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/', 'regex:/[@$!%*#?&_]/'];
+            $rules['admin.confirm_password'] = ['required', 'same:admin.password'];
         } else if ($admin['action_type'] == "new_record") {
             $rules['admin.firstname'] = ['required'];
             $rules['admin.lastname'] = ['required'];
@@ -151,23 +152,23 @@ class AdministratorMutation extends Mutation
         }
 
         if ($admin['action_type'] == "login") {
-
             $response_obj = $admin_model->checkAdministratorAccess($admin);
         }
 
 
-        if ($admin['action_type'] == "forgot_password") {
-
+        if ($admin['action_type'] == "verify_email") {
             $response_obj = $admin_model->forgotPassword($admin['email']);
         }
 
         if ($admin['action_type'] == "forgot_password_check_otp") {
-
             $response_obj = $admin_model->forgotPasswordCheckOTP($admin);
         }
 
-        if ($admin['action_type'] == "reset_password") {
+        if ($admin['action_type'] == "verify_security_code") {
+            $response_obj = $admin_model->validateSecurityCode($admin['security']);
+        }
 
+        if ($admin['action_type'] == "reset_password") {
             $response_obj = $admin_model->resetPassword($admin);
         }
 

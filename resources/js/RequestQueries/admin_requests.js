@@ -6,6 +6,7 @@ let admin_queries = {
             access_token,
             refresh_token,
             token_expiration,
+            reset_password_security,
             admin {
                 administrator_id,
                 firstname,
@@ -13,6 +14,16 @@ let admin_queries = {
                 email,
                 mobile,
             },
+        }
+    }`,
+
+    get_admin: `query administrator($action_type: String) {
+        administrator(action_type: $action_type) {
+                administrator_id,
+                firstname,
+                lastname,
+                email,
+                mobile,
         }
     }`,
 };

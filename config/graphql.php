@@ -95,6 +95,30 @@ return [
             // An array of middlewares, overrides the global ones
             'execution_middleware' => null,
         ],
+
+        'admin' => [
+            'query' => [
+                // ExampleQuery::class,
+                'administrator' => \App\GraphQL\Queries\AdministratorQuery::class,
+            ],
+            'mutation' => [
+                // ExampleMutation::class,
+                'administrator' => \App\GraphQL\Mutations\AdministratorMutation::class,
+            ],
+            // The types only available in this schema
+            'types' => [
+                // ExampleType::class,
+            ],
+
+            // Laravel HTTP middleware
+            'middleware' => ['auth:admin'],
+
+            // Which HTTP methods to support; must be given in UPPERCASE!
+            'method' => ['GET', 'POST'],
+
+            // An array of middlewares, overrides the global ones
+            'execution_middleware' => null,
+        ],
     ],
 
     // The global types available to all schemas.
