@@ -11,7 +11,10 @@
         <link rel="stylesheet" href="{{ asset('src/assets/css/light/main.css?'.date('Ymdhis')) }}">
         <link rel="stylesheet" href="{{ asset('src/assets/css/light/scrollspyNav.css?'.date('Ymdhis')) }}">
         <link rel="stylesheet" href="{{ asset('src/plugins/src/sweetalerts2/sweetalerts2.css?'.date('Ymdhis')) }}">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
+        
         {{-- Front --}}
         <link rel="stylesheet" href="{{ asset('src/assets/css/light/authentication/auth-cover.css?'.date('Ymdhis')) }}">
         <link rel="stylesheet" href="{{ asset('src/template_layout/plugins.css?'.date('Ymdhis')) }}">

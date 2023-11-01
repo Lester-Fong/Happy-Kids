@@ -1,9 +1,37 @@
 <template>
   <div>
     <template v-if="is_portal">
-      <h1 class="bg-info">Header Here!!!</h1>
-      <router-view></router-view>
-      <h1 class="bg-secondary">Footer Here</h1>
+      <!--  START HEADER NAVBAR  -->
+      <div class="header-container">
+        <header-admin></header-admin>
+      </div>
+      <!--  END HEADER NAVBAR  -->
+
+      <!--  BEGIN MAIN CONTAINER  -->
+      <div class="main-container" id="container">
+        <div class="overlay"></div>
+        <div class="search-overlay"></div>
+
+        <!--  BEGIN SIDEBAR  -->
+        <div class="sidebar-wrapper sidebar-theme">
+          <sidebar-admin></sidebar-admin>
+        </div>
+        <!--  END SIDEBAR  -->
+
+        <!--  BEGIN CONTENT AREA  -->
+        <div id="content" class="main-content">
+          <div class="layout-px-spacing">
+            <div class="middle-content container-xxl p-0">
+              <router-view></router-view>
+              <!-- CONTENT AREA -->
+            </div>
+          </div>
+        </div>
+        <!--  END CONTENT AREA  -->
+      </div>
+      <!-- END MAIN CONTAINER -->
+      <!-- <router-view></router-view>
+      <h1 class="bg-secondary">Footer Here</h1> -->
     </template>
     <template v-else>
       <router-view></router-view>
@@ -12,7 +40,13 @@
 </template>
 
 <script>
+import HeaderAdmin from "./Portal/Administrator/includes/header.vue";
+import SidebarAdmin from "./Portal/Administrator/includes/sidebar.vue";
 export default {
+  components: {
+    HeaderAdmin,
+    SidebarAdmin,
+  },
   data() {
     return {
       is_portal: false,

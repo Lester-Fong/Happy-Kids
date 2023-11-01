@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="loader-gif" v-if="is_calling_api"></div>
     <form @submit.prevent="onVerifyEmail" class="form">
       <div class="card">
         <div class="card-body">
@@ -33,11 +34,13 @@ export default {
   data() {
     return {
       admin_email: "",
+      is_calling_api: false,
     };
   },
 
   methods: {
     onVerifyEmail() {
+      this.is_calling_api = true;
       this.$admin_queries("admin_outside_action", {
         admin: {
           email: this.admin_email,
@@ -45,7 +48,7 @@ export default {
         },
       }).then((res) => {
         let response = res.data.data.administrator;
-
+        this.is_calling_api = false;
         if (!response.error) {
           Swal.fire("Success", response.message, "success")
             .then(() => {

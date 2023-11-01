@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="loader-gif" v-if="is_calling_api"></div>
     <form @submit.prevent="onResetPassword" class="form">
       <div class="card">
         <div class="card-body">
@@ -42,6 +43,7 @@ import VueSweetalert2 from "vue-sweetalert2";
 export default {
   data() {
     return {
+      is_calling_api: false,
       new_password: "",
       confirm_password: "",
       security_code: this.$route.params.security,
@@ -56,6 +58,8 @@ export default {
   },
   methods: {
     verifySecurityCode() {
+      this.is_calling_api = true;
+
       if (this.security_code == undefined || this.security_code == "") {
         this.$router.replace({ name: "Login" });
       } else {
@@ -67,6 +71,7 @@ export default {
           },
         }).then((res) => {
           let response = res.data.data.administrator;
+          this.is_calling_api = false;
           if (response.error) {
             this.$router.replace({ name: "login" });
           }

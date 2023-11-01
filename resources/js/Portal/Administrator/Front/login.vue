@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="loader-gif" v-if="is_calling_api"></div>
-    <form v-else @submit.prevent="onSubmitForm" class="form">
+    <form @submit.prevent="onSubmitForm" class="form">
       <div class="card">
         <div class="card-body">
           <div class="row">

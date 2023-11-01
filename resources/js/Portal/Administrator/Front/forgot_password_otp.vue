@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="loader-gif" v-if="is_calling_api"></div>
     <form @submit.prevent="onVerifyOTP" class="form">
       <div class="card">
         <div class="card-body">
@@ -66,6 +67,7 @@ export default {
       OTP_4: "",
       OTP_5: "",
       OTP_6: "",
+      is_calling_api: false,
     };
   },
   created() {
@@ -80,7 +82,7 @@ export default {
   methods: {
     onVerifyOTP() {
       let otp = this.OTP_1 + this.OTP_2 + this.OTP_3 + this.OTP_4 + this.OTP_5 + this.OTP_6;
-      console.log(otp);
+      this.is_calling_api = true;
       this.$admin_queries("admin_outside_action", {
         admin: {
           otp: otp,
@@ -89,6 +91,7 @@ export default {
         },
       }).then((res) => {
         let response = res.data.data.administrator;
+        this.is_calling_api = false;
         if (!response.error) {
           Swal.fire("Success", response.message, "success")
             .then(() => {
