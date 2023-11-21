@@ -23,8 +23,8 @@
       </div>
 
       <ul class="list-unstyled menu-categories" id="accordionExample">
-        <li class="menu active">
-          <router-link :to="{ name: 'AdminDashboard' }" aria-expanded="true" class="dropdown-toggle">
+        <li class="menu">
+          <router-link :to="{ name: 'AdminDashboard' }" :class="activeMeta.isDashboard ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
             <div class="">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-columns"><path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7m0-18v18"></path></svg>
               <span>Dashboard</span>
@@ -50,22 +50,22 @@
           </a>
           <ul class="collapse submenu list-unstyled" id="home" data-bs-parent="#accordionExample">
             <li>
-              <router-link :to="{ name: 'AdminEvents' }"> Events </router-link>
+              <router-link :to="{ name: 'AdminEvents' }" :class="activeMeta.isEvents ? 'hk_active' : ''"> Events </router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'AdminGallery' }"> Gallery </router-link>
+              <router-link :to="{ name: 'AdminGallery' }" :class="activeMeta.isGallery ? 'hk_active' : ''"> Gallery </router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'AdminBlogs' }"> Blogs/Stories </router-link>
+              <router-link :to="{ name: 'AdminBlogs' }" :class="activeMeta.isBlogs ? 'hk_active' : ''"> Blogs/Stories </router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'AdminFAQ' }"> FAQs </router-link>
+              <router-link :to="{ name: 'AdminFAQ' }" :class="activeMeta.isFAQ ? 'hk_active' : ''"> FAQs </router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'AdminTestimonials' }"> Testimonials </router-link>
+              <router-link :to="{ name: 'AdminTestimonials' }" :class="activeMeta.isTestimonial ? 'hk_active' : ''"> Testimonials </router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'AdminOurTeam' }"> Team </router-link>
+              <router-link :to="{ name: 'AdminOurTeam' }" :class="activeMeta.isOurTeam ? 'hk_active' : ''"> Team </router-link>
             </li>
           </ul>
         </li>
@@ -73,7 +73,7 @@
 
         <!---------- Pages ---------->
         <li class="menu">
-          <router-link :to="{ name: 'AdminPages' }" aria-expanded="false" class="dropdown-toggle">
+          <router-link :to="{ name: 'AdminPages' }" :class="activeMeta.isPages ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
             <div class="d-flex align-items-center">
               <i class="bi bi-sidebar bi-book h5 mb-0 me-2 pe-1"></i>
               <span>Pages</span>
@@ -84,7 +84,7 @@
 
         <!---------- SMS TRANSACTION ---------->
         <li class="menu">
-          <router-link :to="{ name: 'AdminSMS' }" aria-expanded="false" class="dropdown-toggle">
+          <router-link :to="{ name: 'AdminSMS' }" :class="activeMeta.isSMS ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
             <div class="d-flex align-items-center">
               <i class="bi bi-sidebar bi-chat-square-text h5 mb-0 me-2 pe-1"></i>
               <span>SMS</span>
@@ -95,7 +95,7 @@
 
         <!---------- Donation ---------->
         <li class="menu">
-          <router-link :to="{ name: 'AdminDonation' }" aria-expanded="false" class="dropdown-toggle">
+          <router-link :to="{ name: 'AdminDonation' }" :class="activeMeta.isDonations ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
             <div class="d-flex align-items-center">
               <i class="bi bi-sidebar bi-bag-heart h5 mb-0 me-2 pe-1"></i>
               <span>Donation</span>
@@ -107,3 +107,20 @@
     </nav>
   </div>
 </template>
+
+
+<script>
+export default {
+  data() {
+    return {
+      active: false,
+    };
+  },
+
+  computed: {
+    activeMeta() {
+      return this.$route.meta;
+    },
+  },
+};
+</script>
