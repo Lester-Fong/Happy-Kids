@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/{any}', function () {
-    return view('welcome');
+    if (strpos($_SERVER['REQUEST_URI'], 'admin') !== false) {
+        return view('welcome', ['display_type' => "portal"]);
+    } else {
+        return view('welcome', ['display_type' => "front"]);
+    }
 })->where('any', '.*');
 
 
