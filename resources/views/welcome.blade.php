@@ -16,7 +16,6 @@
             <link rel="stylesheet" href="{{ asset('src/assets/css/light/scrollspyNav.css?'.date('Ymdhis')) }}">
             <link rel="stylesheet" href="{{ asset('src/plugins/src/sweetalerts2/sweetalerts2.css?'.date('Ymdhis')) }}">
             <link rel="stylesheet" href="{{ asset('src/plugins/src/table/datatable/datatables.css?'.date('Ymdhis')) }}">
-            {{-- <link rel="stylesheet" href="{{ asset('src/plugins/css/light/table/datatable/custom_dt_miscellaneous.css?'.date('Ymdhis')) }}"> --}}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
             <link rel="stylesheet" href="{{ asset('src/assets/css/light/authentication/auth-cover.css?'.date('Ymdhis')) }}">
             <link rel="stylesheet" href="{{ asset('src/template_layout/plugins.css?'.date('Ymdhis')) }}">
@@ -29,8 +28,7 @@
             <link rel="stylesheet" href="{{ asset('front/css/azino-icons.css') }}">
             <link rel="stylesheet" href="{{ asset('front/css/bootstrap-select.min.css') }}">
             <link rel="stylesheet" href="{{ asset('front/css/main.css') }}">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css" integrity="sha512-QfDd74mlg8afgSqm3Vq2Q65e9b3xMhJB4GZ9OcHDVy1hZ6pqBJPWWnMsKDXM7NINoKqJANNGBuVRIpIJ5dogfA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         @endif
     </head>
     <body >

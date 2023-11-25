@@ -61,7 +61,7 @@
       <nav class="main-menu">
         <div class="container bg-transparent">
           <ul class="main-menu__list dynamic-radius d-flex align-items-center justify-content-around">
-            <li><a href="javascript:void(0)">Home</a></li>
+            <li><router-link :to="{ name: 'HomePage' }">Home</router-link></li>
             <li class="dropdown">
               <a href="javascript:void(0)">About</a>
               <ul>
@@ -99,56 +99,25 @@
         <!-- /.logo-box -->
         <div class="sticky-header__content">
           <ul class="main-menu__list dynamic-radius">
+            <li><a href="javascript:void(0)">Home</a></li>
             <li class="dropdown">
-              <a href="index.html">Home</a>
+              <a href="javascript:void(0)">About</a>
               <ul>
-                <li>
-                  <a href="index.html">Home One</a>
-                </li>
-                <li><a href="index-2.html">Home Two</a></li>
-                <li class="dropdown">
-                  <a href="#">Header Styles</a>
-                  <ul>
-                    <li><a href="index.html">Header One</a></li>
-                    <li><a href="index-2.html">Header Two</a></li>
-                  </ul>
-                </li>
+                <li><a href="javascript:void(0)">Our Mission</a></li>
+                <li><a href="javascript:void(0)">Our Team</a></li>
+                <li><a href="javascript:void(0)">FAQs</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a href="causes.html">Causes</a>
+              <a href="javascript:void(0)">Our Program</a>
               <ul>
-                <li><a href="causes.html">Causes</a></li>
-                <li><a href="cause-details.html">Cause Details</a></li>
+                <li><a href="javascript:void(0)">Feeding Program</a></li>
+                <li><a href="javascript:void(0)">Scholarship Program</a></li>
+                <li><a href="javascript:void(0)">Events</a></li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="events.html">Events</a>
-              <ul>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="event-details.html">Event Details</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="news.html">News</a>
-              <ul>
-                <li><a href="news.html">News</a></li>
-                <li><a href="news-details.html">News Details</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#">Pages</a>
-              <ul>
-                <li><a href="about.html">About</a></li>
-                <li><a href="volunteers.html">Volunteers</a></li>
-                <li><a href="become-volunteer.html">Become a Volunteer</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-              </ul>
-            </li>
-            <li><a href="contact.html">Contact</a></li>
-            <li class="search-btn search-toggler">
-              <a href="#"><i class="azino-icon-magnifying-glass"></i></a>
-            </li>
+            <li><a href="javascript:void(0)">Stories</a></li>
+            <li><a href="javascript:void(0)">Contact Us</a></li>
           </ul>
           <!-- /.main-menu__list -->
           <a href="contact.html" class="thm-btn dynamic-radius">Donate Now</a>
