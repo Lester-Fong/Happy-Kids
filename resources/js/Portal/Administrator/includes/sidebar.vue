@@ -83,25 +83,25 @@
         <!---------- End of Pages ---------->
 
         <!---------- SMS TRANSACTION ---------->
-        <li class="menu">
+        <!-- <li class="menu">
           <router-link :to="{ name: 'AdminSMS' }" :class="activeMeta.isSMS ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
             <div class="d-flex align-items-center">
               <i class="bi bi-sidebar bi-chat-square-text h5 mb-0 me-2 pe-1"></i>
               <span>SMS</span>
             </div>
           </router-link>
-        </li>
+        </li> -->
         <!---------- End of SMS TRANSACTION ---------->
 
         <!---------- Donation ---------->
-        <li class="menu">
+        <!-- <li class="menu">
           <router-link :to="{ name: 'AdminDonation' }" :class="activeMeta.isDonations ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
             <div class="d-flex align-items-center">
               <i class="bi bi-sidebar bi-bag-heart h5 mb-0 me-2 pe-1"></i>
               <span>Donation</span>
             </div>
           </router-link>
-        </li>
+        </li> -->
         <!---------- End of Donation ---------->
       </ul>
     </nav>

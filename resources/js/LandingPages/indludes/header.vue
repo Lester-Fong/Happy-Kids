@@ -65,8 +65,8 @@
             <li class="dropdown">
               <a href="javascript:void(0)">About</a>
               <ul>
-                <li><a href="javascript:void(0)">Our Mission</a></li>
-                <li><a href="javascript:void(0)">Our Team</a></li>
+                <li><router-link :to="{ name: 'AboutPage' }">Our Mission</router-link></li>
+                <li><router-link :to="{ name: 'OurTeamPage' }">Our Team</router-link></li>
                 <li><a href="javascript:void(0)">FAQs</a></li>
               </ul>
             </li>
