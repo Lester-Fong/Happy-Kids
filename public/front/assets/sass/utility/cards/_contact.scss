@@ -1,0 +1,51 @@
+.contact-card {
+    border-top-left-radius: 220.5px;
+    border-top-right-radius: 220.5px;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: top right;
+    min-height: 442px;
+
+    i {
+        width: 164px;
+        height: 164px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: $thm-black;
+        font-size: 64px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h3 {
+        color: #fff;
+        font-size: 18px;
+        margin: 0;
+        font-weight: bold;
+        line-height: 1;
+        margin-top: 20px;
+        margin-bottom: 25px;
+
+        @media(min-width: 481px) {
+            font-size: 22px;
+        }
+    }
+    p {
+        font-size: 18px;
+        font-weight: 500;
+        color: #ffffff;
+        margin: 0;
+        a {
+            color: inherit;
+            transition: 500ms;
+            &:hover {
+                color: $thm-black;
+            }
+        }
+    }
+}

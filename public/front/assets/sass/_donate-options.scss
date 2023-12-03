@@ -1,0 +1,257 @@
+.donate-options {
+  background-color: #f1f1f1;
+  background-image: url(../images/backgrounds/donate-option-bg-1-2.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  position: relative;
+  &::after {
+    content: "";
+    width: 100%;
+    height: 140px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0px -60px 60px 0px rgba(0, 0, 0, 0.025);
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f1f1f1;
+    opacity: 0.95;
+    display: none;
+  }
+  .container {
+    position: relative;
+    z-index: 10;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.donate-options__content {
+  > p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 36px;
+    font-weight: 500;
+    color: #7e7e7e;
+  }
+}
+
+.donate-options__icon-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 110px;
+  @media (max-width: 991px) {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    justify-content: center;
+  }
+}
+
+.donate-options__icon {
+  width: 140px;
+  height: 140px;
+  border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+  background-color: #fff;
+  text-align: center;
+  transition: all 500ms ease;
+  box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.05);
+  @media (max-width: 575px) {
+    width: 110px;
+  }
+  @media (max-width: 375px) {
+    width: 95px;
+  }
+  + .donate-options__icon {
+    margin-left: 20px;
+    @media (max-width: 375px) {
+      margin-left: 2px;
+    }
+  }
+  &:hover {
+    background-color: $thm-secondary;
+    i {
+      color: #fff;
+    }
+  }
+  i {
+    color: $thm-secondary;
+    font-size: 56px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 500ms ease;
+  }
+  &:nth-child(2) {
+    i {
+      color: $thm-primary;
+    }
+    &:hover {
+      background-color: $thm-primary;
+      i {
+        color: #fff;
+      }
+    }
+  }
+  &:nth-child(3) {
+    i {
+      color: $thm-special;
+    }
+    &:hover {
+      background-color: $thm-special;
+      i {
+        color: #fff;
+      }
+    }
+  }
+  h3 {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+    font-family: $thm-font;
+    line-height: 1;
+    margin-top: 13px;
+    transition: all 500ms ease;
+    @media (max-width: 991px) {
+      color: $thm-black;
+    }
+    a {
+      color: inherit;
+    }
+  }
+}
+
+.donate-options__call {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  i {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background-color: $thm-base;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 20px;
+    transition: all 500ms ease;
+  }
+  &:hover {
+    i {
+      background-color: $thm-black;
+    }
+  }
+  p {
+    margin: 0;
+    color: $thm-special;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 32px;
+    span {
+      color: #7e7e7e;
+    }
+    a {
+      color: $thm-black;
+      text-decoration: underline;
+    }
+  }
+}
+
+.donate-options__form {
+  background-color: $thm-secondary;
+  text-align: center;
+  background-image: url(../images/shapes/cta-bg-shape-1-1.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  border-radius: $border-radius;
+  padding-bottom: 80px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.1);
+  h3 {
+    margin: 0;
+    background-color: #fff;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    font-size: 26px;
+    font-weight: bold;
+    color: $thm-black;
+    letter-spacing: -0.04em;
+    padding: 31px 0;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 34px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 20px;
+    padding-top: 70px;
+  }
+  input[type="text"],
+  input[type="email"] {
+    border: none;
+    outline: none;
+    text-align: left;
+    width: 100%;
+    height: 63px;
+    border-radius: 31.5px;
+    background-color: #fff;
+    padding-left: 30px;
+    color: #7e7e7e;
+    font-size: 16px;
+    margin-bottom: 10px;
+    max-width: 410px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+#donate-amount__predefined {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  max-width: 410px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  li {
+    border: 2px solid #fff;
+    min-height: 63px;
+    border-radius: 31.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 500ms ease;
+    &.active,
+    &:hover {
+      background-color: #fff;
+      a {
+        color: $thm-black;
+      }
+    }
+    a {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 500ms ease;
+    }
+  }
+}

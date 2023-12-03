@@ -1,0 +1,142 @@
+.event-card {
+  box-shadow: 0px 10px 60px 0px RGBA(0, 0, 0, 0.05);
+  border-radius: $border-radius;
+  border: 1px solid transparent;
+  transition: 500ms;
+  background-color: #fff;
+
+  &:hover {
+    border-color: #e4e4e4;
+    box-shadow: 0px 10px 60px 0px RGBA(0, 0, 0, 0.1);
+
+    .event-card-inner::before {
+      opacity: 1;
+      filter: grayscale(0);
+    }
+  }
+
+  &-inner {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    position: relative;
+
+    @media (min-width: 1200px) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &::before {
+      content: "";
+      width: 295px;
+      height: 291px;
+      background-image: url(../images/shapes/event-line-1-1.png);
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(55%, -40%);
+      filter: grayscale(100%);
+      opacity: 0.3;
+      transition: 500ms;
+    }
+
+    @media (min-width: 575px) {
+      padding: 40px;
+    }
+  }
+}
+
+.event-card-image-inner {
+  position: relative;
+  margin-bottom: 30px;
+  border-radius: 50%;
+  background-color: $thm-black;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 0;
+    margin-right: 55px;
+  }
+
+  span {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: $thm-base;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(50%);
+  }
+}
+
+.event-card-image-inner > img {
+  border-radius: 50%;
+  transition: all 500ms ease;
+}
+.event-card:hover .event-card-image-inner > img {
+  opacity: 0.5;
+}
+
+.event-card-list {
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
+  list-style-type: none;
+
+  li {
+    position: relative;
+    padding-left: 30px;
+    font-size: 16px;
+
+    strong {
+      font-weight: 500;
+      color: $thm-black;
+    }
+
+    > i {
+      font-size: 16px;
+      color: $thm-secondary;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.event-card-content {
+  position: relative;
+
+  h3 {
+    font-size: $heading-size;
+    color: $thm-black;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: $letter-space;
+
+    @media (min-width: 481px) {
+      font-size: 24px;
+    }
+
+    a {
+      color: inherit;
+      transition: 500ms;
+
+      &:hover {
+        color: $thm-primary;
+      }
+    }
+  }
+}

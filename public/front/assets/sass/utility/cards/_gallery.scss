@@ -1,0 +1,44 @@
+.gallery-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: $border-radius;
+
+    >img {
+        width: 100%;
+    }
+
+    &:hover {
+        .gallery-content {
+            transform: scale(1, 1);
+            opacity: 1;
+            transform-origin: bottom center;
+        }
+    }
+}
+
+.gallery-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: RGBA($thm-primary-rgb, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 500ms ease, opacity 500ms ease;
+    transform: scale(1, 0);
+    opacity: 0;
+    transform-origin: top center;
+
+    >a {
+        font-size: 32px;
+        color: #fff;
+        transition: 500ms;
+
+        &:hover {
+            color: $thm-base;
+        }
+    }
+}

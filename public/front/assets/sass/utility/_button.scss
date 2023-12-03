@@ -1,0 +1,16 @@
+@mixin thmBtn($bgColor: $thm-base, $color: #fff, $padding: 16.5px 39.5px, ) {
+    display: inline-block;
+    vertical-align: middle;
+    border: none;
+    outline: none;
+    background-color: $bgColor;
+    color: $color;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: $thm-font;
+    padding: $padding;
+    transition: 500ms;
+    border-bottom-left-radius: 31.5px;
+    border-top-left-radius: 31.5px;
+    @include reverseHover($bgColor: $bgColor, $color: $color);
+}

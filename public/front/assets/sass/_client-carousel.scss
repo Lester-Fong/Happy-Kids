@@ -1,0 +1,26 @@
+.client-carousel {
+    &__has-border-top {
+        border-top: 1px solid #e4e4e4;
+    }
+
+    &__has-top-shadow {
+        box-shadow: 0px -1px 0px 0px RGBA(227, 227, 227, 0.004);
+
+    }
+
+    .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    img {
+        transition: 500ms;
+        opacity: 0.3;
+        max-width: 100%;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+}
