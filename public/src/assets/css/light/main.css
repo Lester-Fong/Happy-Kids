@@ -1068,7 +1068,8 @@ select.form-control.form-custom {
   visibility: hidden;
   display: block !important;
   transform: none !important;
-  top: 0 !important;
+  top: -100px !important;
+  left: -50px !important;
   border-radius: 8px;
   background: #fff;
   box-shadow: none;
