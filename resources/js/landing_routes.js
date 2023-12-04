@@ -14,7 +14,6 @@ export default [
     {
         path: "/",
         component: index,
-        name: "index",
         children: [
             { path: "/", component: HomePage, name: "HomePage" },
             { path: "/about", component: AboutPage, name: "AboutPage" },
