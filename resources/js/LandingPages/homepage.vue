@@ -2,19 +2,7 @@
   <div>
     <!-- INTRO HEADER PART 1 -->
     <section class="main-slider main-slider__two">
-      <div
-        class="swiper-container thm-swiper__slider"
-        data-swiper-options='{"slidesPerView": 1, "loop": true,
-    "effect": "fade",
-    "pagination": {
-        "el": "#main-slider-pagination",
-        "type": "bullets",
-        "clickable": true
-      },
-    "autoplay": {
-        "delay": 5000
-    }}'
-      >
+      <div class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="image-layer" style="background-image: url('front/assets/images/backgrounds/hero-header-1.jpg')"></div>
@@ -93,43 +81,9 @@
     <!-- THREE OPTIONS PART 2 -->
     <section class="service-two">
       <div class="container">
-        <div
-          class="swiper-container thm-swiper__slider"
-          data-swiper-options='{"slidesPerView": 3, "spaceBetween": 30,
-        "breakpoints": {
-            "0": {
-                "slidesPerView": 1,
-                "spaceBetween": 0
-            },
-            "375": {
-                "slidesPerView": 1,
-                "spaceBetween": 30
-            },
-            "575": {
-                "slidesPerView": 1,
-                "spaceBetween": 30
-            },
-            "768": {
-                "slidesPerView": 1,
-                "spaceBetween": 30
-            },
-            "991": {
-                "slidesPerView": 2,
-                "spaceBetween": 30
-            },
-            "1199": {
-                "slidesPerView": 2,
-                "spaceBetween": 30
-            },
-            "1200": {
-                "slidesPerView": 3,
-                "spaceBetween": 30
-            }
-        }
-        }'
-        >
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
+        <div class="swiper-container thm-swiper__slider">
+          <div class="swiper-wrapper row mx-0">
+            <div class="mx-auto col-lg-4 col-md-6 col-12">
               <div class="service-two__box background-primary wow fadeInUp" data-wow-duration="1500ms" style="background-image: url('front/assets/images/backgrounds/card-charity.jpg')">
                 <div class="service-two__box-inner">
                   <img src="front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
@@ -148,7 +102,7 @@
               <!-- /.service-two__box -->
             </div>
             <!-- /.swiper-slide -->
-            <div class="swiper-slide">
+            <div class="mx-auto col-lg-4 col-md-6 col-12">
               <div class="service-two__box background-secondary wow fadeInDown" data-wow-duration="1500ms" data-wow-delay="100ms" style="background-image: url('front/assets/images/backgrounds/card-volunteers.jpg')">
                 <div class="service-two__box-inner">
                   <img src="front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
@@ -167,7 +121,7 @@
               <!-- /.service-two__box -->
             </div>
             <!-- /.swiper-slide -->
-            <div class="swiper-slide">
+            <div class="mx-auto col-lg-4 col-md-6 col-12">
               <div class="service-two__box background-base wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms" style="background-image: url('front/assets/images/backgrounds/card-childeduc.jpg')">
                 <div class="service-two__box-inner">
                   <img src="front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
@@ -692,39 +646,11 @@
     <section class="gallery-home-two pt-120 pb-120">
       <div class="container">
         <img src="front/assets/images/shapes/video-dot-1-1.png" alt="" class="gallery-home-two__dots" />
-        <div
-          class="thm-swiper__slider swiper-container"
-          data-swiper-options='{"spaceBetween": 100, "slidesPerView": 4, "autoplay": { "delay": 5000 }, "breakpoints": {
-            "0": {
-                "spaceBetween": 0,
-                "slidesPerView": 1
-            },
-            "425": {
-                "spaceBetween": 0,
-                "slidesPerView": 1
-            },
-            "575": {
-                "spaceBetween": 30,
-                "slidesPerView": 2
-            },
-            "767": {
-                "spaceBetween": 30,
-                "slidesPerView": 3
-            },
-            "991": {
-                "spaceBetween": 30,
-                "slidesPerView": 3
-            },
-            "1199": {
-                "spaceBetween": 30,
-                "slidesPerView": 4
-            }
-        }}'
-        >
+        <div class="thm-swiper__slider swiper-container swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="index in 5" :key="index">
+            <div class="swiper-slide" v-for="index in 8" :key="index">
               <div class="gallery-card">
-                <img src="https://picsum.photos/200/300" class="img-fluid" alt="" />
+                <img src="https://picsum.photos/200/300" class="img-fluid w-100" alt="" />
                 <div class="gallery-content">
                   <a href="https://picsum.photos/200/300" class="img-popup" aria-label="open image"><i class="fas fa-plus"></i></a>
                 </div>
@@ -979,41 +905,13 @@
       </section> -->
 
     <!-- PARTNER AND SPONSOR SECTION PART 10 -->
-    <div class="client-carousel py-5 client-carousel__has-border-top">
+    <div class="client-carousel py-5 client-carousel__has-border-top part-10">
       <h2 class="text-center mb-5">Sponsors &nbsp; <img src="front/assets/images/shapes/heart-2-1.png" width="50" alt="favicon heart" /></h2>
       <div class="container">
-        <div
-          class="thm-swiper__slider swiper-container"
-          data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
-                "0": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 2
-                },
-                "375": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 2
-                },
-                "575": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 3
-                },
-                "767": {
-                    "spaceBetween": 50,
-                    "slidesPerView": 4
-                },
-                "991": {
-                    "spaceBetween": 50,
-                    "slidesPerView": 5
-                },
-                "1199": {
-                    "spaceBetween": 100,
-                    "slidesPerView": 5
-                }
-            }}'
-        >
+        <div class="thm-swiper__slider swiper-container swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="index in 7" :key="index">
-              <img src="https://picsum.photos/123/24" alt="" />
+              <img src="https://picsum.photos/250/75" alt="" />
             </div>
           </div>
         </div>
@@ -1021,3 +919,100 @@
     </div>
   </div>
 </template>
+
+
+<script>
+export default {
+  name: "Home",
+  data() {
+    return {};
+  },
+  mounted() {
+    this.initSwiper();
+  },
+
+  methods: {
+    initSwiper() {
+      new Swiper(".main-slider .swiper", {
+        slidesPerView: 1,
+        loop: true,
+        effect: "fade",
+        pagination: {
+          el: "#main-slider-pagination",
+          type: "bullets",
+          clickable: true,
+        },
+        autoplay: {
+          delay: 5000,
+        },
+      });
+      new Swiper(".gallery-home-two .swiper", {
+        slidesPerView: 5,
+        spaceBetween: 100,
+        autoplay: { delay: 5000 },
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          375: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          575: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          991: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1199: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+      });
+      new Swiper(".part-10 .swiper", {
+        spaceBetween: 100,
+        slidesPerView: 5,
+        autoplay: { delay: 5000 },
+        breakpoints: {
+          0: {
+            spaceBetween: 30,
+            slidesPerView: 2,
+          },
+          375: {
+            spaceBetween: 30,
+            slidesPerView: 2,
+          },
+          575: {
+            spaceBetween: 30,
+            slidesPerView: 3,
+          },
+          767: {
+            spaceBetween: 50,
+            slidesPerView: 4,
+          },
+          991: {
+            spaceBetween: 50,
+            slidesPerView: 5,
+          },
+          1199: {
+            spaceBetween: 100,
+            slidesPerView: 5,
+          },
+        },
+      });
+    },
+  },
+};
+</script>
