@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="page-header">
-      <div class="page-header__bg" style="background-image: url(../front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
+      <div class="page-header__bg" style="background-image: url(..//public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>Story Title</h2>
@@ -21,7 +21,7 @@
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="blog-card__image">
-              <img src="/front/assets/images/blog/blog-d-1-1.jpg" alt="" />
+              <img src="//public/front/assets/images/blog/blog-d-1-1.jpg" alt="" />
               <div class="blog-card__date">20 May</div>
               <!-- /.blog-card__date -->
             </div>
@@ -71,15 +71,15 @@
                 <h3>Latest Posts</h3>
                 <ul class="list-unstyled blog-sidebar__post">
                   <li>
-                    <img src="/front/assets/images/blog/blog-s-1.jpg" alt="" />
+                    <img src="//public/front/assets/images/blog/blog-s-1.jpg" alt="" />
                     <h3><a href="news-details.html">Our donation is hope for poor childrens</a></h3>
                   </li>
                   <li>
-                    <img src="/front/assets/images/blog/blog-s-2.jpg" alt="" />
+                    <img src="//public/front/assets/images/blog/blog-s-2.jpg" alt="" />
                     <h3><a href="news-details.html">Promoting The Rights of Children</a></h3>
                   </li>
                   <li>
-                    <img src="/front/assets/images/blog/blog-s-3.jpg" alt="" />
+                    <img src="//public/front/assets/images/blog/blog-s-3.jpg" alt="" />
                     <h3><a href="news-details.html">Growing Up Children in Charity Care</a></h3>
                   </li>
                 </ul>

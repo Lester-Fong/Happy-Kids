@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="page-header">
-      <div class="page-header__bg" style="background-image: url(front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
+      <div class="page-header__bg" style="background-image: url(/public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>Stories</h2>
@@ -22,7 +22,7 @@
           <div class="blog-card">
             <div class="blog-card__inner">
               <div class="blog-card__image">
-                <img src="front/assets/images/blog/blog-1-1.jpg" alt="" />
+                <img src="/public/front/assets/images/blog/blog-1-1.jpg" alt="" />
                 <div class="blog-card__date">20 May</div>
                 <!-- /.blog-card__date -->
               </div>
@@ -46,7 +46,7 @@
           <div class="blog-card">
             <div class="blog-card__inner">
               <div class="blog-card__image">
-                <img src="front/assets/images/blog/blog-1-2.jpg" alt="" />
+                <img src="/public/front/assets/images/blog/blog-1-2.jpg" alt="" />
                 <div class="blog-card__date">20 May</div>
                 <!-- /.blog-card__date -->
               </div>
@@ -70,7 +70,7 @@
           <div class="blog-card">
             <div class="blog-card__inner">
               <div class="blog-card__image">
-                <img src="front/assets/images/blog/blog-1-3.jpg" alt="" />
+                <img src="/public/front/assets/images/blog/blog-1-3.jpg" alt="" />
                 <div class="blog-card__date">20 May</div>
                 <!-- /.blog-card__date -->
               </div>
@@ -94,7 +94,7 @@
           <div class="blog-card">
             <div class="blog-card__inner">
               <div class="blog-card__image">
-                <img src="front/assets/images/blog/blog-1-4.jpg" alt="" />
+                <img src="/public/front/assets/images/blog/blog-1-4.jpg" alt="" />
                 <div class="blog-card__date">20 May</div>
                 <!-- /.blog-card__date -->
               </div>
@@ -118,7 +118,7 @@
           <div class="blog-card">
             <div class="blog-card__inner">
               <div class="blog-card__image">
-                <img src="front/assets/images/blog/blog-1-5.jpg" alt="" />
+                <img src="/public/front/assets/images/blog/blog-1-5.jpg" alt="" />
                 <div class="blog-card__date">20 May</div>
                 <!-- /.blog-card__date -->
               </div>
@@ -142,7 +142,7 @@
           <div class="blog-card">
             <div class="blog-card__inner">
               <div class="blog-card__image">
-                <img src="front/assets/images/blog/blog-1-6.jpg" alt="" />
+                <img src="/public/front/assets/images/blog/blog-1-6.jpg" alt="" />
                 <div class="blog-card__date">20 May</div>
                 <!-- /.blog-card__date -->
               </div>

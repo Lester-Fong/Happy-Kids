@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="page-header">
-      <div class="page-header__bg" style="background-image: url(front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
+      <div class="page-header__bg" style="background-image: url(/public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>Contact Us</h2>
@@ -22,7 +22,7 @@
           <div class="col-lg-5">
             <div class="contact-page__content mb-40">
               <div class="block-title">
-                <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Contact With Us</p>
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Contact With Us</p>
                 <h3>
                   Feel free to write us <br />
                   a message.
@@ -42,7 +42,7 @@
           </div>
           <!-- /.col-lg-5 -->
           <div class="col-lg-7">
-            <form action="front/assets/inc/sendemail.php" class="contact-form-validated contact-page__form form-one mb-40">
+            <form action="/public/front/assets/inc/sendemail.php" class="contact-form-validated contact-page__form form-one mb-40">
               <div class="form-group">
                 <div class="form-control">
                   <label for="name" class="sr-only">Name</label>
@@ -94,7 +94,7 @@
         <div class="thm-swiper__slider swiper-container swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <div class="contact-card d-flex flex-column text-center justify-content-center align-items-center background-secondary" style="background-image: url(front/assets/images/shapes/contact-card-bg-1-1.png)">
+              <div class="contact-card d-flex flex-column text-center justify-content-center align-items-center background-secondary" style="background-image: url(/public/front/assets/images/shapes/contact-card-bg-1-1.png)">
                 <i aria-label="contact icon" class="azino-icon-family"></i>
                 <h3>About</h3>
                 <p>
@@ -107,7 +107,7 @@
             </div>
             <!-- /.swiper-slide -->
             <div class="swiper-slide">
-              <div class="contact-card d-flex flex-column text-center justify-content-center align-items-center background-primary" style="background-image: url(front/assets/images/shapes/contact-card-bg-1-1.png)">
+              <div class="contact-card d-flex flex-column text-center justify-content-center align-items-center background-primary" style="background-image: url(/public/front/assets/images/shapes/contact-card-bg-1-1.png)">
                 <i aria-label="contact icon" class="azino-icon-address"></i>
                 <h3>Address</h3>
                 <p>
@@ -120,7 +120,7 @@
             </div>
             <!-- /.swiper-slide -->
             <div class="swiper-slide">
-              <div class="contact-card d-flex flex-column text-center justify-content-center align-items-center background-special" style="background-image: url(front/assets/images/shapes/contact-card-bg-1-1.png)">
+              <div class="contact-card d-flex flex-column text-center justify-content-center align-items-center background-special" style="background-image: url(/public/front/assets/images/shapes/contact-card-bg-1-1.png)">
                 <i aria-label="contact icon" class="azino-icon-contact"></i>
                 <h3>Contact</h3>
                 <p>
