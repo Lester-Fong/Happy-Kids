@@ -82,6 +82,9 @@
 }
 
 .event-card-image-inner > img {
+  height: 130px;
+  width: 130px;
+  object-fit: cover;
   border-radius: 50%;
   transition: all 500ms ease;
 }

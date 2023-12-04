@@ -4,11 +4,11 @@
       <div class="page-header__bg" style="background-image: url(front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
       <!-- /.page-header__bg -->
       <div class="container">
-        <h2>Volunteer</h2>
+        <h2>Our Team</h2>
         <ul class="thm-breadcrumb list-unstyled dynamic-radius">
           <li><a href="index.html">Home</a></li>
           <li>-</li>
-          <li><span>Volunteers</span></li>
+          <li><span>Our Team</span></li>
         </ul>
         <!-- /.thm-breadcrumb list-unstyled -->
       </div>
