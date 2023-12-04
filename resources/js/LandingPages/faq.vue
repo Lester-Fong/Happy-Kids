@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="page-header">
-      <div class="page-header__bg" style="background-image: url(front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
+      <div class="page-header__bg" style="background-image: url(/public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>Frequently Asked Questions</h2>
@@ -22,7 +22,7 @@
           <div class="col-lg-12">
             <div class="faq-one__content px-0">
               <div class="block-title text-center">
-                <h4 class="text-success ms-3"><img class="me-3" src="front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />Help People Now</h4>
+                <h4 class="text-success ms-3"><img class="me-3" src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />Help People Now</h4>
                 <h3>
                   Charity for the people <br />
                   you care about.

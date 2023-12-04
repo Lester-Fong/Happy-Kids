@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="page-header">
-      <div class="page-header__bg" style="background-image: url(front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
+      <div class="page-header__bg" style="background-image: url(/public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>Events Page</h2>
@@ -23,7 +23,7 @@
             <div class="event-card-inner">
               <div class="event-card-image">
                 <div class="event-card-image-inner">
-                  <img src="front/assets/images/events/event-1-1.jpg" alt="" />
+                  <img src="/public/front/assets/images/events/event-1-1.jpg" alt="" />
                   <span>20 May</span>
                 </div>
                 <!-- /.event-card-image-inner -->
@@ -52,7 +52,7 @@
             <div class="event-card-inner">
               <div class="event-card-image">
                 <div class="event-card-image-inner">
-                  <img src="front/assets/images/events/event-1-2.jpg" alt="" />
+                  <img src="/public/front/assets/images/events/event-1-2.jpg" alt="" />
                   <span>20 May</span>
                 </div>
                 <!-- /.event-card-image-inner -->
@@ -81,7 +81,7 @@
             <div class="event-card-inner">
               <div class="event-card-image">
                 <div class="event-card-image-inner">
-                  <img src="front/assets/images/events/event-1-3.jpg" alt="" />
+                  <img src="/public/front/assets/images/events/event-1-3.jpg" alt="" />
                   <span>20 May</span>
                 </div>
                 <!-- /.event-card-image-inner -->
@@ -110,7 +110,7 @@
             <div class="event-card-inner">
               <div class="event-card-image">
                 <div class="event-card-image-inner">
-                  <img src="front/assets/images/events/event-1-4.jpg" alt="" />
+                  <img src="/public/front/assets/images/events/event-1-4.jpg" alt="" />
                   <span>20 May</span>
                 </div>
                 <!-- /.event-card-image-inner -->
@@ -139,7 +139,7 @@
             <div class="event-card-inner">
               <div class="event-card-image">
                 <div class="event-card-image-inner">
-                  <img src="front/assets/images/events/event-1-5.jpg" alt="" />
+                  <img src="/public/front/assets/images/events/event-1-5.jpg" alt="" />
                   <span>20 May</span>
                 </div>
                 <!-- /.event-card-image-inner -->
@@ -168,7 +168,7 @@
             <div class="event-card-inner">
               <div class="event-card-image">
                 <div class="event-card-image-inner">
-                  <img src="front/assets/images/events/event-1-6.jpg" alt="" />
+                  <img src="/public/front/assets/images/events/event-1-6.jpg" alt="" />
                   <span>20 May</span>
                 </div>
                 <!-- /.event-card-image-inner -->

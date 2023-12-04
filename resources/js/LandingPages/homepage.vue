@@ -5,7 +5,7 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('front/assets/images/backgrounds/hero-header-1.jpg')"></div>
+            <div class="image-layer" style="background-image: url('/public/front/assets/images/backgrounds/hero-header-1.jpg')"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
@@ -27,7 +27,7 @@
           </div>
           <!-- /.swiper-slide -->
           <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('front/assets/images/backgrounds/hero-header-2.jpg')"></div>
+            <div class="image-layer" style="background-image: url('/public/front/assets/images/backgrounds/hero-header-2.jpg')"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
@@ -49,7 +49,7 @@
           </div>
           <!-- /.swiper-slide -->
           <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('front/assets/images/backgrounds/hero-header-3.jpg')"></div>
+            <div class="image-layer" style="background-image: url('/public/front/assets/images/backgrounds/hero-header-3.jpg')"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
@@ -84,9 +84,9 @@
         <div class="swiper-container thm-swiper__slider">
           <div class="swiper-wrapper row mx-0">
             <div class="mx-auto col-lg-4 col-md-6 col-12">
-              <div class="service-two__box background-primary wow fadeInUp" data-wow-duration="1500ms" style="background-image: url('front/assets/images/backgrounds/card-charity.jpg')">
+              <div class="service-two__box background-primary wow fadeInUp" data-wow-duration="1500ms" style="background-image: url('/public/front/assets/images/backgrounds/card-charity.jpg')">
                 <div class="service-two__box-inner">
-                  <img src="front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
+                  <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
                   <p>Start Donating</p>
                   <h3>
                     <a href="contact.html"
@@ -103,9 +103,9 @@
             </div>
             <!-- /.swiper-slide -->
             <div class="mx-auto col-lg-4 col-md-6 col-12">
-              <div class="service-two__box background-secondary wow fadeInDown" data-wow-duration="1500ms" data-wow-delay="100ms" style="background-image: url('front/assets/images/backgrounds/card-volunteers.jpg')">
+              <div class="service-two__box background-secondary wow fadeInDown" data-wow-duration="1500ms" data-wow-delay="100ms" style="background-image: url('/public/front/assets/images/backgrounds/card-volunteers.jpg')">
                 <div class="service-two__box-inner">
-                  <img src="front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
+                  <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
                   <p>Let’s Join</p>
                   <h3>
                     <a href="become-volunteer.html"
@@ -122,9 +122,9 @@
             </div>
             <!-- /.swiper-slide -->
             <div class="mx-auto col-lg-4 col-md-6 col-12">
-              <div class="service-two__box background-base wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms" style="background-image: url('front/assets/images/backgrounds/card-childeduc.jpg')">
+              <div class="service-two__box background-base wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms" style="background-image: url('/public/front/assets/images/backgrounds/card-childeduc.jpg')">
                 <div class="service-two__box-inner">
-                  <img src="front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
+                  <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
                   <p>Quick Funding</p>
                   <h3>
                     <a href="contact.html"
@@ -155,9 +155,9 @@
         <div class="row">
           <div class="col-xl-6">
             <div class="about-two__image wow fadeInLeft" data-wow-duration="1500ms">
-              <img src="front/assets/images/backgrounds/about-us-img.jpg" alt="about us image." class="about-two__image_left" />
+              <img src="/public/front/assets/images/backgrounds/about-us-img.jpg" alt="about us image." class="about-two__image_left" />
               <div class="about-two__award">
-                <img src="front/assets/images/shapes/about-bag-1-2.png" alt="" />
+                <img src="/public/front/assets/images/shapes/about-bag-1-2.png" alt="" />
               </div>
               <!-- /.about-two__award -->
             </div>
@@ -211,10 +211,10 @@
 
     <!-- HELP VIDEO SECTION PART 4-->
     <section class="video-card">
-      <div class="video-card__bg" style="background-image: url('front/assets/images/backgrounds/fingerprints-bg.jpg')"></div>
+      <div class="video-card__bg" style="background-image: url('/public/front/assets/images/backgrounds/fingerprints-bg.jpg')"></div>
       <!-- /.video-card__bg -->
       <div class="container text-center pt-120 pb-120">
-        <p class="text-info"><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Help Other People</p>
+        <p class="text-info"><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Help Other People</p>
         <h3>
           Our fingerprints on the <br />
           lives we touch never fade.
@@ -410,7 +410,7 @@
           <div class="col-lg-6">
             <div class="faq-one__content">
               <div class="block-title">
-                <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />Help People Now</p>
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />Help People Now</p>
                 <h3>
                   Charity for the people <br />
                   you care about.
@@ -458,10 +458,10 @@
           <div class="col-lg-6">
             <div class="about-counter__image clearfix">
               <div class="about-counter__image-content">
-                <img src="front/assets/images/shapes/about-count-heart-1-1.png" alt="about-count-heart-1-1" />
+                <img src="/public/front/assets/images/shapes/about-count-heart-1-1.png" alt="about-count-heart-1-1" />
                 <p>We’re here to support you every step of the way.</p>
               </div>
-              <img src="front/assets/images/backgrounds/charity-people.jpg" alt="charity people" class="float-left part-five__image_right" />
+              <img src="/public/front/assets/images/backgrounds/charity-people.jpg" alt="charity people" class="float-left part-five__image_right" />
             </div>
           </div>
         </div>
@@ -469,13 +469,13 @@
     </section>
 
     <!-- TESTIMONIALS SECTION PART 6 -->
-    <section class="testimonials-one pt-120 pb-90" style="background-image: url('front/assets/images/shapes/testimonials-map-1-1.png')">
+    <section class="testimonials-one pt-120 pb-90" style="background-image: url('/public/front/assets/images/shapes/testimonials-map-1-1.png')">
       <div class="container">
         <div class="team-about__top">
           <div class="row align-items-center">
             <div class="col-md-12 col-lg-7">
               <div class="block-title">
-                <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Our Testimonials</p>
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Our Testimonials</p>
                 <h3>
                   What they are talking <br />
                   about azino.
@@ -496,7 +496,7 @@
           <div class="col-lg-4">
             <div class="testimonials-one__single">
               <div class="testimonials-one__image">
-                <img src="front/assets/images/resources/profile-1.jpg" alt="profile-1" class="testimonial_profile_image" />
+                <img src="/public/front/assets/images/resources/profile-1.jpg" alt="profile-1" class="testimonial_profile_image" />
               </div>
               <!-- /.testimonials-one__image -->
               <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
@@ -509,7 +509,7 @@
           <div class="col-lg-4">
             <div class="testimonials-one__single">
               <div class="testimonials-one__image">
-                <img src="front/assets/images/resources/profile-3.jpg" alt="profile-2" class="testimonial_profile_image" />
+                <img src="/public/front/assets/images/resources/profile-3.jpg" alt="profile-2" class="testimonial_profile_image" />
               </div>
               <!-- /.testimonials-one__image -->
               <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
@@ -522,7 +522,7 @@
           <div class="col-lg-4">
             <div class="testimonials-one__single">
               <div class="testimonials-one__image">
-                <img src="front/assets/images/resources/profile-2.jpg" alt="profile-3" class="testimonial_profile_image" />
+                <img src="/public/front/assets/images/resources/profile-2.jpg" alt="profile-3" class="testimonial_profile_image" />
               </div>
               <!-- /.testimonials-one__image -->
               <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
@@ -572,7 +572,7 @@
           <div class="col-xl-5">
             <div class="price-one__main">
               <div class="block-title">
-                <p class="text-info"><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Popular Causes</p>
+                <p class="text-info"><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Popular Causes</p>
                 <h3>
                   Donate to charity causes <br />
                   around the world.
@@ -581,7 +581,7 @@
               <!-- /.block-title -->
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
               <div class="price-one__image-box">
-                <img src="front/assets/images/backgrounds/child-hands.jpg" alt="children-hands" />
+                <img src="/public/front/assets/images/backgrounds/child-hands.jpg" alt="children-hands" />
                 <div class="price-one__image-box-content">
                   <h3><i class="fa fa-check"></i> Fundraising Platform</h3>
                   <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem is simply free text quis bibendum.</p>
@@ -645,7 +645,7 @@
     <!-- GALLERY SECTION PART 8 -->
     <section class="gallery-home-two pt-120 pb-120">
       <div class="container">
-        <img src="front/assets/images/shapes/video-dot-1-1.png" alt="" class="gallery-home-two__dots" />
+        <img src="/public/front/assets/images/shapes/video-dot-1-1.png" alt="" class="gallery-home-two__dots" />
         <div class="thm-swiper__slider swiper-container swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="index in 8" :key="index">
@@ -662,12 +662,12 @@
     </section>
 
     <!-- LATEST EVENT SECTION PART 9 -->
-    <section class="event-home-two py-5" style="background-image: url('front/assets/images/shapes/event-map-1-2.png')">
+    <section class="event-home-two py-5" style="background-image: url('/public/front/assets/images/shapes/event-map-1-2.png')">
       <div class="container">
         <div class="row align-items-start align-items-md-center flex-column flex-md-row mb-60">
           <div class="col-lg-7">
             <div class="block-title">
-              <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Latest Events</p>
+              <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Latest Events</p>
               <h3>
                 Checkout our upcoming <br />
                 full event list.
@@ -906,7 +906,7 @@
 
     <!-- PARTNER AND SPONSOR SECTION PART 10 -->
     <div class="client-carousel py-5 client-carousel__has-border-top part-10">
-      <h2 class="text-center mb-5">Sponsors &nbsp; <img src="front/assets/images/shapes/heart-2-1.png" width="50" alt="favicon heart" /></h2>
+      <h2 class="text-center mb-5">Sponsors &nbsp; <img src="/public/front/assets/images/shapes/heart-2-1.png" width="50" alt="favicon heart" /></h2>
       <div class="container">
         <div class="thm-swiper__slider swiper-container swiper">
           <div class="swiper-wrapper">
