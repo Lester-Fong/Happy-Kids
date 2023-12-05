@@ -16,7 +16,7 @@ import AdminDonation from "./Portal/Administrator/donation.vue";
 
 export default [
     {
-        path: "",
+        path: "/admin",
         component: Front,
         meta: { isAdminAuthentication: false, isAdmin: true },
         children: [
