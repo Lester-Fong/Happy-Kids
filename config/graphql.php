@@ -104,6 +104,7 @@ return [
             'mutation' => [
                 // ExampleMutation::class,
                 'administrator' => \App\GraphQL\Mutations\AdministratorMutation::class,
+                'pages' => \App\GraphQL\Mutations\PagesMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -132,6 +133,7 @@ return [
     //
     'types' => [
         //Types
+        'Upload' => \Rebing\GraphQL\Support\UploadType::class,
         'response_type' => \App\GraphQL\Types\ResponseType::class,
         'admin_type' => \App\GraphQL\Types\AdministratorType::class,
 
@@ -139,6 +141,7 @@ return [
 
         // Inputs
         'admin_input' => \App\GraphQL\Inputs\AdministratorInput::class,
+        'page_input' => \App\GraphQL\Inputs\PagesInput::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

@@ -12,5 +12,10 @@ return [
         'OTP_INVALID' => 'Your OTP is invalid.',
         'INVALID_SECURITY_CODE' => 'Invalid security code.',
         'RESET_PASSWORD_SUCCESSFUL' => 'Your password has been reset successfully.',
-    ]
+        'RECORD_SUCCESSFUL' => 'Record saved successfully.',
+        'RECORD_NOT_FOUND' => 'Record not found.',
+    ],
+
+    'PAGES_IMAGE_PATH' => 'public/uploads/pages/',
+    'BLOGS_IMAGE_PATH' => 'public/uploads/blogs/',
 ];

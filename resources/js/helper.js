@@ -81,7 +81,10 @@ Vue.mixin({
                 // },
 
                 // cork ------------------------------->
-                dom: "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" + "<'table-responsive'tr>" + "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+                dom:
+                    "<'dt--top-section '<'row'<'col-12 col-sm-6 align-items-center d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center align-items-center mt-sm-0 mt-3'f>>>" +
+                    "<'table-responsive'tr>" +
+                    "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
                 oLanguage: {
                     oPaginate: {
                         sPrevious: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
@@ -97,14 +100,13 @@ Vue.mixin({
                 pageLength: 7,
             });
 
-            // if (is_add) {
-            //     $(".dataTables_filter").prepend('<button type="button" class="btn button--secondary new_record fw-bold">New Record</button>');
-            //     // $(".dataTables_filter").addClass("d-flex justify-between align-center filter-container").children("label").addClass("w-35");
-            //     $(".dataTables_filter").addClass("filter-title-container").children("label").children("input").addClass("border border-dark fs_12");
-            //     $(".new_record").on("click", this.onCreateRecord);
-            // } else {
-            //     $(".dataTables_filter").addClass("filter-title-container").children("label").children("input").addClass("border border-dark fs_12");
-            // }
+            if (is_add) {
+                $(".dataTables_filter").append('<button type="button" class="btn button--secondary ms-4 new_record fw-bold">New Record</button>');
+                $(".dataTables_filter").addClass("filter-title-container").children("label").children("input").addClass("border border-dark fs_12");
+                $(".new_record").on("click", this.onCreateRecord);
+            } else {
+                $(".dataTables_filter").addClass("filter-title-container").children("label").children("input").addClass("border border-dark fs_12");
+            }
         },
     },
 });
