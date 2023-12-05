@@ -4,7 +4,7 @@ import admin_requests from "./RequestQueries/admin_requests";
 
 let requestNames = ["admin_outside_action"];
 
-let adminRequestNames = ["get_admin"];
+let adminRequestNames = ["get_admin", "blogs", "save_blogs", "blog_categories", "save_blog_categories"];
 
 let getApiUrl = (queryName) => {
     let segment = "";

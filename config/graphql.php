@@ -100,6 +100,8 @@ return [
             'query' => [
                 // ExampleQuery::class,
                 'administrator' => \App\GraphQL\Queries\AdministratorQuery::class,
+                'blogs' => \App\GraphQL\Queries\BlogQuery::class,
+                'blog_category' => \App\GraphQL\Queries\BlogCategoryQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -134,6 +136,8 @@ return [
         //Types
         'response_type' => \App\GraphQL\Types\ResponseType::class,
         'admin_type' => \App\GraphQL\Types\AdministratorType::class,
+        'blogs_type' => \App\GraphQL\Types\BlogType::class,
+        'blog_category_type' => \App\GraphQL\Types\BlogCategoryType::class,
 
 
 

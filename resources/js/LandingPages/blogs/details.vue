@@ -21,7 +21,7 @@
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="blog-card__image">
-              <img src="//public/front/assets/images/blog/blog-d-1-1.jpg" alt="" />
+              <img src="/public/front/assets/images/blog/blog-d-1-1.jpg" alt="" />
               <div class="blog-card__date">20 May</div>
               <!-- /.blog-card__date -->
             </div>

@@ -48,7 +48,6 @@ Vue.mixin({
         },
 
         onDatatable: function (name, is_add, lengthDisplay = 10, padding = "pb-2") {
-            console.log("onDatatable", name);
             $(name).DataTable({
                 autoWidth: !1,
                 // responsive: true,
@@ -105,6 +104,53 @@ Vue.mixin({
             // } else {
             //     $(".dataTables_filter").addClass("filter-title-container").children("label").children("input").addClass("border border-dark fs_12");
             // }
+        },
+
+        onSummerNote: (name) => {
+            $(name).summernote({
+                placeholder: "",
+                fontNames: ["Arial", "Arial Black", "Comic Sans MS", "Courier New"],
+                tabsize: 2,
+                height: 300,
+                disableDragAndDrop: true,
+                toolbar: [
+                    ["style", ["style"]],
+                    ["font", ["bold", "underline", "clear", "size"]],
+                    ["fontsize", ["fontsize"]],
+                    ["fontname", ["fontname"]],
+                    ["color", ["color"]],
+                    ["para", ["ul", "ol", "paragraph", "height"]],
+                    ["table", ["table"]],
+                    ["insert", ["link", "picture"]],
+                    ["view", ["fullscreen", "codeview"]],
+                ],
+                popover: {
+                    image: [
+                        ["image", ["resizeFull", "resizeHalf", "resizeQuarter", "resizeNone"]],
+                        ["float", ["floatLeft", "floatRight", "floatNone"]],
+                        ["remove", ["removeMedia"]],
+                    ],
+                    link: [["link", ["linkDialogShow", "unlink"]]],
+                    table: [
+                        ["add", ["addRowDown", "addRowUp", "addColLeft", "addColRight"]],
+                        ["delete", ["deleteRow", "deleteCol", "deleteTable"]],
+                    ],
+                    air: [
+                        ["color", ["color"]],
+                        ["font", ["bold", "underline", "clear"]],
+                        ["para", ["ul", "paragraph"]],
+                        ["table", ["table"]],
+                        ["insert", ["link", "picture"]],
+                    ],
+                },
+                //styleTags: ['http://servicio.local/public/assets_front/css/custom.css'],
+
+                // callbacks: {
+                //   onImageUpload: function (data) {
+                //     data.pop();
+                //   },
+                // },
+            });
         },
     },
 });

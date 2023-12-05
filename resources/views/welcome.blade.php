@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <title>Happy Kids</title>
 
-    <link rel="stylesheet" href="{{ url('/public/src/bootstrap/css/bootstrap.min.css?') }}">
+    <link rel="stylesheet" href="{{ url('/public/src/bootstrap/css/bootstrap.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
 
     @if ($display_type == 'portal')

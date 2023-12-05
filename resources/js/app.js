@@ -8,6 +8,8 @@ import VueCryptojs from "vue-cryptojs";
 
 import "./admin_queries";
 import "./helper";
+import moment from "moment";
+
 require("./bootstrap");
 let routes = [];
 routes = routes.concat(landingPagesRoutes, admin_routes);
@@ -18,6 +20,15 @@ Vue.use(VueMeta);
 const router = new VueRouter({
     mode: "history", // Use history mode for clean URLs
     routes, // Short for `routes: routes`
+});
+
+Vue.filter("formatTransDate", function (value) {
+    if (value) {
+        if (value && moment(value, "YYYY-MM-DD", true).isValid()) {
+            return moment(value).format("MMM DD YYYY");
+        }
+        return value;
+    }
 });
 
 router.beforeEach((to, from, next) => {

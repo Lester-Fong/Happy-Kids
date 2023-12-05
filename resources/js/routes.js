@@ -13,6 +13,7 @@ import AdminOurTeam from "./Portal/Administrator/team.vue";
 import AdminPages from "./Portal/Administrator/pages.vue";
 import AdminSMS from "./Portal/Administrator/sms.vue";
 import AdminDonation from "./Portal/Administrator/donation.vue";
+import AdminBlogsForm from "./Portal/Administrator/blogs/form.vue";
 
 export default [
     {
@@ -36,4 +37,5 @@ export default [
     { path: "/admin/pages", component: AdminPages, name: "AdminPages", meta: { isAdminAuthentication: true, isPages: true } },
     { path: "/admin/sms", component: AdminSMS, name: "AdminSMS", meta: { isAdminAuthentication: true, isSMS: true } },
     { path: "/admin/donations", component: AdminDonation, name: "AdminDonation", meta: { isAdminAuthentication: true, isDonations: true } },
+    { path: "/admin/blogs/edit/:id", component: AdminBlogsForm, name: "AdminBlogsEdit", meta: { isAdminAuthentication: true }, params: true },
 ];
