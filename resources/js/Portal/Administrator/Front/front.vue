@@ -8,7 +8,7 @@
 
           <div class="auth-cover">
             <div class="position-relative">
-              <img src="../../../../../public/src/assets/img/auth-cover.svg" alt="auth-img" />
+              <img src="/public/src/assets/img/auth-cover.svg" alt="auth-img" />
               <h2 class="mt-5 text-white font-weight-bolder px-2">
                 Happy Kids Content Management <br />
                 Web Application
