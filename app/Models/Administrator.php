@@ -217,6 +217,9 @@ class Administrator extends Authenticatable
                 $response_obj->token_expiration = $token_expiration_date;
                 $response_obj->admin = $administrator;
                 $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['SUCCESS_LOGIN'];
+            } else {
+                $response_obj->error = true;
+                $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['ERROR_LOGIN'];
             }
         }
 
