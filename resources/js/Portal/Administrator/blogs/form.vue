@@ -189,10 +189,10 @@ export default {
         };
     },
     created() {
-        let _this = this;
+        // let _this = this;
         this.$nextTick(function () {
-            _this.onSummerNote("#summernote_blog", 600, this.onUploadImage);
-            $("#summernote_blog").summernote("code", "");
+            // _this.onSummerNote("#summernote_blog", 600, this.onUploadImage);
+            $("#summernote_blog").summernote();
         });
         // if (this.$route.params.id) {
         //     this.blogs_id = this.$route.params.id;
