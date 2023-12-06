@@ -25,7 +25,9 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@yaireo/tagify": "^4.17.9",
         "idb": "^7.1.1",
+        "moment": "^2.29.4",
         "vue-clipboard2": "^0.3.3",
         "vue-credit-card-validation": "^0.1.10",
         "vue-cryptojs": "^2.4.5",
@@ -34,7 +36,6 @@
         "vue-router": "^3.5.3",
         "vue-star-rating": "^1.7.0",
         "vue-sweetalert2": "^5.0.2",
-        "vue2-datepicker": "^3.11.0",
-        "moment": "^2.29.4"
+        "vue2-datepicker": "^3.11.0"
     }
 }

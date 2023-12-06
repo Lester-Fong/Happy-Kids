@@ -21,8 +21,10 @@
                                 <label class="form-label" for="default-06">Category</label>
                                 <div class="form-control-wrap">
                                     <select class="form-select" v-model="category">
-                                        <option value="">Select one</option>
-                                        <option :value="blog_category.original_category_id" v-for="blog_category in blog_category_arr" :key="blog_category.original_category_id">{{ blog_category.name }}</option>
+                                        <!-- <option value="">Select one</option>
+                                        <option :value="blog_category.original_category_id" v-for="blog_category in blog_category_arr" :key="blog_category.original_category_id">{{ blog_category.name }}</option> -->
+                                        <option>Scholarship</option>
+                                        <option>Feeding</option>
                                     </select>
                                     <div class="text-danger">{{ category_error }}</div>
                                 </div>
@@ -43,7 +45,7 @@
                                 <div class="form-control-wrap">
                                     <div class="form-file">
                                         <input type="file" class="form-file-input" id="customFile" @change="onFileChanged" placeholder="Choose File" />
-                                        <label class="form-file-label" for="customFile">{{ selectedFile }}</label>
+                                        <!-- <label class="form-file-label" for="customFile">{{ selectedFile }}</label> -->
                                     </div>
                                 </div>
                                 <img class="mt-2" :src="header_image" alt="" v-if="is_image" width="100" />
@@ -52,18 +54,18 @@
 
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="form-label" for="default-06">Cover Image</label>
+                                <label class="form-label" for="default-06">Thumbnail</label>
                                 <div class="form-control-wrap">
                                     <div class="form-file">
-                                        <input type="file" class="form-file-input" id="customFile" @change="onFileChangedCover" placeholder="Choose File" />
-                                        <label class="form-file-label" for="customFile">{{ selectedFileCover }}</label>
+                                        <input type="file" class="form-file-input" id="customFile" @change="onFileChangedThumbnail" placeholder="Choose File" />
+                                        <!-- <label class="form-file-label" for="customFile">{{ selectedFileThumb }}</label> -->
                                     </div>
                                 </div>
                                 <img class="mt-2" :src="front_image" alt="" v-if="is_front" width="100" />
                             </div>
                         </div>
 
-                        <div class="col-sm-2">
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="form-label">Date</label>
                                 <div class="form-control-wrap">
@@ -119,11 +121,21 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6 mt-2">
+                        <!-- <div class="col-sm-6 mt-2">
                             <div class="form-group">
                                 <label class="form-label" for="default-textarea">Meta Keywords</label>
                                 <div class="form-control-wrap">
                                     <textarea class="form-control no-resize" id="default-textarea" v-model="meta_keywords"></textarea>
+                                    <div class="text-danger">{{ meta_keywords_error }}</div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-group">
+                                <label class="form-label" for="tagify-input">Meta Keywords</label>
+                                <div class="form-control-wrap">
+                                    <!-- Use an input element for Tagify -->
+                                    <input id="tagify-input" placeholder="Type and press Enter to add tags" class="form-control" />
                                     <div class="text-danger">{{ meta_keywords_error }}</div>
                                 </div>
                             </div>
@@ -145,6 +157,10 @@
 <script>
 import DatePicker from "vue2-datepicker";
 import "vue2-datepicker/index.css";
+// import Tagify from "@yaireo/tagify/dist/tagify.min.js";
+import "@yaireo/tagify/dist/tagify.css"; // Import Tagify styles
+import Tagify from "@yaireo/tagify";
+
 export default {
     metaInfo: {
         title: "Admin - Blogs - New",
@@ -158,7 +174,7 @@ export default {
             category: "",
 
             meta_title: "",
-            meta_keywords: "",
+            meta_keywords: [],
             meta_description: "",
 
             title_error: "",
@@ -182,9 +198,10 @@ export default {
 
             front_image: "",
             is_front: false,
-            selectedFileCover: "",
+            selectedFileThumb: "",
             slug: "",
             status: "2",
+            tagify: null,
             // minutes_read: "",
         };
     },
@@ -193,6 +210,7 @@ export default {
         this.$nextTick(function () {
             // _this.onSummerNote("#summernote_blog", 600, this.onUploadImage);
             $("#summernote_blog").summernote();
+            this.initializeTagify();
         });
         // if (this.$route.params.id) {
         //     this.blogs_id = this.$route.params.id;
@@ -201,6 +219,19 @@ export default {
         // this.onPopulateCategory();
     },
     methods: {
+        initializeTagify() {
+            // Create a new Tagify instance
+            // this.tagify = new Tagify(document.getElementById("tagify-input"), {
+            //     // Tagify options go here
+            // });
+            var input = document.getElementById("tagify-input");
+            var tagify = new Tagify(input);
+
+            // Event listener for handling tag changes
+            tagify.on("add", (e) => {
+                this.meta_keywords.push(e.detail.data.value);
+            });
+        },
         onPopulateCategory() {
             this.$query_administrator("blog_categories", {
                 action_type: "display_all",
@@ -210,7 +241,7 @@ export default {
                     this.blog_category_arr = res.data.data.blog_category;
                 })
                 .catch((err) => {
-                    this.$swal("Error!", this.global_error_message, "error");
+                    Swal.fire("Error!", this.global_error_message, "error");
                 });
         },
         onUploadImage(file) {
@@ -236,13 +267,13 @@ export default {
                         if (response.error == false) {
                             $("#summernote_blog").summernote("insertImage", "/" + response.filename);
                         } else {
-                            this.$swal("Error!", response.message, "error");
+                            Swal.fire("Error!", response.message, "error");
                         }
                     }
                 })
                 .catch(() => {
                     this.is_loading = false;
-                    this.$swal("Error!", this.global_error_message, "error");
+                    Swal.fire("Error!", this.global_error_message, "error");
                 });
         },
         onCancel() {
@@ -257,7 +288,7 @@ export default {
 
                 this.$query_administrator("save_blogs", {
                     file: this.selectedFile,
-                    cover_image: this.selectedFileCover,
+                    cover_image: this.selectedFileThumb,
                     blogs: {
                         title: this.title,
                         description: $("#summernote_blog").summernote("code"),
@@ -282,17 +313,17 @@ export default {
                         } else {
                             let response = res.data.data.blogs;
                             if (response.error == false) {
-                                this.$swal("Success!", response.message, "success").then(() => {
+                                Swal.fire("Success!", response.message, "success").then(() => {
                                     this.$router.push("/admin/blogs");
                                 });
                             } else {
-                                this.$swal("Error!", response.message, "error");
+                                Swal.fire("Error!", response.message, "error");
                             }
                         }
                     })
                     .catch(() => {
                         this.is_loading = false;
-                        this.$swal("Error!", this.global_error_message, "error");
+                        Swal.fire("Error!", this.global_error_message, "error");
                     });
             }
         },
@@ -337,9 +368,9 @@ export default {
             this.onDisplayUploadedImage(event);
             this.selectedFile = event.target.files[0];
         },
-        onFileChangedCover() {
+        onFileChangedThumbnail() {
             this.onDisplayUploadedCoverImage(event);
-            this.selectedFileCover = event.target.files[0];
+            this.selectedFileThumb = event.target.files[0];
         },
         onDisplayUploadedImage(e) {
             const file = e.target.files[0];
@@ -389,7 +420,7 @@ export default {
                     // this.minutes_read = this.blogs.minutes_read;
                 })
                 .catch((err) => {
-                    this.$swal("Error!", this.global_error_message, "error");
+                    Swal.fire("Error!", this.global_error_message, "error");
                 });
         },
     },
@@ -398,6 +429,18 @@ export default {
             if (val == true) {
                 this.onPopulateData();
             }
+        },
+
+        selectedFile(val) {
+            console.log("selectedFile: ", val);
+        },
+
+        selectedFileThumb(val) {
+            console.log("selectedFileThumb: ", val);
+        },
+
+        meta_keywords(val) {
+            console.log("meta_keywords: ", val);
         },
     },
 };

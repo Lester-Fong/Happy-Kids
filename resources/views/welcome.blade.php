@@ -43,12 +43,16 @@
     {{-- datatable --}}
     <script async defer src="{{ url('/public/src/plugins/src/table/datatable/datatables.js') }}"></script>
 
+    {{-- SUMMMMMERNOTE --}}
     <link href="{{ url('/public/src/plugins/src/summernote/summernote.min.css') }}" rel="stylesheet" />
     <link href="{{ url('/public/src/plugins/src/summernote/summernote-lite.min.css') }}" rel="stylesheet" />
     {{-- <link href="{{ url('/public/src/plugins/src/summernote/summernote-bs4.css') }}" rel="stylesheet" /> --}}
 
     {{-- <script src="{{ url('/public/src/plugins/src/summernote/summernote.min.js') }}"></script> --}}
     <script src="{{ url('/public/src/plugins/src/summernote/summernote-lite.min.js') }}"></script>
+    {{-- SUMMMMMERNOTE --}}
+    {{-- tagify --}}
+    <script src="{{ url('/public/src/plugins/src/tagify/tagify.min.js') }}"></script>
 
 
 
