@@ -40,17 +40,21 @@
     @if ($display_type == "portal")
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script async defer src="{{ url('/public/src/plugins/src/sweetalerts2/sweetalerts2.min.js') }}"></script>
-
     {{-- datatable --}}
     <script async defer src="{{ url('/public/src/plugins/src/table/datatable/datatables.js') }}"></script>
-    {{-- <script async defer src="{{ asset('src/plugins/src/table/datatable/button-ext/dataTables.buttons.min.js') }}"></script>
-    <script async defer src="{{ asset('src/plugins/src/table/datatable/button-ext/jszip.min.js') }}"></script>
-    <script async defer src="{{ asset('src/plugins/src/table/datatable/button-ext/buttons.html5.min.js') }}"></script>
-    <script async defer src="{{ asset('src/plugins/src/table/datatable/button-ext/buttons.print.min.js') }}"></script>
-    <script async defer src="{{ asset('src/plugins/src/table/datatable/custom_miscellaneous.js') }}"></script> --}}
+
+    <link href="{{ url('/public/src/plugins/src/summernote/summernote.min.css') }}" rel="stylesheet" />
+    <link href="{{ url('/public/src/plugins/src/summernote/summernote-lite.min.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ url('/public/src/plugins/src/summernote/summernote-bs4.css') }}" rel="stylesheet" /> --}}
+
+    {{-- <script src="{{ url('/public/src/plugins/src/summernote/summernote.min.js') }}"></script> --}}
+    <script src="{{ url('/public/src/plugins/src/summernote/summernote-lite.min.js') }}"></script>
+
+
+
+
     @else
     {{-- front Landing--}}
-    {{-- <script src="{{ url('/public/assets/js/scripts.js?ver=3.1.0') }}"></script> --}}
     <script src="{{ url('/public/front/js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ url('/public/front/js/swiper.min.js') }}"></script>
     <script src="{{ url('/public/front/js/jquery.ajaxchimp.min.js') }}"></script>
