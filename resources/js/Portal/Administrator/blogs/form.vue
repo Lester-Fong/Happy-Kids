@@ -2,7 +2,7 @@
     <div>
         <div v-if="is_loading" class="loader"></div>
         <div class="card container px-4 py-2 card-bordered card-preview">
-            <div class="card-inner">
+            <div class="card-inner mb-4">
                 <div class="preview-block">
                     <div class="row gy-4">
                         <div class="col-sm-6">
@@ -143,11 +143,11 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer d-flex align-center justify-end">
+            <div class="card-footer d-flex align-center justify-content-end">
                 <div class="px-2">
                     <button type="button" name="button" class="btn button--secondary t-dark" @click="onCancel">Cancel</button>
                 </div>
-                <button type="submit" name="button" class="btn button--primary t-dark" @click="onSave">Save</button>
+                <button type="submit" name="button" class="btn button--primary t-dark" @click="onSubmit">Save</button>
             </div>
         </div>
         <!-- nk-block -->
@@ -206,10 +206,10 @@ export default {
         };
     },
     created() {
-        // let _this = this;
+        let _this = this;
         this.$nextTick(function () {
-            // _this.onSummerNote("#summernote_blog", 600, this.onUploadImage);
-            $("#summernote_blog").summernote();
+            _this.onSummerNote("#summernote_blog", 600, this.onUploadImage);
+            $("#summernote_blog").summernote("code", "");
             this.initializeTagify();
         });
         // if (this.$route.params.id) {
@@ -220,14 +220,9 @@ export default {
     },
     methods: {
         initializeTagify() {
-            // Create a new Tagify instance
-            // this.tagify = new Tagify(document.getElementById("tagify-input"), {
-            //     // Tagify options go here
-            // });
             var input = document.getElementById("tagify-input");
             var tagify = new Tagify(input);
 
-            // Event listener for handling tag changes
             tagify.on("add", (e) => {
                 this.meta_keywords.push(e.detail.data.value);
             });
@@ -279,16 +274,13 @@ export default {
         onCancel() {
             this.$router.replace("/admin/blogs");
         },
-        onSave() {
+        onSubmit() {
             this.onClearErrors();
             this.onCheckRequiredFields();
-
             if (this.is_error == false) {
                 this.is_loading = true;
 
-                this.$query_administrator("save_blogs", {
-                    file: this.selectedFile,
-                    cover_image: this.selectedFileThumb,
+                this.$admin_queries("save_blogs", {
                     blogs: {
                         title: this.title,
                         description: $("#summernote_blog").summernote("code"),
@@ -301,6 +293,8 @@ export default {
                         status: this.status,
                         action_type: this.is_edit ? "update" : "add",
                     },
+                    file: this.selectedFile,
+                    thumbnail: this.selectedFileThumb,
                 })
                     .then((res) => {
                         this.is_loading = false;
@@ -429,18 +423,6 @@ export default {
             if (val == true) {
                 this.onPopulateData();
             }
-        },
-
-        selectedFile(val) {
-            console.log("selectedFile: ", val);
-        },
-
-        selectedFileThumb(val) {
-            console.log("selectedFileThumb: ", val);
-        },
-
-        meta_keywords(val) {
-            console.log("meta_keywords: ", val);
         },
     },
 };
