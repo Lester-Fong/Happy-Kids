@@ -56,8 +56,7 @@ let admin_queries = {
                 category_id,
                 original_category_id,
                 name,
-                description,
-                image,
+                     image,
                 meta
             }
         }`,
@@ -68,6 +67,12 @@ let admin_queries = {
                       message,
                 }
               }`,
+    save_pages: `mutation pages($file: Upload, $file1: Upload, $file2: Upload, $file3: Upload, $file4: Upload, $file5: Upload, $selectedFileHow: [Upload], $selectedFileRoles: [Upload], $selectedFileCore: [Upload], $page: PagesInput) {
+        pages(file: $file, file1: $file1, file2: $file2, file3: $file3, file4: $file4, file5: $file5, selectedFileHow: $selectedFileHow, selectedFileRoles: $selectedFileRoles, selectedFileCore: $selectedFileCore, page: $page) {
+              error,
+              message,
+        }
+      }`,
 };
 
 export default admin_queries;
