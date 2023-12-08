@@ -1,0 +1,128 @@
+/* ================= THIS STYLES ARE FOR PORTAL ================= */
+.bi-sidebar {
+  color: #506690 !important;
+}
+
+.hk_active {
+  background-color: #f8edeb !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  border-radius: 8px;
+}
+
+.button {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button--primary {
+  background: #800f2f;
+  color: #ffffff;
+}
+
+.button--primary:active, .button--primary:focus, .button--primary:disabled, .button--primary:not(:active):not(:focus) {
+  background: #800f2f !important;
+  color: #ffffff;
+}
+
+.button--primary.t-dark {
+  color: #000000 !important;
+}
+
+.button--primary:not(:disabled):hover:not(:active) {
+  background-color: #f49508 !important;
+  color: #ffffff;
+}
+
+.button--secondary {
+  background: #001524;
+  color: #ffffff;
+}
+
+.button--secondary:active, .button--secondary:focus, .button--secondary:disabled, .button--secondary:not(:active):not(:focus) {
+  background: #001524 !important;
+  color: #ffffff !important;
+}
+
+.button--secondary:not(:disabled):hover:not(:active) {
+  background: #454545 !important;
+  border: 1px solid #001524;
+  color: #f1f7fc !important;
+}
+
+.button--white {
+  background-color: #ffffff !important;
+  border: 1px solid #001524;
+  color: #001524 !important;
+}
+
+.button--white:active, .button--white:focus, .button--white:disabled, .button--white:not(:active):not(:focus) {
+  background-color: #ffffff !important;
+  border: 1px solid #001524;
+  color: #001524;
+}
+
+.button--white:not(:disabled):hover:not(:active) {
+  background-color: #001524 !important;
+  color: #ffffff !important;
+}
+
+.button--transparent {
+  background-color: transparent !important;
+  border: 1px solid #001524;
+  color: #001524 !important;
+}
+
+.button--transparent:active, .button--transparent:focus, .button--transparent:disabled, .button--transparent:not(:active):not(:focus) {
+  background-color: transparent !important;
+  border: 1px solid #001524;
+  color: #001524;
+}
+
+.button--transparent:not(:disabled):hover:not(:active) {
+  background-color: #001524 !important;
+  color: #ffffff !important;
+}
+
+.button--grey {
+  background-color: #d9d9d9 !important;
+  color: #000000 !important;
+}
+
+.button--grey:active, .button--grey:focus, .button--grey:disabled, .button--grey:not(:active):not(:focus) {
+  background-color: #d9d9d9 !important;
+  color: #000000;
+}
+
+.button--grey:not(:disabled):hover:not(:active) {
+  background-color: #001524 !important;
+  color: #ffffff !important;
+}
+
+.button--small {
+  font-size: 0.875rem !important;
+  padding: 5px 10px;
+}
+
+.button--medium {
+  font-size: 1rem !important;
+  padding: 10px 20px;
+}
+
+.button--large {
+  font-size: 2rem !important;
+  padding: 15px 30px;
+}
+
+.button:hover {
+  background: #f49508;
+}
+
+textarea {
+  min-height: 120px !important;
+  max-height: 450px !important;
+}
+/*# sourceMappingURL=main.css.map */
