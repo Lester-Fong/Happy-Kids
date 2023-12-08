@@ -3,3 +3,49 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
+
+.cover-img {
+  height: 450px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.blog-category-thumb {
+  height: 60px;
+  width: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.expired-ribbon {
+  position: absolute;
+  top: 15px;
+  right: -40px;
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 0px 55px;
+  font-size: 14px;
+  z-index: 2;
+  transform: rotate(45deg);
+}
+
+.about_extras_img {
+  width: 570px !important;
+  height: 272px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.checklist-img {
+  width: 962px !important;
+  height: 692px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.program_img {
+  width: 571px !important;
+  height: 512px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
