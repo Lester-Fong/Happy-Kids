@@ -27,9 +27,8 @@
                     </svg>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                    <a class="dropdown-item" href="javascript:void(0);">View</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                    <router-link :to="{ name: 'AdminPagesEdit', params: { slug: a.slug } }" class="dropdown-item">Edit</router-link>
+                    <a class="dropdown-item" href="javascript:void(0);" @click="onDeleteRecord(a.encrypted_pages_id)">Delete</a>
                   </div>
                 </td>
               </tr>
@@ -160,6 +159,40 @@ export default {
     },
     onCreateRecord() {
       this.$router.push({ name: "AdminPagesCreate" });
+    },
+    onDeleteRecord(encrypted_pages_id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        confirmButtonColor: "#3b3f5c",
+        cancelButtonColor: "#d33",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.$admin_queries("save_pages", {
+            page: {
+              action_type: "delete_record",
+              pages_id: encrypted_pages_id,
+            },
+          }).then((res) => {
+            if (!res.data.data.error) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+                confirmButtonColor: "#3b3f5c",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  this.onPopulateData();
+                }
+              });
+            }
+          });
+        }
+      });
     },
   },
 

@@ -1,15 +1,17 @@
 <template>
     <div>
-        <div v-if="is_loading" class="loader-gif"></div>
+        <div class="loader-gif" v-if="is_loading"></div>
         <section class="page-header">
-            <div class="page-header__bg" style="background-image: url(/public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
+            <div class="page-header__bg" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
             <!-- /.page-header__bg -->
             <div class="container">
-                <h2>Events Page</h2>
+                <h2>{{ pages?.title }}</h2>
                 <ul class="thm-breadcrumb list-unstyled dynamic-radius">
-                    <li><a href="index.html">Home</a></li>
+                    <li><router-link :to="{ name: 'HomePage' }">Home</router-link></li>
                     <li>-</li>
-                    <li><span>Events</span></li>
+                    <li>
+                        <span>{{ pages?.title }}</span>
+                    </li>
                 </ul>
                 <!-- /.thm-breadcrumb list-unstyled -->
             </div>
@@ -20,12 +22,12 @@
         <section class="event-page pt-120 pb-120">
             <div class="container">
                 <div class="block-title text-center">
-                    <h4 class="text-success ms-3"><img class="me-3" src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />Help People Now</h4>
-                    <h3>
-                        Charity for the people <br />
-                        you care about.
+                    <h4 class="text-success ms-3"><img class="me-3" src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" /> {{ pages?.description?.title }}</h4>
+                    <h3 class="text-center w-50 mx-auto">
+                        {{ pages?.description?.sub_title }}
                     </h3>
                 </div>
+
                 <div class="event-grid">
                     <div v-for="a in displayedEvents" :key="a.id" class="event-card">
                         <div class="event-card-inner">
@@ -94,7 +96,7 @@ export default {
             })
                 .then((res) => {
                     let response = res.data.data.front;
-                    // this.pages = response.page;
+                    this.pages = response.page;
                     this.events = response.events;
                     this.is_loading = false;
                     this.admin = this.events.author;

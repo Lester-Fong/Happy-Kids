@@ -75,8 +75,8 @@ let admin_queries = {
                 }
               }`,
 
-    pages: `query pages($action_type: String, $page_id: String) {
-        pages(action_type: $action_type, page_id: $page_id) {
+    pages: `query pages($action_type: String, $title: String) {
+        pages(action_type: $action_type, title: $title) {
             encrypted_pages_id,
             pages_id,
             title,
@@ -111,6 +111,59 @@ let admin_queries = {
             message,
         }
     }`,
+    faq: `query faq($action_type: String, $faq_id: String) {
+        faq(action_type: $action_type, faq_id: $faq_id) {
+            faq_id,
+            original_faq_id,
+            question,
+            answer
+        }
+    }`,
+
+    save_faq: `mutation ($faq: FaqInput) {
+        faq(faq: $faq) {
+            error,
+            message
+        }
+    }`,
+
+    testimonial: `query testimonial($action_type: String, $testimonial_id: String) {
+        testimonial(action_type: $action_type, testimonial_id: $testimonial_id) {
+            testimonial_id,
+            original_testimonial_id,
+            name,
+            position,
+            description,
+            image
+        }
+    }`,
+
+    save_testimonial: `mutation testimonial($file: Upload, $testimonial: TestimonialInput) {
+            testimonial(file: $file, testimonial: $testimonial) {
+                  error,
+                  message,
+
+            }
+          }`,
+
+    team: `query team($action_type: String, $team_id: String) {
+            team(action_type: $action_type, team_id: $team_id) {
+                team_id,
+                original_team_id,
+                name,
+                position,
+                type,
+                image
+            }
+        }`,
+
+    save_team: `mutation team($file: Upload, $team: TeamInput) {
+            team(file: $file, team: $team) {
+                  error,
+                  message,
+
+            }
+          }`,
 };
 
 export default admin_queries;

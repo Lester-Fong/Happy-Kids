@@ -1,7 +1,7 @@
 const blogFields = onBlogFields();
 
 let front_queries = {
-    display_data: `query front($action_type: String, $slug: String, ) {
+    display_data: `query front($action_type: String, $slug: String) {
         front(action_type: $action_type, slug: $slug) {
             blogs {
                 ${blogFields}
@@ -50,6 +50,56 @@ let front_queries = {
     events: `query events($action_type: String, $events_id: String) {
       events(action_type: $action_type, events_id: $events_id) {
           events_id,
+              },
+            pages {
+              encrypted_pages_id,
+              pages_id,
+              title,
+              description,
+              slug,
+              image,
+              extras_image_1,
+              extras_image_2,
+              meta,
+            }
+        }
+    }`,
+
+    front_page_data: `query front($action_type: String!) {
+      front(action_type: $action_type) {
+          pages {
+            encrypted_pages_id,
+            pages_id,
+            title,
+            description,
+            slug,
+            image,
+            extras_image_1,
+            extras_image_2,
+            meta,
+          }
+          testimonials {
+            testimonial_id,
+            original_testimonial_id,
+            name,
+            position,
+            description,
+            image
+          }
+          faq {
+            faq_id,
+            original_faq_id,
+            question,
+            answer
+          },
+          team {
+            team_id,
+            original_team_id,
+            name,
+            position,
+            type,
+            image
+          }
       }
   }`,
 };

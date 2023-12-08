@@ -107,6 +107,9 @@ return [
                 'blogs' => \App\GraphQL\Queries\BlogQuery::class,
                 'blog_category' => \App\GraphQL\Queries\BlogCategoryQuery::class,
                 'events' => \App\GraphQL\Queries\EventsQuery::class,
+                'faq' => \App\GraphQL\Queries\FaqQuery::class,
+                'testimonial' => \App\GraphQL\Queries\TestimonialQuery::class,
+                'team' => \App\GraphQL\Queries\TeamQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -115,6 +118,9 @@ return [
                 'blogs' => \App\GraphQL\Mutations\BlogMutation::class,
                 'blog_category' => \App\GraphQL\Mutations\BlogCategoryMutation::class,
                 'events' => \App\GraphQL\Mutations\EventsMutation::class,
+                'faq' => \App\GraphQL\Mutations\FaqMutation::class,
+                'testimonial' => \App\GraphQL\Mutations\TestimonialMutation::class,
+                'team' => \App\GraphQL\Mutations\TeamMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -150,6 +156,9 @@ return [
         'blogs_type' => \App\GraphQL\Types\BlogType::class,
         'blog_category_type' => \App\GraphQL\Types\BlogCategoryType::class,
         'events_type' => \App\GraphQL\Types\EventsType::class,
+        'faq_type' => \App\GraphQL\Types\FaqType::class,
+        'testimonial_type' => \App\GraphQL\Types\TestimonialType::class,
+        'team_type' => \App\GraphQL\Types\TeamType::class,
 
 
 
@@ -159,6 +168,9 @@ return [
         'blog_input' => \App\GraphQL\Inputs\BlogInput::class,
         'blog_category_input' => \App\GraphQL\Inputs\BlogCategoryInput::class,
         'events_input' => \App\GraphQL\Inputs\EventsInput::class,
+        'faq_input' => \App\GraphQL\Inputs\FaqInput::class,
+        'testimonial_input' => \App\GraphQL\Inputs\TestimonialInput::class,
+        'team_input' => \App\GraphQL\Inputs\TeamInput::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

@@ -1,21 +1,18 @@
 <template>
   <div>
+    <div class="loader-gif" v-if="is_loading"></div>
     <!-- INTRO HEADER PART 1 -->
     <section class="main-slider main-slider__two">
       <div class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('/public/front/assets/images/backgrounds/hero-header-1.jpg')"></div>
+            <div class="image-layer" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
                 <div class="col-xl-6 col-lg-12 text-left">
-                  <h2>
-                    Donat<span>i</span>on <br />
-                    Can Change <br />
-                    Someone’s Life
-                  </h2>
-                  <p>Make a difference in families lives with just $5 a Month</p>
+                  <h2>{{ pages.description?.title }}</h2>
+                  <p>{{ pages.description?.sub_title }}</p>
                   <a href="#" data-target=".donate-options" class="scroll-to-target thm-btn dynamic-radius">Start Donating</a>
                   <!-- /.thm-btn dynamic-radius -->
                 </div>
@@ -27,17 +24,13 @@
           </div>
           <!-- /.swiper-slide -->
           <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('/public/front/assets/images/backgrounds/hero-header-2.jpg')"></div>
+            <div class="image-layer" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.extras_image_1}')`"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
                 <div class="col-xl-6 col-lg-12 text-left">
-                  <h2>
-                    Donat<span>i</span>on <br />
-                    Can Change <br />
-                    Someone’s Life
-                  </h2>
-                  <p>Make a difference in families lives with just $5 a Month</p>
+                  <h2>{{ pages.description?.title }}</h2>
+                  <p>{{ pages.description?.sub_title }}</p>
                   <a href="#" data-target=".donate-options" class="scroll-to-target thm-btn dynamic-radius">Start Donating</a>
                   <!-- /.thm-btn dynamic-radius -->
                 </div>
@@ -49,17 +42,13 @@
           </div>
           <!-- /.swiper-slide -->
           <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('/public/front/assets/images/backgrounds/hero-header-3.jpg')"></div>
+            <div class="image-layer" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.extras_image_2}')`"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
                 <div class="col-xl-6 col-lg-12 text-left">
-                  <h2>
-                    Donat<span>i</span>on <br />
-                    Can Change <br />
-                    Someone’s Life
-                  </h2>
-                  <p>Make a difference in families lives with just $5 a Month</p>
+                  <h2>{{ pages.description?.title }}</h2>
+                  <p>{{ pages.description?.sub_title }}</p>
                   <a href="#" data-target=".donate-options" class="scroll-to-target thm-btn dynamic-radius">Start Donating</a>
                   <!-- /.thm-btn dynamic-radius -->
                 </div>
@@ -83,18 +72,15 @@
       <div class="container">
         <div class="swiper-container thm-swiper__slider">
           <div class="swiper-wrapper row mx-0">
-            <div class="mx-auto col-lg-4 col-md-6 col-12">
-              <div class="service-two__box background-primary wow fadeInUp" data-wow-duration="1500ms" style="background-image: url('/public/front/assets/images/backgrounds/card-charity.jpg')">
+            <div class="mx-auto col-lg-4 col-md-6 col-12" v-for="(item, i) in pages.description?.objective_description" :key="i">
+              <div class="service-two__box wow fadeInUp" data-wow-duration="1500ms" :class="i == 0 ? ' background-primary' : i == 1 ? ' background-secondary' : 'background-base'" :style="`background-image: url('${onNameImage(i)}')`">
                 <div class="service-two__box-inner">
                   <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
-                  <p>Start Donating</p>
-                  <h3>
-                    <a href="contact.html"
-                      >More charity <br />
-                      better lives</a
-                    >
+                  <p>{{ item }}</p>
+                  <h3 class="w-75" v-for="(sub_item, index) in pages.description?.objective_sub_description" :key="index">
+                    <a href="javascript:void(0)" v-if="index == i">{{ sub_item }}</a>
                   </h3>
-                  <a href="contact.html" class="service-two__box-link"><i class="fas fa-angle-right"></i></a>
+                  <router-link :to="{ name: 'ContactPage' }" class="service-two__box-link"><i class="fas fa-angle-right"></i></router-link>
                   <!-- /.service-two__link -->
                 </div>
                 <!-- /.service-two__box-inner -->
@@ -102,7 +88,7 @@
               <!-- /.service-two__box -->
             </div>
             <!-- /.swiper-slide -->
-            <div class="mx-auto col-lg-4 col-md-6 col-12">
+            <!-- <div class="mx-auto col-lg-4 col-md-6 col-12">
               <div class="service-two__box background-secondary wow fadeInDown" data-wow-duration="1500ms" data-wow-delay="100ms" style="background-image: url('/public/front/assets/images/backgrounds/card-volunteers.jpg')">
                 <div class="service-two__box-inner">
                   <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
@@ -114,13 +100,9 @@
                     >
                   </h3>
                   <a href="become-volunteer.html" class="service-two__box-link"><i class="fas fa-angle-right"></i></a>
-                  <!-- /.service-two__link -->
                 </div>
-                <!-- /.service-two__box-inner -->
               </div>
-              <!-- /.service-two__box -->
             </div>
-            <!-- /.swiper-slide -->
             <div class="mx-auto col-lg-4 col-md-6 col-12">
               <div class="service-two__box background-base wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms" style="background-image: url('/public/front/assets/images/backgrounds/card-childeduc.jpg')">
                 <div class="service-two__box-inner">
@@ -133,15 +115,10 @@
                     >
                   </h3>
                   <a href="contact.html" class="service-two__box-link"><i class="fas fa-angle-right"></i></a>
-                  <!-- /.service-two__link -->
                 </div>
-                <!-- /.service-two__box-inner -->
               </div>
-              <!-- /.service-two__box -->
-            </div>
-            <!-- /.swiper-slide -->
+            </div> -->
           </div>
-          <!-- /.swiper-wrapper -->
         </div>
         <!-- /.causes-col__3 -->
       </div>
@@ -155,7 +132,7 @@
         <div class="row">
           <div class="col-xl-6">
             <div class="about-two__image wow fadeInLeft" data-wow-duration="1500ms">
-              <img src="/public/front/assets/images/backgrounds/about-us-img.jpg" alt="about us image." class="about-two__image_left" />
+              <img :src="`/public/uploads/pages/about_/homepage/${pages.description?.about_image_webp}`" alt="about us image." class="about-two__image_left" />
               <div class="about-two__award">
                 <img src="/public/front/assets/images/shapes/about-bag-1-2.png" alt="" />
               </div>
@@ -167,27 +144,21 @@
           <div class="col-xl-6">
             <div class="about-two__content">
               <div class="block-title mb-4">
-                <p><img src="https://picsum.photos/200/300" width="15" alt="" /> About Happy Kids</p>
-                <h3>Welcome to non-profit charity organization.</h3>
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" /> {{ pages.description?.about_main_title }}</p>
+                <h3>{{ pages.description?.about_subtitle }}</h3>
               </div>
               <!-- /.block-title -->
               <div class="row">
                 <div class="col-md-12">
-                  <div class="about-two__box my-1">
-                    <h3><i class="azino-icon-confirmation"></i> Become a Volunteer</h3>
-                    <p>Lorem ipsum dolor sit ametelit sed consectetur notted. Lorem ipsum dolor sit amet consectetur adipisicing elit. enim amet suscipit reiciendis quidem</p>
+                  <div class="about-two__box my-1" v-for="(a, i) in pages.description?.about_title" :key="i">
+                    <h3><i class="azino-icon-confirmation"></i> {{ a }}</h3>
+                    <p v-for="(b, ind) in pages.description?.about_description" :key="ind">{{ ind == i ? b : "" }}</p>
                   </div>
-                  <!-- /.about-two__box -->
-                  <div class="about-two__box my-1">
-                    <h3><i class="azino-icon-confirmation"></i> Quick Fundraising</h3>
-                    <p>Lorem ipsum dolor sit ametelit sed consectetur notted. Lorem ipsum dolor sit amet consectetur adipisicing elit. enim amet suscipit reiciendis quidem</p>
-                  </div>
-                  <!-- /.about-two__box -->
                 </div>
                 <!-- /.col-md-6 -->
               </div>
               <!-- /.row -->
-              <a href="about.html" class="thm-btn dynamic-radius">Discover More</a>
+              <router-link :to="{ name: 'AboutPage' }" class="thm-btn dynamic-radius">Discover More</router-link>
               <!-- /.thm-btn dynamic-radius -->
             </div>
             <!-- /.about-two__content -->
@@ -202,18 +173,17 @@
 
     <!-- HELP VIDEO SECTION PART 4-->
     <section class="video-card">
-      <div class="video-card__bg" style="background-image: url('/public/front/assets/images/backgrounds/fingerprints-bg.jpg')"></div>
+      <div class="video-card__bg" :style="`background-image: url('/public/uploads/pages/video_/homepage/${pages.description?.video_image_webp}')`"></div>
       <!-- /.video-card__bg -->
       <div class="container text-center pt-120 pb-120">
-        <p class="text-info"><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Help Other People</p>
-        <h3>
-          Our fingerprints on the <br />
-          lives we touch never fade.
+        <p class="text-info"><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.video_title }}</p>
+        <h3 class="w-75 mx-auto text-center">
+          {{ pages.description?.video_subtitle }}
         </h3>
         <div class="video-card__btn-block">
           <a href="javascript:void(0)" class="thm-btn dynamic-radius">Start Donating</a>
           <!-- /.thm-btn dynamic-radius -->
-          <a href="https://www.youtube.com/watch?v=NuJe7cYO9RI&list=PLBaUop-Qo0LfaIiJSM9GABEMNSPB_Br24" target="_blank" class="video-popup video-card__btn"><i class="fa fa-play"></i></a
+          <a :href="pages.description?.video_link" target="_blank" class="video-popup video-card__btn"><i class="fa fa-play"></i></a
           ><!-- /.video-card__btn -->
         </div>
         <!-- /.video-card__btn-block -->
@@ -401,46 +371,21 @@
           <div class="col-lg-6">
             <div class="faq-one__content">
               <div class="block-title">
-                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />Help People Now</p>
-                <h3>
-                  Charity for the people <br />
-                  you care about.
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />{{ pages.description?.faq_title }}</p>
+                <h3 class="w-75">
+                  {{ pages.description?.faq_subtitle }}
                 </h3>
               </div>
-              <ul id="accordion" class="wow fadeInUp list-unstyled" data-wow-duration="1500ms">
-                <li>
-                  <h2 class="para-title active">
-                    <span class="collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      <i class="fas fa-minus"></i>
-                      Make a difference in their life
-                    </span>
-                  </h2>
-                  <div id="collapseOne" class="collapse show" aria-labelledby="collapseOne" data-parent="#accordion">
-                    <p>There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</p>
-                  </div>
-                </li>
 
-                <li>
+              <ul id="accordion" class="wow fadeInUp list-unstyled animated" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-name: fadeInUp">
+                <li v-for="(a, index) in faq" :key="index">
                   <h2 class="para-title">
-                    <span class="collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      <i class="fas fa-plus"></i>
-                      Make a difference in their life
+                    <span class="collapsed" role="button" data-toggle="collapse" :data-target="`#collapse${index}`" aria-expanded="false" :aria-controls="`collapse${index}`">
+                      {{ a.question }}
                     </span>
                   </h2>
-                  <div id="collapseTwo" class="collapse" role="button" aria-labelledby="collapseTwo" data-parent="#accordion">
-                    <p>There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</p>
-                  </div>
-                </li>
-
-                <li>
-                  <h2 class="para-title">
-                    <span class="collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" role="button" aria-controls="collapseThree">
-                      <i class="fas fa-plus"></i>
-                      Make a difference in their life
-                    </span>
-                  </h2>
-                  <div id="collapseThree" class="collapse" aria-labelledby="collapseThree" data-parent="#accordion">
-                    <p>There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</p>
+                  <div :id="`collapse${index}`" :class="{ show: index == 0 }" class="collapse" role="button" :aria-labelledby="`collapse${index}`" data-parent="#accordion">
+                    <p>{{ a.answer }}</p>
                   </div>
                 </li>
               </ul>
@@ -452,7 +397,7 @@
                 <img src="/public/front/assets/images/shapes/about-count-heart-1-1.png" alt="about-count-heart-1-1" />
                 <p>We’re here to support you every step of the way.</p>
               </div>
-              <img src="/public/front/assets/images/backgrounds/charity-people.jpg" alt="charity people" class="float-left part-five__image_right" />
+              <img :src="`/public/uploads/pages/faq_/homepage/${pages.description?.faq_image_webp}`" alt="charity people" class="float-left part-five__image_right" />
             </div>
           </div>
         </div>
@@ -460,101 +405,46 @@
     </section>
 
     <!-- TESTIMONIALS SECTION PART 6 -->
-    <section class="testimonials-one pt-120 pb-90" style="background-image: url('/public/front/assets/images/shapes/testimonials-map-1-1.png')">
+    <section class="testimonials-one pt-120 pb-90" :style="`background-image: url('/public/uploads/pages/testimonial_/homepage/${pages.description?.testimonial_image_webp}')`">
       <div class="container">
         <div class="team-about__top">
           <div class="row align-items-center">
             <div class="col-md-12 col-lg-7">
               <div class="block-title">
-                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Our Testimonials</p>
-                <h3>
-                  What they are talking <br />
-                  about azino.
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.testimonial_title }}</p>
+                <h3 class="w-75 pe-5">
+                  {{ pages.description?.testimonial_subtitle }}
                 </h3>
               </div>
               <!-- /.block-title -->
             </div>
             <!-- /.col-md-12 col-lg-6 -->
             <div class="col-md-12 col-lg-5">
-              <p class="team-about__top-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Have you done google research which works all the time.</p>
+              <p class="team-about__top-text">{{ pages.description?.testimonial_description }}</p>
             </div>
             <!-- /.col-md-12 col-lg-6 -->
           </div>
           <!-- /.row -->
         </div>
         <!-- /.team-about__top -->
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="testimonials-one__single">
-              <div class="testimonials-one__image">
-                <img src="/public/front/assets/images/resources/profile-1.jpg" alt="profile-1" class="testimonial_profile_image" />
+        <div class="thm-swiper__slider swiper-container swiper">
+          <div class="row swiper-wrapper">
+            <div class="col mx-auto card-group swiper-slider" v-for="(a, i) in testimonials" :key="i">
+              <div class="testimonials-one__single card">
+                <div class="testimonials-one__image">
+                  <img :src="`/public/uploads/testimonials/${a.original_testimonial_id}/${a.image}`" :alt="a.name + ' picture'" class="testimonial_profile_image" />
+                </div>
+                <p>{{ a.description }}</p>
+                <h3>{{ a.name }}</h3>
+                <span>{{ a.position }}</span>
               </div>
-              <!-- /.testimonials-one__image -->
-              <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
-              <h3>Alex Cooper</h3>
-              <span>Customer</span>
             </div>
-            <!-- /.testimonials-one__single -->
           </div>
-          <!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <div class="testimonials-one__single">
-              <div class="testimonials-one__image">
-                <img src="/public/front/assets/images/resources/profile-3.jpg" alt="profile-2" class="testimonial_profile_image" />
-              </div>
-              <!-- /.testimonials-one__image -->
-              <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
-              <h3>Sara Logan</h3>
-              <span>Customer</span>
-            </div>
-            <!-- /.testimonials-one__single -->
-          </div>
-          <!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <div class="testimonials-one__single">
-              <div class="testimonials-one__image">
-                <img src="/public/front/assets/images/resources/profile-2.jpg" alt="profile-3" class="testimonial_profile_image" />
-              </div>
-              <!-- /.testimonials-one__image -->
-              <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
-              <h3>Jacob Casey</h3>
-              <span>Customer</span>
-            </div>
-            <!-- /.testimonials-one__single -->
-          </div>
-          <!-- /.col-lg-4 -->
         </div>
         <!-- /.row -->
       </div>
       <!-- /.container -->
     </section>
-
-    <!-- <section class="fact-counter">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-lg-3 text-center">
-              <h3 class="odometer" data-count="8860">00</h3>
-              <p>Fund Raised</p>
-              <a href="#">+</a>
-            </div>
-            <div class="col-md-6 col-lg-3 text-center">
-              <h3 class="odometer" data-count="456">00</h3>
-              <p>Fund Raised</p>
-              <a href="#">+</a>
-            </div>
-            <div class="col-md-6 col-lg-3 text-center">
-              <h3 class="odometer" data-count="6208">00</h3>
-              <p>Fund Raised</p>
-              <a href="#">+</a>
-            </div>
-            <div class="col-md-6 col-lg-3 text-center">
-              <h3 class="odometer" data-count="960">00</h3>
-              <p>Fund Raised</p>
-              <a href="#">+</a>
-            </div>
-          </div>
-        </div>
-      </section> -->
 
     <!-- PRICE SECTION PART 7 -->
     <section class="price-one">
@@ -563,19 +453,18 @@
           <div class="col-xl-5">
             <div class="price-one__main">
               <div class="block-title">
-                <p class="text-info"><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Popular Causes</p>
+                <p class="text-info"><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" /> {{ pages.description?.donate_title }}</p>
                 <h3>
-                  Donate to charity causes <br />
-                  around the world.
+                  {{ pages.description?.donate_subtitle }}
                 </h3>
               </div>
               <!-- /.block-title -->
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+              <p>{{ pages.description?.donate_description }}</p>
               <div class="price-one__image-box">
-                <img src="/public/front/assets/images/backgrounds/child-hands.jpg" alt="children-hands" />
+                <img :src="`/public/uploads/pages/donate_/homepage/${pages.description?.donate_image_webp}`" alt="children-hands" />
                 <div class="price-one__image-box-content">
-                  <h3><i class="fa fa-check"></i> Fundraising Platform</h3>
-                  <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem is simply free text quis bibendum.</p>
+                  <h3><i class="fa fa-check"></i> {{ pages.description?.donate_purpose_title }}</h3>
+                  <p>{{ pages.description?.donate_purpose_description }}</p>
                 </div>
                 <!-- /.price-one__image-box-content -->
               </div>
@@ -634,7 +523,7 @@
     <!-- /.price-one -->
 
     <!-- GALLERY SECTION PART 8 -->
-    <section class="gallery-home-two pt-120 pb-120">
+    <!-- <section class="gallery-home-two pt-120 pb-120">
       <div class="container">
         <img src="/public/front/assets/images/shapes/video-dot-1-1.png" alt="" class="gallery-home-two__dots" />
         <div class="thm-swiper__slider swiper-container swiper">
@@ -650,24 +539,25 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- LATEST EVENT SECTION PART 9 -->
-    <section class="event-home-two py-5" style="background-image: url('/public/front/assets/images/shapes/event-map-1-2.png')">
+    <section class="event-home-two py-5" :style="`background-image: url('/public/uploads/pages/event_/homepage/${pages.description?.event_image_webp}')`">
       <div class="container">
         <div class="row align-items-start align-items-md-center flex-column flex-md-row mb-60">
           <div class="col-lg-7">
             <div class="block-title">
-              <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Latest Events</p>
-              <h3>
-                Checkout our upcoming <br />
-                full event list.
+              <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.events_title }}</p>
+              <h3 class="w-75 pe-5">
+                {{ pages.description?.events_description }}
               </h3>
             </div>
           </div>
           <div class="col-lg-5 d-flex">
             <div class="my-auto">
-              <p class="block-text pr-10 mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Have you done google research which works all the time.</p>
+              <p class="block-text pr-10 mb-0">
+                {{ pages.description?.events_subtitle }}
+              </p>
             </div>
           </div>
         </div>
@@ -916,13 +806,57 @@
 export default {
   name: "Home",
   data() {
-    return {};
+    return {
+      is_loading: false,
+      pages: [],
+      testimonials: [],
+      faq: [],
+    };
   },
   mounted() {
     this.initSwiper();
   },
 
+  created() {
+    this.onPopulateData();
+  },
+
   methods: {
+    onPopulateData() {
+      this.is_loading = true;
+
+      this.$front_queries("front_page_data", {
+        action_type: "display_homepage",
+      })
+        .then((res) => {
+          this.is_loading = false;
+          let response = res.data.data.front;
+          this.pages = response.pages;
+          this.testimonials = response.testimonials;
+          this.faq = response.faq;
+          console.log("response", response);
+        })
+        .catch((err) => {
+          console.error("error:" + err);
+        });
+    },
+
+    onNameImage(index) {
+      // Check if pages.description is defined
+      if (this.pages.description) {
+        // Construct the property name dynamically using square bracket notation
+        let propertyName = `obj_files_webp_${index}`;
+
+        // Check if the property exists in pages.description before attempting to access it
+        if (propertyName in this.pages.description) {
+          let name = `/public/uploads/pages/objectives_${index}/homepage/${this.pages.description[propertyName]}`;
+          return name;
+        }
+      }
+
+      return ""; // or any default value you prefer if the data is not available
+    },
+
     initSwiper() {
       new Swiper(".main-slider .swiper", {
         slidesPerView: 1,
@@ -972,37 +906,72 @@ export default {
           },
         },
       });
-      // new Swiper(".part-10 .swiper", {
-      //   spaceBetween: 100,
-      //   slidesPerView: 5,
-      //   autoplay: { delay: 5000 },
-      //   breakpoints: {
-      //     0: {
-      //       spaceBetween: 30,
-      //       slidesPerView: 2,
-      //     },
-      //     375: {
-      //       spaceBetween: 30,
-      //       slidesPerView: 2,
-      //     },
-      //     575: {
-      //       spaceBetween: 30,
-      //       slidesPerView: 3,
-      //     },
-      //     767: {
-      //       spaceBetween: 50,
-      //       slidesPerView: 4,
-      //     },
-      //     991: {
-      //       spaceBetween: 50,
-      //       slidesPerView: 5,
-      //     },
-      //     1199: {
-      //       spaceBetween: 100,
-      //       slidesPerView: 5,
-      //     },
-      //   },
-      // });
+      new Swiper(".testimonials-one .swiper", {
+        slidesPerView: 3,
+        spaceBetween: 150,
+        autoplay: { delay: 5000 },
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          375: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          575: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          991: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1199: {
+            slidesPerView: 2,
+            spaceBetween: 100,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 100,
+          },
+        },
+      });
+      new Swiper(".part-10 .swiper", {
+        spaceBetween: 100,
+        slidesPerView: 5,
+        autoplay: { delay: 5000 },
+        breakpoints: {
+          0: {
+            spaceBetween: 30,
+            slidesPerView: 2,
+          },
+          375: {
+            spaceBetween: 30,
+            slidesPerView: 2,
+          },
+          575: {
+            spaceBetween: 30,
+            slidesPerView: 3,
+          },
+          767: {
+            spaceBetween: 50,
+            slidesPerView: 4,
+          },
+          991: {
+            spaceBetween: 50,
+            slidesPerView: 5,
+          },
+          1199: {
+            spaceBetween: 100,
+            slidesPerView: 5,
+          },
+        },
+      });
     },
   },
 };

@@ -56,7 +56,6 @@ class PagesMutation extends Mutation
     {
         return [
             'page.title.required' => 'Please enter page title',
-            'page.header.required' => 'Please enter page header title',
             'page.meta_title.required' => 'Please enter page meta title',
             'page.meta_keywords.required' => 'Please enter page meta keywords',
             'page.meta_description.required' => 'Please enter page meta description',
@@ -69,13 +68,9 @@ class PagesMutation extends Mutation
 
         $page = $args['page'];
 
-        Log::debug(print_r($args, true));
-
-
 
         if ($page['action_type'] == "new_record" || $page['action_type'] == "update_record") {
             $rules['page.title'] = ['required'];
-            $rules['page.header'] = ['required'];
             $rules['page.meta_title'] = ['required'];
             $rules['page.meta_keywords'] = ['required'];
             $rules['page.meta_description'] = ['required'];
@@ -135,7 +130,7 @@ class PagesMutation extends Mutation
 
         if ($page['action_type'] == "update_record") {
 
-            $page_id = Crypt::decryptString($page["page_id"]);
+            $page_id = Crypt::decryptString($page["pages_id"]);
 
             $page_rec = $page_model->find($page_id);
 
@@ -143,6 +138,8 @@ class PagesMutation extends Mutation
                 $page_model->addUpdateRecord($page_id, $page, $args);
 
                 $file = $args['file'];
+                $file1 = $args['file1'];
+                $file2 = $args['file2'];
                 if ($file != "") {
                     $filename = $helper_model->ImageUpload($file, $page_id, "pages");
                     $page_rec = $page_model->find($page_id);
@@ -152,8 +149,40 @@ class PagesMutation extends Mutation
                     }
                 }
 
+                if ($file1 != "") {
+                    $filename = $helper_model->ImageUpload($file1, $page_id, "pages");
+                    $page_rec = $page_model->find($page_id);
+                    if ($page_rec) {
+                        $page_rec->fldPagesImage1 = $filename;
+                        $page_rec->save();
+                    }
+                }
+
+                if ($file2 != "") {
+                    $filename = $helper_model->ImageUpload($file2, $page_id, "pages");
+                    $page_rec = $page_model->find($page_id);
+                    if ($page_rec) {
+                        $page_rec->fldPagesImage2 = $filename;
+                        $page_rec->save();
+                    }
+                }
+
                 $response_obj->error = false;
                 $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_SUCCESSFUL'];
+            } else {
+                $response_obj->error = false;
+                $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_NOT_FOUND'];
+            }
+        }
+
+        if ($page['action_type'] == "delete_record") {
+
+            $page_id = Crypt::decryptString($page["pages_id"]);
+            $page_rec = $page_model->find($page_id);
+            if ($page_rec) {
+                $page_rec->delete();
+                $response_obj->error = false;
+                $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_DELETED_SUCCESSFUL'];
             } else {
                 $response_obj->error = false;
                 $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_NOT_FOUND'];

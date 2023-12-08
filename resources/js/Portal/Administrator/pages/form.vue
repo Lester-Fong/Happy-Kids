@@ -283,7 +283,7 @@
                     <label class="col-form-label" for="faqfile">Right Panel Image</label>
                     <div class="input-group mb-3">
                       <div class="custom-file">
-                        <input class="form-control file-upload-input" @change="12($event)" type="file" id="faqfile" />
+                        <input class="form-control file-upload-input" @change="onFile6Changed($event)" type="file" id="faqfile" />
                       </div>
                     </div>
                     <img class="mb-2" :src="faq_background_image" alt="" v-if="is_faq_background_image" width="100" />
@@ -563,7 +563,7 @@
                 <div class="col-sm-6 my-3">
                   <div class="form-group">
                     <label for="exampleFormControlInput10">Description</label>
-                    <input type="text" class="form-control" v-model="program.subtitle" id="exampleFormControlInput10" />
+                    <textarea class="form-control" v-model="program.subtitle" id="exampleFormControlInput10"></textarea>
                   </div>
                 </div>
 
@@ -814,9 +814,31 @@ export default {
       contact_description: "",
 
       options: [{ name: "Homepage" }, { name: "Our Mission" }, { name: "Our Team" }, { name: "FAQs" }, { name: "Feeding Program" }, { name: "Scholarship Program" }, { name: "Events" }, { name: "Stories" }, { name: "Contact Us" }],
+      filtered_pages: [],
     };
   },
+
+  created() {
+    this.onHideSelectedTitles();
+  },
+
   methods: {
+    onHideSelectedTitles() {
+      this.is_loading = true;
+      this.$admin_queries("pages", {
+        action_type: "display_all_pages",
+      }).then((res) => {
+        this.filtered_pages = res.data.data.pages;
+        this.options = this.removeMatchingNames(this.options, this.filtered_pages);
+        this.is_loading = false;
+      });
+    },
+    removeMatchingNames(options, filteredPages) {
+      return options.filter((option) => {
+        const matchingPage = filteredPages.find((page) => page.title === option.name);
+        return !matchingPage;
+      });
+    },
     onCancel() {
       this.$router.replace({ name: "AdminPages" });
     },
@@ -902,20 +924,9 @@ export default {
             program_overview_title: this.program.overview_title,
             program_overview_description: this.program.overview_description,
           };
-        } else if (this.title == 6) {
+        } else if (this.title == "Contact Us") {
           page_fields_add = {
-            howitworks_title: this.howitworks.title,
-            howitworks_subtitle: this.howitworks.subtitle,
-            how_title: this.how_title,
-            how_description: this.how_description,
-
-            ownersteps_main_title: this.ownersteps.title,
-            ownersteps_subtitle: this.ownersteps.subtitle,
-            ownersteps_description: this.ownersteps_description,
-            ownersteps_titles: this.ownersteps_title,
-
-            outro_title: this.outro_title,
-            outro_description: this.outro_description,
+            contact_description: this.contact_description,
           };
         }
 
@@ -1036,7 +1047,7 @@ export default {
       this.video_background_image = this.onDisplayUploadedImage(event, "singleFile");
       this.is_video_background_image = true;
     },
-    12() {
+    onFile6Changed() {
       this.selectedFile6 = event.target.files[0];
       this.faq_background_image = this.onDisplayUploadedImage(event, "singleFile");
       this.is_faq_background_image = true;

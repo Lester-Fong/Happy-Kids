@@ -2,14 +2,16 @@
     <div>
         <div class="loader-gif" v-if="is_loading"></div>
         <section class="page-header">
-            <div class="page-header__bg" style="background-image: url(/public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
+            <div class="page-header__bg" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
             <!-- /.page-header__bg -->
             <div class="container">
-                <h2>Stories</h2>
+                <h2>{{ pages?.title }}</h2>
                 <ul class="thm-breadcrumb list-unstyled dynamic-radius">
                     <li><router-link :to="{ name: 'HomePage' }">Home</router-link></li>
                     <li>-</li>
-                    <li><span>Stories</span></li>
+                    <li>
+                        <span>{{ pages?.title }}</span>
+                    </li>
                 </ul>
                 <!-- /.thm-breadcrumb list-unstyled -->
             </div>
@@ -79,15 +81,17 @@ export default {
             })
                 .then((res) => {
                     let response = res.data.data.front;
-                    // this.pages = response.page;
+                    this.pages = response.pages;
                     this.blogs = response.blogs;
                     this.is_loading = false;
+                    this.is_finish_calling_api = true;
                     this.author = this.blogs.author;
                 })
                 .catch(() => {
                     Swal.fire("Error!", this.global_error_message, "error");
                 });
         },
+
         onClickSeeMore() {
             this.is_see_more = !this.is_see_more;
         },

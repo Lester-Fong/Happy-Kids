@@ -24,7 +24,7 @@ class PagesQuery extends Query
     {
         return [
             'action_type' => ['type' => Type::string()],
-            'page_id' => ['type' => Type::string()],
+            'title' => ['type' => Type::string()],
         ];
     }
 
@@ -43,7 +43,7 @@ class PagesQuery extends Query
         }
 
         if ($args['action_type'] == "display_single_page") {
-            $pages  = $pages_model->displaySinglePage($args['page_id']);
+            $pages  = $pages_model->displaySinglePage($args['title']);
         }
 
         return $pages;

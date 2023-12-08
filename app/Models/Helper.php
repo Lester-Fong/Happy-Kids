@@ -42,7 +42,10 @@ class Helper extends Eloquent
                     $destinationPath = Config::get('Constants.BLOGS_IMAGE_PATH') . $id . '/';
                     break;
                 case "testimonial":
-                    $destinationPath = Config::get('Constants.TESTIMONIAL_IMAGE_PATH') . $id . '/';
+                    $destinationPath = Config::get('Constants.TESTIMONIALS_IMAGE_PATH') . $id . '/';
+                    break;
+                case "team":
+                    $destinationPath = Config::get('Constants.TEAM_IMAGE_PATH') . $id . '/';
                     break;
                 case "content":
                     $destinationPath = Config::get('Constants.CONTENT_IMAGE_PATH') . $id . '/';

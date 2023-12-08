@@ -25,5 +25,7 @@ return [
     'BLOGS_IMAGE_PATH' => 'public/uploads/blogs/',
     'BLOGS_THUMBNAIL_PATH' => 'public/uploads/blogs/thumbnail/',
     'EVENTS_IMAGE_PATH' => 'public/uploads/events/',
-    
+    'TESTIMONIALS_IMAGE_PATH' => 'public/uploads/testimonials/',
+    'TEAM_IMAGE_PATH' => 'public/uploads/team/',
+
 ];
