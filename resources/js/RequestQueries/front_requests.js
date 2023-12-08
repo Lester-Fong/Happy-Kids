@@ -60,19 +60,7 @@ let front_queries = {
 
     events: `query events($action_type: String, $events_id: String) {
       events(action_type: $action_type, events_id: $events_id) {
-          events_id,
-              },
-            pages {
-              encrypted_pages_id,
-              pages_id,
-              title,
-              description,
-              slug,
-              image,
-              extras_image_1,
-              extras_image_2,
-              meta,
-            }
+            events_id,
         }
     }`,
 
