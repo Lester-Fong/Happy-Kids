@@ -62,20 +62,20 @@ $sidebar_secondary_light_color: #d7e7ff;
 
 
 // CUSTOM STYLES MODULE ============================>
-.loader-gif {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: #eceaea;
-    background-image: url("/public/images/loader.gif");
-    background-size: 300px;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 10000000;
-    opacity: 0.4;
-  }
+// .loader-gif {
+//     position: fixed;
+//     top: 0px;
+//     right: 0px;
+//     width: 100%;
+//     height: 100%;
+//     background-color: #eceaea;
+//     background-image: url("/public/images/loader.gif");
+//     background-size: 300px;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     z-index: 10000000;
+//     opacity: 0.4;
+//   }
 
   .bi-sidebar {
     color: #506690 !important;
@@ -224,3 +224,4 @@ textarea {
 }
 
 
+  

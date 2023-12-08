@@ -1,12 +1,13 @@
 <template>
   <div>
+    <div class="loader-gif" v-if="condition"></div>
     <section class="page-header">
       <div class="page-header__bg" style="background-image: url(/public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>Stories</h2>
         <ul class="thm-breadcrumb list-unstyled dynamic-radius">
-          <li><a href="index.html">Home</a></li>
+          <li><router-link :to="{ name: 'HomePage' }">Home</router-link></li>
           <li>-</li>
           <li><span>Stories</span></li>
         </ul>
@@ -18,175 +19,94 @@
 
     <section class="news-page pb-120 pt-120">
       <div class="container">
-        <div class="block-title text-center">
-          <h4 class="text-success ms-3"><img class="me-3" src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />Help People Now</h4>
-          <h3>
-            Charity for the people <br />
-            you care about.
-          </h3>
-        </div>
         <div class="news-3-col">
-          <div class="blog-card">
+          <div v-for="a in displayedBlogs" :key="a.id" class="blog-card">
             <div class="blog-card__inner">
               <div class="blog-card__image">
-                <img src="/public/front/assets/images/blog/blog-1-1.jpg" alt="" />
-                <div class="blog-card__date">20 May</div>
-                <!-- /.blog-card__date -->
+                <img class="thumbnail-img" :src="`/public/uploads/blogs/thumbnail/${a.original_blogs_id}/medium/${a.thumbnail}`" :alt="a.thumbnail" />
+
+                <div class="blog-card__date">{{ a.date | formatTransDate2 }}</div>
               </div>
               <!-- /.blog-card__image -->
               <div class="blog-card__content">
                 <div class="blog-card__meta">
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-user-circle"></i> Admin</router-link>
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-comments"></i> 2 Comments</router-link>
+                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-user-circle"></i>{{ formatFullname(a.author.firstname, a.author.lastname) }}</router-link>
                 </div>
                 <!-- /.blog-card__meta -->
-                <h3><router-link :to="{ name: 'StoriesDetailsPage' }">Our donation is hope for poor childrens</router-link></h3>
-                <p>Lorem ipsum is simply free text used by copytyping refreshing.</p>
-                <router-link :to="{ name: 'StoriesDetailsPage' }" class="blog-card__more"><i class="far fa-angle-right"></i>Read More</router-link>
-                <!-- /.blog-card__more -->
+                <h3 class="mb-3">
+                  <router-link :to="{ name: 'StoriesDetailsPage' }">{{ a.title }}</router-link>
+                </h3>
+                <p class="mx-4">{{ truncate(a.description, 100) }}</p>
+                <router-link :to="{ name: 'StoriesDetailsPage', params: a.slug }" class="blog-card__more"><i class="far fa-angle-right"></i>Read More</router-link>
               </div>
-              <!-- /.blog-card__content -->
             </div>
-            <!-- /.blog-card__inner -->
           </div>
-          <!-- /.blog-card -->
-          <div class="blog-card">
-            <div class="blog-card__inner">
-              <div class="blog-card__image">
-                <img src="/public/front/assets/images/blog/blog-1-2.jpg" alt="" />
-                <div class="blog-card__date">20 May</div>
-                <!-- /.blog-card__date -->
-              </div>
-              <!-- /.blog-card__image -->
-              <div class="blog-card__content">
-                <div class="blog-card__meta">
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-user-circle"></i> Admin</router-link>
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-comments"></i> 2 Comments</router-link>
-                </div>
-                <!-- /.blog-card__meta -->
-                <h3><router-link :to="{ name: 'StoriesDetailsPage' }">Education for Poor Children</router-link></h3>
-                <p>Lorem ipsum is simply free text used by copytyping refreshing.</p>
-                <router-link :to="{ name: 'StoriesDetailsPage' }" class="blog-card__more"><i class="far fa-angle-right"></i>Read More</router-link>
-                <!-- /.blog-card__more -->
-              </div>
-              <!-- /.blog-card__content -->
-            </div>
-            <!-- /.blog-card__inner -->
-          </div>
-          <!-- /.blog-card -->
-          <div class="blog-card">
-            <div class="blog-card__inner">
-              <div class="blog-card__image">
-                <img src="/public/front/assets/images/blog/blog-1-3.jpg" alt="" />
-                <div class="blog-card__date">20 May</div>
-                <!-- /.blog-card__date -->
-              </div>
-              <!-- /.blog-card__image -->
-              <div class="blog-card__content">
-                <div class="blog-card__meta">
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-user-circle"></i> Admin</router-link>
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-comments"></i> 2 Comments</router-link>
-                </div>
-                <!-- /.blog-card__meta -->
-                <h3><router-link :to="{ name: 'StoriesDetailsPage' }">Promoting The Rights of Children</router-link></h3>
-                <p>Lorem ipsum is simply free text used by copytyping refreshing.</p>
-                <router-link :to="{ name: 'StoriesDetailsPage' }" class="blog-card__more"><i class="far fa-angle-right"></i>Read More</router-link>
-                <!-- /.blog-card__more -->
-              </div>
-              <!-- /.blog-card__content -->
-            </div>
-            <!-- /.blog-card__inner -->
-          </div>
-          <!-- /.blog-card -->
-          <div class="blog-card">
-            <div class="blog-card__inner">
-              <div class="blog-card__image">
-                <img src="/public/front/assets/images/blog/blog-1-4.jpg" alt="" />
-                <div class="blog-card__date">20 May</div>
-                <!-- /.blog-card__date -->
-              </div>
-              <!-- /.blog-card__image -->
-              <div class="blog-card__content">
-                <div class="blog-card__meta">
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-user-circle"></i> Admin</router-link>
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-comments"></i> 2 Comments</router-link>
-                </div>
-                <!-- /.blog-card__meta -->
-                <h3><router-link :to="{ name: 'StoriesDetailsPage' }">Fundrising for Early Childhood Rise</router-link></h3>
-                <p>Lorem ipsum is simply free text used by copytyping refreshing.</p>
-                <router-link :to="{ name: 'StoriesDetailsPage' }" class="blog-card__more"><i class="far fa-angle-right"></i>Read More</router-link>
-                <!-- /.blog-card__more -->
-              </div>
-              <!-- /.blog-card__content -->
-            </div>
-            <!-- /.blog-card__inner -->
-          </div>
-          <!-- /.blog-card -->
-          <div class="blog-card">
-            <div class="blog-card__inner">
-              <div class="blog-card__image">
-                <img src="/public/front/assets/images/blog/blog-1-5.jpg" alt="" />
-                <div class="blog-card__date">20 May</div>
-                <!-- /.blog-card__date -->
-              </div>
-              <!-- /.blog-card__image -->
-              <div class="blog-card__content">
-                <div class="blog-card__meta">
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-user-circle"></i> Admin</router-link>
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-comments"></i> 2 Comments</router-link>
-                </div>
-                <!-- /.blog-card__meta -->
-                <h3><router-link :to="{ name: 'StoriesDetailsPage' }">School Counseling for Children</router-link></h3>
-                <p>Lorem ipsum is simply free text used by copytyping refreshing.</p>
-                <router-link :to="{ name: 'StoriesDetailsPage' }" class="blog-card__more"><i class="far fa-angle-right"></i>Read More</router-link>
-                <!-- /.blog-card__more -->
-              </div>
-              <!-- /.blog-card__content -->
-            </div>
-            <!-- /.blog-card__inner -->
-          </div>
-          <!-- /.blog-card -->
-          <div class="blog-card">
-            <div class="blog-card__inner">
-              <div class="blog-card__image">
-                <img src="/public/front/assets/images/blog/blog-1-6.jpg" alt="" />
-                <div class="blog-card__date">20 May</div>
-                <!-- /.blog-card__date -->
-              </div>
-              <!-- /.blog-card__image -->
-              <div class="blog-card__content">
-                <div class="blog-card__meta">
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-user-circle"></i> Admin</router-link>
-                  <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-comments"></i> 2 Comments</router-link>
-                </div>
-                <!-- /.blog-card__meta -->
-                <h3><router-link :to="{ name: 'StoriesDetailsPage' }">Growing Up children in Charity Care</router-link></h3>
-                <p>Lorem ipsum is simply free text used by copytyping refreshing.</p>
-                <router-link :to="{ name: 'StoriesDetailsPage' }" class="blog-card__more"><i class="far fa-angle-right"></i>Read More</router-link>
-                <!-- /.blog-card__more -->
-              </div>
-              <!-- /.blog-card__content -->
-            </div>
-            <!-- /.blog-card__inner -->
-          </div>
-          <!-- /.blog-card -->
         </div>
-        <!-- /.news-3-col -->
-        <ul class="list-unstyled post-pagination d-flex justify-content-center align-items-center">
-          <li>
-            <a href="#"><i class="far fa-angle-left"></i></a>
-          </li>
-          <li><a href="#">01</a></li>
-          <li><a href="#">02</a></li>
-          <li><a href="#">03</a></li>
-          <li>
-            <a href="#"><i class="far fa-angle-right"></i></a>
-          </li>
-        </ul>
-        <!-- /.post-pagination -->
+        <div class="mt-5" v-if="blogs.length > 3">
+          <a @click="onClickSeeMore" href="javascript:void(0);" class="thm-btn dynamic-radius"> {{ is_see_more ? "Show Less Articles" : "See All Articles" }} </a>
+        </div>
       </div>
       <!-- /.container -->
     </section>
     <!-- /.news-page -->
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      is_loading: false,
+      is_finish_calling_api: false,
+      blogs: [],
+      cards: 1,
+      pages: {},
+      blog_card_limiter: 3,
+      author: {},
+      is_loading: false,
+      author_profile_icon: "",
+      img_default: "/public/assets/images/avatar/a-sm.jpg",
+      is_see_more: false,
+    };
+  },
+
+  created() {
+    this.onPopulateData();
+  },
+
+  methods: {
+    onPopulateData() {
+      this.is_loading = true;
+
+      this.$front_queries("display_data", {
+        action_type: "display_all_blogs",
+      })
+        .then((res) => {
+          let response = res.data.data.front;
+          console.log(response);
+          // this.pages = response.page;
+          this.blogs = response.blogs;
+          this.is_loading = false;
+          this.is_finish_calling_api = true;
+          this.author = this.blogs.author;
+          this.author_profile_icon = `/public/uploads/administrator/${this.author?.administrator_regular_id}/large/${this.author?.image}`;
+        })
+        .catch(() => {
+          this.$swal("Error!", this.global_error_message, "error");
+        });
+    },
+    onClickSeeMore() {
+      this.is_see_more = !this.is_see_more;
+    },
+  },
+  computed: {
+    displayedBlogs() {
+      if (this.is_see_more) {
+        return this.blogs;
+      } else {
+        return this.blogs.slice(0, this.blog_card_limiter);
+      }
+    },
+  },
+};
+</script>

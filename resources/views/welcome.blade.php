@@ -6,8 +6,9 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <title>Happy Kids</title>
 
-    <link rel="stylesheet" href="{{ url('/public/src/bootstrap/css/bootstrap.min.css?') }}">
+    <link rel="stylesheet" href="{{ url('/public/src/bootstrap/css/bootstrap.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url('/public/css/global.css') }}">
 
     @if ($display_type == 'portal')
     <link rel="stylesheet" href="{{ url('/public/css/main.css') }}">
@@ -20,6 +21,7 @@
     <link rel="stylesheet" href="{{ url('/public/src/assets/css/light/authentication/auth-cover.css?'.date('Ymdhis')) }}">
     <link rel="stylesheet" href="{{ url('/public/src/template_layout/plugins.css?'.date('Ymdhis')) }}">
     @else
+    <link rel="stylesheet" href="{{ url('/public/css/landing.css') }}">
     <link rel="stylesheet" href="{{ url('/public/front/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ url('/public/front/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ url('/public/front/css/swiper.min.css') }}">
@@ -40,17 +42,25 @@
     @if ($display_type == "portal")
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script async defer src="{{ url('/public/src/plugins/src/sweetalerts2/sweetalerts2.min.js') }}"></script>
-
     {{-- datatable --}}
     <script async defer src="{{ url('/public/src/plugins/src/table/datatable/datatables.js') }}"></script>
-    {{-- <script async defer src="{{ asset('src/plugins/src/table/datatable/button-ext/dataTables.buttons.min.js') }}"></script>
-    <script async defer src="{{ asset('src/plugins/src/table/datatable/button-ext/jszip.min.js') }}"></script>
-    <script async defer src="{{ asset('src/plugins/src/table/datatable/button-ext/buttons.html5.min.js') }}"></script>
-    <script async defer src="{{ asset('src/plugins/src/table/datatable/button-ext/buttons.print.min.js') }}"></script>
-    <script async defer src="{{ asset('src/plugins/src/table/datatable/custom_miscellaneous.js') }}"></script> --}}
+
+    {{-- SUMMMMMERNOTE --}}
+    <link href="{{ url('/public/src/plugins/src/summernote/summernote.min.css') }}" rel="stylesheet" />
+    <link href="{{ url('/public/src/plugins/src/summernote/summernote-lite.min.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ url('/public/src/plugins/src/summernote/summernote-bs4.css') }}" rel="stylesheet" /> --}}
+
+    {{-- <script src="{{ url('/public/src/plugins/src/summernote/summernote.min.js') }}"></script> --}}
+    <script src="{{ url('/public/src/plugins/src/summernote/summernote-lite.min.js') }}"></script>
+    {{-- SUMMMMMERNOTE --}}
+    {{-- tagify --}}
+    <script src="{{ url('/public/src/plugins/src/tagify/tagify.min.js') }}"></script>
+
+
+
+
     @else
     {{-- front Landing--}}
-    {{-- <script src="{{ url('/public/assets/js/scripts.js?ver=3.1.0') }}"></script> --}}
     <script src="{{ url('/public/front/js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ url('/public/front/js/swiper.min.js') }}"></script>
     <script src="{{ url('/public/front/js/jquery.ajaxchimp.min.js') }}"></script>

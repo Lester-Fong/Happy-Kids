@@ -76,10 +76,12 @@ return [
         'default' => [
             'query' => [
                 // ExampleQuery::class,
+                'front' => \App\GraphQL\Queries\FrontQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
                 'administrator' => \App\GraphQL\Mutations\AdministratorMutation::class,
+                'blogs' => \App\GraphQL\Mutations\BlogMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -101,11 +103,15 @@ return [
                 // ExampleQuery::class,
                 'administrator' => \App\GraphQL\Queries\AdministratorQuery::class,
                 'pages' => \App\GraphQL\Queries\PagesQuery::class,
+                'blogs' => \App\GraphQL\Queries\BlogQuery::class,
+                'blog_category' => \App\GraphQL\Queries\BlogCategoryQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
                 'administrator' => \App\GraphQL\Mutations\AdministratorMutation::class,
                 'pages' => \App\GraphQL\Mutations\PagesMutation::class,
+                'blogs' => \App\GraphQL\Mutations\BlogMutation::class,
+                'blog_category' => \App\GraphQL\Mutations\BlogCategoryMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -138,12 +144,16 @@ return [
         'response_type' => \App\GraphQL\Types\ResponseType::class,
         'admin_type' => \App\GraphQL\Types\AdministratorType::class,
         'pages_type' => \App\GraphQL\Types\PagesType::class,
+        'blogs_type' => \App\GraphQL\Types\BlogType::class,
+        'blog_category_type' => \App\GraphQL\Types\BlogCategoryType::class,
 
 
 
         // Inputs
         'admin_input' => \App\GraphQL\Inputs\AdministratorInput::class,
         'page_input' => \App\GraphQL\Inputs\PagesInput::class,
+        'blog_input' => \App\GraphQL\Inputs\BlogInput::class,
+        'blog_category_input' => \App\GraphQL\Inputs\BlogCategoryInput::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

@@ -2,8 +2,8 @@ import axios from "axios";
 import Vue from "vue";
 import admin_requests from "./RequestQueries/admin_requests";
 
-let adminRequestNames = ["get_admin", "save_pages", "pages"];
-let uploadQueries = ["save_pages"];
+let uploadQueries = ["save_pages", "save_blogs"];
+let adminRequestNames = ["get_admin", "blogs", "save_blogs", "blog_category", "save_blog_categories", "save_pages", "pages"];
 
 let requestNames = ["admin_outside_action"];
 
@@ -69,7 +69,7 @@ Vue.prototype.$admin_queries = function (queryName, queryVariables) {
                 objectiveImages: ["variables.objectiveImages"],
                 selectedFileRoles: ["variables.selectedFileRoles"],
                 selectedFileCore: ["variables.selectedFileCore"],
-                cover_image: ["variables.cover_image"],
+                thumbnail: ["variables.thumbnail"],
             })
         );
 
@@ -88,25 +88,13 @@ Vue.prototype.$admin_queries = function (queryName, queryVariables) {
             bodyFormData.append("file11", queryVariables.file11);
         }
 
-        if (queryVariables.cover_image) {
-            bodyFormData.append("cover_image", queryVariables.cover_image);
+        if (queryVariables.thumbnail) {
+            bodyFormData.append("thumbnail", queryVariables.thumbnail);
         }
 
         if (queryVariables.objectiveImages) {
             for (let index = 0; index < queryVariables.objectiveImages.length; index++) {
                 bodyFormData.append("objectiveImages[" + index + "]", queryVariables.objectiveImages[index]);
-            }
-        }
-
-        if (queryVariables.selectedFileRoles) {
-            for (let index = 0; index < queryVariables.selectedFileRoles.length; index++) {
-                bodyFormData.append("selectedFileRoles[" + index + "]", queryVariables.selectedFileRoles[index]);
-            }
-        }
-
-        if (queryVariables.selectedFileCore) {
-            for (let index = 0; index < queryVariables.selectedFileCore.length; index++) {
-                bodyFormData.append("selectedFileCore[" + index + "]", queryVariables.selectedFileCore[index]);
             }
         }
 

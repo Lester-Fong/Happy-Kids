@@ -24,7 +24,7 @@ export default [
             { path: "/events", component: EventsPage, name: "EventsPage" },
             { path: "/stories", component: StoriesPage, name: "StoriesPage" },
             { path: "/contact", component: ContactPage, name: "ContactPage" },
-            { path: "/stories/details", component: StoriesDetailsPage, name: "StoriesDetailsPage" },
+            { path: "/stories/:slug", component: StoriesDetailsPage, name: "StoriesDetailsPage" },
         ],
     },
 ];

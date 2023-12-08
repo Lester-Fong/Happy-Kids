@@ -14,8 +14,15 @@ return [
         'RESET_PASSWORD_SUCCESSFUL' => 'Your password has been reset successfully.',
         'RECORD_SUCCESSFUL' => 'Record saved successfully.',
         'RECORD_NOT_FOUND' => 'Record not found.',
+        'RECORD_DELETED_SUCCESSFUL' => 'Record deleted successfully.',
     ],
 
+    'LARGE' => 'large/',
+    'MEDIUM' => 'medium/',
+    'SMALL' => 'small/',
+    'THUMB' => 'thumb/',
     'PAGES_IMAGE_PATH' => 'public/uploads/pages/',
     'BLOGS_IMAGE_PATH' => 'public/uploads/blogs/',
+    'BLOGS_THUMBNAIL_PATH' => 'public/uploads/blogs/thumbnail/',
+    
 ];
