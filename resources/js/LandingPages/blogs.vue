@@ -1,15 +1,17 @@
 <template>
   <div>
-    <div class="loader-gif" v-if="condition"></div>
+    <div class="loader-gif" v-if="is_loading"></div>
     <section class="page-header">
-      <div class="page-header__bg" style="background-image: url(/public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
+      <div class="page-header__bg" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
       <!-- /.page-header__bg -->
       <div class="container">
-        <h2>Stories</h2>
+        <h2>{{ pages?.title }}</h2>
         <ul class="thm-breadcrumb list-unstyled dynamic-radius">
           <li><router-link :to="{ name: 'HomePage' }">Home</router-link></li>
           <li>-</li>
-          <li><span>Stories</span></li>
+          <li>
+            <span>{{ pages?.title }}</span>
+          </li>
         </ul>
         <!-- /.thm-breadcrumb list-unstyled -->
       </div>
@@ -19,6 +21,12 @@
 
     <section class="news-page pb-120 pt-120">
       <div class="container">
+        <div class="block-title text-center">
+          <h4 class="text-success ms-3"><img class="me-3" src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" /> {{ pages?.description?.title }}</h4>
+          <h3 class="text-center w-50 mx-auto">
+            {{ pages?.description?.sub_title }}
+          </h3>
+        </div>
         <div class="news-3-col">
           <div v-for="a in displayedBlogs" :key="a.id" class="blog-card">
             <div class="blog-card__inner">
@@ -83,8 +91,7 @@ export default {
       })
         .then((res) => {
           let response = res.data.data.front;
-          console.log(response);
-          // this.pages = response.page;
+          this.pages = response.pages;
           this.blogs = response.blogs;
           this.is_loading = false;
           this.is_finish_calling_api = true;

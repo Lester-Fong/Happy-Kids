@@ -2,8 +2,6 @@ import axios from "axios";
 import Vue from "vue";
 import front_requests from "./RequestQueries/front_requests";
 
-let uploadQueries = [""];
-
 Vue.prototype.$front_queries = function (queryName, queryVariables) {
     let options = {
         url: "/graphql",

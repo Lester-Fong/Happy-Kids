@@ -9,8 +9,8 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
-                <label for="exampleFormControlInput1">Select Page</label>
-                <select type="text" class="form-control" v-model="title" id="exampleFormControlInput1">
+                <label for="pageTitle">Select Page</label>
+                <select type="text" disabled class="form-control text-dark" v-model="title" id="pageTitle">
                   <option selected default hidden value="">Choose One</option>
                   <option v-for="(option, i) in options" :key="i" :value="option.name">{{ option.name }}</option>
                 </select>
@@ -123,7 +123,7 @@
                         <input class="form-control file-upload-input" @change="onFile2Changed($event)" type="file" id="formFile2" />
                       </div>
                     </div>
-                    <img class="mb-2" :src="background_image_2" alt="" v-if="is_background" width="100" />
+                    <img class="mb-2" :src="background_image_2" alt="" v-if="is_background_2" width="100" />
                   </div>
                 </div>
                 <div class="col-sm-4" v-if="title == 'Homepage' || title == 'Our Mission'">
@@ -134,7 +134,7 @@
                         <input class="form-control file-upload-input" @change="onFile3Changed($event)" type="file" id="formFile3" />
                       </div>
                     </div>
-                    <img class="mb-2" :src="background_image_3" alt="" v-if="is_background" width="100" />
+                    <img class="mb-2" :src="background_image_3" alt="" v-if="is_background_3" width="100" />
                   </div>
                 </div>
               </div>
@@ -657,8 +657,9 @@
     </div>
   </div>
 </template>
-  
-<script>
+    
+  <script>
+import homepageVue from "../../../LandingPages/homepage.vue";
 export default {
   metaInfo: {
     title: "Admin - Pages - New",
@@ -666,7 +667,7 @@ export default {
   data() {
     return {
       title: "",
-      slug: "",
+      slug: this.$route.params.slug,
       header: "",
       sub_header: "",
       meta_title: "",
@@ -687,6 +688,8 @@ export default {
       selectedFile2: "",
       selectedFile3: "",
       is_background: false,
+      is_background_2: false,
+      is_background_3: false,
       background_image: "",
       background_image_2: "",
       background_image_3: "",
@@ -814,30 +817,262 @@ export default {
       contact_description: "",
 
       options: [{ name: "Homepage" }, { name: "Our Mission" }, { name: "Our Team" }, { name: "FAQs" }, { name: "Feeding Program" }, { name: "Scholarship Program" }, { name: "Events" }, { name: "Stories" }, { name: "Contact Us" }],
-      filtered_pages: [],
+      page: [],
     };
   },
-
   created() {
-    this.onHideSelectedTitles();
+    this.onConvertSlugtoTitle();
+    this.onPopulateData();
   },
-
   methods: {
-    onHideSelectedTitles() {
+    onPopulateData() {
       this.is_loading = true;
       this.$admin_queries("pages", {
-        action_type: "display_all_pages",
+        action_type: "display_single_page",
+        title: this.title,
       }).then((res) => {
-        this.filtered_pages = res.data.data.pages;
-        this.options = this.removeMatchingNames(this.options, this.filtered_pages);
+        this.page = res.data.data.pages[0];
+        console.log(this.page);
         this.is_loading = false;
+
+        this.onPopulateFields();
       });
     },
-    removeMatchingNames(options, filteredPages) {
-      return options.filter((option) => {
-        const matchingPage = filteredPages.find((page) => page.title === option.name);
-        return !matchingPage;
-      });
+    onPopulateFields() {
+      this.title = this.page.title;
+      this.slug = this.page.slug;
+      this.header = this.page.description && this.page.description.title ? this.page.description.title : "";
+      this.sub_header = this.page.description && this.page.description.sub_title ? this.page.description.sub_title : "";
+      this.meta_title = this.page.meta && this.page.meta.title ? this.page.meta.title : "";
+      this.meta_keywords = this.page.meta && this.page.meta.keywords ? this.page.meta.keywords : "";
+      this.meta_description = this.page.meta && this.page.meta.description ? this.page.meta.description : "";
+
+      if (this.page) {
+        if (this.page.title == "Homepage") {
+          this.objective_desc = this.page.description && this.page.description.objective_description ? this.page.description.objective_description : [];
+          this.objective_sub_desc = this.page.description && this.page.description.objective_sub_description ? this.page.description.objective_sub_description : [];
+          this.objective_background_image_1 = this.page.description && this.page.description.obj_files_webp_0 ? "/public/uploads/pages/objectives_0/homepage/" + this.page.description?.obj_files_webp_0 : "";
+          this.is_objective_background_image_1 = this.page.description && this.page.description.obj_files_webp_0 ? true : false;
+          this.objective_background_image_2 = this.page.description && this.page.description.obj_files_webp_1 ? "/public/uploads/pages/objectives_1/homepage/" + this.page.description?.obj_files_webp_1 : "";
+          this.is_objective_background_image_2 = this.page.description && this.page.description.obj_files_webp_1 ? true : false;
+          this.objective_background_image_3 = this.page.description && this.page.description.obj_files_webp_2 ? "/public/uploads/pages/objectives_2/homepage/" + this.page.description?.obj_files_webp_2 : "";
+          this.is_objective_background_image_3 = this.page.description && this.page.description.obj_files_webp_2 ? true : false;
+
+          this.about.title = this.page.description && this.page.description.about_main_title ? this.page.description.about_main_title : "";
+          this.about.subtitle = this.page.description && this.page.description.about_subtitle ? this.page.description.about_subtitle : "";
+          this.about_title = this.page.description && this.page.description.about_title ? this.page.description.about_title : [];
+          this.about_description = this.page.description && this.page.description.about_description ? this.page.description.about_description : [];
+          this.about_background_image = this.page.description && this.page.description.about_image_webp ? "/public/uploads/pages/about_/homepage/" + this.page.description.about_image_webp : "";
+          this.is_about_background_image = this.page.description && this.page.description.about_image_webp ? true : false;
+
+          this.video.title = this.page.description && this.page.description.video_title ? this.page.description.video_title : "";
+          this.video.subtitle = this.page.description && this.page.description.video_subtitle ? this.page.description.video_subtitle : "";
+          this.video.link = this.page.description && this.page.description.video_link ? this.page.description.video_link : "";
+          this.video_background_image = this.page.description && this.page.description.video_image_webp ? "/public/uploads/pages/video_/homepage/" + this.page.description.video_image_webp : "";
+          this.is_video_background_image = this.page.description && this.page.description.video_image_webp ? true : false;
+
+          this.faq.title = this.page.description && this.page.description.faq_title ? this.page.description.faq_title : "";
+          this.faq.subtitle = this.page.description && this.page.description.faq_subtitle ? this.page.description.faq_subtitle : "";
+          this.faq_background_image = this.page.description && this.page.description.faq_image_webp ? "/public/uploads/pages/faq_/homepage/" + this.page.description.faq_image_webp : "";
+          this.is_faq_background_image = this.page.description && this.page.description.faq_image_webp ? true : false;
+
+          this.testimonial.title = this.page.description && this.page.description.testimonial_title ? this.page.description.testimonial_title : "";
+          this.testimonial.subtitle = this.page.description && this.page.description.testimonial_subtitle ? this.page.description.testimonial_subtitle : "";
+          this.testimonial.description = this.page.description && this.page.description.testimonial_description ? this.page.description.testimonial_description : "";
+          this.testimonial_background_image = this.page.description && this.page.description.testimonial_image_webp ? "/public/uploads/pages/testimonial_/homepage/" + this.page.description.testimonial_image_webp : "";
+          this.is_testimonial_background_image = this.page.description && this.page.description.testimonial_image_webp ? true : false;
+
+          this.donate.title = this.page.description && this.page.description.donate_title ? this.page.description.donate_title : "";
+          this.donate.subtitle = this.page.description && this.page.description.donate_subtitle ? this.page.description.donate_subtitle : "";
+          this.donate.description = this.page.description && this.page.description.donate_description ? this.page.description.donate_description : "";
+          this.donate.purpose_title = this.page.description && this.page.description.donate_purpose_title ? this.page.description.donate_purpose_title : "";
+          this.donate.purpose_description = this.page.description && this.page.description.donate_purpose_description ? this.page.description.donate_purpose_description : "";
+          this.donate_background_image = this.page.description && this.page.description.donate_image_webp ? "/public/uploads/pages/donate_/homepage/" + this.page.description.donate_image_webp : "";
+          this.is_donate_background_image = this.page.description && this.page.description.donate_image_webp ? true : false;
+
+          this.events.title = this.page.description && this.page.description.events_title ? this.page.description.events_title : "";
+          this.events.subtitle = this.page.description && this.page.description.events_subtitle ? this.page.description.events_subtitle : "";
+          this.events.description = this.page.description && this.page.description.events_description ? this.page.description.events_description : "";
+          this.events_background_image = this.page.description && this.page.description.event_image_webp ? "/public/uploads/pages/event_/homepage/" + this.page.description.event_image_webp : "";
+          this.is_events_background_image = this.page.description && this.page.description.event_image_webp ? true : false;
+        } else if (this.page.title == "Our Mission") {
+          this.mission_intro.section_title = this.page.description && this.page.description.mission_intro_section_title ? this.page.description.mission_intro_section_title : "";
+          this.mission_intro.title = this.page.description && this.page.description.mission_intro_title ? this.page.description.mission_intro_title : "";
+          this.mission_intro.description = this.page.description && this.page.description.mission_intro_description ? this.page.description.mission_intro_description : "";
+
+          this.checklist.title = this.page.description && this.page.description.checklist_title ? this.page.description.checklist_title : "";
+          this.checklist.subtitle = this.page.description && this.page.description.checklist_subtitle ? this.page.description.checklist_subtitle : "";
+          this.checklist.description = this.page.description && this.page.description.checklist_description ? this.page.description.checklist_description : "";
+          this.checklist.short_text = this.page.description && this.page.description.checklist_short_text ? this.page.description.checklist_short_text : "";
+          this.checklist.checklist1 = this.page.description && this.page.description.checklist_checklist1 ? this.page.description.checklist_checklist1 : "";
+          this.checklist.checklist2 = this.page.description && this.page.description.checklist_checklist2 ? this.page.description.checklist_checklist2 : "";
+          this.checklist.checklist3 = this.page.description && this.page.description.checklist_checklist3 ? this.page.description.checklist_checklist3 : "";
+          this.checklist_background_image = this.page.description && this.page.description.checklist_image_webp ? "/public/uploads/pages/checklist_/our-mission/" + this.page.description.checklist_image_webp : "";
+          this.is_checklist_background_image = this.page.description && this.page.description.checklist_image_webp ? true : false;
+
+          this.volunteers.title = this.page.description && this.page.description.volunteers_title ? this.page.description.volunteers_title : "";
+          this.volunteers.subtitle = this.page.description && this.page.description.volunteers_subtitle ? this.page.description.volunteers_subtitle : "";
+          this.volunteers.description = this.page.description && this.page.description.volunteers_description ? this.page.description.volunteers_description : "";
+          this.volunteers_background_image = this.page.description && this.page.description.volunteer_image_webp ? "/public/uploads/pages/volunteer_/our-mission/" + this.page.description.volunteer_image_webp : "";
+          this.is_volunteers_background_image = this.page.description && this.page.description.volunteer_image_webp ? true : false;
+
+          this.video.title = this.page.description && this.page.description.video_title ? this.page.description.video_title : "";
+          this.video.subtitle = this.page.description && this.page.description.video_subtitle ? this.page.description.video_subtitle : "";
+          this.video.link = this.page.description && this.page.description.video_link ? this.page.description.video_link : "";
+          this.video_background_image = this.page.description && this.page.description.video_image_webp ? "/public/uploads/pages/video_/our-mission/" + this.page.description.video_image_webp : "";
+          this.is_video_background_image = this.page.description && this.page.description.video_image_webp ? true : false;
+        } else if (this.page.title == "Feeding Program" || this.page.title == "Scholarship Program") {
+          this.program.title = this.page.description && this.page.description.program_intro_title ? this.page.description.program_intro_title : "";
+          this.program.subtitle = this.page.description && this.page.description.program_intro_description ? this.page.description.program_intro_description : "";
+          this.program.program_title = this.page.description && this.page.description.program_about_title ? this.page.description.program_about_title : "";
+          this.program.program_description = this.page.description && this.page.description.program_about_description ? this.page.description.program_about_description : "";
+          this.program.overview_title = this.page.description && this.page.description.program_overview_title ? this.page.description.program_overview_title : "";
+          this.program.overview_description = this.page.description && this.page.description.program_overview_description ? this.page.description.program_overview_description : "";
+          this.feeding_background_image = this.page.description && this.page.description.program_image_webp ? "/public/uploads/pages/program_/" + this.slug + "/" + this.page.description.program_image_webp : "";
+          this.is_feeding_background_image = this.page.description && this.page.description.program_image_webp ? true : false;
+        } else if (this.page.title == "Contact Us") {
+          this.contact_description = this.page.description && this.page.description.contact_description ? this.page.description.contact_description : "";
+        }
+      }
+      //     if (this.page.description.why_image) {
+      //       this.is_background_choose = true;
+
+      //       this.background_image_choose = "/public/uploads/pages/why/" + this.page.pages_id + "/medium/" + this.page.description.why_image;
+      //     }
+
+      //     if (this.page.description.how_image) {
+      //       this.is_background_why = true;
+      //       this.background_image_why = "/" + this.page.description.how_image.medium;
+      //     }
+
+      //     if (this.page.description.how_files_0) {
+      //       this.icon_how_1 = "/public/uploads/pages/how_0/" + this.page.pages_id + "/medium/" + this.page.description.how_files_0;
+      //       this.is_display_icon_1 = true;
+      //     }
+
+      //     if (this.page.description.how_files_1) {
+      //       this.icon_how_2 = "/public/uploads/pages/how_1/" + this.page.pages_id + "/medium/" + this.page.description.how_files_1;
+      //       this.is_display_icon_2 = true;
+      //     }
+
+      //     if (this.page.description.how_files_2) {
+      //       this.icon_how_3 = "/public/uploads/pages/how_2/" + this.page.pages_id + "/medium/" + this.page.description.how_files_2;
+      //       this.is_display_icon_3 = true;
+      //     }
+
+      //     if (this.page.description.how_files_3) {
+      //       this.icon_how_4 = "/public/uploads/pages/how_3/" + this.page.pages_id + "/medium/" + this.page.description.how_files_3;
+      //       this.is_display_icon_4 = true;
+      //     }
+
+      //     // Roles
+      //     if (this.page.pages_id == 10) {
+      //       if (this.page.description.roles_files_0) {
+      //         this.icon_roles_1 = "/public/uploads/pages/roles_0/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_0;
+      //         this.is_display_roles_img_1 = true;
+      //       }
+
+      //       if (this.page.description.roles_files_1) {
+      //         this.icon_roles_2 = "/public/uploads/pages/roles_1/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_1;
+      //         this.is_display_roles_img_2 = true;
+      //       }
+
+      //       if (this.page.description.roles_files_2) {
+      //         this.icon_roles_3 = "/public/uploads/pages/roles_2/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_2;
+      //         this.is_display_roles_img_3 = true;
+      //       }
+
+      //       if (this.page.description.roles_files_3) {
+      //         this.icon_roles_4 = "/public/uploads/pages/roles_3/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_3;
+      //         this.is_display_roles_img_4 = true;
+      //       }
+      //       if (this.page.description.roles_files_4) {
+      //         this.icon_roles_5 = "/public/uploads/pages/roles_4/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_4;
+      //         this.is_display_roles_img_5 = true;
+      //       }
+      //     }
+      //   }
+
+      //   if (this.page.pages_id == 2) {
+      //     this.content = this.page.description && this.page.description.content ? this.page.description.content : [];
+      //     this.sub_title = this.page.description && this.page.description.content ? this.page.description.sub_content : [];
+      //     // this.why_us_title = this.page.description && this.page.description.why_us_title ? this.page.description.why_us_title : [];
+      //     // this.why_us_description = this.page.description && this.page.description.why_us_description ? this.page.description.why_us_description : [];
+      //     // this.how_title = this.page.description && this.page.description.how_title ? this.page.description.how_title : [];
+      //     // this.how_description = this.page.description && this.page.description.how_description ? this.page.description.how_description : [];
+      //     this.mission_title = this.page.description && this.page.description.mission_title ? this.page.description.mission_title : "";
+      //     this.mission_description = this.page.description && this.page.description.mission_description ? this.page.description.mission_description : "";
+      //     this.vision_title = this.page.description && this.page.description.vision_title ? this.page.description.vision_title : "";
+      //     this.vision_description = this.page.description && this.page.description.vision_description ? this.page.description.vision_description : "";
+
+      //     this.core_title = this.page.description && this.page.description.core_title ? this.page.description.core_title : [];
+      //     this.core_description = this.page.description && this.page.description.core_description ? this.page.description.core_description : [];
+
+      //     this.onLoadEditor();
+
+      //     if (this.page.description.why_image) {
+      //       this.is_background_choose = true;
+      //       // console.log("/public/uploads/pages/why/"+this.page.pages_id+"/medium/"+this.page.description.why_image);
+      //       // this.background_image_choose = "/public/uploads/pages/why/"+this.page.pages_id+"/medium/"+this.page.description.why_image;
+      //     }
+
+      //     if (this.page.description.how_image) {
+      //       this.is_background_why = true;
+      //       this.background_image_why = "/" + this.page.description.how_image.medium;
+      //     }
+
+      //     if (this.page.description.about_image1) {
+      //       this.is_background_1 = true;
+      //       this.background_image_1 = "/public/uploads/pages/about/" + this.page.pages_id + "/medium/" + this.page.description.about_image1;
+      //     }
+
+      //     if (this.page.description.about_image2) {
+      //       this.is_background_2 = true;
+      //       this.background_image_2 = "/public/uploads/pages/about/" + this.page.pages_id + "/medium/" + this.page.description.about_image2;
+      //     }
+
+      //     if (this.page.description.core_files_0) {
+      //       this.icon_core_1 = "/public/uploads/pages/core_0/" + this.page.pages_id + "/medium/" + this.page.description.core_files_0;
+      //       this.is_display_icon_core_1 = true;
+      //     }
+
+      //     if (this.page.description.core_files_1) {
+      //       this.icon_core_2 = "/public/uploads/pages/core_1/" + this.page.pages_id + "/medium/" + this.page.description.core_files_1;
+      //       this.is_display_icon_core_2 = true;
+      //     }
+
+      //     if (this.page.description.core_files_2) {
+      //       this.icon_core_3 = "/public/uploads/pages/core_2/" + this.page.pages_id + "/medium/" + this.page.description.core_files_2;
+      //       this.is_display_icon_core_3 = true;
+      //     }
+
+      //     if (this.page.description.core_files_3) {
+      //       this.icon_core_4 = "/public/uploads/pages/core_2/" + this.page.pages_id + "/medium/" + this.page.description.core_files_3;
+      //       this.is_display_icon_core_4 = true;
+      //     }
+
+      //     if (this.page.description.about_image3) {
+      //       this.is_background_3 = true;
+      //       this.background_image_3 = "/" + this.page.description.about_image3.medium;
+      //     }
+      //   }
+
+      //   if (this.page.pages_id == 3 || this.page.pages_id == 6) {
+      //     this.content = this.page.description && this.page.description.content ? this.page.description.content : [];
+      //   }
+
+      if (this.page.image != "") {
+        this.is_background = true;
+        this.background_image = "/public/uploads/pages/" + this.page.pages_id + "/medium/" + this.page.image;
+      }
+      if (this.page.extras_image_1 != "") {
+        this.is_background_2 = true;
+        this.background_image_2 = "/public/uploads/pages/" + this.page.pages_id + "/medium/" + this.page.extras_image_1;
+      }
+      if (this.page.extras_image_2 != "") {
+        this.is_background_3 = true;
+        this.background_image_3 = "/public/uploads/pages/" + this.page.pages_id + "/medium/" + this.page.extras_image_2;
+      }
     },
     onCancel() {
       this.$router.replace({ name: "AdminPages" });
@@ -856,7 +1091,8 @@ export default {
           meta_title: this.meta_title,
           meta_keywords: this.meta_keywords,
           meta_description: this.meta_description,
-          action_type: "new_record",
+          action_type: "update_record",
+          pages_id: this.page.encrypted_pages_id,
         };
 
         if (this.title == "Homepage") {
@@ -1103,10 +1339,48 @@ export default {
         this.is_objective_background_image_3 = true;
       }
     },
-  },
-  watch: {
-    title(val) {
-      console.log(val);
+
+    onConvertSlugtoTitle() {
+      switch (this.slug) {
+        case "homepage":
+          this.title = "Homepage";
+          break;
+
+        case "our-mission":
+          this.title = "Our Mission";
+          break;
+
+        case "our-team":
+          this.title = "Our Team";
+          break;
+
+        case "faqs":
+          this.title = "FAQs";
+          break;
+
+        case "feeding-program":
+          this.title = "Feeding Program";
+          break;
+
+        case "scholarship-program":
+          this.title = "Scholarship Program";
+          break;
+
+        case "events":
+          this.title = "Events";
+          break;
+
+        case "stories":
+          this.title = "Stories";
+          break;
+
+        case "contact-us":
+          this.title = "Contact Us";
+          break;
+
+        default:
+          break;
+      }
     },
   },
 };

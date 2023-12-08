@@ -13,6 +13,7 @@ import AdminTestimonials from "./Portal/Administrator/testimonial.vue";
 import AdminOurTeam from "./Portal/Administrator/team.vue";
 import AdminPages from "./Portal/Administrator/pages.vue";
 import AdminPagesCreate from "./Portal/Administrator/pages/form.vue";
+import AdminPagesEdit from "./Portal/Administrator/pages/edit.vue";
 import AdminSMS from "./Portal/Administrator/sms.vue";
 import AdminDonation from "./Portal/Administrator/donation.vue";
 import AdminBlogsForm from "./Portal/Administrator/blogs/form.vue";
@@ -38,6 +39,7 @@ export default [
     { path: "/admin/our-team", component: AdminOurTeam, name: "AdminOurTeam", meta: { isAdminAuthentication: true, isOurTeam: true } },
     { path: "/admin/pages", component: AdminPages, name: "AdminPages", meta: { isAdminAuthentication: true, isPages: true } },
     { path: "/admin/pages/create", component: AdminPagesCreate, name: "AdminPagesCreate", meta: { isAdminAuthentication: true, isPages: true } },
+    { path: "/admin/pages/edit/:slug", component: AdminPagesEdit, name: "AdminPagesEdit", meta: { isAdminAuthentication: true, isPages: true } },
     { path: "/admin/sms", component: AdminSMS, name: "AdminSMS", meta: { isAdminAuthentication: true, isSMS: true } },
     { path: "/admin/donations", component: AdminDonation, name: "AdminDonation", meta: { isAdminAuthentication: true, isDonations: true } },
     { path: "/admin/blogs/new", component: AdminBlogsForm, name: "AdminBlogsNew", meta: { isAdminAuthentication: true, isBlog: true }, params: true },
