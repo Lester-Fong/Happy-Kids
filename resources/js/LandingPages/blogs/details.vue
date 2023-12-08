@@ -53,9 +53,11 @@
                                 <!-- /.list-unstyled blog-details__category -->
                             </div>
                             <!-- /.blog-details__meta -->
-                            <h5>Related Stories</h5>
-                            <div class="blog-navigations">
-                                <a v-for="a in related_blogs.slice(0, 1)" href="javascript:void(0);">{{ a.title }}</a>
+                            <div v-if="related_blogs.length > 0">
+                                <h5>Related Stories</h5>
+                                <div class="blog-navigations">
+                                    <router-link v-for="a in related_blogs.slice(0, 1)" :to="{ name: 'StoriesDetailsPage', params: { slug: a.slug } }">{{ a.title }}</router-link>
+                                </div>
                             </div>
                         </div>
                         <!-- /.blog-navigations -->
