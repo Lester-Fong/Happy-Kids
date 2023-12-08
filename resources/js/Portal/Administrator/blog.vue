@@ -51,8 +51,6 @@ export default {
             blogs: [],
             filteredBlogs: [],
             is_loading: false,
-            is_edit: false,
-            selected_list: {},
         };
     },
 
@@ -77,7 +75,6 @@ export default {
         },
 
         onCreateRecord() {
-            this.is_edit = false;
             this.$router.replace({ name: "AdminBlogsNew" });
         },
 

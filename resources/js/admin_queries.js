@@ -2,8 +2,8 @@ import axios from "axios";
 import Vue from "vue";
 import admin_requests from "./RequestQueries/admin_requests";
 
-let uploadQueries = ["save_pages", "save_blogs"];
-let adminRequestNames = ["get_admin", "blogs", "save_blogs", "blog_category", "save_blog_categories", "save_pages", "pages"];
+let uploadQueries = ["save_pages", "save_blogs", "save_events"];
+let adminRequestNames = ["get_admin", "blogs", "save_blogs", "blog_category", "save_blog_categories", "save_pages", "pages", "events", "save_events"];
 
 let requestNames = ["admin_outside_action"];
 

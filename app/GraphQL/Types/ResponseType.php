@@ -56,6 +56,12 @@ class ResponseType extends GraphQLType
             'admin' => [
                 'type' => GraphQL::type('admin_type'),
             ],
+            'blog_category' => [
+                'type' => Type::listOf(GraphQL::type('blog_category_type')),
+            ],
+            'events' => [
+                'type' => Type::listOf(GraphQL::type('events_type')),
+            ],
         ];
     }
 }

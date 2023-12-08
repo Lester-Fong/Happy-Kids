@@ -90,7 +90,7 @@ class BlogMutation extends Mutation
 
       if ($thumbnail != "") {
         $filename = $helper_model->ImageUpload2($thumbnail, $blogs_id, "blogs_thumbnail");
-        $blog_rec = Blog::find($blogs_id);
+        $blog_rec = $blogs_model->find($blogs_id);
         if ($blog_rec) {
           $blog_rec->fldBlogThumbnail = $filename;
           $blog_rec->save();
@@ -124,8 +124,8 @@ class BlogMutation extends Mutation
 
         $file = $args['file'];
         if ($file != "") {
-          $filename = $helper_model->ImageUpload($file, $blogs_id, "blogs_image");
-          $blog_rec = Blog::find($blogs_id);
+          $filename = $helper_model->ImageUpload2($file, $blogs_id, "blogs_image");
+          $blog_rec = $blogs_model->find($blogs_id);
           if ($blog_rec) {
             $blog_rec->fldBlogImage = $filename;
             $blog_rec->save();

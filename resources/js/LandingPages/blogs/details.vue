@@ -37,24 +37,25 @@
                             <div v-html="blogs.description"></div>
 
                             <div class="blog-details__meta">
-                                <ul class="list-unstyled blog-details__category">
+                                <!-- <ul class="list-unstyled blog-details__category">
                                     <li><span>Tags:</span></li>
                                     <li><a href="javascript:void(0);">charity</a></li>
                                     <li><a href="javascript:void(0);">donations</a></li>
                                     <li><a href="javascript:void(0);">savelives</a></li>
-                                </ul>
+                                </ul> -->
                                 <!-- /.list-unstyled blog-details__category -->
                                 <ul class="list-unstyled blog-details__category">
                                     <li><span>Category:</span></li>
-                                    <li><a href="javascript:void(0);">charity</a></li>
-                                    <li><a href="javascript:void(0);">childrens</a></li>
+                                    <li>
+                                        <a href="javascript:void(0);">{{ category_name }}</a>
+                                    </li>
                                 </ul>
                                 <!-- /.list-unstyled blog-details__category -->
                             </div>
                             <!-- /.blog-details__meta -->
+                            <h5>Related Stories</h5>
                             <div class="blog-navigations">
-                                <a href="javascript:void(0);">Our donation is hope for poor childrens</a>
-                                <a href="javascript:void(0);">Fundrising for Early Childhood Rise</a>
+                                <a v-for="a in related_blogs.slice(0, 1)" href="javascript:void(0);">{{ a.title }}</a>
                             </div>
                         </div>
                         <!-- /.blog-navigations -->
@@ -77,40 +78,22 @@
                                 <div class="blog-sidebar__single">
                                     <h3>Categories</h3>
                                     <ul class="list-unstyled blog-sidebar__category">
-                                        <li><a href="javascript:void(0);">Charity</a></li>
-                                        <li><a href="javascript:void(0);">Fundraising</a></li>
-                                        <li><a href="javascript:void(0);">Donations</a></li>
-                                        <li><a href="javascript:void(0);">Health</a></li>
-                                        <li><a href="javascript:void(0);">Save Lives</a></li>
-                                        <li><a href="javascript:void(0);">Clean Water</a></li>
+                                        <li v-for="a in blog_categories">
+                                            <a href="javascript:void(0);">{{ a.name }}</a>
+
+                                            <i class="bi bi-arrow-right-circle-fill"></i>
+                                        </li>
                                     </ul>
                                     <!-- /.blog-sidebar__category -->
                                 </div>
                                 <!-- /.blog-sidebar__single -->
-                                <div class="blog-sidebar__single">
+                                <!-- <div class="blog-sidebar__single">
                                     <h3>Tags</h3>
                                     <ul class="list-unstyled blog-sidebar__tags">
-                                        <li><a href="javascript:void(0);">Charity</a></li>
-                                        <li><a href="javascript:void(0);">donations</a></li>
-                                        <li><a href="javascript:void(0);">savelives</a></li>
-                                        <li><a href="javascript:void(0);">education</a></li>
-                                        <li><a href="javascript:void(0);">poorpeople</a></li>
-                                        <li><a href="javascript:void(0);">health</a></li>
-                                        <li><a href="javascript:void(0);">cleanwater</a></li>
+                                        <li v-for=""><a href="javascript:void(0);">Charity</a></li>
                                     </ul>
-                                    <!-- /.blog-sidebar__category -->
-                                </div>
-                                <!-- /.blog-sidebar__single -->
-                                <div class="blog-sidebar__single">
-                                    <h3>Comments</h3>
-                                    <ul class="blog-sidebar__comments">
-                                        <li><a href="javascript:void(0);">A Wordpress Commenter on Launch New Mobile App</a></li>
-                                        <li><a href="javascript:void(0);">John Doe on Template: Comments</a></li>
-                                        <li><a href="javascript:void(0);">A Wordpress Commenter on Launch New Mobile App</a></li>
-                                        <li><a href="javascript:void(0);">John Doe on Template: Comments</a></li>
-                                    </ul>
-                                    <!-- /.blog-sidebar__comments -->
-                                </div>
+                                  </div> -->
+                                <!-- /.blog-sidebar__category -->
                                 <!-- /.blog-sidebar__single -->
                             </div>
                             <!-- /.blog-sidebar -->
@@ -140,6 +123,7 @@ export default {
             popular_blogs: [],
             related_blogs: [],
             latest_blogs: [],
+            blog_categories: [],
             pages: {},
             author_firstname: "",
             author_lastname: "",
@@ -147,6 +131,7 @@ export default {
             author_profile_icon: "",
             slug: this.$route.params.slug,
             cover_image: "",
+            category_name: "",
         };
     },
     created() {
@@ -161,21 +146,23 @@ export default {
                 slug: this.slug,
             })
                 .then((res) => {
-                    console.log("blog_category ", res);
                     this.is_calling_api = false;
 
-                    Swal.fire("Success!");
                     let response = res.data.data.front;
                     // this.pages = response.page;
                     this.blogs = response.single_blog;
                     this.author_firstname = this.blogs.author.firstname ?? "";
                     this.author_lastname = this.blogs.author.lastname ?? "";
                     this.latest_blogs = response.latest_posts;
+                    this.blog_categories = response.blog_category;
+                    this.related_blogs = response.related_blogs;
                     // this.popular_blogs = response.blogs;
                     this.cover_image = `/public/uploads/blogs/${this.blogs?.original_blogs_id}/large/${this.blogs?.image}`;
+                    this.category_name = this.blogs.blog_category?.name ?? "";
                 })
-                .catch(() => {
-                    Swal.fire("Error!", this.global_error_message, "error");
+                .catch((err) => {
+                    console.log(err);
+                    // Swal.fire("Error!", this.global_error_message, "error");
                 });
         },
 
@@ -200,8 +187,9 @@ export default {
                         return false;
                     }
                 })
-                .catch(() => {
-                    Swal.fire("Error!", this.global_error_message, "error");
+                .catch((err) => {
+                    console.log("err: ", err);
+                    // Swal.fire("Error!", this.global_error_message, "error");
                 });
         },
     },

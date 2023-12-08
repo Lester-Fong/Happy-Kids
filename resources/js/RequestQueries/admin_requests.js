@@ -88,6 +88,29 @@ let admin_queries = {
             extras_image_2
           }
       }`,
+
+    events: `query events($action_type: String, $events_id: String) {
+        events(action_type: $action_type, events_id: $events_id) {
+            events_id,
+            original_events_id,
+            title,
+            date_start,
+            date_end,
+            location,
+            image,
+            is_pinned,
+            date_created,
+            status,
+            is_expired
+        }
+    }`,
+
+    save_events: `mutation events($file: Upload, $events: EventsInput) { 
+        events(file: $file, events: $events) {
+            error,
+            message,
+        }
+    }`,
 };
 
 export default admin_queries;

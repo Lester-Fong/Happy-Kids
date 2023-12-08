@@ -9,6 +9,7 @@ use Auth;
 use App\Models\Brand;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Events;
 use App\Models\Pages;
 use App\Models\Team;
 use GraphQL;
@@ -46,6 +47,7 @@ class FrontQuery extends Query
     // $brand_model = new Brand();
     $blog_model = new Blog();
     $blog_category_model = new BlogCategory();
+    $events_model = new Events();
 
 
     if ($action_type == 'subscribe_newsletter') {
@@ -114,7 +116,7 @@ class FrontQuery extends Query
       $single_blog = $blog_model->where('fldBlogSlug', '=', $slug)->first();
 
       // $popular_blogs = $blog_model->displayPopularBlogs();
-      // $blog_category = $blog_category_model->displayAllCategory();
+      $blog_category = $blog_category_model->displayAllCategory();
       // $pages  = Pages::find(5);
       // related blogs by category id
       
@@ -125,10 +127,21 @@ class FrontQuery extends Query
       $response_obj->latest_posts = $latest_posts;
       $response_obj->single_blog = $single_blog;
       // $response_obj->blogs = $popular_blogs;
-      // $response_obj->blog_category = $blog_category;
+      $response_obj->blog_category = $blog_category;
       $response_obj->related_blogs = $related_blogs;
       // $response_obj->page = $pages;
     }
+
+    if ($args['action_type'] == "display_all_events") {
+      $events = $events_model->where('fldEventsStatus', '=', 1)
+                            ->orderBy('fldEventsDateStart', 'ASC')
+                            ->get();
+
+      $response_obj->events = $events;
+    }
+    
+    
     return $response_obj;
   }
+  
 }

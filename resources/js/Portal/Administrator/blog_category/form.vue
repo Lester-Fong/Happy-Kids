@@ -46,6 +46,8 @@ export default {
     methods: {
         onHideModal() {
             this.$emit("onHideModal");
+            this.onClearFields();
+            this.onClearErrors();
         },
 
         onSubmit() {
@@ -59,7 +61,6 @@ export default {
                 },
             })
                 .then((res) => {
-                    console.log("res submit: ", res);
                     this.is_loading = false;
 
                     if (res.data.errors) {
@@ -99,8 +100,6 @@ export default {
     watch: {
         is_edit(val) {
             if (val) {
-                console.log("is_edit: ", val);
-                console.log("selected_blog: ", this.selected_blog_category);
                 this.name = this.selected_blog_category.name;
             }
         },

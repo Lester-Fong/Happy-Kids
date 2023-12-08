@@ -24,76 +24,69 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth2;
 
 
-class Blog extends Eloquent
-{
+class Events extends Eloquent {
 
-  protected $table = 'tblBlog';
-  protected $primaryKey = 'fldBlogID';
+  protected $table = 'tblEvents';
+  protected $primaryKey = 'fldEventsID';
   public $timestamps = false;
-
-
-  public function blog_category()
-  {
-    return $this->belongsTo(BlogCategory::class, 'fldBlogCategoryID', 'fldBlogCategoryID');
-  }
 
   public function author()
   {
-    return $this->belongsTo(Administrator::class, 'fldBlogAuthor', 'fldAdministratorID');
+    return $this->belongsTo(Administrator::class, 'fldEventsAdminID', 'fldAdministratorID');
   }
 
-
-  public function findBlog($id)
+  public function findEvents($id)
   {
-    $blog = self::find($id);
-    return $blog;
+    $events = self::find($id);
+    return $events;
   }
 
-  public function displayAll()
-  {
-    $blog = self::orderBy('fldBlogDate', 'DESC')->get();
-    return $blog;
+  public function displayAll() {
+    return self::orderBy('fldEventsDateStart', 'DESC')->get();
   }
 
-  public function displayBlogByID($id)
-  {
-    $blog_id = Crypt::decryptString($id);
-    $blog = self::where('fldBlogID', '=', $blog_id)->get();
-    return $blog;
+  public function displayEventsByID($id) {
+    $events_id = Crypt::decryptString($id);
+    return self::where('fldEventsID', '=', $events_id)->get();
   }
 
-  public function AddUpdateRecord($id, $data)
-  {
+  public function checkAndSetExpired() {
+    $events = self::where(function ($query) {
+      $query->where('fldEventsIsExpired', '=', 0)
+            ->orWhereNull('fldEventsIsExpired');
+      })
+      ->where('fldEventsDateEnd', '<', date('Y-m-d H:i:s'))
+      ->get();
+
+    foreach($events as $event) {
+      $event->fldEventsIsExpired = 1;
+      $event->save();
+    }
+    return $events;
+  }
+
+  public function AddUpdateRecord($id, $data) {
     if ($id == 0) {
-      $blog = new self;
+      $events = new self;
     } else {
-      $blog = self::find($id);
+      $events = self::find($id);
     }
 
     $admin_model = new Administrator();
     $admin = $admin_model->getInfo();
 
-    $blog->fldBlogTitle = $data['title'];
-    $blog->fldBlogDescription = $data['description'];
-    $blog->fldBlogSlug = Str::slug($data['title']);
-    $blog->fldBlogDate = $data['date'];
-    $blog->fldBlogCategoryID = $data['category_id'];
-    $blog->fldBlogStatus = $data['status'];
-    // $blog->fldBlogReadLength = $data['minutes_read'];
-    $blog->fldBlogAuthor = $admin->fldAdministratorID;
-
-    $meta_obj = new \stdClass();
-    $meta_obj->title = $data['meta_title'];
-    $meta_obj->description = $data['meta_description'];
-    $meta_obj->keywords = $data['meta_keywords'];
+    $events->fldEventsTitle = $data['title'];
+    $events->fldEventsDateStart = $data['date_start'];
+    $events->fldEventsDateEnd = $data['date_end'];
+    $events->fldEventsLocation = $data['location'];
+    $events->fldEventsStatus = $data['status'];
+    $events->fldEventsAdminID = $admin->fldAdministratorID;
 
 
-    $blog->fldBlogMeta = serialize($meta_obj);
-
-    $blog->save();
+    $events->save();
 
 
-    return $blog->fldBlogID;
+    return $events->fldEventsID ;
   }
 
   public function displayHomePage()
@@ -160,4 +153,6 @@ class Blog extends Eloquent
     }
     return $response_obj;
   }
+
+  
 }

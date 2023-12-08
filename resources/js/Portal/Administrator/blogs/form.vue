@@ -11,7 +11,7 @@
                                 <div class="form-control-wrap">
                                     <input type="text" class="form-control" id="default-01" placeholder="" v-model="title" />
                                     <div class="text-danger">{{ title_error }}</div>
-                                    <router-link v-if="slug != ''" :to="'/blogs-details/' + slug" target="_blank">http://happy_kids.local/blogs/{{ slug }}</router-link>
+                                    <router-link v-if="slug != ''" :to="'/stories/' + slug" target="_blank">http://happy_kids.local/stories/{{ slug }}</router-link>
                                 </div>
                             </div>
                         </div>
@@ -232,7 +232,6 @@ export default {
                 .then((res) => {
                     this.is_loading = false;
                     this.blog_category_arr = res.data.data.blog_category;
-                    console.log("onPopulateCategory: ", res);
                 })
                 .catch((err) => {
                     Swal.fire("Error!", this.global_error_message, "error");
@@ -378,7 +377,6 @@ export default {
             })
                 .then((res) => {
                     this.is_loading = false;
-                    console.log(res);
                     this.blogs = res.data.data.blogs[0];
 
                     this.title = this.blogs.title;
@@ -406,7 +404,6 @@ export default {
 
                     this.blog_date = this.blogs.date;
                     this.category = this.blogs.category_id;
-                    console.log("this.blogs: ", this.blogs);
                     this.slug = this.blogs.slug;
                     this.status = this.blogs.status;
                     // this.minutes_read = this.blogs.minutes_read;

@@ -57,15 +57,11 @@ export default {
     data() {
         return {
             is_loading: false,
-            is_finish_calling_api: false,
             blogs: [],
-            cards: 1,
             pages: {},
             blog_card_limiter: 3,
             author: {},
             is_loading: false,
-            author_profile_icon: "",
-            img_default: "/public/assets/images/avatar/a-sm.jpg",
             is_see_more: false,
         };
     },
@@ -83,13 +79,10 @@ export default {
             })
                 .then((res) => {
                     let response = res.data.data.front;
-                    console.log(response);
                     // this.pages = response.page;
                     this.blogs = response.blogs;
                     this.is_loading = false;
-                    this.is_finish_calling_api = true;
                     this.author = this.blogs.author;
-                    this.author_profile_icon = `/public/uploads/administrator/${this.author?.administrator_regular_id}/large/${this.author?.image}`;
                 })
                 .catch(() => {
                     Swal.fire("Error!", this.global_error_message, "error");

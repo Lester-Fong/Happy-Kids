@@ -77,6 +77,7 @@ return [
             'query' => [
                 // ExampleQuery::class,
                 'front' => \App\GraphQL\Queries\FrontQuery::class,
+                'events' => \App\GraphQL\Queries\EventsQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -105,6 +106,7 @@ return [
                 'pages' => \App\GraphQL\Queries\PagesQuery::class,
                 'blogs' => \App\GraphQL\Queries\BlogQuery::class,
                 'blog_category' => \App\GraphQL\Queries\BlogCategoryQuery::class,
+                'events' => \App\GraphQL\Queries\EventsQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -112,6 +114,7 @@ return [
                 'pages' => \App\GraphQL\Mutations\PagesMutation::class,
                 'blogs' => \App\GraphQL\Mutations\BlogMutation::class,
                 'blog_category' => \App\GraphQL\Mutations\BlogCategoryMutation::class,
+                'events' => \App\GraphQL\Mutations\EventsMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -146,6 +149,7 @@ return [
         'pages_type' => \App\GraphQL\Types\PagesType::class,
         'blogs_type' => \App\GraphQL\Types\BlogType::class,
         'blog_category_type' => \App\GraphQL\Types\BlogCategoryType::class,
+        'events_type' => \App\GraphQL\Types\EventsType::class,
 
 
 
@@ -154,6 +158,7 @@ return [
         'page_input' => \App\GraphQL\Inputs\PagesInput::class,
         'blog_input' => \App\GraphQL\Inputs\BlogInput::class,
         'blog_category_input' => \App\GraphQL\Inputs\BlogCategoryInput::class,
+        'events_input' => \App\GraphQL\Inputs\EventsInput::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

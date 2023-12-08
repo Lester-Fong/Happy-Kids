@@ -1,4 +1,5 @@
 import Vue from "vue";
+import moment from "moment";
 
 Vue.mixin({
     data: function () {
@@ -161,6 +162,13 @@ Vue.mixin({
 
         truncate(str, maxlength) {
             return str.length > maxlength ? str.substring(0, maxlength) + "..." : str;
+        },
+
+        // format date_start 2023-12-10 16:00:00 & date_end 2023-12-10 20:00:00 into 9:00am 02:00pm
+        onDisplayTimeSpan(date_start, date_end) {
+            let start = moment(date_start, "YYYY-MM-DD HH:mm:ss").format("h:mma");
+            let end = moment(date_end, "YYYY-MM-DD HH:mm:ss").format("h:mma");
+            return start + " - " + end;
         },
     },
 });

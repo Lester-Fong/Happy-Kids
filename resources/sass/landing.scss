@@ -14,3 +14,15 @@
     width: 60px;
     object-fit: cover;
   }
+
+  .expired-ribbon {
+    position: absolute;
+    top: 15px;
+    right: -40px;
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 0px 55px;
+    font-size: 14px;
+    z-index: 2;
+    transform: rotate(45deg);
+}

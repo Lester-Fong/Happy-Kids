@@ -14,6 +14,27 @@ let front_queries = {
               },
               latest_posts {
                 ${blogFields}
+              },
+              blog_category {
+                category_id,
+                name,
+              }
+              events {
+                original_events_id
+                title,
+                date_start,
+                date_end,
+                location,
+                image,
+                is_pinned,
+                status,
+                admin,
+                date_created,
+                is_expired,
+                author {
+                  firstname,
+                  lastname,
+                }
               }
         }
     }`,
@@ -25,6 +46,12 @@ let front_queries = {
             filename
       }
     }`,
+
+    events: `query events($action_type: String, $events_id: String) {
+      events(action_type: $action_type, events_id: $events_id) {
+          events_id,
+      }
+  }`,
 };
 
 export default front_queries;
@@ -47,5 +74,10 @@ function onBlogFields() {
               firstname,
               lastname,
               image,
-            }`;
+            },
+            blog_category {
+              category_id,
+              name,
+            }
+            `;
 }

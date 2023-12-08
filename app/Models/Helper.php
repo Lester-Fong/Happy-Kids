@@ -50,6 +50,9 @@ class Helper extends Eloquent
                 case "blogs_thumbnail":
                     $destinationPath = Config::get('Constants.BLOGS_THUMBNAIL_PATH') . $id . '/';
                     break;
+                case "events_image":
+                    $destinationPath = Config::get('Constants.EVENTS_IMAGE_PATH') . $id . '/';
+                    break;
                 default:
                     // Handle the case when $type is not recognized.
                     $destinationPath = "";
@@ -286,7 +289,10 @@ class Helper extends Eloquent
                 $destinationPath = Config::get('Constants.BLOGS_IMAGE_PATH') . $id . '/';
             } else if ($type == "blogs_thumbnail") {
                 $destinationPath = Config::get('Constants.BLOGS_THUMBNAIL_PATH') . $id . '/';
+            } else if ($type == "events_image") {
+                $destinationPath = Config::get('Constants.EVENTS_IMAGE_PATH') . $id . '/';
             }
+            
             $filename = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.webp';
 
             $file->move($destinationPath, $filename);

@@ -60,6 +60,15 @@ Vue.filter("formatTransDate2", function (value) {
     }
 });
 
+// format date_start 2023-12-10 16:00:00 to only 20 May
+Vue.filter("formatTransDate3", function (value) {
+    if (value) {
+        if (value && moment(value, "YYYY-MM-DD HH:mm:ss", true).isValid()) {
+            return moment(value).format("DD MMM");
+        }
+    }
+});
+
 router.beforeEach((to, from, next) => {
     // ADMIN
     if (to.matched.some((m) => m.meta.isAdminAuthentication === true)) {

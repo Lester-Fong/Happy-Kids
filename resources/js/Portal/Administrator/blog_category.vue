@@ -31,8 +31,8 @@
                                         </svg>
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="javascript:void(0);" class="dropdown-item" @click="onEditBlogCategory(a)"> Edit Blog </a>
-                                        <a href="javascript:void(0);" class="dropdown-item" @click="onDeleteCategory(a.category_id)">Delete Blog</a>
+                                        <a href="javascript:void(0);" class="dropdown-item" @click="onEditBlogCategory(a)"> Edit </a>
+                                        <a href="javascript:void(0);" class="dropdown-item" @click="onDeleteCategory(a.category_id)">Delete </a>
                                     </div>
                                 </td>
                             </tr>
@@ -73,7 +73,6 @@ export default {
                 action_type: "display_all",
             })
                 .then((res) => {
-                    console.log("res: ", res);
                     this.is_loading = false;
                     this.filteredCategory = res.data.data.blog_category;
                 })
