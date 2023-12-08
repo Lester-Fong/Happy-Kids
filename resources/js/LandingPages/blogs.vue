@@ -32,11 +32,11 @@
                             <!-- /.blog-card__image -->
                             <div class="blog-card__content">
                                 <div class="blog-card__meta">
-                                    <router-link :to="{ name: 'StoriesDetailsPage' }"><i class="far fa-user-circle"></i>{{ formatFullname(a.author.firstname, a.author.lastname) }}</router-link>
+                                    <router-link :to="{ name: 'StoriesDetailsPage', params: { slug: a.slug } }"><i class="far fa-user-circle"></i>{{ formatFullname(a.author.firstname, a.author.lastname) }}</router-link>
                                 </div>
                                 <!-- /.blog-card__meta -->
                                 <h3 class="mb-3">
-                                    <router-link :to="{ name: 'StoriesDetailsPage' }">{{ a.title }}</router-link>
+                                    <router-link :to="{ name: 'StoriesDetailsPage', params: { slug: a.slug } }">{{ a.title }}</router-link>
                                 </h3>
                                 <p class="mx-4">{{ truncate(a.description, 100) }}</p>
                                 <router-link :to="{ name: 'StoriesDetailsPage', params: { slug: a.slug } }" class="blog-card__more"><i class="far fa-angle-right"></i>Read More</router-link>
