@@ -108,7 +108,7 @@ class Blog extends Eloquent
 
   public function displayRecentBlog()
   {
-    $blogs = self::orderBy('fldBlogDate', 'DESC')->take(10)->get();
+    $blogs = self::orderBy('fldBlogDate', 'DESC')->take(3)->get();
     return $blogs;
   }
 
@@ -128,7 +128,6 @@ class Blog extends Eloquent
   public function displayAllBlogByCategoryExceptSelectedBlog($category_id, $blog_id)
   {
     $blogs = self::where('fldBlogCategoryID', '=', $category_id)
-      ->where('fldBlogStatus', "=", 1)
       ->where('fldBlogID', "!=", $blog_id)
       ->orderBy('fldBlogDate', 'DESC')
       ->get();

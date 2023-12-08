@@ -19,8 +19,17 @@ Vue.use(VueRouter);
 Vue.use(VueCryptojs);
 Vue.use(VueMeta);
 const router = new VueRouter({
-    mode: "history", // Use history mode for clean URLs
-    routes, // Short for `routes: routes`
+    routes,
+    mode: "history",
+    scrollBehavior(to, from, savedPosition) {
+        if (to.hash) {
+            return {
+                selector: to.hash,
+            };
+        } else {
+            return { x: 0, y: 0 };
+        }
+    },
 });
 
 Vue.filter("formatTransDate", function (value) {
@@ -29,6 +38,15 @@ Vue.filter("formatTransDate", function (value) {
             return moment(value).format("MMM DD YYYY");
         }
         return value;
+    }
+});
+
+// 2023-12-08 15:13:48 to MMM DD YYYY
+Vue.filter("formatTransDateWithTime", function (value) {
+    if (value) {
+        if (value && moment(value, "YYYY-MM-DD HH:mm:ss", true).isValid()) {
+            return moment(value).format("MMM DD YYYY");
+        }
     }
 });
 

@@ -42,12 +42,9 @@ class BlogCategoryMutation extends Mutation {
   public function rules(array $args = []): array {
      $rules = [];
 
-     Log::debug('blog categ mutation args');
-     Log::debug(print_r($args, true));
-     
      $blog_category = $args['blog_category'];
 
-     if($blog_category['action_type'] == "add" || $blog_category['action_type'] == "update") {
+     if($blog_category['action_type'] == "new_record" || $blog_category['action_type'] == "update_record") {
        $rules['blog_category.name'] = ['required'];
      }
 
@@ -64,17 +61,13 @@ class BlogCategoryMutation extends Mutation {
      $response_obj = new \stdClass();
      $category_data = new BlogCategory();
 
-     $helper_model = new Helper();
 
-     if($blog_category['action_type'] == "add") {
+     if($blog_category['action_type'] == "new_record") {
          $response_obj = $category_data->AddUpdateRecord(0, $blog_category);
-
-         Log::debug(print_r($response_obj, true));
      }
 
-     if($blog_category['action_type'] == "update") {
+     if($blog_category['action_type'] == "update_record") {
        $category_id = Crypt::decryptString($blog_category['category_id']);
-
        $response_obj = $category_data->AddUpdateRecord($category_id, $blog_category);
 
      }

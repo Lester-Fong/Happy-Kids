@@ -20,7 +20,7 @@
                                     {{ a.name }}
                                 </td>
                                 <td>
-                                    {{ a.date_created | formatTransDate }}
+                                    {{ a.date_created | formatTransDateWithTime }}
                                 </td>
                                 <td class="text-center dropdown">
                                     <a class="dropdown-toggle" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -32,7 +32,7 @@
                                     </a>
                                     <div class="dropdown-menu">
                                         <a href="javascript:void(0);" class="dropdown-item" @click="onEditBlogCategory(a)"> Edit Blog </a>
-                                        <a href="javascript:void(0);" class="dropdown-item" @click="onDeleteBlog(a)">Delete Blog</a>
+                                        <a href="javascript:void(0);" class="dropdown-item" @click="onDeleteCategory(a.category_id)">Delete Blog</a>
                                     </div>
                                 </td>
                             </tr>
@@ -91,11 +91,12 @@ export default {
 
         onEditBlogCategory(data) {
             this.is_edit = true;
+            $("#blog_category_modal").modal("show");
             this.selected_blog_category = data;
         },
 
         onDeleteCategory(category_id) {
-            this.$swal({
+            Swal.fire({
                 title: "Are you sure?",
                 html: "You want to delete this record?",
                 icon: "warning",
@@ -106,7 +107,7 @@ export default {
             }).then((res) => {
                 if (res.isConfirmed == true) {
                     this.is_loading = true;
-                    this.$query_administrator("save_blog_categories", {
+                    this.$admin_queries("save_blog_categories", {
                         blog_category: {
                             category_id: category_id,
                             action_type: "delete_record",
@@ -118,15 +119,15 @@ export default {
                             let response = res.data.data.blog_category;
 
                             if (response.error == false) {
-                                this.$swal("Success!", response.message, "success");
+                                Swal.fire("Success!", response.message, "success");
                                 this.onPopulateData();
                             } else {
-                                this.$swal("Error!", response.message, "error");
+                                Swal.fire("Error!", response.message, "error");
                             }
                         })
                         .catch(() => {
                             this.is_loading = false;
-                            this.$swal("Error!", this.global_error_message, "error");
+                            Swal.fire("Error!", this.global_error_message, "error");
                         });
                 }
             });
@@ -139,6 +140,7 @@ export default {
 
         onSuccess() {
             this.is_edit = false;
+            $("#blog_category_modal").modal("hide");
             this.onPopulateData();
         },
     },

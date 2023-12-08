@@ -168,9 +168,9 @@ class BlogMutation extends Mutation
       }
     }
 
-    // if ($blogs['action_type'] == "add_blog_views") {
-    //   $response_obj = Blog::addViewsForBlog($blogs['slug']);
-    // }
+    if ($blogs['action_type'] == "add_blog_views") {
+      $response_obj = $blogs_model->addViewsForBlog($blogs['slug']);
+    }
 
     return $response_obj;
   }

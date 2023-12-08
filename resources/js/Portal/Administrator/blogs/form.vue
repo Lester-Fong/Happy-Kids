@@ -21,10 +21,7 @@
                                 <label class="form-label" for="default-06">Category</label>
                                 <div class="form-control-wrap">
                                     <select class="form-select" v-model="category">
-                                        <!-- <option value="">Select one</option>
-                                        <option :value="blog_category.original_category_id" v-for="blog_category in blog_category_arr" :key="blog_category.original_category_id">{{ blog_category.name }}</option> -->
-                                        <option value="1">Scholarship</option>
-                                        <option value="2">Feeding</option>
+                                        <option :value="a.original_category_id" v-for="a in blog_category_arr" :key="a.original_category_id">{{ a.name }}</option>
                                     </select>
                                     <div class="text-danger">{{ category_error }}</div>
                                 </div>
@@ -217,7 +214,7 @@ export default {
             this.blogs_id = this.$route.params.id;
             this.is_edit = true;
         }
-        // this.onPopulateCategory();
+        this.onPopulateCategory();
     },
     methods: {
         initializeTagify() {
@@ -229,12 +226,13 @@ export default {
             });
         },
         onPopulateCategory() {
-            this.$query_administrator("blog_categories", {
+            this.$admin_queries("blog_category", {
                 action_type: "display_all",
             })
                 .then((res) => {
                     this.is_loading = false;
                     this.blog_category_arr = res.data.data.blog_category;
+                    console.log("onPopulateCategory: ", res);
                 })
                 .catch((err) => {
                     Swal.fire("Error!", this.global_error_message, "error");
@@ -408,6 +406,7 @@ export default {
 
                     this.blog_date = this.blogs.date;
                     this.category = this.blogs.category_id;
+                    console.log("this.blogs: ", this.blogs);
                     this.slug = this.blogs.slug;
                     this.status = this.blogs.status;
                     // this.minutes_read = this.blogs.minutes_read;

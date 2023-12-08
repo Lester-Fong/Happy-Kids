@@ -14,6 +14,7 @@ use App\Models\Team;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
+use Log;
 
 
 class FrontQuery extends Query
@@ -44,7 +45,7 @@ class FrontQuery extends Query
     $response_obj = new \stdClass();
     // $brand_model = new Brand();
     $blog_model = new Blog();
-    // $blog_category_model = new BlogCategory();
+    $blog_category_model = new BlogCategory();
 
 
     if ($action_type == 'subscribe_newsletter') {
@@ -110,19 +111,23 @@ class FrontQuery extends Query
 
     if ($args['action_type'] == "display_by_blogs_slug") {
       $slug = $args['slug'];
-      $single_blog = Blog::where('fldBlogSlug', '=', $slug)->first();
+      $single_blog = $blog_model->where('fldBlogSlug', '=', $slug)->first();
+
       // $popular_blogs = $blog_model->displayPopularBlogs();
       // $blog_category = $blog_category_model->displayAllCategory();
       // $pages  = Pages::find(5);
       // related blogs by category id
+      
       $related_blogs = $blog_model->displayAllBlogByCategoryExceptSelectedBlog($single_blog->fldBlogCategoryID, $single_blog->fldBlogID);
 
+      $latest_posts = $blog_model->displayRecentBlog();
 
+      $response_obj->latest_posts = $latest_posts;
       $response_obj->single_blog = $single_blog;
       // $response_obj->blogs = $popular_blogs;
-      $response_obj->blog_category = $blog_category;
+      // $response_obj->blog_category = $blog_category;
       $response_obj->related_blogs = $related_blogs;
-      $response_obj->page = $pages;
+      // $response_obj->page = $pages;
     }
     return $response_obj;
   }
