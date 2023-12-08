@@ -106,13 +106,13 @@ class Pages extends Eloquent
             $description_obj->video_link = $data['video_link'];
         }
 
-        if ($data['title'] == 'Feeding Program') {
-            $description_obj->feed_intro_title = $data['feed_intro_title'];
-            $description_obj->feed_intro_description = $data['feed_intro_description'];
-            $description_obj->feed_about_title = $data['feed_about_title'];
-            $description_obj->feed_about_description = $data['feed_about_description'];
-            $description_obj->feed_overview_title = $data['feed_overview_title'];
-            $description_obj->feed_overview_description = $data['feed_overview_description'];
+        if ($data['title'] == 'Feeding Program' || $data['title'] == 'Scholarship Program') {
+            $description_obj->program_intro_title = $data['program_intro_title'];
+            $description_obj->program_intro_description = $data['program_intro_description'];
+            $description_obj->program_about_title = $data['program_about_title'];
+            $description_obj->program_about_description = $data['program_about_description'];
+            $description_obj->program_overview_title = $data['program_overview_title'];
+            $description_obj->program_overview_description = $data['program_overview_description'];
         }
 
 
@@ -246,16 +246,16 @@ class Pages extends Eloquent
                     $description_obj->volunteer_image = isset($description_data->volunteer_image) ? $description_data->volunteer_image : "";
                     $description_obj->volunteer_image_webp = isset($description_data->volunteer_image_webp) ? $description_data->volunteer_image_webp : "";
                 }
-            } else if ($data['title'] == 'Feeding Program') {
+            } else if ($data['title'] == 'Feeding Program' || $data['title'] == 'Scholarship Program') {
                 $file11 = $args['file11'];
                 if ($file11 != "") {
-                    $filename = $helper_model->ImageUpload($file11, "feed_" . "/" . $slug, "pages");
-                    $description_obj->feed_image = $filename;
+                    $filename = $helper_model->ImageUpload($file11, "program_" . "/" . $slug, "pages");
+                    $description_obj->program_image = $filename;
                     $filename_arr = explode('.', $filename);
-                    $description_obj->feed_image_webp = $filename_arr[0] . ".webp";
+                    $description_obj->program_image_webp = $filename_arr[0] . ".webp";
                 } else {
-                    $description_obj->feed_image = isset($description_data->feed_image) ? $description_data->feed_image : "";
-                    $description_obj->feed_image_webp = isset($description_data->feed_image_webp) ? $description_data->feed_image_webp : "";
+                    $description_obj->program_image = isset($description_data->program_image) ? $description_data->program_image : "";
+                    $description_obj->program_image_webp = isset($description_data->program_image_webp) ? $description_data->program_image_webp : "";
                 }
             }
 

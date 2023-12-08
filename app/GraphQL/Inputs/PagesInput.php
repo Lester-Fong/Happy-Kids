@@ -163,22 +163,22 @@ class PagesInput extends InputType
             'type' => Type::string(),
          ],
 
-         'feed_intro_title' => [
+         'program_intro_title' => [
             'type' => Type::string(),
          ],
-         'feed_intro_description' => [
+         'program_intro_description' => [
             'type' => Type::string(),
          ],
-         'feed_about_title' => [
+         'program_about_title' => [
             'type' => Type::string(),
          ],
-         'feed_about_description' => [
+         'program_about_description' => [
             'type' => Type::string(),
          ],
-         'feed_overview_title' => [
+         'program_overview_title' => [
             'type' => Type::string(),
          ],
-         'feed_overview_description' => [
+         'program_overview_description' => [
             'type' => Type::string(),
          ],
 
