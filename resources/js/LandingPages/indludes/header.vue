@@ -6,10 +6,10 @@
                     <p>Welcome to non profit charity platform</p>
 
                     <div class="main-header__social">
-                        <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
-                        <a href="#" aria-label="pinterest"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+                        <!-- <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a> -->
+                        <a target="_blank" href="https://www.facebook.com/TrimexCollegesHappyKids/" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
+                        <!-- <a href="#" aria-label="pinterest"><i class="fab fa-pinterest-p"></i></a> -->
+                        <a target="_blank" href="https://www.instagram.com/trimexcollegeshappykids/" aria-label="instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                     <!-- /.main-header__social -->
                 </div>
@@ -18,10 +18,13 @@
             <!-- /.main-header__top -->
             <div class="header-upper">
                 <div class="container">
-                    <div class="logo-box">
-                        <!-- <h3>Happy Kids Logo</h3> -->
+                    <div class="logo-box d-flex align-items-center">
                         <img src="/public/images/happy_kids_logo.jpg" alt="happy_kids_logo" height="100" />
                         <span class="fa fa-bars mobile-nav__toggler"></span>
+                        <div class="ml-2">
+                            <a target="_blank" href="https://trimexcolleges.edu.ph/"><h3>Trimex Colleges</h3></a>
+                            <h6>Happy Kids</h6>
+                        </div>
                     </div>
                     <!-- /.logo-box -->
 
