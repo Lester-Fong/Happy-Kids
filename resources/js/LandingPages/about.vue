@@ -1,7 +1,7 @@
 <template>
   <div class="page-wrapper">
     <section class="page-header">
-      <div class="page-header__bg" style="background-image: url(front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
+      <div class="page-header__bg" style="background-image: url(/public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>About Page</h2>
@@ -20,15 +20,15 @@
       <div class="container">
         <div class="row">
           <div class="about-one__award">
-            <img src="front/assets/images/shapes/about-bag-1-1.png" alt="" />
+            <img src="/public/front/assets/images/shapes/about-bag-1-1.png" alt="" />
           </div>
           <!-- /.about-one__award -->
           <div class="col-lg-6">
-            <img src="front/assets/images/resources/about-1-1.jpg" alt="" class="img-fluid" />
+            <img src="/public/front/assets/images/resources/about-1-1.jpg" alt="" class="img-fluid" />
           </div>
           <!-- /.col-lg-6 -->
           <div class="col-lg-6">
-            <img src="front/assets/images/resources/about-1-2.jpg" alt="" class="img-fluid" />
+            <img src="/public/front/assets/images/resources/about-1-2.jpg" alt="" class="img-fluid" />
           </div>
           <!-- /.col-lg-6 -->
         </div>
@@ -40,7 +40,7 @@
           <div class="row">
             <div class="col-md-12 col-lg-4">
               <div class="block-title">
-                <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Make a Difference</p>
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Make a Difference</p>
                 <h3>Let’s help them together.</h3>
               </div>
               <!-- /.block-title -->
@@ -63,93 +63,12 @@
     </section>
     <!-- /.about-one -->
 
-    <div class="client-carousel pt-120 pb-120 client-carousel__has-border-top">
-      <div class="container">
-        <div
-          class="thm-swiper__slider swiper-container"
-          data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
-                "0": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 2
-                },
-                "375": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 2
-                },
-                "575": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 3
-                },
-                "767": {
-                    "spaceBetween": 50,
-                    "slidesPerView": 4
-                },
-                "991": {
-                    "spaceBetween": 50,
-                    "slidesPerView": 5
-                },
-                "1199": {
-                    "spaceBetween": 100,
-                    "slidesPerView": 5
-                }
-            }}'
-        >
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-          </div>
-          <!-- /.swiper-wrapper -->
-        </div>
-        <!-- /.thm-swiper__slider -->
-      </div>
-      <!-- /.container -->
-    </div>
-    <!-- /.client-carousel -->
-
     <section class="about-counter pt-120">
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
             <div class="block-title">
-              <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Help People Now</p>
+              <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Help People Now</p>
               <h3>Charity for the people <br />you care about.</h3>
             </div>
             <!-- /.block-title -->
@@ -165,11 +84,7 @@
             </ul>
             <!-- /.list-unstyled list-style-one -->
             <div class="about-counter__count">
-              <h3 class="odometer" data-count="8860">00</h3>
-              <p>
-                Donation campaigns <br />
-                are running
-              </p>
+              <p class="text-center">"Quotes of the lorem picsum of sit dolor amet consectetur"</p>
             </div>
             <!-- /.about-counter__count -->
           </div>
@@ -177,11 +92,11 @@
           <div class="col-lg-6">
             <div class="about-counter__image clearfix">
               <div class="about-counter__image-content">
-                <img src="front/assets/images/shapes/about-count-heart-1-1.png" alt="" />
+                <img src="/public/front/assets/images/shapes/about-count-heart-1-1.png" alt="" />
                 <p>We’re here to support you every step of the way.</p>
               </div>
               <!-- /.about-counter__image-content -->
-              <img src="front/assets/images/resources/about-counter-1-1.jpg" alt="" class="float-left" />
+              <img src="/public/front/assets/images/resources/about-counter-1-1.jpg" alt="" class="float-left" />
             </div>
             <!-- /.about-counter__image -->
           </div>
@@ -193,13 +108,13 @@
     </section>
     <!-- /.about-counter -->
 
-    <section class="team-about pb-120 pt-120" style="background-image: url(front/assets/images/team/team-map-1-1.png)">
+    <section class="team-about pb-120 pt-120" style="background-image: url(/public/front/assets/images/team/team-map-1-1.png)">
       <div class="container">
         <div class="team-about__top">
           <div class="row align-items-center">
             <div class="col-md-12 col-lg-7">
               <div class="block-title">
-                <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Our Volunteers</p>
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Our Volunteers</p>
                 <h3>
                   Meet those who help <br />
                   others in need.
@@ -219,7 +134,7 @@
         <div class="team-4-col">
           <div class="team-card text-center content-bg-1">
             <div class="team-card__image">
-              <img src="front/assets/images/team/team-2-1.jpg" alt="" />
+              <img src="/public/front/assets/images/team/team-2-1.jpg" alt="" />
             </div>
             <!-- /.team-card__image -->
             <div class="team-card__social">
@@ -238,7 +153,7 @@
           <!-- /.team-card -->
           <div class="team-card text-center content-bg-2">
             <div class="team-card__image">
-              <img src="front/assets/images/team/team-2-2.jpg" alt="" />
+              <img src="/public/front/assets/images/team/team-2-2.jpg" alt="" />
             </div>
             <!-- /.team-card__image -->
             <div class="team-card__social">
@@ -257,7 +172,7 @@
           <!-- /.team-card -->
           <div class="team-card text-center content-bg-3">
             <div class="team-card__image">
-              <img src="front/assets/images/team/team-2-3.jpg" alt="" />
+              <img src="/public/front/assets/images/team/team-2-3.jpg" alt="" />
             </div>
             <!-- /.team-card__image -->
             <div class="team-card__social">
@@ -276,7 +191,7 @@
           <!-- /.team-card -->
           <div class="team-card text-center content-bg-4">
             <div class="team-card__image">
-              <img src="front/assets/images/team/team-2-4.jpg" alt="" />
+              <img src="/public/front/assets/images/team/team-2-4.jpg" alt="" />
             </div>
             <!-- /.team-card__image -->
             <div class="team-card__social">
@@ -300,10 +215,10 @@
     </section>
     <!-- /.team-about -->
     <section class="video-card">
-      <div class="video-card__bg" style="background-image: url(front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
+      <div class="video-card__bg" style="background-image: url(/public/front/assets/images/backgrounds/page-header-1-1.jpg)"></div>
       <!-- /.video-card__bg -->
       <div class="container text-center pt-120 pb-120">
-        <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Help Other People</p>
+        <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Help Other People</p>
         <h3>
           Our fingerprints on the <br />
           lives we touch never fade.
@@ -320,13 +235,13 @@
     </section>
     <!-- /.video-card -->
 
-    <section class="testimonials-one pt-120 pb-90" style="background-image: url(front/assets/images/shapes/testimonials-map-1-1.png)">
+    <section class="testimonials-one pt-120 pb-90" style="background-image: url(/public/front/assets/images/shapes/testimonials-map-1-1.png)">
       <div class="container">
         <div class="team-about__top">
           <div class="row align-items-center">
             <div class="col-md-12 col-lg-7">
               <div class="block-title">
-                <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Our Testimonials</p>
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Our Testimonials</p>
                 <h3>
                   What they are talking <br />
                   about azino.
@@ -347,7 +262,7 @@
           <div class="col-lg-4">
             <div class="testimonials-one__single">
               <div class="testimonials-one__image">
-                <img src="front/assets/images/resources/testimonial-1-1.jpg" alt="" />
+                <img src="/public/front/assets/images/resources/testimonial-1-1.jpg" alt="" />
               </div>
               <!-- /.testimonials-one__image -->
               <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
@@ -360,7 +275,7 @@
           <div class="col-lg-4">
             <div class="testimonials-one__single">
               <div class="testimonials-one__image">
-                <img src="front/assets/images/resources/testimonial-1-2.jpg" alt="" />
+                <img src="/public/front/assets/images/resources/testimonial-1-2.jpg" alt="" />
               </div>
               <!-- /.testimonials-one__image -->
               <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
@@ -373,7 +288,7 @@
           <div class="col-lg-4">
             <div class="testimonials-one__single">
               <div class="testimonials-one__image">
-                <img src="front/assets/images/resources/testimonial-1-3.jpg" alt="" />
+                <img src="/public/front/assets/images/resources/testimonial-1-3.jpg" alt="" />
               </div>
               <!-- /.testimonials-one__image -->
               <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>

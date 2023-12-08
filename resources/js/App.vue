@@ -88,7 +88,6 @@ export default {
       })
         .then((res) => {
           let response = res.data.data.administrator;
-          console.log(res);
           if (!response.error) {
             this.admin_rec = response;
             this.is_portal = true;

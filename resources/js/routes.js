@@ -11,12 +11,13 @@ import AdminFAQ from "./Portal/Administrator/faq.vue";
 import AdminTestimonials from "./Portal/Administrator/testimonial.vue";
 import AdminOurTeam from "./Portal/Administrator/team.vue";
 import AdminPages from "./Portal/Administrator/pages.vue";
+import AdminPagesCreate from "./Portal/Administrator/pages/form.vue";
 import AdminSMS from "./Portal/Administrator/sms.vue";
 import AdminDonation from "./Portal/Administrator/donation.vue";
 
 export default [
     {
-        path: "",
+        path: "/admin",
         component: Front,
         meta: { isAdminAuthentication: false, isAdmin: true },
         children: [
@@ -34,6 +35,7 @@ export default [
     { path: "/admin/testimonials", component: AdminTestimonials, name: "AdminTestimonials", meta: { isAdminAuthentication: true, isTestimonial: true } },
     { path: "/admin/our-team", component: AdminOurTeam, name: "AdminOurTeam", meta: { isAdminAuthentication: true, isOurTeam: true } },
     { path: "/admin/pages", component: AdminPages, name: "AdminPages", meta: { isAdminAuthentication: true, isPages: true } },
+    { path: "/admin/pages/create", component: AdminPagesCreate, name: "AdminPagesCreate", meta: { isAdminAuthentication: true, isPages: true } },
     { path: "/admin/sms", component: AdminSMS, name: "AdminSMS", meta: { isAdminAuthentication: true, isSMS: true } },
     { path: "/admin/donations", component: AdminDonation, name: "AdminDonation", meta: { isAdminAuthentication: true, isDonations: true } },
 ];

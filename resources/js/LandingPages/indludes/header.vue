@@ -67,19 +67,19 @@
               <ul>
                 <li><router-link :to="{ name: 'AboutPage' }">Our Mission</router-link></li>
                 <li><router-link :to="{ name: 'OurTeamPage' }">Our Team</router-link></li>
-                <li><a href="javascript:void(0)">FAQs</a></li>
+                <li><router-link :to="{ name: 'FAQPage' }">FAQs</router-link></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="javascript:void(0)">Our Program</a>
               <ul>
-                <li><a href="javascript:void(0)">Feeding Program</a></li>
-                <li><a href="javascript:void(0)">Scholarship Program</a></li>
-                <li><a href="javascript:void(0)">Events</a></li>
+                <li><router-link :to="{ name: 'FeedingProgramPage' }">Feeding Program</router-link></li>
+                <li><router-link :to="{ name: 'ScholarshipProgramPage' }">Scholarship Program</router-link></li>
+                <li><router-link :to="{ name: 'EventsPage' }">Events</router-link></li>
               </ul>
             </li>
-            <li><a href="javascript:void(0)">Stories</a></li>
-            <li><a href="javascript:void(0)">Contact Us</a></li>
+            <li><router-link :to="{ name: 'StoriesPage' }">Stories</router-link></li>
+            <li><router-link :to="{ name: 'ContactPage' }">Contact Us</router-link></li>
           </ul>
           <!-- /.main-menu__list -->
           <a href="javascript:void(0)" class="thm-btn dynamic-radius">Donate Now</a>
@@ -99,25 +99,25 @@
         <!-- /.logo-box -->
         <div class="sticky-header__content">
           <ul class="main-menu__list dynamic-radius">
-            <li><a href="javascript:void(0)">Home</a></li>
+            <li><router-link :to="{ name: 'HomePage' }">Home</router-link></li>
             <li class="dropdown">
               <a href="javascript:void(0)">About</a>
               <ul>
-                <li><a href="javascript:void(0)">Our Mission</a></li>
-                <li><a href="javascript:void(0)">Our Team</a></li>
-                <li><a href="javascript:void(0)">FAQs</a></li>
+                <li><router-link :to="{ name: 'AboutPage' }">Our Mission</router-link></li>
+                <li><router-link :to="{ name: 'OurTeamPage' }">Our Team</router-link></li>
+                <li><router-link :to="{ name: 'FAQPage' }">FAQs</router-link></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="javascript:void(0)">Our Program</a>
               <ul>
-                <li><a href="javascript:void(0)">Feeding Program</a></li>
-                <li><a href="javascript:void(0)">Scholarship Program</a></li>
-                <li><a href="javascript:void(0)">Events</a></li>
+                <li><router-link :to="{ name: 'FeedingProgramPage' }">Feeding Program</router-link></li>
+                <li><router-link :to="{ name: 'ScholarshipProgramPage' }">Scholarship Program</router-link></li>
+                <li><router-link :to="{ name: 'EventsPage' }">Events</router-link></li>
               </ul>
             </li>
-            <li><a href="javascript:void(0)">Stories</a></li>
-            <li><a href="javascript:void(0)">Contact Us</a></li>
+            <li><router-link :to="{ name: 'StoriesPage' }">Stories</router-link></li>
+            <li><router-link :to="{ name: 'ContactPage' }">Contact Us</router-link></li>
           </ul>
           <!-- /.main-menu__list -->
           <a href="contact.html" class="thm-btn dynamic-radius">Donate Now</a>

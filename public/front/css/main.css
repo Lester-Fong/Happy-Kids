@@ -714,6 +714,9 @@
 }
 
 .event-card-image-inner > img {
+  height: 130px;
+  width: 130px;
+  object-fit: cover;
   border-radius: 50%;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -7143,7 +7146,7 @@ h6 {
 .service-two {
   padding-bottom: 120px;
   background-color: #f1f1f1;
-  background-image: url('/front/assets/images/shapes/hand-bg-1-1.png');
+  background-image: url('/public/front/assets/images/shapes/hand-bg-1-1.png');
   background-repeat: repeat-x;
   background-position: bottom center;
   -webkit-box-shadow: inset 0px -10px 60px 0px rgba(0, 0, 0, 0.05);
@@ -7534,3 +7537,7 @@ h6 {
   color: var(--thm-black);
 }
 /*# sourceMappingURL=main.css.map */
+
+.w-70 {
+    width: 70%;
+}

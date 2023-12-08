@@ -2,22 +2,10 @@
   <div>
     <!-- INTRO HEADER PART 1 -->
     <section class="main-slider main-slider__two">
-      <div
-        class="swiper-container thm-swiper__slider"
-        data-swiper-options='{"slidesPerView": 1, "loop": true,
-    "effect": "fade",
-    "pagination": {
-        "el": "#main-slider-pagination",
-        "type": "bullets",
-        "clickable": true
-      },
-    "autoplay": {
-        "delay": 5000
-    }}'
-      >
+      <div class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('front/assets/images/backgrounds/hero-header-1.jpg')"></div>
+            <div class="image-layer" style="background-image: url('/public/front/assets/images/backgrounds/hero-header-1.jpg')"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
@@ -39,7 +27,7 @@
           </div>
           <!-- /.swiper-slide -->
           <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('front/assets/images/backgrounds/hero-header-2.jpg')"></div>
+            <div class="image-layer" style="background-image: url('/public/front/assets/images/backgrounds/hero-header-2.jpg')"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
@@ -61,7 +49,7 @@
           </div>
           <!-- /.swiper-slide -->
           <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('front/assets/images/backgrounds/hero-header-3.jpg')"></div>
+            <div class="image-layer" style="background-image: url('/public/front/assets/images/backgrounds/hero-header-3.jpg')"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
@@ -93,46 +81,12 @@
     <!-- THREE OPTIONS PART 2 -->
     <section class="service-two">
       <div class="container">
-        <div
-          class="swiper-container thm-swiper__slider"
-          data-swiper-options='{"slidesPerView": 3, "spaceBetween": 30,
-        "breakpoints": {
-            "0": {
-                "slidesPerView": 1,
-                "spaceBetween": 0
-            },
-            "375": {
-                "slidesPerView": 1,
-                "spaceBetween": 30
-            },
-            "575": {
-                "slidesPerView": 1,
-                "spaceBetween": 30
-            },
-            "768": {
-                "slidesPerView": 1,
-                "spaceBetween": 30
-            },
-            "991": {
-                "slidesPerView": 2,
-                "spaceBetween": 30
-            },
-            "1199": {
-                "slidesPerView": 2,
-                "spaceBetween": 30
-            },
-            "1200": {
-                "slidesPerView": 3,
-                "spaceBetween": 30
-            }
-        }
-        }'
-        >
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="service-two__box background-primary wow fadeInUp" data-wow-duration="1500ms" style="background-image: url('front/assets/images/backgrounds/card-charity.jpg')">
+        <div class="swiper-container thm-swiper__slider">
+          <div class="swiper-wrapper row mx-0">
+            <div class="mx-auto col-lg-4 col-md-6 col-12">
+              <div class="service-two__box background-primary wow fadeInUp" data-wow-duration="1500ms" style="background-image: url('/public/front/assets/images/backgrounds/card-charity.jpg')">
                 <div class="service-two__box-inner">
-                  <img src="front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
+                  <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
                   <p>Start Donating</p>
                   <h3>
                     <a href="contact.html"
@@ -148,10 +102,10 @@
               <!-- /.service-two__box -->
             </div>
             <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <div class="service-two__box background-secondary wow fadeInDown" data-wow-duration="1500ms" data-wow-delay="100ms" style="background-image: url('front/assets/images/backgrounds/card-volunteers.jpg')">
+            <div class="mx-auto col-lg-4 col-md-6 col-12">
+              <div class="service-two__box background-secondary wow fadeInDown" data-wow-duration="1500ms" data-wow-delay="100ms" style="background-image: url('/public/front/assets/images/backgrounds/card-volunteers.jpg')">
                 <div class="service-two__box-inner">
-                  <img src="front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
+                  <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
                   <p>Let’s Join</p>
                   <h3>
                     <a href="become-volunteer.html"
@@ -167,10 +121,10 @@
               <!-- /.service-two__box -->
             </div>
             <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <div class="service-two__box background-base wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms" style="background-image: url('front/assets/images/backgrounds/card-childeduc.jpg')">
+            <div class="mx-auto col-lg-4 col-md-6 col-12">
+              <div class="service-two__box background-base wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms" style="background-image: url('/public/front/assets/images/backgrounds/card-childeduc.jpg')">
                 <div class="service-two__box-inner">
-                  <img src="front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
+                  <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
                   <p>Quick Funding</p>
                   <h3>
                     <a href="contact.html"
@@ -201,9 +155,9 @@
         <div class="row">
           <div class="col-xl-6">
             <div class="about-two__image wow fadeInLeft" data-wow-duration="1500ms">
-              <img src="front/assets/images/backgrounds/about-us-img.jpg" alt="about us image." class="about-two__image_left" />
+              <img src="/public/front/assets/images/backgrounds/about-us-img.jpg" alt="about us image." class="about-two__image_left" />
               <div class="about-two__award">
-                <img src="front/assets/images/shapes/about-bag-1-2.png" alt="" />
+                <img src="/public/front/assets/images/shapes/about-bag-1-2.png" alt="" />
               </div>
               <!-- /.about-two__award -->
             </div>
@@ -212,34 +166,25 @@
           <!-- /.col-lg-6 -->
           <div class="col-xl-6">
             <div class="about-two__content">
-              <div class="block-title">
+              <div class="block-title mb-4">
                 <p><img src="https://picsum.photos/200/300" width="15" alt="" /> About Happy Kids</p>
                 <h3>Welcome to non-profit charity organization.</h3>
               </div>
               <!-- /.block-title -->
-              <p class="mb-40 pr-10">Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt simply free ut labore et dolore magna aliqua simhy adndnh qkhhn.</p>
               <div class="row">
-                <div class="col-md-6">
-                  <div class="about-two__box">
+                <div class="col-md-12">
+                  <div class="about-two__box my-1">
                     <h3><i class="azino-icon-confirmation"></i> Become a Volunteer</h3>
-                    <p>Lorem ipsum dolor sit ametelit sed consectetur notted.</p>
+                    <p>Lorem ipsum dolor sit ametelit sed consectetur notted. Lorem ipsum dolor sit amet consectetur adipisicing elit. enim amet suscipit reiciendis quidem</p>
                   </div>
                   <!-- /.about-two__box -->
-                  <div class="about-two__box">
+                  <div class="about-two__box my-1">
                     <h3><i class="azino-icon-confirmation"></i> Quick Fundraising</h3>
-                    <p>Lorem ipsum dolor sit ametelit sed consectetur notted.</p>
+                    <p>Lorem ipsum dolor sit ametelit sed consectetur notted. Lorem ipsum dolor sit amet consectetur adipisicing elit. enim amet suscipit reiciendis quidem</p>
                   </div>
                   <!-- /.about-two__box -->
                 </div>
                 <!-- /.col-md-6 -->
-                <div class="col-md-6">
-                  <div class="about-two__box-two">
-                    <i class="azino-icon-support"></i>
-                    <h3>You can make a big difference in someone’s life.</h3>
-                  </div>
-                  <!-- /.about-two__box-two -->
-                </div>
-                <!-- /.col-lg-6 -->
               </div>
               <!-- /.row -->
               <a href="about.html" class="thm-btn dynamic-radius">Discover More</a>
@@ -257,10 +202,10 @@
 
     <!-- HELP VIDEO SECTION PART 4-->
     <section class="video-card">
-      <div class="video-card__bg" style="background-image: url('front/assets/images/backgrounds/fingerprints-bg.jpg')"></div>
+      <div class="video-card__bg" style="background-image: url('/public/front/assets/images/backgrounds/fingerprints-bg.jpg')"></div>
       <!-- /.video-card__bg -->
       <div class="container text-center pt-120 pb-120">
-        <p class="text-info"><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Help Other People</p>
+        <p class="text-info"><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Help Other People</p>
         <h3>
           Our fingerprints on the <br />
           lives we touch never fade.
@@ -456,7 +401,7 @@
           <div class="col-lg-6">
             <div class="faq-one__content">
               <div class="block-title">
-                <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />Help People Now</p>
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />Help People Now</p>
                 <h3>
                   Charity for the people <br />
                   you care about.
@@ -504,10 +449,10 @@
           <div class="col-lg-6">
             <div class="about-counter__image clearfix">
               <div class="about-counter__image-content">
-                <img src="front/assets/images/shapes/about-count-heart-1-1.png" alt="about-count-heart-1-1" />
+                <img src="/public/front/assets/images/shapes/about-count-heart-1-1.png" alt="about-count-heart-1-1" />
                 <p>We’re here to support you every step of the way.</p>
               </div>
-              <img src="front/assets/images/backgrounds/charity-people.jpg" alt="charity people" class="float-left part-five__image_right" />
+              <img src="/public/front/assets/images/backgrounds/charity-people.jpg" alt="charity people" class="float-left part-five__image_right" />
             </div>
           </div>
         </div>
@@ -515,13 +460,13 @@
     </section>
 
     <!-- TESTIMONIALS SECTION PART 6 -->
-    <section class="testimonials-one pt-120 pb-90" style="background-image: url('front/assets/images/shapes/testimonials-map-1-1.png')">
+    <section class="testimonials-one pt-120 pb-90" style="background-image: url('/public/front/assets/images/shapes/testimonials-map-1-1.png')">
       <div class="container">
         <div class="team-about__top">
           <div class="row align-items-center">
             <div class="col-md-12 col-lg-7">
               <div class="block-title">
-                <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Our Testimonials</p>
+                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Our Testimonials</p>
                 <h3>
                   What they are talking <br />
                   about azino.
@@ -542,7 +487,7 @@
           <div class="col-lg-4">
             <div class="testimonials-one__single">
               <div class="testimonials-one__image">
-                <img src="front/assets/images/resources/profile-1.jpg" alt="profile-1" class="testimonial_profile_image" />
+                <img src="/public/front/assets/images/resources/profile-1.jpg" alt="profile-1" class="testimonial_profile_image" />
               </div>
               <!-- /.testimonials-one__image -->
               <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
@@ -555,7 +500,7 @@
           <div class="col-lg-4">
             <div class="testimonials-one__single">
               <div class="testimonials-one__image">
-                <img src="front/assets/images/resources/profile-3.jpg" alt="profile-2" class="testimonial_profile_image" />
+                <img src="/public/front/assets/images/resources/profile-3.jpg" alt="profile-2" class="testimonial_profile_image" />
               </div>
               <!-- /.testimonials-one__image -->
               <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
@@ -568,7 +513,7 @@
           <div class="col-lg-4">
             <div class="testimonials-one__single">
               <div class="testimonials-one__image">
-                <img src="front/assets/images/resources/profile-2.jpg" alt="profile-3" class="testimonial_profile_image" />
+                <img src="/public/front/assets/images/resources/profile-2.jpg" alt="profile-3" class="testimonial_profile_image" />
               </div>
               <!-- /.testimonials-one__image -->
               <p>There are many variations of passages of lorsum available but the majority have suffered alteration in form, by injected not humour.</p>
@@ -618,7 +563,7 @@
           <div class="col-xl-5">
             <div class="price-one__main">
               <div class="block-title">
-                <p class="text-info"><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Popular Causes</p>
+                <p class="text-info"><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Popular Causes</p>
                 <h3>
                   Donate to charity causes <br />
                   around the world.
@@ -627,7 +572,7 @@
               <!-- /.block-title -->
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
               <div class="price-one__image-box">
-                <img src="front/assets/images/backgrounds/child-hands.jpg" alt="children-hands" />
+                <img src="/public/front/assets/images/backgrounds/child-hands.jpg" alt="children-hands" />
                 <div class="price-one__image-box-content">
                   <h3><i class="fa fa-check"></i> Fundraising Platform</h3>
                   <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem is simply free text quis bibendum.</p>
@@ -691,40 +636,12 @@
     <!-- GALLERY SECTION PART 8 -->
     <section class="gallery-home-two pt-120 pb-120">
       <div class="container">
-        <img src="front/assets/images/shapes/video-dot-1-1.png" alt="" class="gallery-home-two__dots" />
-        <div
-          class="thm-swiper__slider swiper-container"
-          data-swiper-options='{"spaceBetween": 100, "slidesPerView": 4, "autoplay": { "delay": 5000 }, "breakpoints": {
-            "0": {
-                "spaceBetween": 0,
-                "slidesPerView": 1
-            },
-            "425": {
-                "spaceBetween": 0,
-                "slidesPerView": 1
-            },
-            "575": {
-                "spaceBetween": 30,
-                "slidesPerView": 2
-            },
-            "767": {
-                "spaceBetween": 30,
-                "slidesPerView": 3
-            },
-            "991": {
-                "spaceBetween": 30,
-                "slidesPerView": 3
-            },
-            "1199": {
-                "spaceBetween": 30,
-                "slidesPerView": 4
-            }
-        }}'
-        >
+        <img src="/public/front/assets/images/shapes/video-dot-1-1.png" alt="" class="gallery-home-two__dots" />
+        <div class="thm-swiper__slider swiper-container swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="index in 5" :key="index">
+            <div class="swiper-slide" v-for="index in 8" :key="index">
               <div class="gallery-card">
-                <img src="https://picsum.photos/200/300" class="img-fluid" alt="" />
+                <img src="https://picsum.photos/200/300" class="img-fluid w-100" alt="" />
                 <div class="gallery-content">
                   <a href="https://picsum.photos/200/300" class="img-popup" aria-label="open image"><i class="fas fa-plus"></i></a>
                 </div>
@@ -736,12 +653,12 @@
     </section>
 
     <!-- LATEST EVENT SECTION PART 9 -->
-    <section class="event-home-two py-5" style="background-image: url('front/assets/images/shapes/event-map-1-2.png')">
+    <section class="event-home-two py-5" style="background-image: url('/public/front/assets/images/shapes/event-map-1-2.png')">
       <div class="container">
         <div class="row align-items-start align-items-md-center flex-column flex-md-row mb-60">
           <div class="col-lg-7">
             <div class="block-title">
-              <p><img src="front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Latest Events</p>
+              <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />Latest Events</p>
               <h3>
                 Checkout our upcoming <br />
                 full event list.
@@ -979,45 +896,114 @@
       </section> -->
 
     <!-- PARTNER AND SPONSOR SECTION PART 10 -->
-    <div class="client-carousel py-5 client-carousel__has-border-top">
-      <h2 class="text-center mb-5">Sponsors &nbsp; <img src="front/assets/images/shapes/heart-2-1.png" width="50" alt="favicon heart" /></h2>
+    <!-- <div class="client-carousel py-5 client-carousel__has-border-top part-10">
+      <h2 class="text-center mb-5">Sponsors &nbsp; <img src="/public/front/assets/images/shapes/heart-2-1.png" width="50" alt="favicon heart" /></h2>
       <div class="container">
-        <div
-          class="thm-swiper__slider swiper-container"
-          data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
-                "0": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 2
-                },
-                "375": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 2
-                },
-                "575": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 3
-                },
-                "767": {
-                    "spaceBetween": 50,
-                    "slidesPerView": 4
-                },
-                "991": {
-                    "spaceBetween": 50,
-                    "slidesPerView": 5
-                },
-                "1199": {
-                    "spaceBetween": 100,
-                    "slidesPerView": 5
-                }
-            }}'
-        >
+        <div class="thm-swiper__slider swiper-container swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="index in 7" :key="index">
-              <img src="https://picsum.photos/123/24" alt="" />
+              <img src="https://picsum.photos/250/75" alt="" />
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
+
+
+<script>
+export default {
+  name: "Home",
+  data() {
+    return {};
+  },
+  mounted() {
+    this.initSwiper();
+  },
+
+  methods: {
+    initSwiper() {
+      new Swiper(".main-slider .swiper", {
+        slidesPerView: 1,
+        loop: true,
+        effect: "fade",
+        pagination: {
+          el: "#main-slider-pagination",
+          type: "bullets",
+          clickable: true,
+        },
+        autoplay: {
+          delay: 5000,
+        },
+      });
+      new Swiper(".gallery-home-two .swiper", {
+        slidesPerView: 5,
+        spaceBetween: 100,
+        autoplay: { delay: 5000 },
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          375: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          575: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          991: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1199: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+      });
+      // new Swiper(".part-10 .swiper", {
+      //   spaceBetween: 100,
+      //   slidesPerView: 5,
+      //   autoplay: { delay: 5000 },
+      //   breakpoints: {
+      //     0: {
+      //       spaceBetween: 30,
+      //       slidesPerView: 2,
+      //     },
+      //     375: {
+      //       spaceBetween: 30,
+      //       slidesPerView: 2,
+      //     },
+      //     575: {
+      //       spaceBetween: 30,
+      //       slidesPerView: 3,
+      //     },
+      //     767: {
+      //       spaceBetween: 50,
+      //       slidesPerView: 4,
+      //     },
+      //     991: {
+      //       spaceBetween: 50,
+      //       slidesPerView: 5,
+      //     },
+      //     1199: {
+      //       spaceBetween: 100,
+      //       slidesPerView: 5,
+      //     },
+      //   },
+      // });
+    },
+  },
+};
+</script>

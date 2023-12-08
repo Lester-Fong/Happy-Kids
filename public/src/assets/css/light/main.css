@@ -1057,6 +1057,7 @@ select.form-control.form-custom {
   color: #4361ee;
 }
 
+
 .dropdown:not(.custom-dropdown-icon):not(.custom-dropdown) .dropdown-menu {
   border: 1px solid #e0e6ed;
   z-index: 899;
@@ -1064,12 +1065,11 @@ select.form-control.form-custom {
   padding: 10px;
   padding: 0.35rem 0;
   transition: top 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s;
-  opacity: 0;
   visibility: hidden;
-  display: block !important;
+  position: absolute;
+  display: none !important;
   transform: none !important;
-  top: -100px !important;
-  left: -50px !important;
+  top: 0;
   border-radius: 8px;
   background: #fff;
   box-shadow: none;
@@ -1085,6 +1085,8 @@ select.form-control.form-custom {
   opacity: 1;
   visibility: visible;
   top: 21px !important;
+  z-index: 99999999;
+  display: inline-block !important;
 }
 .dropdown:not(.custom-dropdown-icon):not(.custom-dropdown) .dropdown-menu a.dropdown-item {
   border-radius: 5px;
@@ -3092,12 +3094,19 @@ fieldset:disabled .btn {
   color: #515365;
   letter-spacing: 1px;
 }
+.table thead tr th:first-child {
+  border-top-left-radius: 15px;
+}
+.table thead tr th:last-child {
+  border-top-right-radius: 15px;
+}
 .table thead tr th {
   border: none;
-  background: #ebedf2;
+  background: #001524;
   padding: 10px 21px 10px 21px;
   vertical-align: middle;
   font-weight: 500;
+  color: #eee !important;
 }
 .table thead tr.table-row-hidden {
   border: none;

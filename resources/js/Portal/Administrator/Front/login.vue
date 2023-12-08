@@ -46,7 +46,7 @@
             <div class="col-sm-4 col-12">
               <div class="mb-4">
                 <button class="btn btn-social-login w-100">
-                  <img src="../../../../../public/src/assets/img/google-gmail.svg" class="img-fluid" />
+                  <img src="/public/src/assets/img/google-gmail.svg" class="img-fluid" />
                   <span class="btn-text-inner">Google</span>
                 </button>
               </div>
@@ -55,7 +55,7 @@
             <div class="col-sm-4 col-12">
               <div class="mb-4">
                 <button class="btn btn-social-login w-100">
-                  <img src="../../../../../public/src/assets/img/github-icon.svg" class="img-fluid" />
+                  <img src="/public/src/assets/img/github-icon.svg" class="img-fluid" />
                   <span class="btn-text-inner">Github</span>
                 </button>
               </div>
@@ -64,7 +64,7 @@
             <div class="col-sm-4 col-12">
               <div class="mb-4">
                 <button class="btn btn-social-login w-100">
-                  <img src="../../../../../public/src/assets/img/twitter.svg" class="img-fluid" />
+                  <img src="/public/src/assets/img/twitter.svg" class="img-fluid" />
                   <span class="btn-text-inner">Twitter</span>
                 </button>
               </div>
