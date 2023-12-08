@@ -10,6 +10,7 @@ use Input;
 use Config;
 use Hash;
 use Session;
+use Intervention\Image\Facades\Image as Image;
 use Mail;
 use Log;
 use Storage;

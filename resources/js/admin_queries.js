@@ -3,8 +3,8 @@ import Vue from "vue";
 import admin_requests from "./RequestQueries/admin_requests";
 
 let uploadQueries = ["save_pages", "save_blogs"];
+let adminRequestNames = ["get_admin", "blogs", "save_blogs", "blog_category", "save_blog_categories", "save_pages", "pages"];
 
-let adminRequestNames = ["get_admin", "blogs", "save_blogs", "blog_category", "save_blog_categories", "save_pages"];
 let requestNames = ["admin_outside_action"];
 
 let getApiUrl = (queryName) => {
@@ -53,36 +53,48 @@ Vue.prototype.$admin_queries = function (queryName, queryVariables) {
 
         bodyFormData.set(
             "map",
-            JSON.stringify({ file: ["variables.file"], file1: ["variables.file1"], file2: ["variables.file2"], file3: ["variables.file3"], file4: ["variables.file4"], file5: ["variables.file5"], selectedFileHow: ["variables.selectedFileHow"], selectedFileRoles: ["variables.selectedFileRoles"], selectedFileCore: ["variables.selectedFileCore"], thumbnail: ["variables.thumbnail"] })
+            JSON.stringify({
+                file: ["variables.file"],
+                file1: ["variables.file1"],
+                file2: ["variables.file2"],
+                file3: ["variables.file3"],
+                file4: ["variables.file4"],
+                file5: ["variables.file5"],
+                file6: ["variables.file6"],
+                file7: ["variables.file7"],
+                file8: ["variables.file8"],
+                file9: ["variables.file9"],
+                file10: ["variables.file10"],
+                file11: ["variables.file11"],
+                objectiveImages: ["variables.objectiveImages"],
+                selectedFileRoles: ["variables.selectedFileRoles"],
+                selectedFileCore: ["variables.selectedFileCore"],
+                thumbnail: ["variables.thumbnail"],
+            })
         );
-        if (queryVariables.file || queryVariables.file1 || queryVariables.file2 || queryVariables.file3 || queryVariables.file4 || queryVariables.file5) {
+
+        if (queryVariables.file || queryVariables.file1 || queryVariables.file2 || queryVariables.file3 || queryVariables.file4 || queryVariables.file5 || queryVariables.file6 || queryVariables.file7 || queryVariables.file8 || queryVariables.file9 || queryVariables.file10 || queryVariables.file11) {
             bodyFormData.append("file", queryVariables.file);
             bodyFormData.append("file1", queryVariables.file1);
             bodyFormData.append("file2", queryVariables.file2);
             bodyFormData.append("file3", queryVariables.file3);
             bodyFormData.append("file4", queryVariables.file4);
             bodyFormData.append("file5", queryVariables.file5);
+            bodyFormData.append("file6", queryVariables.file6);
+            bodyFormData.append("file7", queryVariables.file7);
+            bodyFormData.append("file8", queryVariables.file8);
+            bodyFormData.append("file9", queryVariables.file9);
+            bodyFormData.append("file10", queryVariables.file10);
+            bodyFormData.append("file11", queryVariables.file11);
         }
 
         if (queryVariables.thumbnail) {
             bodyFormData.append("thumbnail", queryVariables.thumbnail);
         }
 
-        if (queryVariables.selectedFileHow) {
-            for (let index = 0; index < queryVariables.selectedFileHow.length; index++) {
-                bodyFormData.append("selectedFileHow[" + index + "]", queryVariables.selectedFileHow[index]);
-            }
-        }
-
-        if (queryVariables.selectedFileRoles) {
-            for (let index = 0; index < queryVariables.selectedFileRoles.length; index++) {
-                bodyFormData.append("selectedFileRoles[" + index + "]", queryVariables.selectedFileRoles[index]);
-            }
-        }
-
-        if (queryVariables.selectedFileCore) {
-            for (let index = 0; index < queryVariables.selectedFileCore.length; index++) {
-                bodyFormData.append("selectedFileCore[" + index + "]", queryVariables.selectedFileCore[index]);
+        if (queryVariables.objectiveImages) {
+            for (let index = 0; index < queryVariables.objectiveImages.length; index++) {
+                bodyFormData.append("objectiveImages[" + index + "]", queryVariables.objectiveImages[index]);
             }
         }
 

@@ -1,3 +1,81 @@
+/* ================= THIS STYLES ARE FOR PORTAL ================= */
+
+
+
+// VARIABLES MODULE ============================>
+// Font sizes
+$fs_xsmall: 0.625rem; // 10px
+$fs_small: 0.875rem; // 14px
+$fs_medium: 1rem; // 16px
+$fs_large: 2rem; // 32px
+$fs_xlarge: 3.125rem; // 50px
+$fs_xxlarge: 4rem; // 64px
+$fs_new24: 1.5rem; // 24px
+$fs_new12: 0.75rem; // 12px
+
+//font weights
+$fw_light: 300;
+$fw_regular: 400;
+$fw_medium: 500;
+$fw_semibold: 600;
+$fw_bold: 700;
+
+$theme_primary_color: #800f2f;
+$theme_secondary_color: #001524;
+$theme_tertiary_color: #f49508;
+$gray_color: #666666;
+$light_blue: #6888fa;
+$theme_header_background: #fff8e6;
+$light_grey: #d9d9d9;
+$dark_gray: #8f92a1;
+$background_customer_portal: #fff4d7;
+$background_profile: #f1f7fc;
+// #301eff
+$owner_secondary: #301eff;
+
+//fonts
+$theme_font-family: "Poppins", sans-serif;
+
+// colors
+$color_white: #ffffff;
+$color_black: #000000;
+
+//background
+$customer_background: linear-gradient(to right, #feb623, #513600);
+$owner_background: linear-gradient(to left, $theme_secondary_color, $owner_secondary);
+$admin_background: linear-gradient(235deg, #494949 0%, $color_white 100%);
+
+//buttons
+$button_hover: $theme_tertiary_color;
+$blue-gradient-button: to right, $theme_primary_color, $theme_secondary_color;
+$primary_button: $theme_primary_color;
+$secondary_button: $theme_secondary_color;
+
+// form
+$login_form_color: $light_grey;
+
+// sidebar active color
+$sidebar_primary_light_color: #ffcb9b;
+$sidebar_secondary_light_color: #d7e7ff;
+
+// VARIABLES MODULE ============================>
+
+
+// CUSTOM STYLES MODULE ============================>
+// .loader-gif {
+//     position: fixed;
+//     top: 0px;
+//     right: 0px;
+//     width: 100%;
+//     height: 100%;
+//     background-color: #eceaea;
+//     background-image: url("/public/images/loader.gif");
+//     background-size: 300px;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     z-index: 10000000;
+//     opacity: 0.4;
+//   }
 
   .bi-sidebar {
     color: #506690 !important;
@@ -9,5 +87,141 @@
     font-weight: bold !important;
     border-radius: 8px;
   }
+
+// END  CUSTOM STYLES MODULE ============================>
+
+
+// FOR BUTTONS MODULE ============================>
+.button {
+  display: inline-block;
+  font-size: $fs_medium;
+  font-weight: $fw_medium;
+  // border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &--primary {
+      background: $primary_button;
+      color: $color_white;
+
+      &:active,
+      &:focus,
+      &:disabled,
+      &:not(:active):not(:focus) {
+          background: $primary_button !important;
+          color: $color_white;
+      }
+
+      &.t-dark {
+          color: $color_black !important;
+      }
+
+      &:not(:disabled):hover:not(:active) {
+          background-color: $button_hover !important;
+          color: $color_white;
+      }
+  }
+  &--secondary {
+      background: $secondary_button;
+      color: $color_white;
+
+      &:active,
+      &:focus,
+      &:disabled,
+      &:not(:active):not(:focus) {
+          background: $secondary_button !important;
+          color: $color_white !important;
+      }
+
+      &:not(:disabled):hover:not(:active) {
+          background: #454545 !important;
+          border: 1px solid $secondary_button;
+          color: $background_profile !important; 
+      }
+  }
+
+  &--white {
+      background-color: $color_white !important;
+      border: 1px solid $theme_secondary_color;
+      color: $theme_secondary_color !important;
+
+      &:active,
+      &:focus,
+      &:disabled,
+      &:not(:active):not(:focus) {
+          background-color: $color_white !important;
+          border: 1px solid $theme_secondary_color;
+          color: $theme_secondary_color;
+      }
+
+      &:not(:disabled):hover:not(:active) {
+          background-color: $theme_secondary_color !important;
+          color: $color_white !important;
+      }
+  }
+
+  &--transparent {
+      background-color: transparent !important;
+      border: 1px solid $theme_secondary_color;
+      color: $theme_secondary_color !important;
+
+      &:active,
+      &:focus,
+      &:disabled,
+      &:not(:active):not(:focus) {
+          background-color: transparent !important;
+          border: 1px solid $theme_secondary_color;
+          color: $theme_secondary_color;
+      }
+
+      &:not(:disabled):hover:not(:active) {
+          background-color: $theme_secondary_color !important;
+          color: $color_white !important;
+      }
+  }
+
+  &--grey {
+      background-color: $light_grey !important;
+      color: $color_black !important;
+
+      &:active,
+      &:focus,
+      &:disabled,
+      &:not(:active):not(:focus) {
+          background-color: $light_grey !important;
+          color: $color_black;
+      }
+
+      &:not(:disabled):hover:not(:active) {
+          background-color: $theme_secondary_color !important;
+          color: $color_white !important;
+      }
+  }
+
+  &--small {
+      font-size: $fs_small !important;
+      padding: 5px 10px;
+  }
+  &--medium {
+      font-size: $fs_medium !important;
+      padding: 10px 20px;
+  }
+  &--large {
+      font-size: $fs_large !important;
+      padding: 15px 30px;
+  }
+
+  &:hover {
+      background: $button_hover;
+  }
+}
+
+// END FOR BUTTONS MODULE ============================>
+
+textarea {
+    min-height: 120px !important;
+    max-height: 450px !important;
+}
+
 
   

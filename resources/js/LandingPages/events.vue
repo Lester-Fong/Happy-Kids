@@ -18,6 +18,13 @@
 
     <section class="event-page pt-120 pb-120">
       <div class="container">
+        <div class="block-title text-center">
+          <h4 class="text-success ms-3"><img class="me-3" src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />Help People Now</h4>
+          <h3>
+            Charity for the people <br />
+            you care about.
+          </h3>
+        </div>
         <div class="event-grid">
           <div class="event-card">
             <div class="event-card-inner">

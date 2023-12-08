@@ -63,87 +63,6 @@
     </section>
     <!-- /.about-one -->
 
-    <div class="client-carousel pt-120 pb-120 client-carousel__has-border-top">
-      <div class="container">
-        <div
-          class="thm-swiper__slider swiper-container"
-          data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
-                "0": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 2
-                },
-                "375": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 2
-                },
-                "575": {
-                    "spaceBetween": 30,
-                    "slidesPerView": 3
-                },
-                "767": {
-                    "spaceBetween": 50,
-                    "slidesPerView": 4
-                },
-                "991": {
-                    "spaceBetween": 50,
-                    "slidesPerView": 5
-                },
-                "1199": {
-                    "spaceBetween": 100,
-                    "slidesPerView": 5
-                }
-            }}'
-        >
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="/public/front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="/public/front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="/public/front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="/public/front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="/public/front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="/public/front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="/public/front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="/public/front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="/public/front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-            <div class="swiper-slide">
-              <img src="/public/front/assets/images/resources/brand-1-1.png" alt="" />
-            </div>
-            <!-- /.swiper-slide -->
-          </div>
-          <!-- /.swiper-wrapper -->
-        </div>
-        <!-- /.thm-swiper__slider -->
-      </div>
-      <!-- /.container -->
-    </div>
-    <!-- /.client-carousel -->
-
     <section class="about-counter pt-120">
       <div class="container">
         <div class="row">
@@ -165,11 +84,7 @@
             </ul>
             <!-- /.list-unstyled list-style-one -->
             <div class="about-counter__count">
-              <h3 class="odometer" data-count="8860">00</h3>
-              <p>
-                Donation campaigns <br />
-                are running
-              </p>
+              <p class="text-center">"Quotes of the lorem picsum of sit dolor amet consectetur"</p>
             </div>
             <!-- /.about-counter__count -->
           </div>

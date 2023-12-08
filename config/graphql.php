@@ -102,6 +102,7 @@ return [
             'query' => [
                 // ExampleQuery::class,
                 'administrator' => \App\GraphQL\Queries\AdministratorQuery::class,
+                'pages' => \App\GraphQL\Queries\PagesQuery::class,
                 'blogs' => \App\GraphQL\Queries\BlogQuery::class,
                 'blog_category' => \App\GraphQL\Queries\BlogCategoryQuery::class,
             ],
@@ -142,6 +143,7 @@ return [
         'Upload' => \Rebing\GraphQL\Support\UploadType::class,
         'response_type' => \App\GraphQL\Types\ResponseType::class,
         'admin_type' => \App\GraphQL\Types\AdministratorType::class,
+        'pages_type' => \App\GraphQL\Types\PagesType::class,
         'blogs_type' => \App\GraphQL\Types\BlogType::class,
         'blog_category_type' => \App\GraphQL\Types\BlogCategoryType::class,
 

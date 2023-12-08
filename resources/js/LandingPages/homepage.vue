@@ -166,34 +166,25 @@
           <!-- /.col-lg-6 -->
           <div class="col-xl-6">
             <div class="about-two__content">
-              <div class="block-title">
+              <div class="block-title mb-4">
                 <p><img src="https://picsum.photos/200/300" width="15" alt="" /> About Happy Kids</p>
                 <h3>Welcome to non-profit charity organization.</h3>
               </div>
               <!-- /.block-title -->
-              <p class="mb-40 pr-10">Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt simply free ut labore et dolore magna aliqua simhy adndnh qkhhn.</p>
               <div class="row">
-                <div class="col-md-6">
-                  <div class="about-two__box">
+                <div class="col-md-12">
+                  <div class="about-two__box my-1">
                     <h3><i class="azino-icon-confirmation"></i> Become a Volunteer</h3>
-                    <p>Lorem ipsum dolor sit ametelit sed consectetur notted.</p>
+                    <p>Lorem ipsum dolor sit ametelit sed consectetur notted. Lorem ipsum dolor sit amet consectetur adipisicing elit. enim amet suscipit reiciendis quidem</p>
                   </div>
                   <!-- /.about-two__box -->
-                  <div class="about-two__box">
+                  <div class="about-two__box my-1">
                     <h3><i class="azino-icon-confirmation"></i> Quick Fundraising</h3>
-                    <p>Lorem ipsum dolor sit ametelit sed consectetur notted.</p>
+                    <p>Lorem ipsum dolor sit ametelit sed consectetur notted. Lorem ipsum dolor sit amet consectetur adipisicing elit. enim amet suscipit reiciendis quidem</p>
                   </div>
                   <!-- /.about-two__box -->
                 </div>
                 <!-- /.col-md-6 -->
-                <div class="col-md-6">
-                  <div class="about-two__box-two">
-                    <i class="azino-icon-support"></i>
-                    <h3>You can make a big difference in someone’s life.</h3>
-                  </div>
-                  <!-- /.about-two__box-two -->
-                </div>
-                <!-- /.col-lg-6 -->
               </div>
               <!-- /.row -->
               <a href="about.html" class="thm-btn dynamic-radius">Discover More</a>
@@ -905,7 +896,7 @@
       </section> -->
 
     <!-- PARTNER AND SPONSOR SECTION PART 10 -->
-    <div class="client-carousel py-5 client-carousel__has-border-top part-10">
+    <!-- <div class="client-carousel py-5 client-carousel__has-border-top part-10">
       <h2 class="text-center mb-5">Sponsors &nbsp; <img src="/public/front/assets/images/shapes/heart-2-1.png" width="50" alt="favicon heart" /></h2>
       <div class="container">
         <div class="thm-swiper__slider swiper-container swiper">
@@ -916,7 +907,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -981,37 +972,37 @@ export default {
           },
         },
       });
-      new Swiper(".part-10 .swiper", {
-        spaceBetween: 100,
-        slidesPerView: 5,
-        autoplay: { delay: 5000 },
-        breakpoints: {
-          0: {
-            spaceBetween: 30,
-            slidesPerView: 2,
-          },
-          375: {
-            spaceBetween: 30,
-            slidesPerView: 2,
-          },
-          575: {
-            spaceBetween: 30,
-            slidesPerView: 3,
-          },
-          767: {
-            spaceBetween: 50,
-            slidesPerView: 4,
-          },
-          991: {
-            spaceBetween: 50,
-            slidesPerView: 5,
-          },
-          1199: {
-            spaceBetween: 100,
-            slidesPerView: 5,
-          },
-        },
-      });
+      // new Swiper(".part-10 .swiper", {
+      //   spaceBetween: 100,
+      //   slidesPerView: 5,
+      //   autoplay: { delay: 5000 },
+      //   breakpoints: {
+      //     0: {
+      //       spaceBetween: 30,
+      //       slidesPerView: 2,
+      //     },
+      //     375: {
+      //       spaceBetween: 30,
+      //       slidesPerView: 2,
+      //     },
+      //     575: {
+      //       spaceBetween: 30,
+      //       slidesPerView: 3,
+      //     },
+      //     767: {
+      //       spaceBetween: 50,
+      //       slidesPerView: 4,
+      //     },
+      //     991: {
+      //       spaceBetween: 50,
+      //       slidesPerView: 5,
+      //     },
+      //     1199: {
+      //       spaceBetween: 100,
+      //       slidesPerView: 5,
+      //     },
+      //   },
+      // });
     },
   },
 };

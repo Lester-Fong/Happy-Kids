@@ -23,6 +23,7 @@ body {
   border-radius: 4px;
   color: #F49499;
 }
+
 .form-control:disabled, .form-control[readonly] {
   background-color: #f1f2f3;
 }
