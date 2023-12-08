@@ -232,13 +232,17 @@ export default {
 
         dateBeforeToday(date) {
             const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
             return date < today;
         },
 
         disabledBeforeTimeStart(date) {
             const today = new Date(this.date_start);
+            const yesterday = new Date();
+            yesterday.setDate(today.getDate() - 1);
 
-            return date < today;
+            return date <= yesterday;
         },
     },
 

@@ -38,7 +38,7 @@
                                 <span>Profile</span>
                             </a>
                         </div>
-                        <div class="dropdown-item">
+                        <!-- <div class="dropdown-item">
                             <a href="javascript:void(0);">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox">
                                     <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
@@ -46,8 +46,8 @@
                                 </svg>
                                 <span>Inbox</span>
                             </a>
-                        </div>
-                        <div class="dropdown-item">
+                        </div> -->
+                        <!-- <div class="dropdown-item">
                             <a href="javascript:void(0);">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
                                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -55,7 +55,7 @@
                                 </svg>
                                 <span>Lock Screen</span>
                             </a>
-                        </div>
+                        </div> -->
                         <div @click="onLogout()" class="dropdown-item">
                             <a href="javascript:void(0);">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
