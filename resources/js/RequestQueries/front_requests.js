@@ -35,6 +35,17 @@ let front_queries = {
                   firstname,
                   lastname,
                 }
+              },
+              pages {
+                encrypted_pages_id,
+                pages_id,
+                title,
+                description,
+                slug,
+                image,
+                extras_image_1,
+                extras_image_2,
+                meta,
               }
         }
     }`,

@@ -56,7 +56,7 @@
                             <div v-if="related_blogs.length > 0">
                                 <h5>Related Stories</h5>
                                 <div class="blog-navigations">
-                                    <router-link v-for="a in related_blogs.slice(0, 1)" :to="{ name: 'StoriesDetailsPage', params: { slug: a.slug } }">{{ a.title }}</router-link>
+                                    <router-link v-for="a in related_blogs.slice(0, 1)" :key="a.id" :to="{ name: 'StoriesDetailsPage', params: { slug: a.slug } }">{{ a.title }}</router-link>
                                 </div>
                             </div>
                         </div>

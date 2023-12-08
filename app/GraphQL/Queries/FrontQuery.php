@@ -143,6 +143,8 @@ class FrontQuery extends Query
       $events = $events_model->where('fldEventsStatus', '=', 1)
                             ->orderBy('fldEventsDateStart', 'ASC')
                             ->get();
+                            
+      $response_obj->pages = Pages::where('fldPagesTitle', 'Events')->first();
 
       $response_obj->events = $events;
     }
