@@ -48,7 +48,6 @@ Vue.mixin({
         },
 
         onDatatable: function (name, is_add, lengthDisplay = 10, padding = "pb-2") {
-            console.log("onDatatable", name);
             $(name).DataTable({
                 autoWidth: !1,
                 // responsive: true,
@@ -101,7 +100,7 @@ Vue.mixin({
             });
 
             if (is_add) {
-                $(".dataTables_filter").append('<button type="button" class="btn button--secondary ms-4 new_record fw-bold">New Record</button>');
+                $(".dataTables_filter").append('<button type="button" class="btn button--primary ms-4 new_record fw-bold">New Record</button>');
                 $(".dataTables_filter").addClass("filter-title-container").children("label").children("input").addClass("border border-dark fs_12");
                 $(".new_record").on("click", this.onCreateRecord);
             } else {

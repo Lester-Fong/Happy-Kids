@@ -39,9 +39,9 @@ class PagesMutation extends Mutation
             'file6' => ['type' => GraphQL::type('Upload')],
             'file7' => ['type' => GraphQL::type('Upload')],
             'file8' => ['type' => GraphQL::type('Upload')],
+            'file9' => ['type' => GraphQL::type('Upload')],
+            'file10' => ['type' => GraphQL::type('Upload')],
             'objectiveImages' => ['type' => Type::listOf(GraphQL::type('Upload'))],
-            'selectedFileRoles' => ['type' => Type::listOf(GraphQL::type('Upload'))],
-            'selectedFileCore' => ['type' => Type::listOf(GraphQL::type('Upload'))],
         ];
     }
 

@@ -64,6 +64,8 @@ class Pages extends Eloquent
 
             $description_obj->objective_description = $data['objective_description'];
             $description_obj->objective_sub_description = $data['objective_sub_description'];
+            $description_obj->about_main_title = $data['about_main_title'];
+            $description_obj->about_subtitle = $data['about_subtitle'];
             $description_obj->about_title = $data['about_title'];
             $description_obj->about_description = $data['about_description'];
             $description_obj->video_title = $data['video_title'];
@@ -84,20 +86,20 @@ class Pages extends Eloquent
             $description_obj->events_description = $data['events_description'];
         }
 
-        if ($id == 2) {
-            $description_obj->content = $data['content'];
-            $description_obj->sub_content = $data['sub_title'];
-            // $description_obj->description = $data['description'];
-            // $description_obj->why_us_title = $data['why_us_title'];
-            // $description_obj->why_us_description = $data['why_us_description'];
-            // $description_obj->how_title = $data['how_title'];
-            // $description_obj->how_description = $data['how_description'];
-            $description_obj->mission_title = $data['mission_title'];
-            $description_obj->mission_description = $data['mission_description'];
-            $description_obj->vision_title = $data['vision_title'];
-            $description_obj->vision_description = $data['vision_description'];
-            $description_obj->core_title = $data['core_title'];
-            $description_obj->core_description = $data['core_description'];
+        if ($data['title'] == 'Our Mission') {
+            $description_obj->mission_intro_section_title = $data['mission_intro_section_title'];
+            $description_obj->mission_intro_title = $data['mission_intro_title'];
+            $description_obj->mission_intro_description = $data['mission_intro_description'];
+            $description_obj->checklist_title = $data['checklist_title'];
+            $description_obj->checklist_subtitle = $data['checklist_subtitle'];
+            $description_obj->checklist_description = $data['checklist_description'];
+            $description_obj->checklist_short_text = $data['checklist_short_text'];
+            $description_obj->checklist_checklist1 = $data['checklist_checklist1'];
+            $description_obj->checklist_checklist2 = $data['checklist_checklist2'];
+            $description_obj->checklist_checklist3 = $data['checklist_checklist3'];
+            $description_obj->volunteers_title = $data['volunteers_title'];
+            $description_obj->volunteers_subtitle = $data['volunteers_subtitle'];
+            $description_obj->volunteers_description = $data['volunteers_description'];
         }
 
         if ($id == 3 || $id == 6) {
@@ -112,7 +114,7 @@ class Pages extends Eloquent
 
         // Uploading the image
 
-        if ($data['title'] == 'Homepage') {
+        if (isset($data['title'])) {
 
             $helper_model = new Helper();
             $description_data = $page->fldPagesDescription ? unserialize($page->fldPagesDescription) : new \stdClass();
@@ -124,7 +126,7 @@ class Pages extends Eloquent
                 if ($objective_images) {
                     foreach ($objective_images as $index => $obj_files) {
                         if ($obj_files != "") {
-                            $filename = $helper_model->ImageUpload($obj_files, "how_" . $index . "/" . $id, "pages");
+                            $filename = $helper_model->ImageUpload($obj_files, "objectives_" . $index . "/" . $id, "pages");
                             $dynamic_var = "obj_files_" . $index;
                             $dynamic_var_webp = "obj_files_webp_" . $index;
                             $description_obj->$dynamic_var = $filename;
@@ -149,40 +151,87 @@ class Pages extends Eloquent
                     $description_obj->obj_files_webp_3 = isset($description_data->obj_files_webp_3) ? $description_data->obj_files_webp_3 : "";
                 }
 
-
-
-                // if ($id == 10) {
-                //     $roles_files_arr = $args['selectedFileRoles'];
-                //     if ($roles_files_arr) {
-                //         foreach ($roles_files_arr as $index => $roles_files) {
-                //             if ($roles_files != "") {
-                //                 $filename = $helper_model->ImageUpload($roles_files, "roles_" . $index . "/" . $id, "pages");
-                //                 $dynamic_var = "roles_files_" . $index;
-                //                 $dynamic_var_webp = "roles_files_webp_" . $index;
-                //                 $description_obj->$dynamic_var = $filename;
-                //                 $filename_arr = explode('.', $filename);
-                //                 $description_obj->$dynamic_var_webp = $filename_arr[0] . ".webp";
-                //             } else {
-                //                 $dynamic_var = "roles_files_" . $index;
-                //                 $dynamic_var_webp = "roles_files_webp_" . $index;
-                //                 $description_obj->$dynamic_var = isset($description_obj->$dynamic_var) ? $description_obj->$dynamic_var : "";
-                //                 $description_obj->$dynamic_var_webp = isset($description_obj->$dynamic_var_webp) ? $description_obj->$dynamic_var_webp : "";
-                //             }
-                //         }
-                //     } else {
-                //         $description_obj->roles_files_0 = isset($description_data->roles_files_0) ? $description_data->roles_files_0 : "";
-                //         $description_obj->roles_files_1 = isset($description_data->roles_files_1) ? $description_data->roles_files_1 : "";
-                //         $description_obj->roles_files_2 = isset($description_data->roles_files_2) ? $description_data->roles_files_2 : "";
-                //         $description_obj->roles_files_3 = isset($description_data->roles_files_3) ? $description_data->roles_files_3 : "";
-                //         $description_obj->roles_files_4 = isset($description_data->roles_files_4) ? $description_data->roles_files_4 : "";
-
-                //         $description_obj->roles_files_webp_0 = isset($description_data->roles_files_webp_0) ? $description_data->roles_files_webp_0 : "";
-                //         $description_obj->roles_files_webp_1 = isset($description_data->roles_files_webp_1) ? $description_data->roles_files_webp_1 : "";
-                //         $description_obj->roles_files_webp_2 = isset($description_data->roles_files_webp_2) ? $description_data->roles_files_webp_2 : "";
-                //         $description_obj->roles_files_webp_3 = isset($description_data->roles_files_webp_3) ? $description_data->roles_files_webp_3 : "";
-                //         $description_obj->roles_files_webp_4 = isset($description_data->roles_files_webp_4) ? $description_data->roles_files_webp_4 : "";
-                //     }
-                // }
+                $file3 = $args['file3'];
+                if ($file3 != "") {
+                    $filename = $helper_model->ImageUpload($file3, "about" . "/" . $id, "pages");
+                    $description_obj->about_image = $filename;
+                    $filename_arr = explode('.', $filename);
+                    $description_obj->about_image_webp = $filename_arr[0] . ".webp";
+                } else {
+                    $description_obj->about_image = isset($description_data->about_image) ? $description_data->about_image : "";
+                    $description_obj->about_image_webp = isset($description_data->about_image_webp) ? $description_data->about_image_webp : "";
+                }
+                $file4 = $args['file4'];
+                if ($file4 != "") {
+                    $filename = $helper_model->ImageUpload($file4, "video" . "/" . $id, "pages");
+                    $description_obj->video_image = $filename;
+                    $filename_arr = explode('.', $filename);
+                    $description_obj->video_image_webp = $filename_arr[0] . ".webp";
+                } else {
+                    $description_obj->video_image = isset($description_data->video_image) ? $description_data->video_image : "";
+                    $description_obj->video_image_webp = isset($description_data->video_image_webp) ? $description_data->video_image_webp : "";
+                }
+                $file5 = $args['file5'];
+                if ($file5 != "") {
+                    $filename = $helper_model->ImageUpload($file5, "faq" . "/" . $id, "pages");
+                    $description_obj->faq_image = $filename;
+                    $filename_arr = explode('.', $filename);
+                    $description_obj->faq_image_webp = $filename_arr[0] . ".webp";
+                } else {
+                    $description_obj->faq_image = isset($description_data->faq_image) ? $description_data->faq_image : "";
+                    $description_obj->faq_image_webp = isset($description_data->faq_image_webp) ? $description_data->faq_image_webp : "";
+                }
+                $file6 = $args['file6'];
+                if ($file6 != "") {
+                    $filename = $helper_model->ImageUpload($file6, "testimonial" . "/" . $id, "pages");
+                    $description_obj->testimonial_image = $filename;
+                    $filename_arr = explode('.', $filename);
+                    $description_obj->testimonial_image_webp = $filename_arr[0] . ".webp";
+                } else {
+                    $description_obj->testimonial_image = isset($description_data->testimonial_image) ? $description_data->testimonial_image : "";
+                    $description_obj->testimonial_image_webp = isset($description_data->testimonial_image_webp) ? $description_data->testimonial_image_webp : "";
+                }
+                $file7 = $args['file7'];
+                if ($file7 != "") {
+                    $filename = $helper_model->ImageUpload($file7, "donate" . "/" . $id, "pages");
+                    $description_obj->donate_image = $filename;
+                    $filename_arr = explode('.', $filename);
+                    $description_obj->donate_image_webp = $filename_arr[0] . ".webp";
+                } else {
+                    $description_obj->donate_image = isset($description_data->donate_image) ? $description_data->donate_image : "";
+                    $description_obj->donate_image_webp = isset($description_data->donate_image_webp) ? $description_data->donate_image_webp : "";
+                }
+                $file8 = $args['file8'];
+                if ($file8 != "") {
+                    $filename = $helper_model->ImageUpload($file8, "event" . "/" . $id, "pages");
+                    $description_obj->event_image = $filename;
+                    $filename_arr = explode('.', $filename);
+                    $description_obj->event_image_webp = $filename_arr[0] . ".webp";
+                } else {
+                    $description_obj->event_image = isset($description_data->event_image) ? $description_data->event_image : "";
+                    $description_obj->event_image_webp = isset($description_data->event_image_webp) ? $description_data->event_image_webp : "";
+                }
+            } else if ($data['title'] == 'Our Mission') {
+                $file9 = $args['file9'];
+                if ($file9 != "") {
+                    $filename = $helper_model->ImageUpload($file9, "checklist" . "/" . $id, "pages");
+                    $description_obj->checklist_image = $filename;
+                    $filename_arr = explode('.', $filename);
+                    $description_obj->checklist_image_webp = $filename_arr[0] . ".webp";
+                } else {
+                    $description_obj->checklist_image = isset($description_data->checklist_image) ? $description_data->checklist_image : "";
+                    $description_obj->checklist_image_webp = isset($description_data->checklist_image_webp) ? $description_data->checklist_image_webp : "";
+                }
+                $file10 = $args['file10'];
+                if ($file10 != "") {
+                    $filename = $helper_model->ImageUpload($file10, "volunteer" . "/" . $id, "pages");
+                    $description_obj->volunteer_image = $filename;
+                    $filename_arr = explode('.', $filename);
+                    $description_obj->volunteer_image_webp = $filename_arr[0] . ".webp";
+                } else {
+                    $description_obj->volunteer_image = isset($description_data->volunteer_image) ? $description_data->volunteer_image : "";
+                    $description_obj->volunteer_image_webp = isset($description_data->volunteer_image_webp) ? $description_data->volunteer_image_webp : "";
+                }
             }
 
             // if ($id == 2) {
@@ -218,26 +267,42 @@ class Pages extends Eloquent
             //     }
             // }
 
-            // $file4 = $args['file4'];
-            // if ($file4 != "") {
-            //     $filename = $helper_model->ImageUpload($file4, "why" . "/" . $id, "pages");
-            //     $description_obj->why_image = $filename;
-            //     $filename_arr = explode('.', $filename);
-            //     $description_obj->why_image_webp = $filename_arr[0] . ".webp";
-            // } else {
-            //     $description_obj->why_image = isset($description_data->why_image) ? $description_data->why_image : "";
-            //     $description_obj->why_image_webp = isset($description_data->why_image_webp) ? $description_data->why_image_webp : "";
+
+
+
+            // if ($id == 10) {
+            //     $roles_files_arr = $args['selectedFileRoles'];
+            //     if ($roles_files_arr) {
+            //         foreach ($roles_files_arr as $index => $roles_files) {
+            //             if ($roles_files != "") {
+            //                 $filename = $helper_model->ImageUpload($roles_files, "roles_" . $index . "/" . $id, "pages");
+            //                 $dynamic_var = "roles_files_" . $index;
+            //                 $dynamic_var_webp = "roles_files_webp_" . $index;
+            //                 $description_obj->$dynamic_var = $filename;
+            //                 $filename_arr = explode('.', $filename);
+            //                 $description_obj->$dynamic_var_webp = $filename_arr[0] . ".webp";
+            //             } else {
+            //                 $dynamic_var = "roles_files_" . $index;
+            //                 $dynamic_var_webp = "roles_files_webp_" . $index;
+            //                 $description_obj->$dynamic_var = isset($description_obj->$dynamic_var) ? $description_obj->$dynamic_var : "";
+            //                 $description_obj->$dynamic_var_webp = isset($description_obj->$dynamic_var_webp) ? $description_obj->$dynamic_var_webp : "";
+            //             }
+            //         }
+            //     } else {
+            //         $description_obj->roles_files_0 = isset($description_data->roles_files_0) ? $description_data->roles_files_0 : "";
+            //         $description_obj->roles_files_1 = isset($description_data->roles_files_1) ? $description_data->roles_files_1 : "";
+            //         $description_obj->roles_files_2 = isset($description_data->roles_files_2) ? $description_data->roles_files_2 : "";
+            //         $description_obj->roles_files_3 = isset($description_data->roles_files_3) ? $description_data->roles_files_3 : "";
+            //         $description_obj->roles_files_4 = isset($description_data->roles_files_4) ? $description_data->roles_files_4 : "";
+
+            //         $description_obj->roles_files_webp_0 = isset($description_data->roles_files_webp_0) ? $description_data->roles_files_webp_0 : "";
+            //         $description_obj->roles_files_webp_1 = isset($description_data->roles_files_webp_1) ? $description_data->roles_files_webp_1 : "";
+            //         $description_obj->roles_files_webp_2 = isset($description_data->roles_files_webp_2) ? $description_data->roles_files_webp_2 : "";
+            //         $description_obj->roles_files_webp_3 = isset($description_data->roles_files_webp_3) ? $description_data->roles_files_webp_3 : "";
+            //         $description_obj->roles_files_webp_4 = isset($description_data->roles_files_webp_4) ? $description_data->roles_files_webp_4 : "";
+            //     }
             // }
-            // $file5 = $args['file5'];
-            // if ($file5 != "") {
-            //     $filename = $helper_model->ImageUpload($file5, "how" . "/" . $id, "pages");
-            //     $description_obj->how_image = $filename;
-            //     $filename_arr = explode('.', $filename);
-            //     $description_obj->how_image_webp = $filename_arr[0] . ".webp";
-            // } else {
-            //     $description_obj->how_image = isset($description_data->how_image) ? $description_data->how_image : "";
-            //     $description_obj->how_image_webp = isset($description_data->how_image_webp) ? $description_data->how_image_webp : "";
-            // }
+
 
             // if ($id == 2) {
             //     $file1 = $args['file1'];

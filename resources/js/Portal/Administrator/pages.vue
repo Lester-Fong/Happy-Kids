@@ -9,30 +9,15 @@
           <table id="Pages_table" class="table table-striped dt-table-hover" style="width: 100%">
             <thead class="mb-4">
               <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Page Name</th>
+                <th>Slug</th>
                 <th class="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(a, index) in items" :key="index">
-                <td>
-                  <div class="d-flex">
-                    <div class="usr-img-frame me-2 rounded-circle">
-                      <img alt="avatar" class="img-fluid rounded-circle" :src="a.image" />
-                    </div>
-                    <p class="align-self-center mb-0 admin-name">{{ a.name }}</p>
-                  </div>
-                </td>
-                <td>{{ a.position }}</td>
-                <td>{{ a.office }}</td>
-                <td>{{ a.age }}</td>
-                <td>{{ a.start_date }}</td>
-                <td>{{ a.salary }}</td>
+              <tr v-for="(a, index) in pages" :key="index">
+                <td>{{ a.title }}</td>
+                <td>{{ a.slug }}</td>
                 <td class="text-center dropdown">
                   <a class="dropdown-toggle" href="javascript:void(0);" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal">
@@ -61,7 +46,7 @@ export default {
   data() {
     return {
       is_loading: false,
-      items_array: [],
+      filtered_pages: [],
       data: [
         {
           image: "https://picsum.photos/200",
@@ -153,22 +138,25 @@ export default {
           start_date: "2008/12/13",
         },
       ],
-      items: [],
+      pages: [],
       count: 0,
     };
   },
 
   created() {
-    this.get_items();
+    this.onPopulateData();
   },
 
   methods: {
-    get_items() {
+    onPopulateData() {
       this.is_loading = true;
-      setTimeout(() => {
+      this.$admin_queries("pages", {
+        action_type: "display_all_pages",
+      }).then((res) => {
+        console.log(res);
+        this.filtered_pages = res.data.data.pages;
         this.is_loading = false;
-        this.items_array = this.data;
-      }, 500);
+      });
     },
     onCreateRecord() {
       this.$router.push({ name: "AdminPagesCreate" });
@@ -176,15 +164,15 @@ export default {
   },
 
   watch: {
-    items() {
+    pages() {
       this.$nextTick(() => {
         this.datatable = this.onDatatable("#Pages_table", true);
       });
     },
 
-    items_array: function (value) {
+    filtered_pages: function (value) {
       $("#Pages_table").DataTable().destroy();
-      this.items = this.items_array;
+      this.pages = this.filtered_pages;
     },
   },
 };

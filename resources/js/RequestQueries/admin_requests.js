@@ -27,11 +27,25 @@ let admin_queries = {
         }
     }`,
 
-    save_pages: `mutation pages($file: Upload, $file1: Upload, $file2: Upload, $file3: Upload, $file4: Upload, $file5: Upload, $selectedFileHow: [Upload], $selectedFileRoles: [Upload], $selectedFileCore: [Upload], $page: PagesInput) {
-        pages(file: $file, file1: $file1, file2: $file2, file3: $file3, file4: $file4, file5: $file5, selectedFileHow: $selectedFileHow, selectedFileRoles: $selectedFileRoles, selectedFileCore: $selectedFileCore, page: $page) {
+    save_pages: `mutation pages($file: Upload, $file1: Upload, $file2: Upload, $file3: Upload, $file4: Upload, $file5: Upload, $file6: Upload, $file7: Upload, $file8: Upload, $file9: Upload, $file10: Upload, $objectiveImages: [Upload], $page: PagesInput) {
+        pages(file: $file, file1: $file1, file2: $file2, file3: $file3, file4: $file4, file5: $file5, file6: $file6, file7: $file7, file8: $file8, file9: $file9, file10: $file10, objectiveImages: $objectiveImages, page: $page) {
               error,
               message,
         }
+      }`,
+
+    pages: `query pages($action_type: String, $page_id: String) {
+        pages(action_type: $action_type, page_id: $page_id) {
+            encrypted_pages_id,
+            pages_id,
+            title,
+            description,
+            slug,
+            meta,
+            image,
+            extras_image_1,
+            extras_image_2
+          }
       }`,
 };
 

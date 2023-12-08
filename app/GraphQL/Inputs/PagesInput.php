@@ -67,6 +67,12 @@ class PagesInput extends InputType
          'about_description' => [
             'type' => Type::listOf(Type::string()),
          ],
+         'about_main_title' => [
+            'type' => Type::string(),
+         ],
+         'about_subtitle' => [
+            'type' => Type::string(),
+         ],
          'video_title' => [
             'type' => Type::string(),
          ],
@@ -113,6 +119,47 @@ class PagesInput extends InputType
             'type' => Type::string(),
          ],
          'events_description' => [
+            'type' => Type::string(),
+         ],
+
+
+         'mission_intro_section_title' => [
+            'type' => Type::string(),
+         ],
+         'mission_intro_title' => [
+            'type' => Type::string(),
+         ],
+         'mission_intro_description' => [
+            'type' => Type::string(),
+         ],
+         'checklist_title' => [
+            'type' => Type::string(),
+         ],
+         'checklist_subtitle' => [
+            'type' => Type::string(),
+         ],
+         'checklist_description' => [
+            'type' => Type::string(),
+         ],
+         'checklist_short_text' => [
+            'type' => Type::string(),
+         ],
+         'checklist_checklist1' => [
+            'type' => Type::string(),
+         ],
+         'checklist_checklist2' => [
+            'type' => Type::string(),
+         ],
+         'checklist_checklist3' => [
+            'type' => Type::string(),
+         ],
+         'volunteers_title' => [
+            'type' => Type::string(),
+         ],
+         'volunteers_subtitle' => [
+            'type' => Type::string(),
+         ],
+         'volunteers_description' => [
             'type' => Type::string(),
          ],
 
