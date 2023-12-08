@@ -100,6 +100,7 @@ return [
             'query' => [
                 // ExampleQuery::class,
                 'administrator' => \App\GraphQL\Queries\AdministratorQuery::class,
+                'pages' => \App\GraphQL\Queries\PagesQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -136,6 +137,7 @@ return [
         'Upload' => \Rebing\GraphQL\Support\UploadType::class,
         'response_type' => \App\GraphQL\Types\ResponseType::class,
         'admin_type' => \App\GraphQL\Types\AdministratorType::class,
+        'pages_type' => \App\GraphQL\Types\PagesType::class,
 
 
 
