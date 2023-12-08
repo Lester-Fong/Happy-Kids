@@ -54,7 +54,8 @@ class Pages extends Eloquent
         }
 
         $page->fldPagesTitle = $data['title'];
-        $page->fldPagesSlug = Str::slug($data['title']);
+        $slug = Str::slug($data['title']);
+        $page->fldPagesSlug = $slug;
 
         $description_obj = new \stdClass();
         $description_obj->title = $data['header'];
@@ -100,17 +101,20 @@ class Pages extends Eloquent
             $description_obj->volunteers_title = $data['volunteers_title'];
             $description_obj->volunteers_subtitle = $data['volunteers_subtitle'];
             $description_obj->volunteers_description = $data['volunteers_description'];
+            $description_obj->video_title = $data['video_title'];
+            $description_obj->video_subtitle = $data['video_subtitle'];
+            $description_obj->video_link = $data['video_link'];
         }
 
-        if ($id == 3 || $id == 6) {
-            $description_obj->content = $data['content'];
+        if ($data['title'] == 'Feeding Program') {
+            $description_obj->feed_intro_title = $data['feed_intro_title'];
+            $description_obj->feed_intro_description = $data['feed_intro_description'];
+            $description_obj->feed_about_title = $data['feed_about_title'];
+            $description_obj->feed_about_description = $data['feed_about_description'];
+            $description_obj->feed_overview_title = $data['feed_overview_title'];
+            $description_obj->feed_overview_description = $data['feed_overview_description'];
         }
 
-
-        if ($id == 8) {
-
-            $description_obj->description = $data['description'];
-        }
 
         // Uploading the image
 
@@ -126,7 +130,7 @@ class Pages extends Eloquent
                 if ($objective_images) {
                     foreach ($objective_images as $index => $obj_files) {
                         if ($obj_files != "") {
-                            $filename = $helper_model->ImageUpload($obj_files, "objectives_" . $index . "/" . $id, "pages");
+                            $filename = $helper_model->ImageUpload($obj_files, "objectives_" . $index . "/" . $slug, "pages");
                             $dynamic_var = "obj_files_" . $index;
                             $dynamic_var_webp = "obj_files_webp_" . $index;
                             $description_obj->$dynamic_var = $filename;
@@ -153,7 +157,7 @@ class Pages extends Eloquent
 
                 $file3 = $args['file3'];
                 if ($file3 != "") {
-                    $filename = $helper_model->ImageUpload($file3, "about" . "/" . $id, "pages");
+                    $filename = $helper_model->ImageUpload($file3, "about_" . "/" . $slug, "pages");
                     $description_obj->about_image = $filename;
                     $filename_arr = explode('.', $filename);
                     $description_obj->about_image_webp = $filename_arr[0] . ".webp";
@@ -163,7 +167,7 @@ class Pages extends Eloquent
                 }
                 $file4 = $args['file4'];
                 if ($file4 != "") {
-                    $filename = $helper_model->ImageUpload($file4, "video" . "/" . $id, "pages");
+                    $filename = $helper_model->ImageUpload($file4, "video_" . "/" . $slug, "pages");
                     $description_obj->video_image = $filename;
                     $filename_arr = explode('.', $filename);
                     $description_obj->video_image_webp = $filename_arr[0] . ".webp";
@@ -173,7 +177,7 @@ class Pages extends Eloquent
                 }
                 $file5 = $args['file5'];
                 if ($file5 != "") {
-                    $filename = $helper_model->ImageUpload($file5, "faq" . "/" . $id, "pages");
+                    $filename = $helper_model->ImageUpload($file5, "faq_" . "/" . $slug, "pages");
                     $description_obj->faq_image = $filename;
                     $filename_arr = explode('.', $filename);
                     $description_obj->faq_image_webp = $filename_arr[0] . ".webp";
@@ -183,7 +187,7 @@ class Pages extends Eloquent
                 }
                 $file6 = $args['file6'];
                 if ($file6 != "") {
-                    $filename = $helper_model->ImageUpload($file6, "testimonial" . "/" . $id, "pages");
+                    $filename = $helper_model->ImageUpload($file6, "testimonial_" . "/" . $slug, "pages");
                     $description_obj->testimonial_image = $filename;
                     $filename_arr = explode('.', $filename);
                     $description_obj->testimonial_image_webp = $filename_arr[0] . ".webp";
@@ -193,7 +197,7 @@ class Pages extends Eloquent
                 }
                 $file7 = $args['file7'];
                 if ($file7 != "") {
-                    $filename = $helper_model->ImageUpload($file7, "donate" . "/" . $id, "pages");
+                    $filename = $helper_model->ImageUpload($file7, "donate_" . "/" . $slug, "pages");
                     $description_obj->donate_image = $filename;
                     $filename_arr = explode('.', $filename);
                     $description_obj->donate_image_webp = $filename_arr[0] . ".webp";
@@ -203,7 +207,7 @@ class Pages extends Eloquent
                 }
                 $file8 = $args['file8'];
                 if ($file8 != "") {
-                    $filename = $helper_model->ImageUpload($file8, "event" . "/" . $id, "pages");
+                    $filename = $helper_model->ImageUpload($file8, "event_" . "/" . $slug, "pages");
                     $description_obj->event_image = $filename;
                     $filename_arr = explode('.', $filename);
                     $description_obj->event_image_webp = $filename_arr[0] . ".webp";
@@ -212,9 +216,19 @@ class Pages extends Eloquent
                     $description_obj->event_image_webp = isset($description_data->event_image_webp) ? $description_data->event_image_webp : "";
                 }
             } else if ($data['title'] == 'Our Mission') {
+                $file4 = $args['file4'];
+                if ($file4 != "") {
+                    $filename = $helper_model->ImageUpload($file4, "video_" . "/" . $slug, "pages");
+                    $description_obj->video_image = $filename;
+                    $filename_arr = explode('.', $filename);
+                    $description_obj->video_image_webp = $filename_arr[0] . ".webp";
+                } else {
+                    $description_obj->video_image = isset($description_data->video_image) ? $description_data->video_image : "";
+                    $description_obj->video_image_webp = isset($description_data->video_image_webp) ? $description_data->video_image_webp : "";
+                }
                 $file9 = $args['file9'];
                 if ($file9 != "") {
-                    $filename = $helper_model->ImageUpload($file9, "checklist" . "/" . $id, "pages");
+                    $filename = $helper_model->ImageUpload($file9, "checklist_" . "/" . $slug, "pages");
                     $description_obj->checklist_image = $filename;
                     $filename_arr = explode('.', $filename);
                     $description_obj->checklist_image_webp = $filename_arr[0] . ".webp";
@@ -224,13 +238,24 @@ class Pages extends Eloquent
                 }
                 $file10 = $args['file10'];
                 if ($file10 != "") {
-                    $filename = $helper_model->ImageUpload($file10, "volunteer" . "/" . $id, "pages");
+                    $filename = $helper_model->ImageUpload($file10, "volunteer_" . "/" . $slug, "pages");
                     $description_obj->volunteer_image = $filename;
                     $filename_arr = explode('.', $filename);
                     $description_obj->volunteer_image_webp = $filename_arr[0] . ".webp";
                 } else {
                     $description_obj->volunteer_image = isset($description_data->volunteer_image) ? $description_data->volunteer_image : "";
                     $description_obj->volunteer_image_webp = isset($description_data->volunteer_image_webp) ? $description_data->volunteer_image_webp : "";
+                }
+            } else if ($data['title'] == 'Feeding Program') {
+                $file11 = $args['file11'];
+                if ($file11 != "") {
+                    $filename = $helper_model->ImageUpload($file11, "feed_" . "/" . $slug, "pages");
+                    $description_obj->feed_image = $filename;
+                    $filename_arr = explode('.', $filename);
+                    $description_obj->feed_image_webp = $filename_arr[0] . ".webp";
+                } else {
+                    $description_obj->feed_image = isset($description_data->feed_image) ? $description_data->feed_image : "";
+                    $description_obj->feed_image_webp = isset($description_data->feed_image_webp) ? $description_data->feed_image_webp : "";
                 }
             }
 

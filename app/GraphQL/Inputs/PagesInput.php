@@ -163,6 +163,25 @@ class PagesInput extends InputType
             'type' => Type::string(),
          ],
 
+         'feed_intro_title' => [
+            'type' => Type::string(),
+         ],
+         'feed_intro_description' => [
+            'type' => Type::string(),
+         ],
+         'feed_about_title' => [
+            'type' => Type::string(),
+         ],
+         'feed_about_description' => [
+            'type' => Type::string(),
+         ],
+         'feed_overview_title' => [
+            'type' => Type::string(),
+         ],
+         'feed_overview_description' => [
+            'type' => Type::string(),
+         ],
+
 
          'core_title' => [
             'type' => Type::listOf(Type::string()),
