@@ -76,6 +76,7 @@ return [
         'default' => [
             'query' => [
                 // ExampleQuery::class,
+                'front' => \App\GraphQL\Queries\FrontQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -109,6 +110,7 @@ return [
                 'administrator' => \App\GraphQL\Mutations\AdministratorMutation::class,
                 'pages' => \App\GraphQL\Mutations\PagesMutation::class,
                 'blogs' => \App\GraphQL\Mutations\BlogMutation::class,
+                'blog_category' => \App\GraphQL\Mutations\BlogCategoryMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -149,6 +151,7 @@ return [
         'admin_input' => \App\GraphQL\Inputs\AdministratorInput::class,
         'page_input' => \App\GraphQL\Inputs\PagesInput::class,
         'blog_input' => \App\GraphQL\Inputs\BlogInput::class,
+        'blog_category_input' => \App\GraphQL\Inputs\BlogCategoryInput::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

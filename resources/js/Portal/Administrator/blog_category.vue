@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="loader-gif" v-if="is_loading"></div>
-        <h1>Blogs/Stories Page</h1>
+        <h1>Blogs Category</h1>
 
         <div class="row layout-top-spacing">
             <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
                 <div class="widget-content widget-content-area br-8">
-                    <table id="blogs_table" class="table table-striped dt-table-hover" style="width: 100%">
+                    <table id="blogs_category_table" class="table table-striped dt-table-hover" style="width: 100%">
                         <thead class="mb-4">
                             <tr>
                                 <th>Title</th>
@@ -15,12 +15,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="blog in blogs" :key="blog.id">
+                            <tr v-for="a in blog_categories" :key="a.id">
                                 <td>
-                                    {{ blog.title }}
+                                    {{ a.name }}
                                 </td>
                                 <td>
-                                    {{ blog.date | formatTransDate }}
+                                    {{ a.date_created | formatTransDate }}
                                 </td>
                                 <td class="text-center dropdown">
                                     <a class="dropdown-toggle" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -31,8 +31,8 @@
                                         </svg>
                                     </a>
                                     <div class="dropdown-menu">
-                                        <router-link class="dropdown-item" :to="'/admin/blogs/edit/' + blog.blogs_id"> Edit Blog </router-link>
-                                        <a href="javascript:void(0);" class="dropdown-item" @click="onDeleteBlog(blog)">Delete Blog</a>
+                                        <a href="javascript:void(0);" class="dropdown-item" @click="onEditBlogCategory(a)"> Edit Blog </a>
+                                        <a href="javascript:void(0);" class="dropdown-item" @click="onDeleteBlog(a)">Delete Blog</a>
                                     </div>
                                 </td>
                             </tr>
@@ -41,18 +41,24 @@
                 </div>
             </div>
         </div>
+        <blog-category-form :selected_blog_category="selected_blog_category" :is_edit="is_edit" @onHideModal="hideModal" @success="onSuccess" />
     </div>
 </template>
 
 <script>
+import BlogCategoryForm from "./blog_category/form.vue";
 export default {
+    components: {
+        BlogCategoryForm,
+    },
+
     data() {
         return {
-            blogs: [],
-            filteredBlogs: [],
+            blog_categories: [],
+            filteredCategory: [],
             is_loading: false,
             is_edit: false,
-            selected_list: {},
+            selected_blog_category: {},
         };
     },
 
@@ -63,12 +69,13 @@ export default {
     methods: {
         onPopulateData() {
             this.is_loading = true;
-            this.$admin_queries("blogs", {
+            this.$admin_queries("blog_category", {
                 action_type: "display_all",
             })
                 .then((res) => {
+                    console.log("res: ", res);
                     this.is_loading = false;
-                    this.filteredBlogs = res.data.data.blogs;
+                    this.filteredCategory = res.data.data.blog_category;
                 })
                 .catch(() => {
                     this.is_loading = false;
@@ -78,11 +85,17 @@ export default {
 
         onCreateRecord() {
             this.is_edit = false;
-            this.$router.replace({ name: "AdminBlogsNew" });
+            $("#blog_category_modal").modal("show");
+            // this.$router.replace({ name: "AdminBlogsNew" });
         },
 
-        onDeleteBlog(blogs) {
-            Swal.fire({
+        onEditBlogCategory(data) {
+            this.is_edit = true;
+            this.selected_blog_category = data;
+        },
+
+        onDeleteCategory(category_id) {
+            this.$swal({
                 title: "Are you sure?",
                 html: "You want to delete this record?",
                 icon: "warning",
@@ -93,43 +106,53 @@ export default {
             }).then((res) => {
                 if (res.isConfirmed == true) {
                     this.is_loading = true;
-                    this.$admin_queries("save_blogs", {
-                        blogs: {
-                            blogs_id: blogs.blogs_id,
+                    this.$query_administrator("save_blog_categories", {
+                        blog_category: {
+                            category_id: category_id,
                             action_type: "delete_record",
                         },
                     })
                         .then((res) => {
                             this.is_loading = false;
 
-                            let response = res.data.data.blogs;
+                            let response = res.data.data.blog_category;
 
                             if (response.error == false) {
-                                Swal.fire("Success!", response.message, "success");
+                                this.$swal("Success!", response.message, "success");
                                 this.onPopulateData();
                             } else {
-                                Swal.fire("Error!", response.message, "error");
+                                this.$swal("Error!", response.message, "error");
                             }
                         })
                         .catch(() => {
                             this.is_loading = false;
-                            Swal.fire("Error!", this.global_error_message, "error");
+                            this.$swal("Error!", this.global_error_message, "error");
                         });
                 }
             });
         },
+
+        hideModal() {
+            $("#blog_category_modal").modal("hide");
+            this.is_edit = false;
+        },
+
+        onSuccess() {
+            this.is_edit = false;
+            this.onPopulateData();
+        },
     },
 
     watch: {
-        blogs() {
+        blog_categories() {
             this.$nextTick(() => {
-                this.datatable = this.onDatatable("#blogs_table", true);
+                this.datatable = this.onDatatable("#blogs_category_table", true);
             });
         },
 
-        filteredBlogs: function (value) {
-            $("#blogs_table").DataTable().destroy();
-            this.blogs = this.filteredBlogs;
+        filteredCategory: function (value) {
+            $("#blogs_category_table").DataTable().destroy();
+            this.blog_categories = this.filteredCategory;
         },
     },
 };

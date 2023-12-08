@@ -59,6 +59,9 @@
                             <router-link :to="{ name: 'AdminBlogs' }" :class="activeMeta.isBlogs ? 'hk_active' : ''"> Blogs/Stories </router-link>
                         </li>
                         <li>
+                            <router-link :to="{ name: 'AdminBlogCategory' }" :class="activeMeta.isBlogsCategory ? 'hk_active' : ''"> Blog Category </router-link>
+                        </li>
+                        <li>
                             <router-link :to="{ name: 'AdminFAQ' }" :class="activeMeta.isFAQ ? 'hk_active' : ''"> FAQs </router-link>
                         </li>
                         <li>

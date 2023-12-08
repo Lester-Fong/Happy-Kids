@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="{{ url('/public/src/bootstrap/css/bootstrap.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url('/public/css/global.css') }}">
 
     @if ($display_type == 'portal')
     <link rel="stylesheet" href="{{ url('/public/css/main.css') }}">
@@ -20,6 +21,7 @@
     <link rel="stylesheet" href="{{ url('/public/src/assets/css/light/authentication/auth-cover.css?'.date('Ymdhis')) }}">
     <link rel="stylesheet" href="{{ url('/public/src/template_layout/plugins.css?'.date('Ymdhis')) }}">
     @else
+    <link rel="stylesheet" href="{{ url('/public/css/landing.css') }}">
     <link rel="stylesheet" href="{{ url('/public/front/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ url('/public/front/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ url('/public/front/css/swiper.min.css') }}">

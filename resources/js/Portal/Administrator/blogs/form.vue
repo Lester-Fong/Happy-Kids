@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="is_loading" class="loader"></div>
+        <div v-if="is_loading" class="loader-gif"></div>
         <div class="card container px-4 py-2 card-bordered card-preview">
             <div class="card-inner mb-4">
                 <div class="preview-block">
@@ -11,7 +11,7 @@
                                 <div class="form-control-wrap">
                                     <input type="text" class="form-control" id="default-01" placeholder="" v-model="title" />
                                     <div class="text-danger">{{ title_error }}</div>
-                                    <router-link v-if="slug != ''" :to="'/blogs-details/' + slug" target="_blank">https://coche.ph/blogs-details/{{ slug }}</router-link>
+                                    <router-link v-if="slug != ''" :to="'/blogs-details/' + slug" target="_blank">http://happy_kids.local/blogs/{{ slug }}</router-link>
                                 </div>
                             </div>
                         </div>
@@ -23,8 +23,8 @@
                                     <select class="form-select" v-model="category">
                                         <!-- <option value="">Select one</option>
                                         <option :value="blog_category.original_category_id" v-for="blog_category in blog_category_arr" :key="blog_category.original_category_id">{{ blog_category.name }}</option> -->
-                                        <option>Scholarship</option>
-                                        <option>Feeding</option>
+                                        <option value="1">Scholarship</option>
+                                        <option value="2">Feeding</option>
                                     </select>
                                     <div class="text-danger">{{ category_error }}</div>
                                 </div>
@@ -202,6 +202,7 @@ export default {
             slug: "",
             status: "2",
             tagify: null,
+            tagifyInput: null,
             // minutes_read: "",
         };
     },
@@ -212,16 +213,16 @@ export default {
             $("#summernote_blog").summernote("code", "");
             this.initializeTagify();
         });
-        // if (this.$route.params.id) {
-        //     this.blogs_id = this.$route.params.id;
-        //     this.is_edit = true;
-        // }
+        if (this.$route.params.id) {
+            this.blogs_id = this.$route.params.id;
+            this.is_edit = true;
+        }
         // this.onPopulateCategory();
     },
     methods: {
         initializeTagify() {
-            var input = document.getElementById("tagify-input");
-            var tagify = new Tagify(input);
+            this.tagifyInput = document.getElementById("tagify-input");
+            var tagify = new Tagify(this.tagifyInput);
 
             tagify.on("add", (e) => {
                 this.meta_keywords.push(e.detail.data.value);
@@ -299,20 +300,13 @@ export default {
                     .then((res) => {
                         this.is_loading = false;
 
-                        if (res.data.errors) {
-                            let errors = Object.values(res.data.errors[0].extensions.validation).flat();
-                            let errors_keys = Object.keys(res.data.errors[0].extensions.validation).flat();
-
-                            this.title_error = errors_keys.some((q) => q == "blogs.title") ? errors[errors_keys.indexOf("blogs.title")] : "";
+                        let response = res.data.data.blogs;
+                        if (!response.error) {
+                            Swal.fire("Success!", response.message, "success").then(() => {
+                                this.$router.push({ name: "AdminBlogs" });
+                            });
                         } else {
-                            let response = res.data.data.blogs;
-                            if (response.error == false) {
-                                Swal.fire("Success!", response.message, "success").then(() => {
-                                    this.$router.push("/admin/blogs");
-                                });
-                            } else {
-                                Swal.fire("Error!", response.message, "error");
-                            }
+                            Swal.fire("Error!", response.message, "error");
                         }
                     })
                     .catch(() => {
@@ -363,7 +357,7 @@ export default {
             this.selectedFile = event.target.files[0];
         },
         onFileChangedThumbnail() {
-            this.onDisplayUploadedCoverImage(event);
+            this.onDisplayUploadedThumbnailImage(event);
             this.selectedFileThumb = event.target.files[0];
         },
         onDisplayUploadedImage(e) {
@@ -371,7 +365,7 @@ export default {
             this.header_image = URL.createObjectURL(file);
             this.is_image = true;
         },
-        onDisplayUploadedCoverImage(e) {
+        onDisplayUploadedThumbnailImage(e) {
             const file = e.target.files[0];
             this.front_image = URL.createObjectURL(file);
             this.is_front = true;
@@ -380,22 +374,23 @@ export default {
         onPopulateData() {
             this.is_loading = true;
 
-            this.$query_administrator("blogs", {
+            this.$admin_queries("blogs", {
                 action_type: "display_by_id",
                 blog_id: this.blogs_id,
             })
                 .then((res) => {
                     this.is_loading = false;
+                    console.log(res);
                     this.blogs = res.data.data.blogs[0];
 
                     this.title = this.blogs.title;
                     if (this.blogs.image != "") {
-                        this.header_image = "/public/uploads/blog_image/" + this.blogs.original_blogs_id + "/medium/" + this.blogs.image;
+                        this.header_image = "/public/uploads/blogs/" + this.blogs.original_blogs_id + "/medium/" + this.blogs.image;
                         this.is_image = true;
                     }
 
-                    if (this.blogs.cover_image != "") {
-                        this.front_image = "/public/uploads/blog_cover_image/" + this.blogs.original_blogs_id + "/medium/" + this.blogs.cover_image;
+                    if (this.blogs.thumbnail != "") {
+                        this.front_image = "/public/uploads/blogs/thumbnail/" + this.blogs.original_blogs_id + "/medium/" + this.blogs.thumbnail;
                         this.is_front = true;
                     }
 
@@ -404,6 +399,10 @@ export default {
                     if (this.blogs.meta) {
                         this.meta_title = this.blogs.meta && this.blogs.meta.title ? this.blogs.meta.title : "";
                         this.meta_keywords = this.blogs.meta && this.blogs.meta.keywords ? this.blogs.meta.keywords : "";
+
+                        var tagify = new Tagify(this.tagifyInput);
+                        tagify.addTags(this.meta_keywords);
+
                         this.meta_description = this.blogs.meta && this.blogs.meta.description ? this.blogs.meta.description : "";
                     }
 

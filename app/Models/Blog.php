@@ -70,12 +70,10 @@ class Blog extends Eloquent
       $blog = self::find($id);
     }
 
-    $sanitize_model = new SanitizeFields();
-    
     $admin_model = new Administrator();
     $admin = $admin_model->getInfo();
 
-    $blog->fldBlogTitle = $sanitize_model->sanitize_fields($data['title'], "blogs");
+    $blog->fldBlogTitle = $data['title'];
     $blog->fldBlogDescription = $data['description'];
     $blog->fldBlogSlug = Str::slug($data['title']);
     $blog->fldBlogDate = $data['date'];

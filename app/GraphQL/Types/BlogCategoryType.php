@@ -63,6 +63,11 @@ class BlogCategoryType extends GraphQLType {
           'blogs' => [
              'type' =>  Type::listOf(GraphQL::type('blogs_type')),
           ],
+
+          'date_created' => [
+            'type' => Type::string(),
+             'alias' => 'fldBlogCategoryDateCreated',
+          ]
         ];
     }
 

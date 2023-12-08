@@ -2,9 +2,9 @@ import axios from "axios";
 import Vue from "vue";
 import admin_requests from "./RequestQueries/admin_requests";
 
-let uploadQueries = ["save_pages"];
+let uploadQueries = ["save_pages", "save_blogs"];
 
-let adminRequestNames = ["get_admin", "blogs", "save_blogs", "blog_categories", "save_blog_categories", "save_pages"];
+let adminRequestNames = ["get_admin", "blogs", "save_blogs", "blog_category", "save_blog_categories", "save_pages"];
 let requestNames = ["admin_outside_action"];
 
 let getApiUrl = (queryName) => {
@@ -53,7 +53,7 @@ Vue.prototype.$admin_queries = function (queryName, queryVariables) {
 
         bodyFormData.set(
             "map",
-            JSON.stringify({ file: ["variables.file"], file1: ["variables.file1"], file2: ["variables.file2"], file3: ["variables.file3"], file4: ["variables.file4"], file5: ["variables.file5"], selectedFileHow: ["variables.selectedFileHow"], selectedFileRoles: ["variables.selectedFileRoles"], selectedFileCore: ["variables.selectedFileCore"], cover_image: ["variables.cover_image"] })
+            JSON.stringify({ file: ["variables.file"], file1: ["variables.file1"], file2: ["variables.file2"], file3: ["variables.file3"], file4: ["variables.file4"], file5: ["variables.file5"], selectedFileHow: ["variables.selectedFileHow"], selectedFileRoles: ["variables.selectedFileRoles"], selectedFileCore: ["variables.selectedFileCore"], thumbnail: ["variables.thumbnail"] })
         );
         if (queryVariables.file || queryVariables.file1 || queryVariables.file2 || queryVariables.file3 || queryVariables.file4 || queryVariables.file5) {
             bodyFormData.append("file", queryVariables.file);
@@ -64,8 +64,8 @@ Vue.prototype.$admin_queries = function (queryName, queryVariables) {
             bodyFormData.append("file5", queryVariables.file5);
         }
 
-        if (queryVariables.cover_image) {
-            bodyFormData.append("cover_image", queryVariables.cover_image);
+        if (queryVariables.thumbnail) {
+            bodyFormData.append("thumbnail", queryVariables.thumbnail);
         }
 
         if (queryVariables.selectedFileHow) {

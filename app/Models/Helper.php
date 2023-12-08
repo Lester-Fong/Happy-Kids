@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
-use Image;
 use File;
 use Validator;
 use Request;
@@ -16,6 +15,7 @@ use Log;
 use Storage;
 use Str;
 use Crypt;
+use Image;
 
 class Helper extends Eloquent
 {
@@ -38,7 +38,7 @@ class Helper extends Eloquent
                 case "blog_category":
                     $destinationPath = Config::get('Constants.BLOG_CATEGORY_IMAGE_PATH') . $id . '/';
                     break;
-                case "blogs":
+                case "blogs_image":
                     $destinationPath = Config::get('Constants.BLOGS_IMAGE_PATH') . $id . '/';
                     break;
                 case "testimonial":
@@ -46,6 +46,9 @@ class Helper extends Eloquent
                     break;
                 case "content":
                     $destinationPath = Config::get('Constants.CONTENT_IMAGE_PATH') . $id . '/';
+                    break;
+                case "blogs_thumbnail":
+                    $destinationPath = Config::get('Constants.BLOGS_THUMBNAIL_PATH') . $id . '/';
                     break;
                 default:
                     // Handle the case when $type is not recognized.
@@ -273,5 +276,61 @@ class Helper extends Eloquent
         }
 
         return $randomString;
+    }
+
+    public function ImageUpload2($file, $id, $type)
+    {
+        if ($file != "") {
+            // ini_set('memory_limit', '-1');
+            if ($type == "blogs_image") {
+                $destinationPath = Config::get('Constants.BLOGS_IMAGE_PATH') . $id . '/';
+            } else if ($type == "blogs_thumbnail") {
+                $destinationPath = Config::get('Constants.BLOGS_THUMBNAIL_PATH') . $id . '/';
+            }
+            $filename = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.webp';
+
+            $file->move($destinationPath, $filename);
+
+            if (!File::exists($destinationPath . Config::get('Constants.THUMB'))) {
+                File::makeDirectory($destinationPath . Config::get('Constants.MEDIUM'), 0775);
+                File::makeDirectory($destinationPath . Config::get('Constants.SMALL'), 0775);
+                File::makeDirectory($destinationPath . Config::get('Constants.THUMB'), 0775);
+                File::makeDirectory($destinationPath . Config::get('Constants.LARGE'), 0775);
+            }
+
+            $destinationPathFile = $destinationPath . $filename;
+
+
+            // root path and original size
+            $img = Image::make(file_get_contents($destinationPathFile));
+            $img->encode('webp')->save($destinationPath . $filename);
+
+
+            $img = Image::make(file_get_contents($destinationPathFile))->resize(800, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->encode('webp', 90)->save($destinationPath . Config::get('Constants.LARGE') . $filename);
+
+
+            $img = Image::make(file_get_contents($destinationPathFile))->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->encode('webp', 80)->save($destinationPath . Config::get('Constants.MEDIUM') . $filename);
+
+
+            $img = Image::make(file_get_contents($destinationPathFile))->resize(150, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->encode('webp', 60)->save($destinationPath . Config::get('Constants.SMALL') . $filename);
+
+
+            $img = Image::make(file_get_contents($destinationPathFile))->resize(75, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->encode('webp', 50)->save($destinationPath . Config::get('Constants.THUMB') . $filename);
+        } else {
+            $filename = "";
+        }
+        return $filename;
     }
 }

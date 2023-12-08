@@ -30,7 +30,7 @@ class BlogInput extends InputType
             'type' => Type::string(),
          ],
          'meta_keywords' => [
-            'type' => Type::string(),
+            'type' => Type::listOf(Type::string()),
          ],
          'meta_description' => [
             'type' => Type::string(),

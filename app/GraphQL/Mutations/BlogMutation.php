@@ -73,14 +73,13 @@ class BlogMutation extends Mutation
     $helper_model = new Helper();
 
     if ($blogs['action_type'] == "add") {
-
-
       $blogs_id = $blogs_model->AddUpdateRecord(0, $blogs);
-
+      
+      // file saving
       $file = $args['file'];
       if ($file != "") {
-        $filename = $helper_model->ImageUpload($file, $blogs_id, "blogs_image");
-        $blog_rec = Blog::find($blogs_id);
+        $filename = $helper_model->ImageUpload2($file, $blogs_id, "blogs_image");
+        $blog_rec = $blogs_model->find($blogs_id);
         if ($blog_rec) {
           $blog_rec->fldBlogImage = $filename;
           $blog_rec->save();
@@ -90,10 +89,10 @@ class BlogMutation extends Mutation
       $thumbnail = $args['thumbnail'];
 
       if ($thumbnail != "") {
-        $filename = $helper_model->ImageUpload($thumbnail, $blogs_id, "blogs_thumbnail");
+        $filename = $helper_model->ImageUpload2($thumbnail, $blogs_id, "blogs_thumbnail");
         $blog_rec = Blog::find($blogs_id);
         if ($blog_rec) {
-          $blog_rec->fldBlogCoverImage = $filename;
+          $blog_rec->fldBlogThumbnail = $filename;
           $blog_rec->save();
         }
       }
@@ -140,7 +139,7 @@ class BlogMutation extends Mutation
           $filename = $helper_model->ImageUpload($thumbnail, $blogs_id, "blogs_thumbnail");
           $blog_rec = Blog::find($blogs_id);
           if ($blog_rec) {
-            $blog_rec->fldBlogCoverImage = $filename;
+            $blog_rec->fldBlogThumbnail = $filename;
             $blog_rec->save();
           }
         }

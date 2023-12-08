@@ -154,5 +154,13 @@ Vue.mixin({
                 // },
             });
         },
+
+        formatFullname: function (first_name, last_name) {
+            return first_name + " " + last_name;
+        },
+
+        truncate(str, maxlength) {
+            return str.length > maxlength ? str.substring(0, maxlength) + "..." : str;
+        },
     },
 });

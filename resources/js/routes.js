@@ -7,6 +7,7 @@ import AdminDashboard from "./Portal/Administrator/dashboard.vue";
 import AdminEvents from "./Portal/Administrator/events.vue";
 import AdminGallery from "./Portal/Administrator/gallery.vue";
 import AdminBlogs from "./Portal/Administrator/blog.vue";
+import AdminBlogCategory from "./Portal/Administrator/blog_category.vue";
 import AdminFAQ from "./Portal/Administrator/faq.vue";
 import AdminTestimonials from "./Portal/Administrator/testimonial.vue";
 import AdminOurTeam from "./Portal/Administrator/team.vue";
@@ -39,5 +40,7 @@ export default [
     { path: "/admin/pages/create", component: AdminPagesCreate, name: "AdminPagesCreate", meta: { isAdminAuthentication: true, isPages: true } },
     { path: "/admin/sms", component: AdminSMS, name: "AdminSMS", meta: { isAdminAuthentication: true, isSMS: true } },
     { path: "/admin/donations", component: AdminDonation, name: "AdminDonation", meta: { isAdminAuthentication: true, isDonations: true } },
-    { path: "/admin/blogs/edit/:id", component: AdminBlogsForm, name: "AdminBlogsEdit", meta: { isAdminAuthentication: true }, params: true },
+    { path: "/admin/blogs/new", component: AdminBlogsForm, name: "AdminBlogsNew", meta: { isAdminAuthentication: true, isBlog: true }, params: true },
+    { path: "/admin/blogs/edit/:id", component: AdminBlogsForm, name: "AdminBlogsEdit", meta: { isAdminAuthentication: true, isBlog: true }, params: true },
+    { path: "/admin/blog-category", component: AdminBlogCategory, name: "AdminBlogCategory", meta: { isAdminAuthentication: true, isBlogsCategory: true } },
 ];

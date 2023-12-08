@@ -7,6 +7,7 @@ import landingPagesRoutes from "./landing_routes";
 import VueCryptojs from "vue-cryptojs";
 
 import "./admin_queries";
+import "./front_queries";
 import "./helper";
 import moment from "moment";
 
@@ -26,6 +27,16 @@ Vue.filter("formatTransDate", function (value) {
     if (value) {
         if (value && moment(value, "YYYY-MM-DD", true).isValid()) {
             return moment(value).format("MMM DD YYYY");
+        }
+        return value;
+    }
+});
+
+// onget the day and month only 20 May
+Vue.filter("formatTransDate2", function (value) {
+    if (value) {
+        if (value && moment(value, "YYYY-MM-DD", true).isValid()) {
+            return moment(value).format("DD MMM");
         }
         return value;
     }

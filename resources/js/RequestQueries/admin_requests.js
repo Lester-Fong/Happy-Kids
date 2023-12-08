@@ -51,18 +51,18 @@ let admin_queries = {
             }
           }`,
 
-    blog_categories: `query blog_category($action_type: String, $category_id: String) {
+    blog_category: `query blog_category($action_type: String, $category_id: String) {
         blog_category(action_type: $action_type, category_id: $category_id) {
                 category_id,
                 original_category_id,
                 name,
-                     image,
+                date_created,
                 meta
             }
         }`,
 
-    save_blog_categories: `mutation blog_category($file: Upload, $blog_category: BlogCategoryInput) {
-        blog_category(file: $file, blog_category: $blog_category) {
+    save_blog_categories: `mutation blog_category($blog_category: BlogCategoryInput) {
+        blog_category(blog_category: $blog_category) {
                       error,
                       message,
                 }

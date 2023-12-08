@@ -54,6 +54,8 @@ class BlogCategory extends Eloquent
     }
 
     public function AddUpdateRecord($id, $data) {
+        $response_obj = new \stdClass();
+      
         if($id == 0) {
            $category = new self;
         } else {
@@ -61,20 +63,14 @@ class BlogCategory extends Eloquent
         }
 
         $category->fldBlogCategoryName = $data['name'];
-        $category->fldBlogCategoryDescription = $data['description'];
-        $category->fldBlogCategorySlug = Str::slug($data['name']);
-
-        $meta_obj = new \stdClass();
-        $meta_obj->title = $data['meta_title'];
-        $meta_obj->description = $data['meta_description'];
-        $meta_obj->keywords = $data['meta_keywords'];
-
-        $category->fldBlogCategoryMeta = serialize($meta_obj);
 
         $category->save();
 
+        $response_obj->error = false;
+        $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_SUCCESSFUL'];
 
-        return $category->fldBlogCategoryID;
+
+        return $response_obj;
     }
 
     public function findCategoryBySlug($slug) {
