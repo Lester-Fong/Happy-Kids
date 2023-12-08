@@ -60,14 +60,14 @@
               <a class="nav-link" data-bs-toggle="tab" href="#video">Video</a>
             </li>
 
-            <!--------------- FEEDING PROGRAM NAVS ------------->
-            <li class="nav-item" role="presentation" v-if="title == 'Feeding Program'">
+            <!--------------- PROGRAM NAVS ------------->
+            <li class="nav-item" role="presentation" v-if="title == 'Feeding Program' || title == 'Scholarship Program'">
               <a class="nav-link" data-bs-toggle="tab" href="#feedIntro">Page Intro</a>
             </li>
-            <li class="nav-item" role="presentation" v-if="title == 'Feeding Program'">
+            <li class="nav-item" role="presentation" v-if="title == 'Feeding Program' || title == 'Scholarship Program'">
               <a class="nav-link" data-bs-toggle="tab" href="#feedAbout">About Program</a>
             </li>
-            <li class="nav-item" role="presentation" v-if="title == 'Feeding Program'">
+            <li class="nav-item" role="presentation" v-if="title == 'Feeding Program' || title == 'Scholarship Program'">
               <a class="nav-link" data-bs-toggle="tab" href="#feedOverview">Program Overview</a>
             </li>
 
@@ -94,6 +94,13 @@
                     <label for="exampleFormControlInput3">Sub Header</label>
                     <input type="text" class="form-control" v-model="sub_header" id="exampleFormControlInput3" />
                     <div class="text-danger">{{ sub_header_error }}</div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 my-3" v-if="title == 'Contact Us'">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput30">Description</label>
+                    <textarea class="form-control" v-model="contact_description" id="exampleFormControlInput30"></textarea>
                   </div>
                 </div>
 
@@ -544,19 +551,19 @@
             </div>
 
             <!------------------- FEEDING PROGRAM INTRO ------------------>
-            <div class="tab-pane" id="feedIntro" v-if="title == 'Feeding Program'">
+            <div class="tab-pane" id="feedIntro" v-if="title == 'Feeding Program' || title == 'Scholarship Program'">
               <div class="row">
                 <div class="col-sm-6 my-3">
                   <div class="form-group">
                     <label for="exampleFormControlInput9">Title</label>
-                    <input type="text" class="form-control" v-model="feeding.title" id="exampleFormControlInput9" />
+                    <input type="text" class="form-control" v-model="program.title" id="exampleFormControlInput9" />
                   </div>
                 </div>
 
                 <div class="col-sm-6 my-3">
                   <div class="form-group">
                     <label for="exampleFormControlInput10">Description</label>
-                    <input type="text" class="form-control" v-model="feeding.subtitle" id="exampleFormControlInput10" />
+                    <input type="text" class="form-control" v-model="program.subtitle" id="exampleFormControlInput10" />
                   </div>
                 </div>
 
@@ -575,38 +582,38 @@
             </div>
 
             <!------------------- FEEDING PROGRAM INTRO ------------------>
-            <div class="tab-pane" id="feedAbout" v-if="title == 'Feeding Program'">
+            <div class="tab-pane" id="feedAbout" v-if="title == 'Feeding Program' || title == 'Scholarship Program'">
               <div class="row">
                 <div class="col-sm-12 my-3">
                   <div class="form-group">
                     <label for="exampleFormControlInput99">About Title</label>
-                    <input type="text" class="form-control" v-model="feeding.feed_title" id="exampleFormControlInput99" />
+                    <input type="text" class="form-control" v-model="program.program_title" id="exampleFormControlInput99" />
                   </div>
                 </div>
 
                 <div class="col-sm-12 my-3">
                   <div class="form-group">
                     <label for="exampleFormControlInput190">About Description</label>
-                    <textarea class="form-control" v-model="feeding.feed_description" id="exampleFormControlInput190"></textarea>
+                    <textarea class="form-control" v-model="program.program_description" id="exampleFormControlInput190"></textarea>
                   </div>
                 </div>
               </div>
             </div>
 
             <!------------------- PROGRAM OVERVIEW INTRO ------------------>
-            <div class="tab-pane" id="feedOverview" v-if="title == 'Feeding Program'">
+            <div class="tab-pane" id="feedOverview" v-if="title == 'Feeding Program' || title == 'Scholarship Program'">
               <div class="row">
                 <div class="col-sm-12 my-3">
                   <div class="form-group">
                     <label for="exampleFormControlInput929">Overview Title</label>
-                    <input type="text" class="form-control" v-model="feeding.overview_title" id="exampleFormControlInput992" />
+                    <input type="text" class="form-control" v-model="program.overview_title" id="exampleFormControlInput992" />
                   </div>
                 </div>
 
                 <div class="col-sm-12 my-3">
                   <div class="form-group">
                     <label for="exampleFormControlInput197">Overview Description</label>
-                    <textarea class="form-control" v-model="feeding.overview_description" id="exampleFormControlInput197"></textarea>
+                    <textarea class="form-control" v-model="program.overview_description" id="exampleFormControlInput197"></textarea>
                   </div>
                 </div>
               </div>
@@ -792,16 +799,19 @@ export default {
 
       // Feeding Program
       selectedFile12: "",
-      feeding: {
+      program: {
         title: "",
         subtitle: "",
-        feed_title: "",
-        feed_description: "",
+        program_title: "",
+        program_description: "",
         overview_title: "",
         overview_description: "",
       },
       feeding_background_image: "",
       is_feeding_background_image: false,
+
+      // Contact Us
+      contact_description: "",
 
       options: [{ name: "Homepage" }, { name: "Our Mission" }, { name: "Our Team" }, { name: "FAQs" }, { name: "Feeding Program" }, { name: "Scholarship Program" }, { name: "Events" }, { name: "Stories" }, { name: "Contact Us" }],
     };
@@ -881,16 +891,16 @@ export default {
             video_subtitle: this.video.subtitle,
             video_link: this.video.link,
           };
-        } else if (this.title == "Feeding Program") {
+        } else if (this.title == "Feeding Program" || this.title == "Scholarship Program") {
           page_fields_add = {
-            feed_intro_title: this.feeding.title,
-            feed_intro_description: this.feeding.subtitle,
+            program_intro_title: this.program.title,
+            program_intro_description: this.program.subtitle,
 
-            feed_about_title: this.feeding.feed_title,
-            feed_about_description: this.feeding.feed_description,
+            program_about_title: this.program.program_title,
+            program_about_description: this.program.program_description,
 
-            feed_overview_title: this.feeding.overview_title,
-            feed_overview_description: this.feeding.overview_description,
+            program_overview_title: this.program.overview_title,
+            program_overview_description: this.program.overview_description,
           };
         } else if (this.title == 6) {
           page_fields_add = {
@@ -972,7 +982,7 @@ export default {
         this.is_error = true;
       }
 
-      if (this.header == "") {
+      if (this.header == "" && this.title != "Our Mission") {
         this.header_error = error_message + "header";
         this.is_error = true;
       }
