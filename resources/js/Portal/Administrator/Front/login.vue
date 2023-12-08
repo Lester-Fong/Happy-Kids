@@ -34,7 +34,7 @@
                             </div>
                         </div>
 
-                        <div class="col-12 mb-4">
+                        <!-- <div class="col-12 mb-4">
                             <div class="">
                                 <div class="seperator">
                                     <hr />
@@ -68,7 +68,7 @@
                                     <span class="btn-text-inner">Twitter</span>
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
