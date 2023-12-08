@@ -36,11 +36,9 @@ class Pages extends Eloquent
         return self::all();
     }
 
-    public function displaySinglePage($encrypted_id)
+    public function displaySinglePage($title)
     {
-        $id = Crypt::decryptString($encrypted_id);
-
-        $page = self::where('fldPagesID', '=', $id)->get();
+        $page = self::where('fldPagesTitle', '=', $title)->get();
         return $page;
     }
 
@@ -113,6 +111,10 @@ class Pages extends Eloquent
             $description_obj->program_about_description = $data['program_about_description'];
             $description_obj->program_overview_title = $data['program_overview_title'];
             $description_obj->program_overview_description = $data['program_overview_description'];
+        }
+
+        if ($data['title'] == 'Contact Us') {
+            $description_obj->contact_description = $data['contact_description'];
         }
 
 

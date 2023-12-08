@@ -36,8 +36,6 @@ class AdministratorQuery extends Query
 
     public function resolve($root, $args)
     {
-        Log::debug(print_r($args, true));
-
         $admin_model = new Administrator();
 
 

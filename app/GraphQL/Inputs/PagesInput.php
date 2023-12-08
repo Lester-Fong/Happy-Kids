@@ -18,7 +18,7 @@ class PagesInput extends InputType
    public function fields(): array
    {
       return [
-         'page_id' => [
+         'pages_id' => [
             'type' => Type::string(),
          ],
          'title' => [
@@ -122,6 +122,9 @@ class PagesInput extends InputType
             'type' => Type::string(),
          ],
 
+         'contact_description' => [
+            'type' => Type::string(),
+         ],
 
          'mission_intro_section_title' => [
             'type' => Type::string(),

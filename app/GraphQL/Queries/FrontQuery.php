@@ -4,7 +4,7 @@ namespace App\GraphQL\Queries;
 
 use App\Models\Faq;
 use App\Models\Newsletter;
-use App\Models\Testimonials;
+use App\Models\Testimonial;
 use Auth;
 use App\Models\Brand;
 use App\Models\Blog;
@@ -47,48 +47,55 @@ class FrontQuery extends Query
     // $blog_category_model = new BlogCategory();
 
 
-    if ($action_type == 'subscribe_newsletter') {
-      $email = $args['email'];
-      $response = $newsletter_model->newsletterSubscription($email);
+    // if ($action_type == 'subscribe_newsletter') {
+    //   $email = $args['email'];
+    //   $response = $newsletter_model->newsletterSubscription($email);
+    // }
+
+    if ($action_type == 'display_homepage') {
+      $response_obj->testimonials = Testimonial::all();
+      $response_obj->faq = Faq::take(3)->get();
+      $response_obj->pages = Pages::where('fldPagesTitle', 'Homepage')->first();
     }
 
-
-    if ($action_type == 'get_home_owner_data') {
-      $response_obj->page = Pages::find(6);
-      $response_obj->faq = Faq::where('fldFaqType', '=', 'Owner')->get();
-      $response_obj->testimonial = Testimonials::where('fldTestimonialsActive', true)->get();
+    if ($action_type == 'display_about_page') {
+      $response_obj->pages = Pages::where('fldPagesTitle', 'Our Mission')->first();
+      $response_obj->team = Team::where('fldTeamType', 'volunteer')->take(3)->get();
     }
 
-    if ($action_type == 'get_customer_faq') {
-      $response_obj->faq = Faq::where('fldFaqType', '=', 'Customer')->get();
+    if ($action_type == 'display_faq_page') {
+      $response_obj->pages = Pages::where('fldPagesTitle', 'FAQs')->first();
+      $response_obj->faq = Faq::all();
     }
 
-
-    if ($action_type == 'get_home_data') {
-      $response_obj->testimonial = Testimonials::where('fldTestimonialsActive', true)->get();
-      $response_obj->page = Pages::find(1);
-      $response_obj->blogs =  $blog_model->displayAllBlog();
+    if ($action_type == 'display_team_page') {
+      $response_obj->pages = Pages::where('fldPagesTitle', 'Our Team')->first();
+      $response_obj->team = Team::where('fldTeamType', 'team')->get();
     }
 
-    if ($action_type == 'get_services_data') {
-      $response_obj->testimonial = Testimonials::where('fldTestimonialsActive', true)->get();
-      $response_obj->page = Pages::find(2);
+    if ($action_type == 'display_feeding_program_page') {
+      $response_obj->pages = Pages::where('fldPagesTitle', 'Feeding Program')->first();
+      $response_obj->team = Team::where('fldTeamType', 'volunteer')->get();
     }
 
-    if ($action_type == 'get_aboutus_data') {
-      $response_obj->page = Pages::find(3);
-      $response_obj->team = Team::where('fldTeamActive', true)->get();
+    if ($action_type == 'display_scholar_program_page') {
+      $response_obj->pages = Pages::where('fldPagesTitle', 'Scholarship Program')->first();
+      $response_obj->team = Team::where('fldTeamType', 'scholar')->get();
     }
 
-    if ($action_type == 'get_contacts_data') {
-      $response_obj->page = Pages::find(4);
+    if ($action_type == 'display_events_page') {
+      $response_obj->pages = Pages::where('fldPagesTitle', 'Events')->first();
+    }
+
+    if ($action_type == 'display_contact_page') {
+      $response_obj->pages = Pages::where('fldPagesTitle', 'Contact Us')->first();
     }
 
     if ($action_type == "display_all_blogs") {
-    //   $page  = Pages::find(5);
+      //   $page  = Pages::find(5);
       $blogs = $blog_model->displayAllBlog();
 
-    //   $response_obj->page = $page;
+      $response_obj->pages = Pages::where('fldPagesTitle', 'Stories')->first();
       $response_obj->blogs = $blogs;
     }
 
