@@ -65,6 +65,7 @@ Vue.prototype.$admin_queries = function (queryName, queryVariables) {
                 file8: ["variables.file8"],
                 file9: ["variables.file9"],
                 file10: ["variables.file10"],
+                file11: ["variables.file11"],
                 objectiveImages: ["variables.objectiveImages"],
                 selectedFileRoles: ["variables.selectedFileRoles"],
                 selectedFileCore: ["variables.selectedFileCore"],
@@ -72,7 +73,7 @@ Vue.prototype.$admin_queries = function (queryName, queryVariables) {
             })
         );
 
-        if (queryVariables.file || queryVariables.file1 || queryVariables.file2 || queryVariables.file3 || queryVariables.file4 || queryVariables.file5 || queryVariables.file6 || queryVariables.file7 || queryVariables.file8 || queryVariables.file9 || queryVariables.file10) {
+        if (queryVariables.file || queryVariables.file1 || queryVariables.file2 || queryVariables.file3 || queryVariables.file4 || queryVariables.file5 || queryVariables.file6 || queryVariables.file7 || queryVariables.file8 || queryVariables.file9 || queryVariables.file10 || queryVariables.file11) {
             bodyFormData.append("file", queryVariables.file);
             bodyFormData.append("file1", queryVariables.file1);
             bodyFormData.append("file2", queryVariables.file2);
@@ -84,6 +85,7 @@ Vue.prototype.$admin_queries = function (queryName, queryVariables) {
             bodyFormData.append("file8", queryVariables.file8);
             bodyFormData.append("file9", queryVariables.file9);
             bodyFormData.append("file10", queryVariables.file10);
+            bodyFormData.append("file11", queryVariables.file11);
         }
 
         if (queryVariables.cover_image) {

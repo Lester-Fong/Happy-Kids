@@ -33,7 +33,6 @@
             <li class="nav-item" role="presentation" v-if="title == 'Homepage'">
               <a class="nav-link" data-bs-toggle="tab" href="#video">Video</a>
             </li>
-
             <li class="nav-item" role="presentation" v-if="title == 'Homepage'">
               <a class="nav-link" data-bs-toggle="tab" href="#faq">FAQ</a>
             </li>
@@ -49,7 +48,7 @@
 
             <!--------------- OUR MISSION NAVS ------------->
             <li class="nav-item" role="presentation" v-if="title == 'Our Mission'">
-              <a class="nav-link" data-bs-toggle="tab" href="#missionIntro">Mission Intro</a>
+              <a class="nav-link" data-bs-toggle="tab" href="#missionIntro">Page Intro</a>
             </li>
             <li class="nav-item" role="presentation" v-if="title == 'Our Mission'">
               <a class="nav-link" data-bs-toggle="tab" href="#checklist">Checklist</a>
@@ -57,16 +56,32 @@
             <li class="nav-item" role="presentation" v-if="title == 'Our Mission'">
               <a class="nav-link" data-bs-toggle="tab" href="#volunteers">Volunteers</a>
             </li>
+            <li class="nav-item" role="presentation" v-if="title == 'Our Mission'">
+              <a class="nav-link" data-bs-toggle="tab" href="#video">Video</a>
+            </li>
+
+            <!--------------- FEEDING PROGRAM NAVS ------------->
+            <li class="nav-item" role="presentation" v-if="title == 'Feeding Program'">
+              <a class="nav-link" data-bs-toggle="tab" href="#feedIntro">Page Intro</a>
+            </li>
+            <li class="nav-item" role="presentation" v-if="title == 'Feeding Program'">
+              <a class="nav-link" data-bs-toggle="tab" href="#feedAbout">About Program</a>
+            </li>
+            <li class="nav-item" role="presentation" v-if="title == 'Feeding Program'">
+              <a class="nav-link" data-bs-toggle="tab" href="#feedOverview">Program Overview</a>
+            </li>
 
             <li class="nav-item" role="presentation">
               <a class="nav-link" data-bs-toggle="tab" href="#meta">Meta Information</a>
             </li>
           </ul>
+
+          <!-------------------------- TAB SECTIONS/CONTENTS ---------------------------->
           <div class="tab-content">
             <!------------------- HEADER ------------------>
             <div class="tab-pane active" id="header">
               <div class="row">
-                <div class="col-sm-6 my-3">
+                <div class="col-sm-6 my-3" v-if="title !== 'Our Mission'">
                   <div class="form-group">
                     <label for="exampleFormControlInput2">Header</label>
                     <input type="text" class="form-control" v-model="header" id="exampleFormControlInput2" />
@@ -74,7 +89,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-6 my-3">
+                <div class="col-sm-6 my-3" v-if="title !== 'Our Mission'">
                   <div class="form-group">
                     <label for="exampleFormControlInput3">Sub Header</label>
                     <input type="text" class="form-control" v-model="sub_header" id="exampleFormControlInput3" />
@@ -93,9 +108,9 @@
                     <img class="mb-2" :src="background_image" alt="" v-if="is_background" width="100" />
                   </div>
                 </div>
-                <div class="col-sm-4" v-if="title == 'Homepage'">
+                <div class="col-sm-4" v-if="title == 'Homepage' || title == 'Our Mission'">
                   <div class="form-group">
-                    <label class="col-form-label" for="formFile2">Background</label>
+                    <label class="col-form-label" for="formFile2">Image 1</label>
                     <div class="input-group mb-3">
                       <div class="custom-file">
                         <input class="form-control file-upload-input" @change="onFile2Changed($event)" type="file" id="formFile2" />
@@ -104,9 +119,9 @@
                     <img class="mb-2" :src="background_image_2" alt="" v-if="is_background" width="100" />
                   </div>
                 </div>
-                <div class="col-sm-4" v-if="title == 'Homepage'">
+                <div class="col-sm-4" v-if="title == 'Homepage' || title == 'Our Mission'">
                   <div class="form-group">
-                    <label class="col-form-label" for="formFile3">Background</label>
+                    <label class="col-form-label" for="formFile3">Image 2</label>
                     <div class="input-group mb-3">
                       <div class="custom-file">
                         <input class="form-control file-upload-input" @change="onFile3Changed($event)" type="file" id="formFile3" />
@@ -202,7 +217,7 @@
             </div>
 
             <!------------------- VIDEO ------------------>
-            <div class="tab-pane" id="video" v-if="title == 'Homepage'">
+            <div class="tab-pane" id="video" v-if="title == 'Homepage' || title == 'Our Mission'">
               <div class="row">
                 <div class="col-sm-6 my-3">
                   <div class="form-group">
@@ -261,7 +276,7 @@
                     <label class="col-form-label" for="faqfile">Right Panel Image</label>
                     <div class="input-group mb-3">
                       <div class="custom-file">
-                        <input class="form-control file-upload-input" @change="onFile6Changed($event)" type="file" id="faqfile" />
+                        <input class="form-control file-upload-input" @change="12($event)" type="file" id="faqfile" />
                       </div>
                     </div>
                     <img class="mb-2" :src="faq_background_image" alt="" v-if="is_faq_background_image" width="100" />
@@ -495,8 +510,8 @@
               <div class="row">
                 <div class="col-sm-6 my-3">
                   <div class="form-group">
-                    <label for="exampleFormControlInput909">Title</label>
-                    <input type="text" class="form-control" v-model="volunteers.title" id="exampleFormControlInput909" />
+                    <label for="exampleFormControlInput9091">Title</label>
+                    <input type="text" class="form-control" v-model="volunteers.title" id="exampleFormControlInput9091" />
                   </div>
                 </div>
 
@@ -523,6 +538,75 @@
                       </div>
                     </div>
                     <img class="mb-2" :src="volunteers_background_image" alt="" v-if="is_volunteers_background_image" width="100" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!------------------- FEEDING PROGRAM INTRO ------------------>
+            <div class="tab-pane" id="feedIntro" v-if="title == 'Feeding Program'">
+              <div class="row">
+                <div class="col-sm-6 my-3">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput9">Title</label>
+                    <input type="text" class="form-control" v-model="feeding.title" id="exampleFormControlInput9" />
+                  </div>
+                </div>
+
+                <div class="col-sm-6 my-3">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput10">Description</label>
+                    <input type="text" class="form-control" v-model="feeding.subtitle" id="exampleFormControlInput10" />
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="feedingfile">Right Panel Image</label>
+                    <div class="input-group mb-3">
+                      <div class="custom-file">
+                        <input class="form-control file-upload-input" @change="onFile12Changed($event)" type="file" id="feedingfile" />
+                      </div>
+                    </div>
+                    <img class="mb-2" :src="feeding_background_image" alt="" v-if="is_feeding_background_image" width="100" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!------------------- FEEDING PROGRAM INTRO ------------------>
+            <div class="tab-pane" id="feedAbout" v-if="title == 'Feeding Program'">
+              <div class="row">
+                <div class="col-sm-12 my-3">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput99">About Title</label>
+                    <input type="text" class="form-control" v-model="feeding.feed_title" id="exampleFormControlInput99" />
+                  </div>
+                </div>
+
+                <div class="col-sm-12 my-3">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput190">About Description</label>
+                    <textarea class="form-control" v-model="feeding.feed_description" id="exampleFormControlInput190"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!------------------- PROGRAM OVERVIEW INTRO ------------------>
+            <div class="tab-pane" id="feedOverview" v-if="title == 'Feeding Program'">
+              <div class="row">
+                <div class="col-sm-12 my-3">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput929">Overview Title</label>
+                    <input type="text" class="form-control" v-model="feeding.overview_title" id="exampleFormControlInput992" />
+                  </div>
+                </div>
+
+                <div class="col-sm-12 my-3">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput197">Overview Description</label>
+                    <textarea class="form-control" v-model="feeding.overview_description" id="exampleFormControlInput197"></textarea>
                   </div>
                 </div>
               </div>
@@ -706,6 +790,19 @@ export default {
       volunteers_background_image: "",
       is_volunteers_background_image: false,
 
+      // Feeding Program
+      selectedFile12: "",
+      feeding: {
+        title: "",
+        subtitle: "",
+        feed_title: "",
+        feed_description: "",
+        overview_title: "",
+        overview_description: "",
+      },
+      feeding_background_image: "",
+      is_feeding_background_image: false,
+
       options: [{ name: "Homepage" }, { name: "Our Mission" }, { name: "Our Team" }, { name: "FAQs" }, { name: "Feeding Program" }, { name: "Scholarship Program" }, { name: "Events" }, { name: "Stories" }, { name: "Contact Us" }],
     };
   },
@@ -779,14 +876,21 @@ export default {
             volunteers_title: this.volunteers.title,
             volunteers_subtitle: this.volunteers.subtitle,
             volunteers_description: this.volunteers.description,
+
+            video_title: this.video.title,
+            video_subtitle: this.video.subtitle,
+            video_link: this.video.link,
           };
-        } else if (this.title == 4) {
+        } else if (this.title == "Feeding Program") {
           page_fields_add = {
-            location: this.location,
-            phone: this.phone,
-            email: this.email,
-            time: this.time,
-            socials: this.socials,
+            feed_intro_title: this.feeding.title,
+            feed_intro_description: this.feeding.subtitle,
+
+            feed_about_title: this.feeding.feed_title,
+            feed_about_description: this.feeding.feed_description,
+
+            feed_overview_title: this.feeding.overview_title,
+            feed_overview_description: this.feeding.overview_description,
           };
         } else if (this.title == 6) {
           page_fields_add = {
@@ -819,6 +923,7 @@ export default {
           file8: this.selectedFile9,
           file9: this.selectedFile10,
           file10: this.selectedFile11,
+          file11: this.selectedFile12,
 
           objectiveImages: this.selectedFileObjectives,
           // selectedFileOwnersteps: this.selectedFileOwnersteps,
@@ -867,18 +972,8 @@ export default {
         this.is_error = true;
       }
 
-      // if(this.slug == "") {
-      //   this.slug_error = error_message + "slug";
-      //   this.is_error = true;
-      // }
-
       if (this.header == "") {
         this.header_error = error_message + "header";
-        this.is_error = true;
-      }
-
-      if (this.sub_header == "") {
-        this.sub_header_error = error_message + "sub header";
         this.is_error = true;
       }
 
@@ -931,7 +1026,7 @@ export default {
       this.video_background_image = this.onDisplayUploadedImage(event, "singleFile");
       this.is_video_background_image = true;
     },
-    onFile6Changed() {
+    12() {
       this.selectedFile6 = event.target.files[0];
       this.faq_background_image = this.onDisplayUploadedImage(event, "singleFile");
       this.is_faq_background_image = true;
@@ -961,6 +1056,11 @@ export default {
       this.volunteers_background_image = this.onDisplayUploadedImage(event, "singleFile");
       this.is_volunteers_background_image = true;
     },
+    onFile12Changed() {
+      this.selectedFile12 = event.target.files[0];
+      this.feeding_background_image = this.onDisplayUploadedImage(event, "singleFile");
+      this.is_feeding_background_image = true;
+    },
     onFileChangedObjectives(e, index) {
       this.selectedFileObjectives[index] = e.target.files[0];
       this.background_image = this.onDisplayUploadedImage(e, `objective_${index + 1}`);
@@ -981,6 +1081,11 @@ export default {
         this.objective_background_image_3 = URL.createObjectURL(file);
         this.is_objective_background_image_3 = true;
       }
+    },
+  },
+  watch: {
+    title(val) {
+      console.log(val);
     },
   },
 };
