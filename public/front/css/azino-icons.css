@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'azino-icon';
-  src:  url('../assets/fonts/azino-icon.eot?7icgw');
-  src:  url('../assets/fonts/azino-icon.eot?7icgw#iefix') format('embedded-opentype'),
-    url('../assets/fonts/azino-icon.ttf?7icgw') format('truetype'),
-    url('../assets/fonts/azino-icon.woff?7icgw') format('woff'),
-    url('../assets/fonts/azino-icon.svg?7icgw#azino-icon') format('svg');
+  src:  url('/public/front/assets/fonts/azino-icon.eot?7icgw');
+  src:  url('/public/front/assets/fonts/azino-icon.eot?7icgw#iefix') format('embedded-opentype'),
+    url('/public/front/assets/fonts/azino-icon.ttf?7icgw') format('truetype'),
+    url('/public/front/assets/fonts/azino-icon.woff?7icgw') format('woff'),
+    url('/public/front/assets/fonts/azino-icon.svg?7icgw#azino-icon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;

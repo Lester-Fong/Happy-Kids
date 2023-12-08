@@ -839,6 +839,9 @@
   border-top-left-radius: 185px;
   border-top-right-radius: 185px;
   overflow: hidden;
+  height: 442px !important;
+  width: 370px !important;
+  object-fit: cover;
 }
 
 .team-card__image > img {
@@ -990,7 +993,7 @@
 
 .team-about {
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: top center;
 }
 
 .team-about__top {
@@ -6151,7 +6154,7 @@ h6 {
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 50%;
-  background-image: url(/front/assets/images/shapes/testimonials-qoute-1-1.png);
+  background-image: url(/public/front/assets/images/shapes/testimonials-qoute-1-1.png);
   position: absolute;
   bottom: 0;
   left: 50%;
