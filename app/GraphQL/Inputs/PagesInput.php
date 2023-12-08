@@ -54,41 +54,75 @@ class PagesInput extends InputType
          'content' => [
             'type' => Type::listOf(Type::string()),
          ],
-         'why_us_title' => [
+
+         'objective_description' => [
             'type' => Type::listOf(Type::string()),
          ],
-         'why_us_description' => [
+         'objective_sub_description' => [
             'type' => Type::listOf(Type::string()),
          ],
-         'how_title' => [
+         'about_title' => [
             'type' => Type::listOf(Type::string()),
          ],
-         'roles_title' => [
+         'about_description' => [
             'type' => Type::listOf(Type::string()),
          ],
-         'how_description' => [
-            'type' => Type::listOf(Type::string()),
-         ],
-         'mission_title' => [
+         'video_title' => [
             'type' => Type::string(),
          ],
-         'mission_description' => [
+         'video_subtitle' => [
             'type' => Type::string(),
          ],
-         'vision_title' => [
+         'video_link' => [
             'type' => Type::string(),
          ],
-         'vision_description' => [
+         'faq_title' => [
             'type' => Type::string(),
          ],
+         'faq_subtitle' => [
+            'type' => Type::string(),
+         ],
+         'testimonial_title' => [
+            'type' => Type::string(),
+         ],
+         'testimonial_subtitle' => [
+            'type' => Type::string(),
+         ],
+         'testimonial_description' => [
+            'type' => Type::string(),
+         ],
+         'donate_title' => [
+            'type' => Type::string(),
+         ],
+         'donate_subtitle' => [
+            'type' => Type::string(),
+         ],
+         'donate_description' => [
+            'type' => Type::string(),
+         ],
+         'donate_purpose_title' => [
+            'type' => Type::string(),
+         ],
+         'donate_purpose_description' => [
+            'type' => Type::string(),
+         ],
+         'events_title' => [
+            'type' => Type::string(),
+         ],
+         'events_subtitle' => [
+            'type' => Type::string(),
+         ],
+         'events_description' => [
+            'type' => Type::string(),
+         ],
+
+
          'core_title' => [
             'type' => Type::listOf(Type::string()),
          ],
          'core_description' => [
             'type' => Type::listOf(Type::string()),
          ],
-
-
       ];
    }
 }

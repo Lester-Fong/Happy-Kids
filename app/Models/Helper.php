@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
-use Image;
 use File;
 use Validator;
 use Request;
@@ -11,6 +10,7 @@ use Input;
 use Config;
 use Hash;
 use Session;
+use Intervention\Image\Facades\Image as Image;
 use Mail;
 use Log;
 use Storage;

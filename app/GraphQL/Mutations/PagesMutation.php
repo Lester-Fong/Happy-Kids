@@ -36,7 +36,10 @@ class PagesMutation extends Mutation
             'file3' => ['type' => GraphQL::type('Upload')],
             'file4' => ['type' => GraphQL::type('Upload')],
             'file5' => ['type' => GraphQL::type('Upload')],
-            'selectedFileHow' => ['type' => Type::listOf(GraphQL::type('Upload'))],
+            'file6' => ['type' => GraphQL::type('Upload')],
+            'file7' => ['type' => GraphQL::type('Upload')],
+            'file8' => ['type' => GraphQL::type('Upload')],
+            'objectiveImages' => ['type' => Type::listOf(GraphQL::type('Upload'))],
             'selectedFileRoles' => ['type' => Type::listOf(GraphQL::type('Upload'))],
             'selectedFileCore' => ['type' => Type::listOf(GraphQL::type('Upload'))],
         ];
@@ -93,7 +96,37 @@ class PagesMutation extends Mutation
 
         if ($page['action_type'] == "new_record") {
 
-            $page_model->addUpdateRecord(0, $page, $args);
+            $page_id = $page_model->addUpdateRecord(0, $page, $args);
+
+            $file = $args['file'];
+            $file1 = $args['file1'];
+            $file2 = $args['file2'];
+            if ($file != "") {
+                $filename = $helper_model->ImageUpload($file, $page_id, "pages");
+                $page_rec = $page_model->find($page_id);
+                if ($page_rec) {
+                    $page_rec->fldPagesHeaderImage = $filename;
+                    $page_rec->save();
+                }
+            }
+
+            if ($file1 != "") {
+                $filename = $helper_model->ImageUpload($file1, $page_id, "pages");
+                $page_rec = $page_model->find($page_id);
+                if ($page_rec) {
+                    $page_rec->fldPagesImage1 = $filename;
+                    $page_rec->save();
+                }
+            }
+
+            if ($file2 != "") {
+                $filename = $helper_model->ImageUpload($file2, $page_id, "pages");
+                $page_rec = $page_model->find($page_id);
+                if ($page_rec) {
+                    $page_rec->fldPagesImage2 = $filename;
+                    $page_rec->save();
+                }
+            }
 
             $response_obj->error = false;
             $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_SUCCESSFUL'];
