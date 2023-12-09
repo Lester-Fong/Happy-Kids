@@ -1,35 +1,38 @@
 <template>
   <div>
-    <h1 class="fw-bold">Dashboard</h1>
-    <div class="row">
-      <div class="col-md-12 card-group">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title m-0">Most Viewed Blogs</h5>
-          </div>
-          <div class="card-body">
-            <table id="blogs_table" class="table table-striped dt-table-hover" style="width: 100%">
-              <thead class="mb-4">
-                <tr>
-                  <th class="fw-bold text-center">Blog TItle</th>
-                  <th class="fw-bold text-center">Date Published</th>
-                  <th class="fw-bold text-center">Views</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="blog in blogs.slice(0, 5)" :key="blog.id">
-                  <td class="fw-bold text-center">
-                    {{ blog.title }}
-                  </td>
-                  <td class="fw-bold text-center">
-                    {{ blog.date | formatTransDate }}
-                  </td>
-                  <td class="fw-bold text-center">
-                    <span>{{ blog.views }} views</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+    <div v-if="is_loading" class="loader-gif"></div>
+    <div v-else>
+      <h1 class="fw-bold">Dashboard</h1>
+      <div class="row">
+        <div class="col-md-12 card-group">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title m-0">Most Viewed Blogs</h5>
+            </div>
+            <div class="card-body">
+              <table id="blogs_table" class="table table-striped dt-table-hover" style="width: 100%">
+                <thead class="mb-4">
+                  <tr>
+                    <th class="fw-bold text-center">Blog TItle</th>
+                    <th class="fw-bold text-center">Date Published</th>
+                    <th class="fw-bold text-center">Views</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="blog in blogs.slice(0, 5)" :key="blog.id">
+                    <td class="fw-bold text-center">
+                      {{ blog.title }}
+                    </td>
+                    <td class="fw-bold text-center">
+                      {{ blog.date | formatTransDate }}
+                    </td>
+                    <td class="fw-bold text-center">
+                      <span>{{ blog.views }} views</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
