@@ -35,7 +35,7 @@ const router = new VueRouter({
 Vue.filter("formatTransDate", function (value) {
     if (value) {
         if (value && moment(value, "YYYY-MM-DD", true).isValid()) {
-            return moment(value).format("MMM DD YYYY");
+            return moment(value).format("MMM DD, YYYY");
         }
         return value;
     }

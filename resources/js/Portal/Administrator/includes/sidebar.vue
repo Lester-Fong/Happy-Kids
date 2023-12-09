@@ -32,6 +32,17 @@
           </router-link>
         </li>
 
+        <!---------- Pages ---------->
+        <li class="menu">
+          <router-link :to="{ name: 'AdminPages' }" :class="activeMeta.isPages ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-sidebar bi-book h5 mb-0 me-2 pe-1"></i>
+              <span>Pages</span>
+            </div>
+          </router-link>
+        </li>
+        <!---------- End of Pages ---------->
+
         <!---------- Posts ---------->
         <li class="menu">
           <a href="#home" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -56,8 +67,8 @@
               <router-link :to="{ name: 'AdminBlogs' }" :class="activeMeta.isBlogs ? 'hk_active' : ''"> Blogs/Stories </router-link>
             </li>
             <li>
-                            <router-link :to="{ name: 'AdminBlogCategory' }" :class="activeMeta.isBlogsCategory ? 'hk_active' : ''"> Blog Category </router-link>
-                        </li>
+              <router-link :to="{ name: 'AdminBlogCategory' }" :class="activeMeta.isBlogsCategory ? 'hk_active' : ''"> Blog Category </router-link>
+            </li>
             <li>
               <router-link :to="{ name: 'AdminFAQ' }" :class="activeMeta.isFAQ ? 'hk_active' : ''"> FAQs </router-link>
             </li>
@@ -71,18 +82,7 @@
         </li>
         <!---------- End of Post ---------->
 
-        <!---------- Pages ---------->
-        <li class="menu">
-          <router-link :to="{ name: 'AdminPages' }" :class="activeMeta.isPages ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
-            <div class="d-flex align-items-center">
-              <i class="bi bi-sidebar bi-book h5 mb-0 me-2 pe-1"></i>
-              <span>Pages</span>
-            </div>
-          </router-link>
-        </li>
-        <!---------- End of Pages ---------->
-
-         <!---------- Pages ---------->
+         <!---------- Administrator ---------->
          <li class="menu">
           <router-link :to="{ name: 'AdminAdministrator' }" :class="activeMeta.isAdmin ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
             <div class="d-flex align-items-center">
@@ -91,7 +91,7 @@
             </div>
           </router-link>
         </li>
-        <!---------- End of Pages ---------->
+        <!---------- End of Administrator ---------->
 
         <!---------- SMS TRANSACTION ---------->
         <!-- <li class="menu">
