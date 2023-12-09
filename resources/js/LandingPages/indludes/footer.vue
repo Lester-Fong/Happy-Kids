@@ -23,40 +23,42 @@
               </div>
               <!-- /.footer-widget footer-widget__about -->
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-4 col-md-6 col-sm-12">
               <div class="footer-widget footer-widget__link mb-40">
                 <h3 class="footer-widget__title">Explore</h3>
                 <ul class="list-unstyled footer-widget__link-list">
-                  <li><a href="causes.html">Our Causes</a></li>
-                  <li><a href="about.html">About us</a></li>
-                  <li><a href="news.html">New Campaign</a></li>
-                  <li><a href="events.html">Upcoming Events</a></li>
-                  <li><a href="about.html">Site Map</a></li>
-                  <li><a href="contact.html">Help</a></li>
-                  <li><a href="causes.html">Donate</a></li>
-                  <li><a href="contact.html">Contact us</a></li>
-                  <li><a href="contact.html">Terms</a></li>
+                  <li>
+                    <router-link :to="{ name: 'HomePage' }">Home</router-link>
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'AboutPage' }">Our Mission</router-link>
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'OurTeamPage' }">Our Team</router-link>
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'FAQPage' }">FAQs</router-link>
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'FeedingProgramPage' }">Feeding Program</router-link>
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'ScholarshipProgramPage' }">Scholarship Program</router-link>
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'EventsPage' }">Events</router-link>
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'StoriesPage' }">Stories</router-link>
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'ContactPage' }">Contact Us</router-link>
+                  </li>
                 </ul>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-              <div class="footer-widget mb-40 footer-widget__blog">
-                <h3 class="footer-widget__title">Blog</h3>
-                <ul class="list-unstyled footer-widget__blog">
-                  <li>
-                    <img src="https://picsum.photos/68/70" alt="" />
-                    <p>22 May, 2020</p>
-                    <h3><a href="news-details.html">You can help the poor in need</a></h3>
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/68/70" alt="" />
-                    <p>22 May, 2020</p>
-                    <h3><a href="news-details.html">Rise fund for Healthy Food</a></h3>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
+
+            <div class="col-lg-5 col-md-6 col-sm-12">
               <div class="footer-widget mb-40 footer-widget__newsletter">
                 <h3 class="footer-widget__title">Newletter</h3>
                 <p>Signup now to get daily latest news & updates from us</p>

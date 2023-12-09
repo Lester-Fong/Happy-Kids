@@ -47,6 +47,10 @@ let admin_queries = {
             category_id,
             slug,
             status,
+            views,
+            blog_category {
+                name
+            }
         }
     }`,
 

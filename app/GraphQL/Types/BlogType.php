@@ -88,6 +88,10 @@ class BlogType extends GraphQLType
             'type' => Type::string(),
             'alias' => 'fldBlogStatus',
          ],
+         'views' => [
+            'type' => Type::string(),
+            'alias' => 'fldBlogViews',
+         ],
          'author' => [
             'type' =>  GraphQL::type('admin_type'),
          ],

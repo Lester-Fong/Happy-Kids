@@ -3,7 +3,7 @@
     <template v-if="is_portal">
       <!--  START HEADER NAVBAR  -->
       <div class="header-container">
-        <header-admin></header-admin>
+        <header-admin :admin_rec="admin_rec"></header-admin>
       </div>
       <!--  END HEADER NAVBAR  -->
 

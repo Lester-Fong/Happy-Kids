@@ -8,7 +8,7 @@
           <div class="main-header__social">
             <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
             <a href="#" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
-            <a href="#" aria-label="pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="linkedin"><i class="fab fa-linkedin"></i></a>
             <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
           </div>
           <!-- /.main-header__social -->
