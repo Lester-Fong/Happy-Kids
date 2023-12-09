@@ -82,6 +82,17 @@
         </li>
         <!---------- End of Pages ---------->
 
+         <!---------- Pages ---------->
+         <li class="menu">
+          <router-link :to="{ name: 'AdminAdministrator' }" :class="activeMeta.isAdmin ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-sidebar bi-person-fill h5 mb-0 me-2 pe-1"></i>
+              <span>Administrator</span>
+            </div>
+          </router-link>
+        </li>
+        <!---------- End of Pages ---------->
+
         <!---------- SMS TRANSACTION ---------->
         <!-- <li class="menu">
           <router-link :to="{ name: 'AdminSMS' }" :class="activeMeta.isSMS ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">

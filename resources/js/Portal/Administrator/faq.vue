@@ -44,6 +44,10 @@
 <script>
 import FaqModal from "./faq/form.vue";
 export default {
+  metaInfo: {
+        title: "Admin - FAQ",
+    },
+
   components: {
     FaqModal,
   },

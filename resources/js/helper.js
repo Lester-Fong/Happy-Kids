@@ -125,7 +125,7 @@ Vue.mixin({
                     ["para", ["ul", "ol", "paragraph", "height"]],
                     ["table", ["table"]],
                     ["insert", ["link", "picture"]],
-                    ["view", ["fullscreen", "codeview"]],
+                    ["view", ["codeview"]],
                 ],
                 popover: {
                     image: [
@@ -169,6 +169,10 @@ Vue.mixin({
             let start = moment(date_start, "YYYY-MM-DD HH:mm:ss").format("h:mma");
             let end = moment(date_end, "YYYY-MM-DD HH:mm:ss").format("h:mma");
             return start + " - " + end;
+        },
+
+        onGetInitials: (first, last) => {
+            return first.charAt(0).toUpperCase() + last.charAt(0).toUpperCase();
         },
     },
 });

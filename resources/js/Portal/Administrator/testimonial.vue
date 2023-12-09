@@ -44,6 +44,10 @@
 <script>
 import TestimonialModal from "./testimonial/form.vue";
 export default {
+  metaInfo: {
+        title: "Admin - Testimonials",
+    },
+  
   components: {
     TestimonialModal,
   },

@@ -17,6 +17,21 @@ let admin_queries = {
         }
     }`,
 
+    save_admin: `mutation administrator($admin: AdministratorInput) {
+        administrator(admin: $admin) {
+            error,
+            message,
+            admin {
+                firstname,
+                lastname,
+                email,
+                image,
+                mobile,
+                administrator_id
+            }
+        }
+    }`,
+
     get_admin: `query administrator($action_type: String) {
         administrator(action_type: $action_type) {
                 administrator_id,

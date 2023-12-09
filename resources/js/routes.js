@@ -17,6 +17,7 @@ import AdminPagesEdit from "./Portal/Administrator/pages/edit.vue";
 import AdminSMS from "./Portal/Administrator/sms.vue";
 import AdminDonation from "./Portal/Administrator/donation.vue";
 import AdminBlogsForm from "./Portal/Administrator/blogs/form.vue";
+import AdminAdministrator from "./Portal/Administrator/administrator.vue";
 
 export default [
     {
@@ -45,4 +46,5 @@ export default [
     { path: "/admin/blogs/new", component: AdminBlogsForm, name: "AdminBlogsNew", meta: { isAdminAuthentication: true, isBlog: true }, params: true },
     { path: "/admin/blogs/edit/:id", component: AdminBlogsForm, name: "AdminBlogsEdit", meta: { isAdminAuthentication: true, isBlog: true }, params: true },
     { path: "/admin/blog-category", component: AdminBlogCategory, name: "AdminBlogCategory", meta: { isAdminAuthentication: true, isBlogsCategory: true } },
+    { path: "/admin/administrator", component: AdminAdministrator, name: "AdminAdministrator", meta: { isAdminAuthentication: true, isAdmin: true } },
 ];

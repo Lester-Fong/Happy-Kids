@@ -1,26 +1,30 @@
 <template>
     <div>
         <div class="loader-gif" v-if="is_loading"></div>
-        <h1>Blogs/Stories Page</h1>
+        <h1>Administrator</h1>
 
         <div class="row layout-top-spacing">
             <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
                 <div class="widget-content widget-content-area br-8">
-                    <table id="blogs_table" class="table table-striped dt-table-hover" style="width: 100%">
+                    <table id="admin_table" class="table table-striped dt-table-hover" style="width: 100%">
                         <thead class="mb-4">
                             <tr>
-                                <th>Title</th>
-                                <th>Date Created</th>
+                                <th>Name</th>
+                                <th>Contact</th>
+                                <th>Email</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="blog in blogs" :key="blog.id">
+                            <tr v-for="a in administrators" :key="a.id">
                                 <td>
-                                    {{ blog.title }}
+                                    {{ formatFullname(a.firstname, a.lastname) }}
                                 </td>
                                 <td>
-                                    {{ blog.date | formatTransDate }}
+                                    {{ a.mobile }}
+                                </td>
+                                <td>
+                                    {{ a.email }}
                                 </td>
                                 <td class="text-center dropdown">
                                     <a class="dropdown-toggle" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -31,8 +35,8 @@
                                         </svg>
                                     </a>
                                     <div class="dropdown-menu">
-                                        <router-link class="dropdown-item" :to="'/admin/blogs/edit/' + blog.blogs_id"> Edit Blog </router-link>
-                                        <a href="javascript:void(0);" class="dropdown-item" @click="onDeleteBlog(blog)">Delete Blog</a>
+                                        <a href="javascript:void(0);" class="dropdown-item" @click="onEditBlogCategory(a)"> Edit </a>
+                                        <a href="javascript:void(0);" class="dropdown-item" @click="onDeleteRecord(a.administrator_id)">Delete </a>
                                     </div>
                                 </td>
                             </tr>
@@ -41,20 +45,27 @@
                 </div>
             </div>
         </div>
+        <administrator-form :selected_admin="selected_admin" :is_edit="is_edit" @onHideModal="hideModal" @success="onSuccess" />
     </div>
 </template>
 
 <script>
+import AdministratorForm from "./administrator/form.vue";
+
 export default {
     metaInfo: {
-        title: "Admin - Blog",
+        title: "Admin - Administrator",
     },
+
+    components: { AdministratorForm },
 
     data() {
         return {
-            blogs: [],
-            filteredBlogs: [],
+            administrators: [],
+            filteredAdmin: [],
             is_loading: false,
+            is_edit: false,
+            selected_admin: {},
         };
     },
 
@@ -65,12 +76,12 @@ export default {
     methods: {
         onPopulateData() {
             this.is_loading = true;
-            this.$admin_queries("blogs", {
+            this.$admin_queries("get_admin", {
                 action_type: "display_all",
             })
                 .then((res) => {
                     this.is_loading = false;
-                    this.filteredBlogs = res.data.data.blogs;
+                    this.filteredAdmin = res.data.data.administrator;
                 })
                 .catch(() => {
                     this.is_loading = false;
@@ -79,10 +90,17 @@ export default {
         },
 
         onCreateRecord() {
-            this.$router.replace({ name: "AdminBlogsNew" });
+            this.is_edit = false;
+            $("#admin_modal").modal("show");
         },
 
-        onDeleteBlog(blogs) {
+        onEditBlogCategory(data) {
+            this.is_edit = true;
+            $("#admin_modal").modal("show");
+            this.selected_admin = data;
+        },
+
+        onDeleteRecord(administrator_id) {
             Swal.fire({
                 title: "Are you sure?",
                 html: "You want to delete this record?",
@@ -94,16 +112,16 @@ export default {
             }).then((res) => {
                 if (res.isConfirmed == true) {
                     this.is_loading = true;
-                    this.$admin_queries("save_blogs", {
-                        blogs: {
-                            blogs_id: blogs.blogs_id,
+                    this.$admin_queries("save_admin", {
+                        admin: {
+                            administrator_id: administrator_id,
                             action_type: "delete_record",
                         },
                     })
                         .then((res) => {
                             this.is_loading = false;
 
-                            let response = res.data.data.blogs;
+                            let response = res.data.data.administrator;
 
                             if (response.error == false) {
                                 Swal.fire("Success!", response.message, "success");
@@ -119,18 +137,29 @@ export default {
                 }
             });
         },
+
+        hideModal() {
+            $("#admin_modal").modal("hide");
+            this.is_edit = false;
+        },
+
+        onSuccess() {
+            this.is_edit = false;
+            $("#admin_modal").modal("hide");
+            this.onPopulateData();
+        },
     },
 
     watch: {
-        blogs() {
+        administrators() {
             this.$nextTick(() => {
-                this.datatable = this.onDatatable("#blogs_table", true);
+                this.datatable = this.onDatatable("#admin_table", true);
             });
         },
 
-        filteredBlogs: function (value) {
-            $("#blogs_table").DataTable().destroy();
-            this.blogs = this.filteredBlogs;
+        filteredAdmin: function (value) {
+            $("#admin_table").DataTable().destroy();
+            this.administrators = this.filteredAdmin;
         },
     },
 };

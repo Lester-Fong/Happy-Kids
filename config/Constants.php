@@ -15,6 +15,7 @@ return [
         'RECORD_SUCCESSFUL' => 'Record saved successfully.',
         'RECORD_NOT_FOUND' => 'Record not found.',
         'RECORD_DELETED_SUCCESSFUL' => 'Record deleted successfully.',
+        'GLOBAL_ERROR_MESSAGE' => 'Internal server error. We\'ve notified our engineers and hope to address this issue shortly',
     ],
 
     'LARGE' => 'large/',
@@ -27,5 +28,6 @@ return [
     'EVENTS_IMAGE_PATH' => 'public/uploads/events/',
     'TESTIMONIALS_IMAGE_PATH' => 'public/uploads/testimonials/',
     'TEAM_IMAGE_PATH' => 'public/uploads/team/',
+    'LOGO_PATH' => '/public/images/happy_kids_logo.jpg',
 
 ];

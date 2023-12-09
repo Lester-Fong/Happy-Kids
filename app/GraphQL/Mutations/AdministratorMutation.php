@@ -91,7 +91,7 @@ class AdministratorMutation extends Mutation
         } else if ($admin['action_type'] == "new_record") {
             $rules['admin.firstname'] = ['required'];
             $rules['admin.lastname'] = ['required'];
-            $rules['admin.mobile'] = ['required'];
+            // $rules['admin.mobile'] = ['required'];
             $rules['admin.email'] = ['required', 'email', 'unique:tblAdministrator,fldAdministratorEmail'];
             $rules['admin.password'] = ['required', 'min:8', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/', 'regex:/[@$!%*#?&_]/'];
         } else if ($admin['action_type'] == "update_record") {
@@ -212,6 +212,10 @@ class AdministratorMutation extends Mutation
 
         if ($admin['action_type'] == "save_settings") {
             $response_obj = $admin_model->saveSettings($admin["leadCredits"], $admin["incentives"]);
+        }
+
+        if ($admin["action_type"] == "delete_record") {
+            $response_obj = $admin_model->onDeleteRecord($admin);
         }
 
         return $response_obj;

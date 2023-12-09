@@ -42,6 +42,10 @@ class BlogQuery extends Query {
         $blog  = $blog_model->displayBlogByID($args['blog_id']);
       }
 
+      if($args['action_type'] == "take_2_blogs") {
+        $blog = $blog_model->take(2)->get();
+      }
+
       return $blog;
 
     }

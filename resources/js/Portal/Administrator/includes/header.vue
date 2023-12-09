@@ -13,8 +13,8 @@
                 <li class="nav-item dropdown user-profile-dropdown order-lg-0 order-1">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar-container">
-                            <div class="avatar avatar-sm avatar-indicators avatar-online">
-                                <img alt="avatar" src="https://picsum.photos/200/300" class="rounded-circle" />
+                            <div class="avatar avatar-sm avatar-indicators avatar-online bg-primary text-white rounded-circle d-flex justify-content-center align-items-center">
+                                <span class="fs-6 fw-bold">{{ firstname && lastname ? onGetInitials(firstname, lastname) : "" }}</span>
                             </div>
                         </div>
                     </a>
@@ -24,12 +24,12 @@
                             <div class="media mx-auto">
                                 <img src="https://picsum.photos/200/300" class="img-fluid me-2" alt="avatar" />
                                 <div class="media-body">
-                                    <h5>Shaun Park</h5>
-                                    <p>Project Leader</p>
+                                    <h5>{{ firstname && lastname ? formatFullname(firstname, lastname) : "" }}</h5>
+                                    <p>Administrator</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="dropdown-item">
+                        <div @click="onShowProfileModal" class="dropdown-item">
                             <a href="javascript:void(0);">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -70,22 +70,66 @@
                 </li>
             </ul>
         </header>
+        <admin-profile v-on:onHideModal="onCancelForm" v-on:success="onSuccessForm" :admin_rec="admin" />
     </div>
 </template>
 
 <script>
+import AdminProfile from "./profile.vue";
+
 export default {
+    props: ["admin_rec"],
+
+    components: { AdminProfile },
+
     data() {
         return {
-            //
+            administrator_id: "",
+            firstname: "",
+            lastname: "",
+            email: "",
+            // profile_pic: "",
+            admin: {},
+            mobile: "",
+            admin_data: {},
         };
     },
 
     methods: {
-      onLogout() {
-        sessionStorage.clear();
-        this.$router.go({ name: "AdminLogin" });
-      }
-    }
+        onLogout() {
+            sessionStorage.clear();
+            this.$router.go({ name: "AdminLogin" });
+        },
+
+        onAssignData(val) {
+            this.administrator_id = val.administrator_id;
+            this.firstname = val.firstname;
+            this.lastname = val.lastname;
+            this.email = val.email;
+            // this.profile_pic = val.image;
+            this.mobile = val.mobile;
+
+            this.admin_data = val;
+        },
+
+        onShowProfileModal() {
+            this.admin = this.admin_data;
+            $("#admin_profile_modal").modal("show");
+            $("#admin_profile_modal").appendTo("body");
+        },
+
+        onCancelForm() {
+            $("#admin_profile_modal").modal("hide");
+        },
+
+        onSuccessForm(val) {
+            this.onAssignData(val);
+            $("#admin_profile_modal").modal("hide");
+        },
+    },
+
+    created() {
+        this.onAssignData(this.admin_rec);
+    },
 };
 </script>

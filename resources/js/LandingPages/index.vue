@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <div class="page-wrapper">
-      <landing-header></landing-header>
+    <div>
+        <div class="page-wrapper">
+            <landing-header></landing-header>
 
-      <router-view></router-view>
+            <router-view></router-view>
 
-      <landing-footer></landing-footer>
-    </div>
+            <landing-footer></landing-footer>
+        </div>
 
-    <!-- <div class="mobile-nav__wrapper">
+        <!-- <div class="mobile-nav__wrapper">
       <div class="mobile-nav__overlay mobile-nav__toggler"></div>
       <div class="mobile-nav__content">
         <span class="mobile-nav__close mobile-nav__toggler"><i class="fas fa-times"></i></span>
@@ -46,24 +46,23 @@
         </div>
       </div>
     </div> -->
-  </div>
+    </div>
 </template>
-
 
 <script>
 import LandingHeader from "./indludes/header.vue";
 import LandingFooter from "./indludes/footer.vue";
 
 export default {
-  name: "App",
-  components: {
-    LandingHeader,
-    LandingFooter,
-  },
-  data() {
-    return {
-      msg: "Welcome to Your Vue.js App",
-    };
-  },
+    name: "App",
+    components: {
+        LandingHeader,
+        LandingFooter,
+    },
+    data() {
+        return {
+            msg: "Welcome to Your Vue.js App",
+        };
+    },
 };
 </script>

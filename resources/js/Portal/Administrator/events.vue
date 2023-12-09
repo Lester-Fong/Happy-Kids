@@ -63,6 +63,10 @@
 import EventsForm from "./events/form.vue";
 
 export default {
+    metaInfo: {
+        title: "Admin - Events",
+    },
+
     components: {
         EventsForm,
     },

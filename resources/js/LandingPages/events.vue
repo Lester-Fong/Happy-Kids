@@ -42,7 +42,8 @@
               <!-- /.event-card-image -->
               <div class="event-card-content">
                 <h3>
-                  <a href="event-details.html">{{ a.title }}</a>
+                  <!-- <a href="event-details.html">{{ a.title }}</a> -->
+                  <a href="javascript:void(0);">{{ a.title }}</a>
                 </h3>
                 <ul class="event-card-list">
                   <li>

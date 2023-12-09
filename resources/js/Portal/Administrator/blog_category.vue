@@ -48,6 +48,10 @@
 <script>
 import BlogCategoryForm from "./blog_category/form.vue";
 export default {
+    metaInfo: {
+        title: "Admin - Blog Category",
+    },
+
     components: {
         BlogCategoryForm,
     },

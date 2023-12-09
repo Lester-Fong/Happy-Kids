@@ -562,93 +562,27 @@
           </div>
         </div>
         <div class="event-grid">
-          <div class="event-card">
+          <div v-for="a in events" :key="a.id" class="event-card">
             <div class="event-card-inner">
+              <div v-if="a.is_expired" class="expired-ribbon">Done</div>
               <div class="event-card-image">
                 <div class="event-card-image-inner">
-                  <img src="https://picsum.photos/200/300" alt="" class="latest_event_img" />
-                  <span>20 May</span>
+                  <!-- <img src="https://picsum.photos/200/300" alt="" class="latest_event_img" /> -->
+                  <img :src="`/public/uploads/events/${a.original_events_id}/medium/${a.image}`" :alt="a.image" class="latest_event_img" />
+                  <span>{{ a.date_start | formatTransDate3 }}</span>
                 </div>
               </div>
               <div class="event-card-content">
-                <h3><a href="event-details.html">Help for needy people</a></h3>
+                <!-- <h3><a href="event-details.html">{{ a.title }}</a></h3> -->
+                <h3><router-link :to="{ name: 'EventsPage' }">{{ a.title }}</router-link></h3>
                 <ul class="event-card-list">
                   <li>
                     <i class="azino-icon-clock"></i>
-                    <strong>Time:</strong> 9:00am 02:00pm
+                    <strong>Time:</strong>{{ onDisplayTimeSpan(a.date_start, a.date_end) }}
                   </li>
                   <li>
                     <i class="azino-icon-pin1"></i>
-                    <strong>Location:</strong> New York
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="event-card">
-            <div class="event-card-inner">
-              <div class="event-card-image">
-                <div class="event-card-image-inner">
-                  <img src="https://picsum.photos/200/300" alt="" class="latest_event_img" />
-                  <span>20 May</span>
-                </div>
-              </div>
-              <div class="event-card-content">
-                <h3><a href="event-details.html">Funding for Food</a></h3>
-                <ul class="event-card-list">
-                  <li>
-                    <i class="azino-icon-clock"></i>
-                    <strong>Time:</strong> 9:00am 02:00pm
-                  </li>
-                  <li>
-                    <i class="azino-icon-pin1"></i>
-                    <strong>Location:</strong> New York
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="event-card">
-            <div class="event-card-inner">
-              <div class="event-card-image">
-                <div class="event-card-image-inner">
-                  <img src="https://picsum.photos/200/300" alt="" class="latest_event_img" />
-                  <span>20 May</span>
-                </div>
-              </div>
-              <div class="event-card-content">
-                <h3><a href="event-details.html">Education for children</a></h3>
-                <ul class="event-card-list">
-                  <li>
-                    <i class="azino-icon-clock"></i>
-                    <strong>Time:</strong> 9:00am 02:00pm
-                  </li>
-                  <li>
-                    <i class="azino-icon-pin1"></i>
-                    <strong>Location:</strong> New York
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="event-card">
-            <div class="event-card-inner">
-              <div class="event-card-image">
-                <div class="event-card-image-inner">
-                  <img src="https://picsum.photos/200/300" alt="" class="latest_event_img" />
-                  <span>20 May</span>
-                </div>
-              </div>
-              <div class="event-card-content">
-                <h3><a href="event-details.html">Donation Day for people</a></h3>
-                <ul class="event-card-list">
-                  <li>
-                    <i class="azino-icon-clock"></i>
-                    <strong>Time:</strong> 9:00am 02:00pm
-                  </li>
-                  <li>
-                    <i class="azino-icon-pin1"></i>
-                    <strong>Location:</strong> New York
+                    <strong>Location:</strong> {{ a.location }}
                   </li>
                 </ul>
               </div>
@@ -811,6 +745,7 @@ export default {
       pages: [],
       testimonials: [],
       faq: [],
+      events: [],
     };
   },
   mounted() {
@@ -834,7 +769,17 @@ export default {
           this.pages = response.pages;
           this.testimonials = response.testimonials;
           this.faq = response.faq;
-          console.log("response", response);
+          this.events = response.events;
+
+          this.events.sort((a, b) => {
+            if (a.is_expired === true && b.is_expired !== true) {
+              return 1; // a should be after b
+            } else if (a.is_expired !== true && b.is_expired === true) {
+              return -1; // a should be before b
+            } else {
+              return 0; // order remains unchanged
+            }
+          });
         })
         .catch((err) => {
           console.error("error:" + err);

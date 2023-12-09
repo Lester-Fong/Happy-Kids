@@ -65,20 +65,32 @@ class Administrator extends Authenticatable
             $response_obj->error = false;
             $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['FORGOT_PASSWORD_SUCCESSFUL'];
 
-            // Email Function here - Todo!
-            // $helper_model = new Helper();
-            // $from = Config::get('Constants.SERVICIO_EMAIL');
-            // $from_name = "Servicio";
-            // $to_name = $administrator_rec->fldAdministratorFirstname;
-            // $subject = "Verification code";
-            // $cc = [];
-            // $data_obj = ['is_email' => 'admin'];
-            // $data_obj['name'] = $administrator_rec->fldAdministratorFirstname . ' ' . $administrator_rec->fldAdministratorLastname;
-            // $data_obj['subject'] = "Your verification code is";
-            // $data_obj['content'] = "<strong style='font-size:28px;line-height:32px'>" . $one_time_pin . "</strong> <br><br> Your account can’t be accessed without this verification code, even if you didn’t submit this request. <br><br>
-            //                        To keep your account secure, we recommend using a unique password for your Servicio account or using the Servicio Account Access app to sign in. Servicio Account Access’ two-factor authentication makes signing in to your account easier, without needing to remember or change passwords.
-            //                        <br><br> If you have any questions, please contact Support.";
-            // $helper_model->sendEmail($email, $from, $to_name, $from_name, $subject, $cc, $data_obj);
+
+            $helper_model = new Helper();
+            $from = "noreply@happykids.edu.ph";
+            $from_name = "HappyKids";
+            $to_name = $administrator_rec->fldAdministratorFirstname;
+            $subject = "🔒 Happy Kids - Forgot Password";
+            $full_name = $administrator_rec->fldAdministratorFirstname . ' ' . $administrator_rec->fldAdministratorLastname;
+
+            $cc = [];
+            $data_obj = [
+                'name' => $full_name,
+                'subject' => $subject,
+                'content' => "<h3>Hi $full_name,</h3><p style='text-align: center;''><strong style='font-size:32px;line-height:32px;letter-spacing: 16px;'>" . $one_time_pin . "</strong></p>
+                            <p style='text-align: center !important;'>
+                                Valid for <strong>10 mins.</strong> NEVER share this code, including Happy Kids admins.<br>
+                            </p>
+                            <p style='font-size: 14px; text-align: justify; line-height: 20px;'>
+                                Your account can’t be accessed without this verification code, even if you didn’t submit this request. <br><br>
+                                To keep your account secure, we recommend using a unique password for your Happy Kids account to sign in.
+                                <br><br><br> If you have any questions, please contact Support.
+                            </p>"
+            ];
+
+            $helper_model->sendEmail($email, $from, $to_name, $from_name, $subject, $cc, $data_obj);
+            
+            
         } else {
             $response_obj->error = true;
             $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['EMAIL_ADDRESS_NOT_FOUND'];
@@ -194,11 +206,11 @@ class Administrator extends Authenticatable
             if (Hash::check($data['password'], $administrator->fldAdministratorPassword)) {
 
                 // check if administrator is active
-                if ($administrator->fldAdministratorActive == 0) {
-                    $response_obj->error = true;
-                    $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['ACCOUNT_INACTIVE'];
-                    return $response_obj;
-                }
+                // if ($administrator->fldAdministratorActive == 0) {
+                //     $response_obj->error = true;
+                //     $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['ACCOUNT_INACTIVE'];
+                //     return $response_obj;
+                // }
 
                 // check if administrator has access token
                 $oauth_access_token_model = new OauthAccessTokens();
@@ -230,5 +242,71 @@ class Administrator extends Authenticatable
     public function getInfo()
     {
         return Auth::user();
+    }
+
+    public function AddUpdateRecord($id, $data)
+    {
+       $response_obj = new \stdClass();
+ 
+ 
+       if ($id == 0) {
+          $administrator = new self;
+       } else {
+          $administrator = self::find($id);
+       }
+ 
+ 
+       if ($administrator) {
+          if ($data['password'] != "") {
+             $administrator->fldAdministratorPassword = Hash::make($data['password']);
+          }
+
+          $administrator->fldAdministratorEmail = $data['email'];
+          $administrator->fldAdministratorFirstname = $data['firstname'];
+          $administrator->fldAdministratorLastname = $data['lastname'];
+          $administrator->fldAdministratorMobile = $data['mobile'];
+ 
+          $administrator->save();
+            //  $helper_model = new Helper();
+            //  if ($file != null) {
+            //     $filename = $helper_model->ImageUpload($file, $administrator->fldAdministratorID, 'admin_profile_image');
+            //     self::addUpdateAdminProfileImage($administrator->fldAdministratorID, $filename);
+            //  }
+ 
+            $response_obj->admin = $administrator;
+             $response_obj->error = false;
+             $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_SUCCESSFUL'];
+ 
+          return $response_obj;
+       } else {
+          $response_obj->error = true;
+          $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['GLOBAL_ERROR_MESSAGE'];
+ 
+          return $response_obj;
+       }
+    }
+
+    public function displayAllAdmin() {
+      $admin = self::orderBy('fldAdministratorFirstname', 'asc')->get();
+      return $admin;
+    }
+
+    public function onDeleteRecord($data) {
+        $response_obj = new \stdClass();
+        $admin_id = Crypt::decryptString($data['administrator_id']);
+
+        $admin = self::find($admin_id);
+
+        if ($admin) {
+            $admin->delete();
+            $response_obj->error = false;
+            $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_DELETED_SUCCESSFUL'];
+        } else {
+            $response_obj->error = true;
+            $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_NOT_FOUND'];
+        }
+
+        return $response_obj;
+
     }
 }

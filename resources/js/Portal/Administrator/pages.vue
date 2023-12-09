@@ -42,6 +42,10 @@
 
 <script>
 export default {
+  metaInfo: {
+        title: "Admin - Pages",
+    },
+  
   data() {
     return {
       is_loading: false,
@@ -152,7 +156,6 @@ export default {
       this.$admin_queries("pages", {
         action_type: "display_all_pages",
       }).then((res) => {
-        console.log(res);
         this.filtered_pages = res.data.data.pages;
         this.is_loading = false;
       });

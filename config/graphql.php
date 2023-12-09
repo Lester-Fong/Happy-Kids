@@ -78,6 +78,7 @@ return [
                 // ExampleQuery::class,
                 'front' => \App\GraphQL\Queries\FrontQuery::class,
                 'events' => \App\GraphQL\Queries\EventsQuery::class,
+                'blogs' => \App\GraphQL\Queries\BlogQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,

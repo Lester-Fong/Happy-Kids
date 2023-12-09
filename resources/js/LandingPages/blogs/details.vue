@@ -183,7 +183,7 @@ export default {
                     let response = res.data.data.blogs;
                     if (!response.error) {
                         // After the API request is complete, you can proceed to the route
-                        next();
+                        // next();
                     } else {
                         window.history.back();
                         return false;

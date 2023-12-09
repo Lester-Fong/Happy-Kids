@@ -59,6 +59,10 @@ class FrontQuery extends Query
       $response_obj->testimonials = Testimonial::all();
       $response_obj->faq = Faq::take(3)->get();
       $response_obj->pages = Pages::where('fldPagesTitle', 'Homepage')->first();
+      $response_obj->events = $events_model->where('fldEventsStatus', '=', 1)
+                                    ->orderBy('fldEventsDateStart', 'ASC')
+                                    ->take(4)
+                                    ->get();
     }
 
     if ($action_type == 'display_about_page') {

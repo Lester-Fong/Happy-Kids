@@ -46,6 +46,10 @@
 <script>
 import TeamModal from "./team/form.vue";
 export default {
+  metaInfo: {
+        title: "Admin - Team",
+    },
+
   components: {
     TeamModal,
   },

@@ -98,9 +98,24 @@ let front_queries = {
             position,
             type,
             image
+          },
+          events {
+            original_events_id,
+            title,
+            date_start,
+            date_end,
+            location,
+            image,
+            is_expired
           }
       }
   }`,
+
+    blogs: `query blogs($action_type: String) {
+            blogs(action_type: $action_type) {
+            ${blogFields}
+            }
+        }`,
 };
 
 export default front_queries;
