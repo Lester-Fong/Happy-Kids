@@ -83,7 +83,7 @@ Vue.mixin({
                 // cork ------------------------------->
                 dom:
                     "<'dt--top-section '<'row'<'col-12 col-sm-6 align-items-center d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center align-items-center mt-sm-0 mt-3'f>>>" +
-                    "<'table-responsive'tr>" +
+                    "<'gl-table-responsive'tr>" +
                     "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
                 oLanguage: {
                     oPaginate: {

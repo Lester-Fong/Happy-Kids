@@ -33,9 +33,9 @@
               <!-- /.block-title -->
               <p class="block-text mb-30 pr-10">{{ pages.description?.contact_description }}</p>
               <div class="footer-social black-hover">
-                <a href="javascript:void(0)" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
-                <a href="javascript:void(0)" aria-label="linkedin"><i class="fab fa-linkedin"></i></a>
-                <a href="javascript:void(0)" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+                <!-- <a href="javascript:void(0)" aria-label="facebook"><i class="fab fa-facebook-square"></i></a> -->
+                <!-- <a href="javascript:void(0)" aria-label="linkedin"><i class="fab fa-linkedin"></i></a> -->
+                <!-- <a href="javascript:void(0)" aria-label="instagram"><i class="fab fa-instagram"></i></a> -->
               </div>
               <!-- /.footer-social -->
             </div>

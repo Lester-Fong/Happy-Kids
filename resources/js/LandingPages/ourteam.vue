@@ -33,10 +33,10 @@
               <img :src="`/public/uploads/team/${a.original_team_id}/${a.image}`" :alt="a.name + 'profile'" />
             </div>
             <div class="team-card__social">
-              <a href="javascript:void(0)" aria-label="twitter"><i class="fab fa-twitter"></i></a>
-              <a href="javascript:void(0)" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
-              <a href="javascript:void(0)" aria-label="linkedin"><i class="fab fa-linkedin"></i></a>
-              <a href="javascript:void(0)" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+              <!-- <a href="javascript:void(0)" aria-label="twitter"><i class="fab fa-twitter"></i></a> -->
+              <!-- <a href="javascript:void(0)" aria-label="facebook"><i class="fab fa-facebook-square"></i></a> -->
+              <!-- <a href="javascript:void(0)" aria-label="linkedin"><i class="fab fa-linkedin"></i></a> -->
+              <!-- <a href="javascript:void(0)" aria-label="instagram"><i class="fab fa-instagram"></i></a> -->
             </div>
             <div class="team-card__content">
               <h3>{{ a.name }}</h3>
