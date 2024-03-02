@@ -74,6 +74,15 @@ class ResponseType extends GraphQLType
             'team' => [
                 'type' =>  Type::listOf(GraphQL::type('team_type')),
             ],
+            'secret' => [
+                'type' => Type::string(),
+             ],
+             'qr_url' => [
+                'type' => Type::string(),
+             ],
+             'otp_key' => [
+                'type' => Type::string(),
+             ],
         ];
     }
 }

@@ -32,6 +32,7 @@
         "vue-credit-card-validation": "^0.1.10",
         "vue-cryptojs": "^2.4.5",
         "vue-meta": "^2.4.0",
+        "vue-qrcode-component": "^2.1.1",
         "vue-recaptcha-v3": "^1.9.0",
         "vue-router": "^3.5.3",
         "vue-star-rating": "^1.7.0",

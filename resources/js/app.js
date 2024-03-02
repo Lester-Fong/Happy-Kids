@@ -5,6 +5,7 @@ import App from "./App.vue";
 import admin_routes from "./routes";
 import landingPagesRoutes from "./landing_routes";
 import VueCryptojs from "vue-cryptojs";
+import VueQRCodeComponent from "vue-qrcode-component";
 
 import "./admin_queries";
 import "./front_queries";
@@ -18,6 +19,8 @@ routes = routes.concat(landingPagesRoutes, admin_routes);
 Vue.use(VueRouter);
 Vue.use(VueCryptojs);
 Vue.use(VueMeta);
+Vue.component("qr-code", VueQRCodeComponent);
+
 const router = new VueRouter({
     routes,
     mode: "history",

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use PragmaRX\Google2FA\Google2FA;
 
 use Hash;
 use Config;
@@ -204,7 +205,6 @@ class Administrator extends Authenticatable
         if ($administrator) {
 
             if (Hash::check($data['password'], $administrator->fldAdministratorPassword)) {
-
                 // check if administrator is active
                 // if ($administrator->fldAdministratorActive == 0) {
                 //     $response_obj->error = true;
@@ -212,23 +212,8 @@ class Administrator extends Authenticatable
                 //     return $response_obj;
                 // }
 
-                // check if administrator has access token
-                $oauth_access_token_model = new OauthAccessTokens();
-                $oauth_access_token_model->checkAdministratorAccessToken($administrator->fldAdministratorID);
-
-                // grant access token
-                $helper_token_model = new HelperToken();
-                $decoded_response = $helper_token_model->generateAdminToken($administrator->fldAdministratorEmail, $data['password']);
-
-
-                $token_expiration_date = Carbon::now()->addHour()->format('Y-m-d H:i:s');
-
                 $response_obj->error = false;
-                $response_obj->access_token = $decoded_response->access_token;
-                $response_obj->refresh_token = $decoded_response->refresh_token;
-                $response_obj->token_expiration = $token_expiration_date;
-                $response_obj->admin = $administrator;
-                $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['SUCCESS_LOGIN'];
+
             } else {
                 $response_obj->error = true;
                 $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['ERROR_LOGIN'];
@@ -308,5 +293,100 @@ class Administrator extends Authenticatable
 
         return $response_obj;
 
+    }
+
+
+    public function generateMFA($data) {
+        $response_obj = new \StdClass();
+        $messages = Config::get('Constants.ERROR_MESSAGE');
+  
+        $admin_rec = self::where('fldAdministratorEmail', '=', $data['email'])->first();
+        $otp_key = "";
+  
+        if ($admin_rec) {
+           if ($admin_rec->fldAdministratorOTPKey != "") {
+              $otp_key = $admin_rec->fldAdministratorOTPKey;
+           }
+  
+           if ($otp_key == "") {
+  
+              $google2fa = new Google2FA();
+              $secret_key = $google2fa->generateSecretKey();
+              $qrCodeUrl = $google2fa->getQRCodeUrl(
+                             'HappyKids',
+                             $data['email'],
+                             $secret_key
+                          );
+  
+              $response_obj->false = true;
+              $response_obj->secret = $secret_key;
+              $response_obj->qr_url = $qrCodeUrl;
+           }
+  
+           $response_obj->otp_key = $otp_key;
+  
+        } else {
+           $response_obj->error = true;
+           $response_obj->message = $messages['ERROR_LOGIN'];
+        }
+  
+        return $response_obj;
+     }
+
+
+    public function validateMFA($data) {
+        $response_obj = new \StdClass();
+        $messages = Config::get('Constants.ERROR_MESSAGE');
+        
+        $code = $data['code'];
+        $secret_key = $data['secret_key'];
+        $email = $data['email'];
+        $password = $data['password'];
+  
+        $google2fa = new Google2FA();
+        $window = 8;
+        $valid = $google2fa->verifyKey($secret_key, $code, $window);
+
+        if (!$valid) {
+                $response_obj->error = true;
+                $response_obj->message = $messages['INVALID_MFA_CODE'];
+        } else {
+
+        $admin_rec = self::where('fldAdministratorEmail', '=', $email)->first();
+         
+            if ($admin_rec) {
+                    if ($admin_rec->fldAdministratorOTPKey == "") {
+                        $admin_rec->fldAdministratorOTPKey = $secret_key;
+                        $admin_rec->save();
+                    }
+
+                if (Hash::check($password, $admin_rec->fldAdministratorPassword)) {
+                    $oauth_access_token_model = new OauthAccessTokens();
+                    $oauth_access_token_model->checkAdministratorAccessToken($admin_rec->fldAdministratorID);
+    
+                    $helper_token_model = new HelperToken();
+                    $decoded_response = $helper_token_model->generateAdminToken($admin_rec->fldAdministratorEmail, $password);
+    
+                    $token_expiration_date = Carbon::now()->addHour()->format('Y-m-d H:i:s');
+    
+                    $response_obj->error = false;
+                    $response_obj->access_token = $decoded_response->access_token;
+                    $response_obj->refresh_token = $decoded_response->refresh_token;
+                    $response_obj->token_expiration = $token_expiration_date;
+                    $response_obj->admin = $admin_rec;
+                    $response_obj->message = $messages['SUCCESS_LOGIN'];
+                } else {
+                    $response_obj->error = true;
+                    $response_obj->message = $messages['ERROR_LOGIN'];
+                }
+
+            } else {
+                $response_obj->error = true;
+                $response_obj->message = $messages['ERROR_LOGIN'];
+            }
+  
+        }
+
+        return $response_obj;
     }
 }

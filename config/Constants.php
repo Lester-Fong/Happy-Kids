@@ -16,6 +16,7 @@ return [
         'RECORD_NOT_FOUND' => 'Record not found.',
         'RECORD_DELETED_SUCCESSFUL' => 'Record deleted successfully.',
         'GLOBAL_ERROR_MESSAGE' => 'Internal server error. We\'ve notified our engineers and hope to address this issue shortly',
+        'INVALID_MFA_CODE' => "Error! Invalid multifactor authentication code",
     ],
 
     'LARGE' => 'large/',

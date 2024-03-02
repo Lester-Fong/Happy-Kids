@@ -64,6 +64,12 @@ class AdministratorInput extends InputType
             'dashboard_widget' => [
                 'type' => Type::listOf(Type::boolean()),
             ],
+            'code' => [
+                'type' => Type::string(),
+             ],
+             'secret_key' => [
+                'type' => Type::string(),
+             ],
         ];
     }
 }
