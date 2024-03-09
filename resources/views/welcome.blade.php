@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="{{ url('/public/src/bootstrap/css/bootstrap.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('/public/css/global.css') }}">
+    <link rel="stylesheet" href="{{ url('/public/src/plugins/src/sweetalerts2/sweetalerts2.css?'.date('Ymdhis')) }}">
 
     @if ($display_type == 'portal')
     <link rel="stylesheet" href="{{ url('/public/css/main.css') }}">
     <link rel="stylesheet" href="{{ url('/public/css/app.css?'.date('Ymdhis')) }}">
     <link rel="stylesheet" href="{{ url('/public/src/assets/css/light/main.css?'.date('Ymdhis')) }}">
     <link rel="stylesheet" href="{{ url('/public/src/assets/css/light/scrollspyNav.css?'.date('Ymdhis')) }}">
-    <link rel="stylesheet" href="{{ url('/public/src/plugins/src/sweetalerts2/sweetalerts2.css?'.date('Ymdhis')) }}">
     <link rel="stylesheet" href="{{ url('/public/src/plugins/src/table/datatable/datatables.css?'.date('Ymdhis')) }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url('/public/src/assets/css/light/authentication/auth-cover.css?'.date('Ymdhis')) }}">

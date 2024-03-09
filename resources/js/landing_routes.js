@@ -9,6 +9,8 @@ import EventsPage from "./LandingPages/events.vue";
 import StoriesPage from "./LandingPages/blogs.vue";
 import ContactPage from "./LandingPages/contact.vue";
 import StoriesDetailsPage from "./LandingPages/blogs/details.vue";
+import SuccessPaypal from "./LandingPages/paypal/success.vue";
+import CancelPaypal from "./LandingPages/paypal/cancel.vue";
 
 export default [
     {
@@ -25,6 +27,8 @@ export default [
             { path: "/stories", component: StoriesPage, name: "StoriesPage" },
             { path: "/contact", component: ContactPage, name: "ContactPage" },
             { path: "/stories/:slug", component: StoriesDetailsPage, name: "StoriesDetailsPage", params: true },
+            { path: "/paypal/success", component: SuccessPaypal, name: "SuccessPaypal", query: true },
+            { path: "/paypal/cancel", component: CancelPaypal, name: "CancelPaypal", query: true },
         ],
     },
 ];

@@ -31,4 +31,14 @@ return [
     'TEAM_IMAGE_PATH' => 'public/uploads/team/',
     'LOGO_PATH' => '/public/images/happy_kids_logo.jpg',
 
+    'PAYMONGO' => [
+        'PUBLIC_KEY' => 'pk_test_3CtmeqaYo3fiK3mxsLVKhRLG',
+        'SECRET_KEY' => 'sk_test_3CtmeqaYo3fiK3mxsLVKhRLG',
+    ],
+
+    'PAYPAL' => [
+        'CLIENT_ID' => 'AYjQwOASW_VWoPxPDMfosZoVdnzoYSIaXq5b98HswR3aUmI2gakZIpVDIAecpRYOz6pb1YepnfO_NUJd',
+        'SECRET' => 'AYjQwOASW_VWoPxPDMfosZoVdnzoYSIaXq5b98HswR3aUmI2gakZIpVDIAecpRYOz6pb1YepnfO_NUJd',
+    ],
+    
 ];

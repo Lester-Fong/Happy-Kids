@@ -116,6 +116,14 @@ let front_queries = {
             ${blogFields}
             }
         }`,
+
+    save_donate: `mutation donate($donate: DonateInput) {
+            donate(donate: $donate) {
+                error,
+                message,
+                href
+            }
+        }`,
 };
 
 export default front_queries;

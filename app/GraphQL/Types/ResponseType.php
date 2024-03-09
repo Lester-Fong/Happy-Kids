@@ -83,6 +83,9 @@ class ResponseType extends GraphQLType
              'otp_key' => [
                 'type' => Type::string(),
              ],
+             'href' => [
+                'type' => Type::string(),
+             ],
         ];
     }
 }
