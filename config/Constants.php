@@ -22,6 +22,7 @@ return [
     'MEDIUM' => 'medium/',
     'SMALL' => 'small/',
     'THUMB' => 'thumb/',
+    'ADMIN_IMAGE_PATH' => 'public/uploads/admin/',
     'PAGES_IMAGE_PATH' => 'public/uploads/pages/',
     'BLOGS_IMAGE_PATH' => 'public/uploads/blogs/',
     'BLOGS_THUMBNAIL_PATH' => 'public/uploads/blogs/thumbnail/',

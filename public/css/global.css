@@ -28,3 +28,16 @@
 .pointer {
   cursor: pointer;
 }
+
+.gl-table-responsive {
+  overflow-x: none !important;
+}
+@media only screen and (max-width: 600px) {
+  .gl-table-responsive {
+    overflow-x: auto !important;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, li, ul, div {
+  font-family: "Nunito", sans-serif !important;
+}

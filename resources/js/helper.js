@@ -48,6 +48,22 @@ Vue.mixin({
             }
         },
 
+        onDevelopmentStatus() {
+            var development_status = process.env.DEVELOPMENT_STATUS;
+
+            if (development_status == "local") {
+                return "/local/";
+            } else if (development_status == "development") {
+                return "/development/";
+            } else if (development_status == "sandbox") {
+                return "/sandbox/";
+            } else if (development_status == "production") {
+                return "/";
+            } else {
+                return "/local/";
+            }
+        },
+
         onDatatable: function (name, is_add, lengthDisplay = 10, padding = "pb-2") {
             $(name).DataTable({
                 autoWidth: !1,

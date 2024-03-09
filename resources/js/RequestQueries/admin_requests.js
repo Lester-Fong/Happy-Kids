@@ -17,8 +17,8 @@ let admin_queries = {
         }
     }`,
 
-    save_admin: `mutation administrator($admin: AdministratorInput) {
-        administrator(admin: $admin) {
+    save_admin: `mutation administrator($admin: AdministratorInput, $file: Upload) {
+        administrator(admin: $admin, file: $file) {
             error,
             message,
             admin {
@@ -35,9 +35,11 @@ let admin_queries = {
     get_admin: `query administrator($action_type: String) {
         administrator(action_type: $action_type) {
                 administrator_id,
+                administrator_regular_id,
                 firstname,
                 lastname,
                 email,
+                image,
                 mobile,
         }
     }`,
