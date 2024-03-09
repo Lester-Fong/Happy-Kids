@@ -7,6 +7,9 @@ let admin_queries = {
             refresh_token,
             token_expiration,
             reset_password_security,
+            secret,
+            qr_url,
+            otp_key,
             admin {
                 administrator_id,
                 firstname,

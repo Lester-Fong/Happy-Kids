@@ -217,6 +217,14 @@ class AdministratorMutation extends Mutation
             $response_obj = $admin_model->onDeleteRecord($admin);
         }
 
+        if ($admin["action_type"] == "display_mfa") {
+            $response_obj = $admin_model->generateMFA($admin);
+        }
+
+        if ($admin["action_type"] == "validate_mfa") {
+            $response_obj = $admin_model->validateMFA($admin);
+        }
+
         return $response_obj;
     }
 }

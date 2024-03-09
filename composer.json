@@ -13,8 +13,9 @@
         "laravel/passport": "^10.4",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "intervention/image": "^2.7",
-        "rebing/graphql-laravel": "^8.6"
+        "pragmarx/google2fa-laravel": "2.1",
+        "rebing/graphql-laravel": "^8.6",
+        "srmklive/paypal": "~3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

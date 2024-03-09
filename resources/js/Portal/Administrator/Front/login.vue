@@ -1,40 +1,41 @@
 <template>
     <div>
         <div class="loader-gif" v-if="is_calling_api"></div>
-        <form @submit.prevent="onSubmitForm" class="form">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12 mb-3">
-                            <h2>Sign In</h2>
-                            <p>Enter your email and password to login</p>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" v-model="admin_email" />
-                                <p class="text-warning">{{ email_error }}</p>
+        <div v-if="!isAuthenticate">
+            <form @submit.prevent="onSubmitForm" class="form">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <h2>Sign In</h2>
+                                <p>Enter your email and password to login</p>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="mb-4">
-                                <label class="form-label">Password</label>
-                                <input type="password" class="form-control" v-model="admin_password" />
-                                <p class="text-warning">{{ password_error }}</p>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" v-model="admin_email" />
+                                    <p class="text-warning">{{ email_error }}</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="col-12 mb-4">
-                            <router-link :to="{ name: 'ForgotPassword' }">Forgot Password?</router-link>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="mb-4">
-                                <button type="submit" class="btn btn-secondary w-100">SIGN IN</button>
+                            <div class="col-12">
+                                <div class="mb-4">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" v-model="admin_password" />
+                                    <p class="text-warning">{{ password_error }}</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- <div class="col-12 mb-4">
+                            <div class="col-12 mb-4">
+                                <router-link :to="{ name: 'ForgotPassword' }">Forgot Password?</router-link>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="mb-4">
+                                    <button type="submit" class="btn btn-secondary w-100">SIGN IN</button>
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-12 mb-4">
                             <div class="">
                                 <div class="seperator">
                                     <hr />
@@ -69,15 +70,25 @@
                                 </button>
                             </div>
                         </div> -->
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        <div v-else>
+            <googlemfa :admin_email="admin_email" :admin_password="admin_password" />
+        </div>
     </div>
 </template>
 
 <script>
+import googlemfa from "./google_authentication.vue";
+
 export default {
+    components: {
+        googlemfa,
+    },
+
     data() {
         return {
             admin_email: "",
@@ -86,6 +97,7 @@ export default {
 
             email_error: "",
             password_error: "",
+            isAuthenticate: false,
         };
     },
     methods: {
@@ -109,13 +121,7 @@ export default {
                     } else {
                         let response = res.data.data.administrator;
                         if (!response.error) {
-                            let token = response.access_token;
-                            const encryptedToken = this.CryptoJS.AES.encrypt(token, process.env.MIX_SECRET_PASSPHRASE).toString();
-                            sessionStorage.setItem("admin_api_token", encryptedToken);
-                            sessionStorage.setItem("login_type", "admin");
-                            this.$appEvents.$emit("admin-login");
-
-                            this.$router.push({ name: "AdminDashboard" });
+                            this.isAuthenticate = true;
                         } else {
                             Swal.fire("Error!", response.message, "error");
                         }

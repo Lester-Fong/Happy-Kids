@@ -91,7 +91,7 @@
             <li><router-link :to="{ name: 'ContactPage' }">Contact Us</router-link></li>
           </ul>
           <!-- /.main-menu__list -->
-          <a href="javascript:void(0)" class="thm-btn dynamic-radius">Donate Now</a>
+          <a @click="onDonate" href="javascript:void(0)" class="thm-btn dynamic-radius">Donate Now</a>
           <!-- /.thm-btn dynamic-radius -->
         </div>
         <!-- /.container -->
@@ -136,7 +136,28 @@
       <!-- /.container -->
     </div>
     <!-- /.stricky-header -->
+    <donate-modal @onHideModal="onCancelForm" @success="onSuccess" />
   </div>
 </template>
 
+<script>
+import DonateModal from "./donate_modal.vue";
+export default {
+  components: { DonateModal },
 
+  methods: {
+    onDonate() {
+      $("#donate_modal").modal("show");
+      $("#donate_modal").appendTo("body");
+    },
+
+    onCancelForm() {
+      $("#donate_modal").modal("hide");
+    },
+
+    onSuccess() {
+      $("#donate_modal").modal("hide");
+    },
+  },
+};
+</script>
