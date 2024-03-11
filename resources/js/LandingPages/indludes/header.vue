@@ -91,13 +91,39 @@
                         <li><router-link :to="{ name: 'ContactPage' }">Contact Us</router-link></li>
                     </ul>
                     <!-- /.main-menu__list -->
+
                     <a @click="onDonate" href="javascript:void(0)" class="thm-btn dynamic-radius">Donate Now</a>
+                    <div id="donate-button" class="d-none"></div>
+                    <!-- <div id="donate-button-container">
+                        <div id="donate-button"></div>
+                    </div> -->
+                    <!-- <a href="https://www.sandbox.paypal.com/donate/?hosted_button_id=Y7XF8VSXEUCFQ" target="_blank" class="thm-btn dynamic-radius">Donate Now</a> -->
                     <!-- /.thm-btn dynamic-radius -->
                 </div>
                 <!-- /.container -->
             </nav>
             <!-- /.main-menu -->
         </div>
+
+        <!-- <div id="donate-button-container">
+            <div id="donate-button">DOnate button</div>
+            <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+            <script>
+                PayPal.Donation.Button({
+                    env: "sandbox",
+                    hosted_button_id: "TJKMD77MP4DZ6",
+                    image: {
+                        src: "https://pics-v2.sandbox.paypal.com/00/s/OGMxM2QzZTktY2I1Yi00YTg5LWI1MjItN2EyOTAzYWM5MjY1/file.PNG",
+                        alt: "Donate with PayPal button",
+                        title: "PayPal - The safer, easier way to pay online!",
+                    },
+                }).render("#donate-button");
+            </script>
+        </div> -->
+        <!-- <div id="donate-button-container">
+            <div id="donate-button">Donate button</div>
+        </div> -->
+
         <!-- /.main-header__two -->
 
         <div class="stricky-header stricked-menu stricky-header-two">
@@ -145,11 +171,18 @@ import DonateModal from "./donate_modal.vue";
 export default {
     components: { DonateModal },
 
+    data() {
+        return {
+            showIframe: false,
+            iframeSrc: "",
+        };
+    },
+
     methods: {
-        onDonate() {
-            $("#donate_modal").modal("show");
-            $("#donate_modal").appendTo("body");
-        },
+        // onDonate() {
+        //     $("#donate_modal").modal("show");
+        //     $("#donate_modal").appendTo("body");
+        // },
 
         onCancelForm() {
             $("#donate_modal").modal("hide");
@@ -158,6 +191,63 @@ export default {
         onSuccess() {
             $("#donate_modal").modal("hide");
         },
+
+        onDonate() {
+            const paypalButton = document.querySelector("#donate-button img");
+
+            if (paypalButton) {
+                paypalButton.click();
+            }
+        },
+
+        loadPaypalScript() {
+            return new Promise((resolve) => {
+                const script = document.createElement("script");
+                script.src = "https://www.paypalobjects.com/donate/sdk/donate-sdk.js";
+                script.onload = () => resolve();
+                document.body.appendChild(script);
+            });
+        },
+        createDonateButton() {
+            PayPal.Donation.Button({
+                env: "sandbox",
+                hosted_button_id: "LFLR35THNJK22",
+                cc: "PHP",
+                image: {
+                    src: "https://pics-v2.sandbox.paypal.com/00/s/NThlYzNmZDQtYmMzMS00MzgwLTllYWUtOGFmYjBjZGYyZjdi/file.PNG",
+                    alt: "Donate with PayPal button",
+                    title: "PayPal - The safer, easier way to pay online!",
+                },
+                onApprove: function (data, actions) {
+                    return actions.order
+                        .capture()
+                        .then(function (details) {
+                            console.log("onApprove: ", details);
+                        })
+                        .then((data) => {
+                            return fetch("/my-server/capture-paypal-order", {
+                                method: "POST",
+                                body: JSON.stringify({
+                                    orderID: data.orderID,
+                                }),
+                            })
+                                .then((response) => response.json())
+                                .then((details) => {
+                                    alert("Transaction completed by " + details.payer.name.given_name);
+                                });
+                        });
+                },
+                onComplete: function (params) {
+                    console.log("params: ", params);
+                    console.log("Donation completed: " + JSON.stringify(params, null, 2));
+                },
+            }).render("#donate-button");
+        },
+    },
+    mounted() {
+        this.loadPaypalScript().then(() => {
+            this.createDonateButton();
+        });
     },
 };
 </script>
