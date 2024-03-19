@@ -190,5 +190,9 @@ Vue.mixin({
         onGetInitials: (first, last) => {
             return first.charAt(0).toUpperCase() + last.charAt(0).toUpperCase();
         },
+
+        onFormatDateTime: (date) => {
+            return moment(date).format("MMMM DD, YYYY");
+        },
     },
 });

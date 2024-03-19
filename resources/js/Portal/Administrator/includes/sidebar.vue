@@ -94,14 +94,14 @@
         <!---------- End of Administrator ---------->
 
         <!---------- SMS TRANSACTION ---------->
-        <!-- <li class="menu">
+        <li class="menu">
           <router-link :to="{ name: 'AdminSMS' }" :class="activeMeta.isSMS ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
             <div class="d-flex align-items-center">
               <i class="bi bi-sidebar bi-chat-square-text h5 mb-0 me-2 pe-1"></i>
               <span>SMS</span>
             </div>
           </router-link>
-        </li> -->
+        </li>
         <!---------- End of SMS TRANSACTION ---------->
 
         <!---------- Donation ---------->
