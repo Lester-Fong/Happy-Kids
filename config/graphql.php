@@ -112,6 +112,7 @@ return [
                 'faq' => \App\GraphQL\Queries\FaqQuery::class,
                 'testimonial' => \App\GraphQL\Queries\TestimonialQuery::class,
                 'team' => \App\GraphQL\Queries\TeamQuery::class,
+                'sms' => \App\GraphQL\Queries\SMSQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -123,6 +124,7 @@ return [
                 'faq' => \App\GraphQL\Mutations\FaqMutation::class,
                 'testimonial' => \App\GraphQL\Mutations\TestimonialMutation::class,
                 'team' => \App\GraphQL\Mutations\TeamMutation::class,
+                'sms' => \App\GraphQL\Mutations\SMSMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -161,6 +163,7 @@ return [
         'faq_type' => \App\GraphQL\Types\FaqType::class,
         'testimonial_type' => \App\GraphQL\Types\TestimonialType::class,
         'team_type' => \App\GraphQL\Types\TeamType::class,
+        'sms_type' => \App\GraphQL\Types\SMSType::class,
 
 
 
@@ -174,6 +177,7 @@ return [
         'testimonial_input' => \App\GraphQL\Inputs\TestimonialInput::class,
         'team_input' => \App\GraphQL\Inputs\TeamInput::class,
         'donate_input' => \App\GraphQL\Inputs\DonateInput::class,
+        'sms_input' => \App\GraphQL\Inputs\SMSInput::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request
