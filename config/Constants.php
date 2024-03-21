@@ -41,5 +41,9 @@ return [
         'CLIENT_ID' => 'AYjQwOASW_VWoPxPDMfosZoVdnzoYSIaXq5b98HswR3aUmI2gakZIpVDIAecpRYOz6pb1YepnfO_NUJd',
         'SECRET' => 'AYjQwOASW_VWoPxPDMfosZoVdnzoYSIaXq5b98HswR3aUmI2gakZIpVDIAecpRYOz6pb1YepnfO_NUJd',
     ],
-    
+
+    'SEMAPHORE' => [
+        'API_KEY' => '49e40c0c7928200cef689d8bf7191665',
+    ],
+
 ];
