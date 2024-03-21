@@ -12,7 +12,7 @@ use Illuminate\Support\Arr;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth2;
-
+use Illuminate\Support\Facades\Config;
 
 class SMS extends Eloquent
 {
@@ -58,6 +58,21 @@ class SMS extends Eloquent
         $admin_sender = $administratorModel->getInfo();
 
         // Implement the SMS API here
+        $semaphore = Config::get('Constants.SEMAPHORE');
+        Log::debug(print_r($data['contact_numbers'], true));
+        $client = new Client();
+
+        $response = $client->post('http://api.semaphore.co/api/v4/messages', [
+            'form_params' => [
+                'apikey' => $semaphore['API_KEY'],
+                'number' => implode(',', $data['contact_numbers']),
+                'message' => $data['message'],
+            ]
+        ]);
+
+        $response = json_decode($response->getBody()->getContents(), true);
+        Log::debug(print_r($response, true));
+        dd('test');
 
         $sms->fldSMSTransactionMessage = $data['message'];
         $sms->fldSMSTransactionContactIDs = json_encode($data['contact_numbers']);
