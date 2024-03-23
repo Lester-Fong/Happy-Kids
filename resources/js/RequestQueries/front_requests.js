@@ -112,18 +112,23 @@ let front_queries = {
   }`,
 
     blogs: `query blogs($action_type: String) {
-            blogs(action_type: $action_type) {
-            ${blogFields}
-            }
-        }`,
-
+           blogs(action_type: $action_type) {
+           ${blogFields}
+           }
+       }`,
     save_donate: `mutation donate($donate: DonateInput) {
-            donate(donate: $donate) {
-                error,
-                message,
-                href
-            }
-        }`,
+           donate(donate: $donate) {
+               error,
+               message,
+               href
+           }
+       }`,
+    send_email: `mutation front($front: FrontInput) {
+            front(front: $front) {
+               error,
+               message
+           }
+       }`,
 };
 
 export default front_queries;
