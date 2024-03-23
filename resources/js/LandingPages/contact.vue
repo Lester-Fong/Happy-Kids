@@ -211,13 +211,12 @@ export default {
           .then((res) => {
             this.is_loading = false;
             let response = res.data.data.front;
-            console.log("response", response);
             if (response.error) {
               Swal.fire("Error!", this.global_error_message, "error");
               return;
             }
             Swal.fire("Success!", response.message, "success");
-            // this.onClearFields();
+            this.onClearFields();
           })
           .catch((err) => {
             console.error("error:" + err);
