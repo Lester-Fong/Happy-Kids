@@ -69,20 +69,6 @@ class Helper extends Eloquent
             $filename = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
             $filename_without_extension = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
 
-            if (File::exists($destinationPath)) {
-                if ($type == "contractor") {
-                    File::deleteDirectory(Config::get('Constants.CONTRACTOR_IMAGE_PATH') . $id . '/');
-                }
-                if ($type == "customer") {
-                    File::deleteDirectory(Config::get('Constants.CUSTOMER_IMAGE_PATH') . $id . '/');
-                }
-                if ($type == "admin") {
-                    File::deleteDirectory(Config::get('Constants.ADMIN_IMAGE_PATH') . $id . '/');
-                }
-            }
-
-
-
             $file->move($destinationPath, $filename);
             if (!File::exists($destinationPath . Config::get('Constants.THUMB'))) {
                 File::makeDirectory($destinationPath . Config::get('Constants.MEDIUM'), 0775);
