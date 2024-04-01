@@ -98,8 +98,19 @@ export default {
 
   methods: {
     onToggleSidebar() {
-      let sidebarWrapper = document.querySelector(".sidebar-wrapper");
-      sidebarWrapper.classList.toggle("open");
+      // Get the element you want to check for the .sbar-open class
+      var mainContainer = document.querySelector(".main-container");
+
+      // Check if the .sbar-open class is active
+      var isSbarOpenActive = mainContainer.classList.contains("sbar-open");
+
+      if (isSbarOpenActive) {
+        // .sbar-open is active
+        mainContainer.classList.remove("sbar-open");
+      } else {
+        // add .sbar-open
+        mainContainer.classList.add("sbar-open");
+      }
     },
 
     onLogout() {

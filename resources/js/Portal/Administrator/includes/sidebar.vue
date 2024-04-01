@@ -1,19 +1,9 @@
 <template>
   <div>
     <nav id="sidebar">
-      <div class="navbar-nav theme-brand flex-row text-center">
-        <div class="nav-logo">
-          <div class="nav-item theme-logo">
-            <a href="index.html">
-              <img src="https://picsum.photos/200/300" class="navbar-logo" alt="logo" />
-            </a>
-          </div>
-          <div class="nav-item theme-text">
-            <a href="index.html" class="nav-link"> CORK </a>
-          </div>
-        </div>
-        <div class="nav-item sidebar-toggle">
-          <div class="btn-toggle sidebarCollapse">
+      <div class="navbar-nav d-block d-lg-none">
+        <div class="nav-item sidebar-toggle py-4">
+          <div class="btn-toggle sidebarCollapse" @click="onToggleSidebar">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left">
               <polyline points="11 17 6 12 11 7"></polyline>
               <polyline points="18 17 13 12 18 7"></polyline>
@@ -82,8 +72,8 @@
         </li>
         <!---------- End of Post ---------->
 
-         <!---------- Administrator ---------->
-         <li class="menu">
+        <!---------- Administrator ---------->
+        <li class="menu">
           <router-link :to="{ name: 'AdminAdministrator' }" :class="activeMeta.isAdmin ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
             <div class="d-flex align-items-center">
               <i class="bi bi-sidebar bi-person-fill h5 mb-0 me-2 pe-1"></i>
@@ -130,6 +120,23 @@ export default {
   computed: {
     activeMeta() {
       return this.$route.meta;
+    },
+  },
+  methods: {
+    onToggleSidebar() {
+      // Get the element you want to check for the .sbar-open class
+      var mainContainer = document.querySelector(".main-container");
+
+      // Check if the .sbar-open class is active
+      var isSbarOpenActive = mainContainer.classList.contains("sbar-open");
+
+      if (isSbarOpenActive) {
+        // .sbar-open is active
+        mainContainer.classList.remove("sbar-open");
+      } else {
+        // add .sbar-open
+        mainContainer.classList.add("sbar-open");
+      }
     },
   },
 };
