@@ -56,6 +56,9 @@ class PaypalModel extends Eloquent {
             ]
         ]);
 
+        Log::debug(print_r('onDonate $response', true));
+        Log::debug(print_r($response, true));
+
 
         if (isset($response['id']) && $response['id'] != null) {
             foreach ($response['links'] as $key => $link) {
@@ -91,6 +94,9 @@ class PaypalModel extends Eloquent {
         $access_token = $provider->getAccessToken();
 
         $response = $provider->capturePaymentOrder($data['token']);
+
+        Log::debug(print_r('capturePaymentOrder $response', true));
+        Log::debug(print_r($response, true));
 
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {

@@ -188,6 +188,30 @@ let admin_queries = {
 
             }
           }`,
+
+    donators: `query donators($action_type: String, $donators_id: String) {
+        donators(action_type: $action_type, donators_id: $donators_id) {
+            donators_id,
+            original_donators_id,
+            firstname,
+            lastname,
+            email,
+            country,
+            date_created
+        }
+    }`,
+
+    transactions: `query transactions($action_type: String, $donate_id: String) {
+        transactions(action_type: $action_type, donate_id: $donate_id) {
+            donate_id,
+            original_donate_id,
+            amount,
+            status,
+            response_id,
+            api_response,
+            date_created
+        }
+    }`,
 };
 
 export default admin_queries;

@@ -85,12 +85,12 @@ export default {
                         if (!response.error) {
                             this.onClearFields();
                             this.onClearErrors();
-                            Swal.fire("Success!", response.message, "success").then(() => {
-                                this.$emit("success");
-                                // redirect to response.href
-                                window.location.href = response.href;
-                                this.is_loading = true;
-                            });
+                            // Swal.fire("Success!", response.message, "success").then(() => {
+                            this.$emit("success");
+                            // redirect to response.href
+                            window.location.href = response.href;
+                            this.is_loading = true;
+                            // });
                         } else {
                             Swal.fire("Error!", response.message, "error");
                         }

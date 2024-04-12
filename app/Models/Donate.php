@@ -62,7 +62,7 @@ class Donate extends Eloquent
 
         if (!$api_response->error) {
             $response = self::onUpdateResponseRecord($data['token'], $api_response);
-            $donator_model->onSaveRecord($api_response->payer);
+            $donator_model->onSaveRecord($api_response->payer, $api_response->response['id']);
         } else {
             $response = self::onUpdateResponseRecord($data['token'], $api_response);
         }
@@ -99,5 +99,9 @@ class Donate extends Eloquent
         }
 
         return $response_obj;
+    }
+
+    public function displayAll() {
+        return self::orderBy('fldDonateCreatedAt', 'DESC')->get();
     }
 }
