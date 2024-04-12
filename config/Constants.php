@@ -41,5 +41,12 @@ return [
         // 'CLIENT_ID' => 'AYjQwOASW_VWoPxPDMfosZoVdnzoYSIaXq5b98HswR3aUmI2gakZIpVDIAecpRYOz6pb1YepnfO_NUJd',
         // 'SECRET' => 'EGXwAWNtzJAhF8oOjkQR375G2ICT0IEzNG5MxKcXauZgXxe9JrrLo28Od0GdbqSVObbzxWaczE7uGZM6',
     ],
-    
+
+    'SEMAPHORE' => [
+        'API_KEY' => '49e40c0c7928200cef689d8bf7191665',
+    ],
+    'BULKSMS' => [
+        'API_KEY' => 'Rt#rhG9OgLX5UOtgo76Z92KtrTOEC',
+    ],
+
 ];
