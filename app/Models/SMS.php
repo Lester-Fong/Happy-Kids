@@ -62,6 +62,13 @@ class SMS extends Eloquent
         Log::debug(print_r($data['contact_numbers'], true));
         $client = new Client();
 
+        // $response = $client->post('https://api.bulksms.com/v1/messages', [
+        //     'form_params' => [
+        //         'apikey' => $semaphore['API_KEY'],
+        //         'number' => implode(',', $data['contact_numbers']),
+        //         'message' => $data['message'],
+        //     ]
+        // ]);
         $response = $client->post('http://api.semaphore.co/api/v4/messages', [
             'form_params' => [
                 'apikey' => $semaphore['API_KEY'],

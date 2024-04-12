@@ -45,5 +45,8 @@ return [
     'SEMAPHORE' => [
         'API_KEY' => '49e40c0c7928200cef689d8bf7191665',
     ],
+    'BULKSMS' => [
+        'API_KEY' => 'Rt#rhG9OgLX5UOtgo76Z92KtrTOEC',
+    ],
 
 ];
