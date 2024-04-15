@@ -127,11 +127,12 @@
             </li>
             <li><router-link :to="{ name: 'StoriesPage' }">Stories</router-link></li>
             <li><router-link :to="{ name: 'ContactPage' }">Contact Us</router-link></li>
-          </ul>
-          <!-- /.main-menu__list -->
-          <a href="contact.html" class="thm-btn dynamic-radius">Donate Now</a>
-        </div>
-        <!-- /.sticky-header__content -->
+            
+        </ul>
+        <!-- /.main-menu__list -->
+    </div>
+    <!-- /.sticky-header__content -->
+    <button @click="onDonate" href="javascript:void(0)" class="btn btn-danger">Donate Now</button>
       </div>
       <!-- /.container -->
     </div>
