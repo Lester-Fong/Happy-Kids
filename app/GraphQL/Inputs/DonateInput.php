@@ -19,7 +19,7 @@ class DonateInput extends InputType
     {
         return [
             'amount' => [
-                'type' => Type::int(),
+                'type' => Type::float(),
             ],
             'token' => [
                 'type' => Type::string(),
