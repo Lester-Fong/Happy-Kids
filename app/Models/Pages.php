@@ -382,4 +382,47 @@ class Pages extends Eloquent
 
         return $page->fldPagesID;
     }
+
+    public function onAddPageViews($currentPage)
+    {
+        switch ($currentPage) {
+            case 'home':
+                $slug = 'homepage';
+                break;
+            case 'about':
+                $slug = 'our-mission';
+                break;
+            case 'ourteam':
+                $slug = 'our-team';
+                break;
+            case 'faq':
+                $slug = 'faqs';
+                break;
+            case 'contact':
+                $slug = 'contact-us';
+                break;
+            case 'feeding-program':
+                $slug = 'feeding-program';
+                break;
+            case 'scholarship-program':
+                $slug = 'scholarship-program';
+                break;
+            case 'events':
+                $slug = 'events';
+                break;
+            case 'stories':
+                $slug = 'stories';
+                break;
+            default:
+                $slug = $currentPage;
+        }
+
+
+        $page = self::where('fldPagesSlug', '=', $slug)->first();
+        if (!$page) return null;
+
+        $page->fldPagesViews = $page->fldPagesViews + 1;
+        $page->save();
+        return $page;
+    }
 }
