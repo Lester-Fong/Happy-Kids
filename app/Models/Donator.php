@@ -31,16 +31,21 @@ class Donator extends Eloquent
     protected $primaryKey = 'fldDonatorID';
     public $timestamps = false;
 
-     public function onSaveRecord($data) {
+     public function onSaveRecord($data, $id) {
         $donator = new self;
         $donator->fldDonatorFirstName = $data['name']['given_name'];
         $donator->fldDonatorLastName = $data['name']['surname'];
         $donator->fldDonatorEmailAddress = $data['email_address'];
         $donator->fldDonatorPayerID = $data['payer_id'];
         $donator->fldDonatorCountry = $data['address']['country_code'];
+        $donator->fldDonatorDonateResponseID = $id;
         
         $donator->save();
 
         return $donator;
+    }
+
+    public function displayAll() {
+        return self::orderBy('fldDonatorCreatedAt', 'DESC')->get();
     }
 }

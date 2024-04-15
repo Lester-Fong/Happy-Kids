@@ -90,8 +90,6 @@ class Administrator extends Authenticatable
             ];
 
             $helper_model->sendEmail($email, $from, $to_name, $from_name, $subject, $cc, $data_obj);
-            
-            
         } else {
             $response_obj->error = true;
             $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['EMAIL_ADDRESS_NOT_FOUND'];
@@ -229,54 +227,75 @@ class Administrator extends Authenticatable
         return Auth::user();
     }
 
-    public function AddUpdateRecord($id, $data)
+    public function AddUpdateRecord($id, $data, $file)
     {
-       $response_obj = new \stdClass();
- 
- 
-       if ($id == 0) {
-          $administrator = new self;
-       } else {
-          $administrator = self::find($id);
-       }
- 
- 
-       if ($administrator) {
-          if ($data['password'] != "") {
-             $administrator->fldAdministratorPassword = Hash::make($data['password']);
-          }
+        $response_obj = new \stdClass();
 
-          $administrator->fldAdministratorEmail = $data['email'];
-          $administrator->fldAdministratorFirstname = $data['firstname'];
-          $administrator->fldAdministratorLastname = $data['lastname'];
-          $administrator->fldAdministratorMobile = $data['mobile'];
- 
-          $administrator->save();
-            //  $helper_model = new Helper();
-            //  if ($file != null) {
-            //     $filename = $helper_model->ImageUpload($file, $administrator->fldAdministratorID, 'admin_profile_image');
-            //     self::addUpdateAdminProfileImage($administrator->fldAdministratorID, $filename);
-            //  }
- 
+
+        if ($id == 0) {
+            $administrator = new self;
+        } else {
+            $administrator = self::find($id);
+        }
+
+
+        if ($administrator) {
+            if ($data['password'] != "") {
+                $administrator->fldAdministratorPassword = Hash::make($data['password']);
+            }
+
+            $administrator->fldAdministratorEmail = $data['email'];
+            $administrator->fldAdministratorFirstname = $data['firstname'];
+            $administrator->fldAdministratorLastname = $data['lastname'];
+            $administrator->fldAdministratorMobile = $data['mobile'];
+
+            $administrator->save();
+            $helper_model = new Helper();
+            if ($file != null) {
+                $filename = $helper_model->ImageUpload($file, $administrator->fldAdministratorID, 'admin_profile_image');
+                Log::debug(print_r($filename, true));
+                self::addUpdateAdminProfileImage($administrator->fldAdministratorID, $filename);
+            }
+
             $response_obj->admin = $administrator;
-             $response_obj->error = false;
-             $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_SUCCESSFUL'];
- 
-          return $response_obj;
-       } else {
-          $response_obj->error = true;
-          $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['GLOBAL_ERROR_MESSAGE'];
- 
-          return $response_obj;
-       }
+            $response_obj->error = false;
+            $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_SUCCESSFUL'];
+
+            return $response_obj;
+        } else {
+            $response_obj->error = true;
+            $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['GLOBAL_ERROR_MESSAGE'];
+
+            return $response_obj;
+        }
     }
 
-    public function displayAllAdmin() {
-      $admin = self::orderBy('fldAdministratorFirstname', 'asc')->get();
-      return $admin;
+    public function addUpdateAdminProfileImage($admin_id, $filename)
+    {
+        $response_obj = new \stdClass();
+        $admin = self::find($admin_id);
+
+        if ($admin) {
+            $admin->fldAdministratorProfileImage = $filename;
+            $admin->save();
+            $response_obj->error = false;
+            $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_SUCCESSFUL'];
+        } else {
+            $response_obj->error = true;
+            $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['RECORD_NOT_FOUND'];
+        }
+
+        return $response_obj;
     }
 
-    public function onDeleteRecord($data) {
+    public function displayAllAdmin()
+    {
+        $admin = self::orderBy('fldAdministratorFirstname', 'asc')->get();
+        return $admin;
+    }
+
+    public function onDeleteRecord($data)
+    {
         $response_obj = new \stdClass();
         $admin_id = Crypt::decryptString($data['administrator_id']);
 
@@ -292,7 +311,6 @@ class Administrator extends Authenticatable
         }
 
         return $response_obj;
-
     }
 
 

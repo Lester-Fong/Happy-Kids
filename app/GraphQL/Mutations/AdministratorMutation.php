@@ -28,7 +28,7 @@ class AdministratorMutation extends Mutation
     {
         return [
             'admin' => ['type' => GraphQL::type('admin_input')],
-            // 'file' => ['type' => GraphQL::type('Upload')]
+            'file' => ['type' => GraphQL::type('Upload')]
         ];
     }
 
@@ -174,7 +174,7 @@ class AdministratorMutation extends Mutation
 
 
         if ($admin["action_type"] == "new_record") {
-            $response_obj = $admin_model->AddUpdateRecord(0, $admin);
+            $response_obj = $admin_model->AddUpdateRecord(0, $admin, $args['file']);
         }
 
         if ($admin["action_type"] == "update_record") {
@@ -182,9 +182,8 @@ class AdministratorMutation extends Mutation
             $admin_id = Crypt::decryptString($admin['administrator_id']);
 
             $administrator = Administrator::find($admin_id);
-
             if ($administrator) {
-                $response_obj = $admin_model->AddUpdateRecord($admin_id, $admin);
+                $response_obj = $admin_model->AddUpdateRecord($admin_id, $admin, $args['file']);
             } else {
                 $response_obj = new \stdClass();
                 $response_obj->error = true;

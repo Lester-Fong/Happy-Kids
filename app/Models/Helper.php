@@ -26,6 +26,9 @@ class Helper extends Eloquent
 
             ini_set('memory_limit', '-1');
             switch ($type) {
+                case "admin_profile_image":
+                    $destinationPath = Config::get('Constants.ADMIN_IMAGE_PATH') . $id . '/';
+                    break;
                 case "pages":
                     $destinationPath = Config::get('Constants.PAGES_IMAGE_PATH') . $id . '/';
                     break;
@@ -61,8 +64,6 @@ class Helper extends Eloquent
                     $destinationPath = "";
                     break;
             }
-
-
 
 
             $filename = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
@@ -295,7 +296,7 @@ class Helper extends Eloquent
             } else if ($type == "events_image") {
                 $destinationPath = Config::get('Constants.EVENTS_IMAGE_PATH') . $id . '/';
             }
-            
+
             $filename = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.webp';
 
             $file->move($destinationPath, $filename);

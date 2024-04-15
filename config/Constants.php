@@ -23,6 +23,7 @@ return [
     'MEDIUM' => 'medium/',
     'SMALL' => 'small/',
     'THUMB' => 'thumb/',
+    'ADMIN_IMAGE_PATH' => 'public/uploads/admin/',
     'PAGES_IMAGE_PATH' => 'public/uploads/pages/',
     'BLOGS_IMAGE_PATH' => 'public/uploads/blogs/',
     'BLOGS_THUMBNAIL_PATH' => 'public/uploads/blogs/thumbnail/',
@@ -37,8 +38,8 @@ return [
     ],
 
     'PAYPAL' => [
-        'CLIENT_ID' => 'AYjQwOASW_VWoPxPDMfosZoVdnzoYSIaXq5b98HswR3aUmI2gakZIpVDIAecpRYOz6pb1YepnfO_NUJd',
-        'SECRET' => 'AYjQwOASW_VWoPxPDMfosZoVdnzoYSIaXq5b98HswR3aUmI2gakZIpVDIAecpRYOz6pb1YepnfO_NUJd',
+        // 'CLIENT_ID' => 'AYjQwOASW_VWoPxPDMfosZoVdnzoYSIaXq5b98HswR3aUmI2gakZIpVDIAecpRYOz6pb1YepnfO_NUJd',
+        // 'SECRET' => 'EGXwAWNtzJAhF8oOjkQR375G2ICT0IEzNG5MxKcXauZgXxe9JrrLo28Od0GdbqSVObbzxWaczE7uGZM6',
     ],
     
 ];

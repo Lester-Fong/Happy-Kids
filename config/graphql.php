@@ -112,6 +112,8 @@ return [
                 'faq' => \App\GraphQL\Queries\FaqQuery::class,
                 'testimonial' => \App\GraphQL\Queries\TestimonialQuery::class,
                 'team' => \App\GraphQL\Queries\TeamQuery::class,
+                'donators' => \App\GraphQL\Queries\DonatorQuery::class,
+                'transactions' => \App\GraphQL\Queries\DonateQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -161,6 +163,8 @@ return [
         'faq_type' => \App\GraphQL\Types\FaqType::class,
         'testimonial_type' => \App\GraphQL\Types\TestimonialType::class,
         'team_type' => \App\GraphQL\Types\TeamType::class,
+        'donators_type' => \App\GraphQL\Types\DonatorType::class,
+        'transactions_type' => \App\GraphQL\Types\TransactionsType::class,
 
 
 

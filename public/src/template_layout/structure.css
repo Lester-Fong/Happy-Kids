@@ -1406,7 +1406,7 @@ body.alt-menu #content {
     border-radius: 0;
     left: 0;
     width: 255px;
-    background: #f1f2f3;
+    /* background: #f1f2f3; */
   }
   .sidebar-noneoverflow {
     overflow: hidden;
