@@ -85,6 +85,7 @@ return [
                 'administrator' => \App\GraphQL\Mutations\AdministratorMutation::class,
                 'blogs' => \App\GraphQL\Mutations\BlogMutation::class,
                 'donate' => \App\GraphQL\Mutations\DonateMutation::class,
+                'front' => \App\GraphQL\Mutations\FrontMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -114,6 +115,7 @@ return [
                 'team' => \App\GraphQL\Queries\TeamQuery::class,
                 'donators' => \App\GraphQL\Queries\DonatorQuery::class,
                 'transactions' => \App\GraphQL\Queries\DonateQuery::class,
+                'sms' => \App\GraphQL\Queries\SMSQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -125,6 +127,7 @@ return [
                 'faq' => \App\GraphQL\Mutations\FaqMutation::class,
                 'testimonial' => \App\GraphQL\Mutations\TestimonialMutation::class,
                 'team' => \App\GraphQL\Mutations\TeamMutation::class,
+                'sms' => \App\GraphQL\Mutations\SMSMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -165,6 +168,7 @@ return [
         'team_type' => \App\GraphQL\Types\TeamType::class,
         'donators_type' => \App\GraphQL\Types\DonatorType::class,
         'transactions_type' => \App\GraphQL\Types\TransactionsType::class,
+        'sms_type' => \App\GraphQL\Types\SMSType::class,
 
 
 
@@ -178,6 +182,8 @@ return [
         'testimonial_input' => \App\GraphQL\Inputs\TestimonialInput::class,
         'team_input' => \App\GraphQL\Inputs\TeamInput::class,
         'donate_input' => \App\GraphQL\Inputs\DonateInput::class,
+        'sms_input' => \App\GraphQL\Inputs\SMSInput::class,
+        'front_input' => \App\GraphQL\Inputs\FrontInput::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

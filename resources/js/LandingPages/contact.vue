@@ -43,31 +43,36 @@
           </div>
           <!-- /.col-lg-5 -->
           <div class="col-lg-7">
-            <form action="/public/front/assets/inc/sendemail.php" class="contact-form-validated contact-page__form form-one mb-40">
+            <form @submit.prevent="onSubmit" class="contact-form-validated contact-page__form form-one mb-40">
               <div class="form-group">
                 <div class="form-control">
                   <label for="name" class="sr-only">Name</label>
-                  <input type="text" name="name" id="name" placeholder="Your Name" />
+                  <input type="text" v-model="name" id="name" placeholder="Your Name" />
+                  <small class="text-danger d-block">{{ name_error }}</small>
                 </div>
                 <!-- /.form-control -->
                 <div class="form-control">
                   <label for="email" class="sr-only">email</label>
-                  <input type="text" name="email" id="email" placeholder="Email Address" />
+                  <input type="text" v-model="email" id="email" placeholder="Email Address" />
+                  <small class="text-danger d-block">{{ email_error }}</small>
                 </div>
                 <!-- /.form-control -->
                 <div class="form-control">
                   <label for="phone" class="sr-only">phone</label>
-                  <input type="text" name="phone" id="phone" placeholder="Phone Number" />
+                  <input type="text" v-model="phone" id="phone" placeholder="Phone Number" />
+                  <small class="text-danger d-block">{{ phone_error }}</small>
                 </div>
                 <!-- /.form-control -->
                 <div class="form-control">
                   <label for="subject" class="sr-only">subject</label>
-                  <input type="text" name="subject" id="subject" placeholder="Subject" />
+                  <input type="text" v-model="subject" id="subject" placeholder="Subject" />
+                  <small class="text-danger d-block">{{ subject_error }}</small>
                 </div>
                 <!-- /.form-control -->
                 <div class="form-control form-control-full">
                   <label for="message" class="sr-only">message</label>
-                  <textarea name="message" placeholder="Write a Message" id="message"></textarea>
+                  <textarea v-model="message" placeholder="Write a Message" id="message"></textarea>
+                  <small class="text-danger d-block">{{ message_error }}</small>
                 </div>
                 <!-- /.form-control -->
                 <div class="form-control form-control-full mt-4">
@@ -104,6 +109,18 @@ export default {
     return {
       is_loading: false,
       pages: [],
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+
+      // error
+      name_error: "",
+      email_error: "",
+      phone_error: "",
+      subject_error: "",
+      message_error: "",
     };
   },
 
@@ -122,11 +139,89 @@ export default {
           this.is_loading = false;
           let response = res.data.data.front;
           this.pages = response.pages;
-          console.log("response", this.pages);
         })
         .catch((err) => {
           console.error("error:" + err);
         });
+    },
+
+    isFieldsValid() {
+      let is_valid = true;
+
+      if (this.name == "") {
+        this.name_error = "Name is required";
+        is_valid = false;
+      } else {
+        this.name_error = "";
+      }
+
+      if (this.email == "") {
+        this.email_error = "Email is required";
+        is_valid = false;
+      } else {
+        this.email_error = "";
+      }
+
+      if (this.phone == "") {
+        this.phone_error = "Phone is required";
+        is_valid = false;
+      } else {
+        this.phone_error = "";
+      }
+
+      if (this.subject == "") {
+        this.subject_error = "Subject is required";
+        is_valid = false;
+      } else {
+        this.subject_error = "";
+      }
+
+      if (this.message == "") {
+        this.message_error = "Message is required";
+        is_valid = false;
+      } else {
+        this.message_error = "";
+      }
+
+      return is_valid;
+    },
+
+    onClearFields() {
+      this.name = "";
+      this.email = "";
+      this.phone = "";
+      this.subject = "";
+      this.message = "";
+    },
+
+    onSubmit() {
+      if (this.isFieldsValid()) {
+        this.is_loading = true;
+
+        this.$front_queries("send_email", {
+          front: {
+            name: this.name,
+            email: this.email,
+            phone: this.phone,
+            subject: this.subject,
+            message: this.message,
+            action_type: "send_email",
+          },
+        })
+          .then((res) => {
+            this.is_loading = false;
+            let response = res.data.data.front;
+            if (response.error) {
+              Swal.fire("Error!", this.global_error_message, "error");
+              return;
+            }
+            Swal.fire("Success!", response.message, "success");
+            this.onClearFields();
+          })
+          .catch((err) => {
+            console.error("error:" + err);
+          });
+      }
     },
   },
 };

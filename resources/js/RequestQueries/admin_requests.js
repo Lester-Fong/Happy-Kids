@@ -212,6 +212,32 @@ let admin_queries = {
             date_created
         }
     }`,
+    sms: `query sms($action_type: String, $sms_id: String) {
+            sms(action_type: $action_type, sms_id: $sms_id) {
+                sms_id,
+                original_sms_id,
+                message,
+                date_sent,
+                status,
+                contact_ids,
+                metadata,
+                sender {
+                    firstname,
+                    lastname,
+                    email,
+                    image,
+                    mobile,
+                    administrator_id
+                }
+            }
+        }`,
+
+    save_sms: `mutation sms( $sms: SMSInput) {
+            sms(sms: $sms) {
+                  error,
+                  message,
+            }
+          }`,
 };
 
 export default admin_queries;
