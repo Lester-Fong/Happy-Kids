@@ -379,8 +379,8 @@ class Administrator extends Authenticatable
                 }
 
                 if (Hash::check($password, $admin_rec->fldAdministratorPassword)) {
-                    $oauth_access_token_model = new OauthAccessTokens();
-                    $oauth_access_token_model->checkAdministratorAccessToken($admin_rec->fldAdministratorID);
+                    // $oauth_access_token_model = new OauthAccessTokens();
+                    // $oauth_access_token_model->checkAdministratorAccessToken($admin_rec->fldAdministratorID);
 
                     $helper_token_model = new HelperToken();
                     $decoded_response = $helper_token_model->generateAdminToken($admin_rec->fldAdministratorEmail, $password);
