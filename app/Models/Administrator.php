@@ -198,7 +198,7 @@ class Administrator extends Authenticatable
     {
 
         $response_obj = new \stdClass();
-        $administrator = $this->where('fldAdministratorEmail', $data['email'])->first();
+        $administrator = self::where('fldAdministratorEmail', $data['email'])->first();
 
         if ($administrator) {
 
@@ -215,6 +215,9 @@ class Administrator extends Authenticatable
                 $response_obj->error = true;
                 $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['ERROR_LOGIN'];
             }
+        } else {
+            $response_obj->error = true;
+            $response_obj->message = Config::get('Constants.ERROR_MESSAGE')['ERROR_LOGIN'];
         }
 
         return $response_obj;
@@ -353,6 +356,7 @@ class Administrator extends Authenticatable
 
     public function validateMFA($data)
     {
+        Log::debug($data);
         $response_obj = new \StdClass();
         $messages = Config::get('Constants.ERROR_MESSAGE');
 
