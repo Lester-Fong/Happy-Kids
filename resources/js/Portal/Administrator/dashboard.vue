@@ -4,9 +4,17 @@
     <div v-else>
       <h1 class="fw-bold">Dashboard</h1>
       <div class="row">
-        <div class="col-md-12 card-group">
+        <div class="col-md-12 card my-3 px-0">
+          <div class="card-header hk_bg-primary">
+            <h5 class="card-title m-0 px-0">Pages Engagement</h5>
+          </div>
+          <div id="chart" class="card-body">
+            <VueApexCharts type="bar" height="300" :options="chartOptions" :series="series"></VueApexCharts>
+          </div>
+        </div>
+        <div class="col-md-12 card-group px-0 mb-4">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header hk_bg-primary">
               <h5 class="card-title m-0">Most Viewed Blogs</h5>
             </div>
             <div class="card-body">
@@ -42,15 +50,44 @@
 
 
 <script>
+import VueApexCharts from "vue-apexcharts";
 export default {
+  components: {
+    VueApexCharts,
+  },
   data() {
     return {
       blogs: [],
       filteredBlogs: [],
       is_loading: false,
+      datatable: null,
+      chartOptions: {
+        chart: {
+          type: "bar",
+          toolbar: {
+            show: false,
+          },
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        xaxis: {
+          categories: ["Home", "Our Mission", "Our Team", "FAQs", "Feeding", "Scholarship", "Events", "Stories", "Contact Us"],
+        },
+        colors: ["#800f2f"],
+      },
+      series: [
+        {
+          data: [30, 40, 45, 50, 49, 60, 70, 91, 125],
+        },
+      ],
     };
   },
-
   created() {
     this.onPopulateData();
   },
