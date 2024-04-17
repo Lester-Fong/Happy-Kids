@@ -65,6 +65,10 @@ class PagesType extends GraphQLType
                 'type' => Type::string(),
                 'alias' => 'fldPagesImage2',
             ],
+            'views' => [
+                'type' => Type::string(),
+                'alias' => 'fldPagesViews',
+            ],
             'meta' => [
                 'type' => new CustomScalarType([
                     'name' => 'pages_unserialize_meta',

@@ -4,8 +4,10 @@ namespace App\GraphQL\Queries;
 
 use Auth;
 use App\Models\Administrator;
-
-
+use App\Models\Blog;
+use App\Models\Donate;
+use App\Models\Donator;
+use App\Models\Pages;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
@@ -38,8 +40,6 @@ class AdministratorQuery extends Query
     {
         $admin_model = new Administrator();
 
-
-
         if ($args['action_type'] == "display_all") {
             $admin  = $admin_model->displayAllAdmin();
         }
@@ -49,7 +49,17 @@ class AdministratorQuery extends Query
         }
 
         if ($args['action_type'] == "get_admin_dashboard_data") {
-            $admin[0] = $admin_model->displayAdminDashboardData();
+            $blogs_model = new Blog();
+            $page_model = new Pages();
+            $donate_model = new Donate();
+            $donator_model = new Donator();
+
+            $admin[0] = $admin_model->getInfo();
+            $response_obj = $admin[0];
+            $response_obj->blogs = $blogs_model->displayAll();
+            $response_obj->pages = $page_model->displayAll();
+            $response_obj->transactions = $donate_model->displayRecentTransactions();
+            $response_obj->donators = $donator_model->getDonatorOfTheMonth();
         }
 
         return $admin;

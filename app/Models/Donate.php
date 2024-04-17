@@ -31,7 +31,8 @@ class Donate extends Eloquent
     protected $primaryKey = 'fldDonateID';
     public $timestamps = false;
 
-     public function onDonate($data) {
+    public function onDonate($data)
+    {
         $paypal_model = new PaypalModel;
 
         $response = $paypal_model->onProcessPayment($data);
@@ -55,7 +56,8 @@ class Donate extends Eloquent
         return $response;
     }
 
-     public function onCaptureSuccess($data) {
+    public function onCaptureSuccess($data)
+    {
         $paypal_model = new PaypalModel;
         $donator_model = new Donator;
         $api_response = $paypal_model->onCapturePaymentOrder($data);
@@ -71,9 +73,10 @@ class Donate extends Eloquent
     }
 
 
-     public function onUpdateResponseRecord($token, $response) {
+    public function onUpdateResponseRecord($token, $response)
+    {
         $response_obj = new \stdClass();
-        
+
         $donation = self::where('fldDonateResponseID', '=', $token)->first();
 
         if ($response->status == 'FAILED') {
@@ -91,8 +94,6 @@ class Donate extends Eloquent
             $donation->fldDonateUpdatedAt = date('Y-m-d H:i:s');
 
             $donation->save();
-
-           
         } else {
             $response_obj->error = true;
             $response_obj->message = 'Payment failed, please try again';
@@ -101,7 +102,13 @@ class Donate extends Eloquent
         return $response_obj;
     }
 
-    public function displayAll() {
+    public function displayAll()
+    {
         return self::orderBy('fldDonateCreatedAt', 'DESC')->get();
+    }
+
+    public function displayRecentTransactions()
+    {
+        return self::orderBy('fldDonateCreatedAt', 'DESC')->limit(5)->get();
     }
 }
