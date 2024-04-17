@@ -47,6 +47,34 @@ let admin_queries = {
         }
     }`,
 
+    admin_dashboard: `query administrator($action_type: String) {
+        administrator(action_type: $action_type) {
+                firstname,
+                lastname,
+                blogs {
+                    title,
+                    date,
+                    views,
+                }
+                pages {
+                    title,
+                    views
+                },
+                transactions {
+                    amount,
+                    status,
+                    date_created
+                },
+                donators {
+                    firstname,
+                    lastname,
+                    email,
+                    country,
+                    date_created
+                }
+        }
+    }`,
+
     save_pages: `mutation pages($file: Upload, $file1: Upload, $file2: Upload, $file3: Upload, $file4: Upload, $file5: Upload, $file6: Upload, $file7: Upload, $file8: Upload, $file9: Upload, $file10: Upload, $file11: Upload, $objectiveImages: [Upload], $page: PagesInput) {
         pages(file: $file, file1: $file1, file2: $file2, file3: $file3, file4: $file4, file5: $file5, file6: $file6, file7: $file7, file8: $file8, file9: $file9, file10: $file10, file11: $file11, objectiveImages: $objectiveImages, page: $page) {
             error,
