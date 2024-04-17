@@ -76,6 +76,19 @@ class AdministratorType extends GraphQLType
                 'type' => Type::string(),
                 'alias' => 'fldAdministratorRegistrationDate',
             ],
+
+            'blogs' => [
+                'type' =>  Type::listOf(GraphQL::type('blogs_type')),
+            ],
+            'pages' => [
+                'type' =>  Type::listOf(GraphQL::type('pages_type')),
+            ],
+            'transactions' => [
+                'type' =>  Type::listOf(GraphQL::type('transactions_type')),
+            ],
+            'donators' => [
+                'type' =>  Type::listOf(GraphQL::type('donators_type')),
+            ],
         ];
     }
 }
