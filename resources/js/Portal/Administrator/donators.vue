@@ -136,7 +136,7 @@ export default {
     watch: {
         donators() {
             this.$nextTick(() => {
-                this.datatable = this.onDatatable("#donators_table", true);
+                this.datatable = this.onDatatable("#donators_table", false);
             });
         },
 

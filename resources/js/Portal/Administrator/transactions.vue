@@ -88,7 +88,7 @@ export default {
     watch: {
         transactions() {
             this.$nextTick(() => {
-                this.datatable = this.onDatatable("#transaction_table", true);
+                this.datatable = this.onDatatable("#transaction_table", false);
             });
         },
 
