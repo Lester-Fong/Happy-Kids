@@ -70,7 +70,10 @@ let admin_queries = {
                     lastname,
                     email,
                     country,
-                    date_created
+                    date_created,
+                    transactions_obj {
+                        amount,
+                    }
                 }
         }
     }`,
@@ -225,7 +228,10 @@ let admin_queries = {
             lastname,
             email,
             country,
-            date_created
+            date_created,
+            transactions_obj {
+                amount,
+            }
         }
     }`,
 

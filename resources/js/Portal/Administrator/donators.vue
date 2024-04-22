@@ -12,6 +12,7 @@
                                 <th>Name</th>
                                 <th>Contact</th>
                                 <th>Country</th>
+                                <th>Amount</th>
                                 <th>Date Given</th>
                             </tr>
                         </thead>
@@ -26,6 +27,7 @@
                                 <td>
                                     {{ a.country }}
                                 </td>
+                                <td>₱{{ a.transactions_obj.amount }}</td>
                                 <td>
                                     {{ a.date_created | formatTransDateWithTime2 }}
                                 </td>

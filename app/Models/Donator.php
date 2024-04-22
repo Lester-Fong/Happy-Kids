@@ -31,6 +31,11 @@ class Donator extends Eloquent
     protected $primaryKey = 'fldDonatorID';
     public $timestamps = false;
 
+    public function transactions_obj() {
+        return $this->hasOne(Donate::class, 'fldDonateResponseID', 'fldDonatorDonateResponseID');
+        
+    }
+
     public function onSaveRecord($data, $id)
     {
         $donator = new self;
