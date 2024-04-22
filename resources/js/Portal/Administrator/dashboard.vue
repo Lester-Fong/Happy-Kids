@@ -180,6 +180,7 @@ export default {
           this.filteredBlogs = response.blogs;
           this.recent_transactions = response.transactions;
           this.filteredDonators = response.donators;
+          // console.log(this.recent_transactions);
 
           const pageViews = this.page_data.map((data) => data.views);
           const pageTitle = this.page_data.map((data) => data.title);
@@ -187,7 +188,8 @@ export default {
           this.seriesPage[0].data = pageViews;
 
           const donateAmount = this.recent_transactions.map((data) => data.amount);
-          const donateDate = this.recent_transactions.map((data) => this.onFormatDateTime(data.created_at));
+          const donateDate = this.recent_transactions.map((data) => this.onFormatDateTime(data.date_created));
+          // console.log(donateAmount, donateDate);
           this.chartOptionsDonate.xaxis.categories = donateDate;
           this.seriesDonate[0].data = donateAmount;
         })
