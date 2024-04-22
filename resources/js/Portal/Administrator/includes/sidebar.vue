@@ -109,7 +109,8 @@
         <li class="menu">
           <router-link :to="{ name: 'AdminDonators' }" :class="activeMeta.isDonator ? 'hk_active' : ''" aria-expanded="false" class="dropdown-toggle">
             <div class="d-flex align-items-center">
-              <i class="bi bi-sidebar bi-person-fill h5 mb-0 me-2 pe-1"></i>
+              <!-- <i class="bi bi-sidebar bi-person-fill h5 mb-0 me-2 pe-1"></i> -->
+              <i class="bi bi-sidebar bi-person-vcard h5 mb-0 me-2 pe-1"></i>
               <span>Supporters</span>
             </div>
           </router-link>
