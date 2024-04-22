@@ -80,7 +80,7 @@ class FrontMutation extends Mutation
             //send email to support
             $logo_path = Config::get('Constants.LOGO_PATH');
             $message = $front['message'];
-            $to = "happykids@gmail.com";
+            $to = Config::get('Constants.SUPPORT_EMAIL');
             $from = $front['email'];
             $to_name = "Happy Kids Foundation";
             $from_name = $front['name'];
@@ -91,13 +91,17 @@ class FrontMutation extends Mutation
                 'name' => $front['name'],
                 'subject' => $front['subject'],
                 'content' => "
-                <div style='text-align: center !important;'>
-                    <img src='https://scontent.fmnl3-3.fna.fbcdn.net/v/t39.30808-6/327266687_1222521501709993_6378132818803750672_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=7c5TzrIwjrcAX-vx_jb&_nc_ht=scontent.fmnl3-3.fna&oh=00_AfAlUufZPi9W-WpYoehaXneEVatJAuCHIHrDootFxfO6Cg&oe=6604CC29' alt='Happy Kids Foundation' style='width: 100px; height: 100px;'>
-                </div>
-                <h3>Good day,</h3>
                 <p style='font-size: 14px; line-height: 20px;'>
                     $message
-                </p>"
+                </p>
+                <br>
+                <p style='font-size: 14px; line-height: 20px;'>
+                    Regards, <br>
+                    $from_name <br>
+                    $from
+                </p>
+                "
+
             ];
 
             $response = $helper_model->sendEmail($to, $from, $to_name, $from_name, $subject, $cc, $data_obj);

@@ -49,4 +49,6 @@ return [
         'API_KEY' => 'Rt#rhG9OgLX5UOtgo76Z92KtrTOEC',
     ],
 
+    'SUPPORT_EMAIL' => 'lupiunggoy@gmail.com',
+
 ];
