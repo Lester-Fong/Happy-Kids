@@ -27,9 +27,7 @@
                     <td class="fw-bold text-center">
                       {{ a.country }}
                     </td>
-                    <td class="fw-bold text-center">
-                      ₱{{ a.transactions_obj.amount }}
-                    </td>
+                    <td class="fw-bold text-center">₱{{ a.transactions_obj?.amount }}</td>
                     <td class="fw-bold text-center">
                       <span>{{ a.email }}</span>
                     </td>
@@ -180,7 +178,6 @@ export default {
           this.filteredBlogs = response.blogs;
           this.recent_transactions = response.transactions;
           this.filteredDonators = response.donators;
-          // console.log(this.recent_transactions);
 
           const pageViews = this.page_data.map((data) => data.views);
           const pageTitle = this.page_data.map((data) => data.title);
@@ -189,13 +186,12 @@ export default {
 
           const donateAmount = this.recent_transactions.map((data) => data.amount);
           const donateDate = this.recent_transactions.map((data) => this.onFormatDateTime(data.date_created));
-          // console.log(donateAmount, donateDate);
           this.chartOptionsDonate.xaxis.categories = donateDate;
           this.seriesDonate[0].data = donateAmount;
         })
         .catch((err) => {
           this.is_loading = false;
-          console.log(err);
+          console.log("error:", err);
           Swal.fire("Error!", this.global_error_message, "error");
         });
     },
