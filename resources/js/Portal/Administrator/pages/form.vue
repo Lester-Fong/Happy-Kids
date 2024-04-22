@@ -39,9 +39,9 @@
             <li class="nav-item" role="presentation" v-if="title == 'Homepage'">
               <a class="nav-link" data-bs-toggle="tab" href="#testimonials">Testimonials</a>
             </li>
-            <li class="nav-item" role="presentation" v-if="title == 'Homepage'">
+            <!-- <li class="nav-item" role="presentation" v-if="title == 'Homepage'">
               <a class="nav-link" data-bs-toggle="tab" href="#donate">Donate</a>
-            </li>
+            </li> -->
             <li class="nav-item" role="presentation" v-if="title == 'Homepage'">
               <a class="nav-link" data-bs-toggle="tab" href="#latestEvents">Latest Events</a>
             </li>
@@ -331,7 +331,7 @@
             </div>
 
             <!------------------- DONATION ------------------>
-            <div class="tab-pane" id="donate" v-if="title == 'Homepage'">
+            <!-- <div class="tab-pane" id="donate" v-if="title == 'Homepage'">
               <div class="row">
                 <div class="col-sm-6 my-3">
                   <div class="form-group">
@@ -382,7 +382,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!------------------- LATEST EVENTS ------------------>
             <div class="tab-pane" id="latestEvents" v-if="title == 'Homepage'">

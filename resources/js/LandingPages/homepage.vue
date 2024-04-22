@@ -447,7 +447,7 @@
         </section>
 
         <!-- PRICE SECTION PART 7 -->
-        <section class="price-one">
+        <!-- <section class="price-one">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5">
@@ -458,7 +458,6 @@
                                     {{ pages.description?.donate_subtitle }}
                                 </h3>
                             </div>
-                            <!-- /.block-title -->
                             <p>{{ pages.description?.donate_description }}</p>
                             <div class="price-one__image-box">
                                 <img :src="`/public/uploads/pages/donate_/homepage/${pages.description?.donate_image_webp}`" alt="children-hands" />
@@ -466,13 +465,9 @@
                                     <h3><i class="fa fa-check"></i> {{ pages.description?.donate_purpose_title }}</h3>
                                     <p>{{ pages.description?.donate_purpose_description }}</p>
                                 </div>
-                                <!-- /.price-one__image-box-content -->
                             </div>
-                            <!-- /.price-one__image-box -->
                         </div>
-                        <!-- /.price-one__main -->
                     </div>
-                    <!-- /.col-lg-5 -->
                     <div class="col-xl-7">
                         <div class="row">
                             <div class="col-md-6">
@@ -486,13 +481,9 @@
                                         <li>Above mention it</li>
                                         <li>Say once again</li>
                                     </ul>
-                                    <!-- /.price-one__list -->
                                     <a href="#" class="thm-btn dynamic-radius">Choose Plan</a>
-                                    <!-- /.thm-btn dynamic-radius -->
                                 </div>
-                                <!-- /.price-one__single -->
                             </div>
-                            <!-- /.col-md-6 -->
                             <div class="col-md-6">
                                 <div class="price-one__single gold wow flipInY" data-wow-duration="1500ms">
                                     <i class="fa fa-plane"></i>
@@ -504,22 +495,14 @@
                                         <li>Above mention it</li>
                                         <li>Say once again</li>
                                     </ul>
-                                    <!-- /.price-one__list -->
                                     <a href="#" class="thm-btn dynamic-radius">Choose Plan</a>
-                                    <!-- /.thm-btn dynamic-radius -->
                                 </div>
-                                <!-- /.price-one__single -->
                             </div>
-                            <!-- /.col-md-6 -->
                         </div>
-                        <!-- /.row -->
                     </div>
-                    <!-- /.col-lg-7 -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container -->
-        </section>
+        </section> -->
         <!-- /.price-one -->
 
         <!-- GALLERY SECTION PART 8 -->
