@@ -31,6 +31,11 @@ class Donate extends Eloquent
     protected $primaryKey = 'fldDonateID';
     public $timestamps = false;
 
+    public function donator()
+    {
+        return $this->hasOne(Donator::class,'fldDonatorDonateResponseID', 'fldDonateResponseID' );
+    }
+
     public function onDonate($data)
     {
         $paypal_model = new PaypalModel;
@@ -104,7 +109,8 @@ class Donate extends Eloquent
 
     public function displayAll()
     {
-        return self::orderBy('fldDonateCreatedAt', 'DESC')->get();
+        // Log::debug(print_r(self::with('donator')->orderBy('fldDonateCreatedAt', 'DESC')->get(), true));
+        return self::with('donator')->orderBy('fldDonateCreatedAt', 'DESC')->get();
     }
 
     public function displayRecentTransactions()
