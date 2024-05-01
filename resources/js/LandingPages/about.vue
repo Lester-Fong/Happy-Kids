@@ -198,7 +198,6 @@ export default {
           let response = res.data.data.front;
           this.pages = response.pages;
           this.team = response.team;
-          console.log("response", this.pages);
         })
         .catch((err) => {
           console.error("error:" + err);

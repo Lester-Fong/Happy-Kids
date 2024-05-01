@@ -954,7 +954,6 @@ export default {
           page: pages_fields,
         })
           .then((res) => {
-            console.log(res);
             this.is_calling_api = false;
 
             if (res.data.errors) {
@@ -1102,11 +1101,6 @@ export default {
         this.objective_background_image_3 = URL.createObjectURL(file);
         this.is_objective_background_image_3 = true;
       }
-    },
-  },
-  watch: {
-    title(val) {
-      console.log(val);
     },
   },
 };

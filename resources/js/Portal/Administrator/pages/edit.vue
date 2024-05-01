@@ -832,7 +832,6 @@ export default {
         title: this.title,
       }).then((res) => {
         this.page = res.data.data.pages[0];
-        console.log(this.page);
         this.is_loading = false;
 
         this.onPopulateFields();
@@ -1190,7 +1189,6 @@ export default {
           page: pages_fields,
         })
           .then((res) => {
-            console.log(res);
             this.is_calling_api = false;
 
             if (res.data.errors) {

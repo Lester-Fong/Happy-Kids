@@ -94,7 +94,6 @@ export default {
           faq_id: this.faq_id,
         },
       }).then((res) => {
-        console.log(res);
         const response = res.data.data.faq;
 
         if (response.error) {

@@ -136,7 +136,6 @@ export default {
         },
         file: this.file,
       }).then((res) => {
-        console.log(res);
         const response = res.data.data.team;
 
         if (response.error) {

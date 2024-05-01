@@ -132,7 +132,6 @@ export default {
         },
         file: this.file,
       }).then((res) => {
-        console.log(res);
         const response = res.data.data.testimonial;
 
         if (response.error) {
