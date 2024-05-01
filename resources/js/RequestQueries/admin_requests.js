@@ -243,7 +243,15 @@ let admin_queries = {
             status,
             response_id,
             api_response,
-            date_created
+            date_created,
+            donator {
+                donators_id,
+                firstname,
+                lastname,
+                payer_id,
+                date_created,
+                country,
+            }
         }
     }`,
     sms: `query sms($action_type: String, $sms_id: String) {
