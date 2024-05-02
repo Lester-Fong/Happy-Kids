@@ -107,11 +107,23 @@ class Donate extends Eloquent
         return $response_obj;
     }
 
-    public function displayAll()
+    public function displayAll($date_from, $date_to)
     {
-        // Log::debug(print_r(self::with('donator')->orderBy('fldDonateCreatedAt', 'DESC')->get(), true));
-        return self::with('donator')->orderBy('fldDonateCreatedAt', 'DESC')->get();
+        if (empty($date_from) && empty($date_to)) {
+            return self::with('donator')->orderBy('fldDonateCreatedAt', 'DESC')->get();
+        } else {
+            return self::with('donator')
+                ->whereDate("fldDonateCreatedAt", '>=', $date_from)
+                ->whereDate("fldDonateCreatedAt", '<=', $date_to)
+                ->orderBy('fldDonateCreatedAt', 'DESC')
+                ->get();
+        }
     }
+    // {
+    //     return self::with('donator')->orderBy('fldDonateCreatedAt', 'DESC')
+    //             ->whereDate("fldDonateCreatedAt");
+    //             ->get();
+    // }
 
     public function displayRecentTransactions()
     {
