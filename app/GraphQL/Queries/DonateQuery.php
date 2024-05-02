@@ -23,6 +23,8 @@ class DonateQuery extends Query {
         return [
             'action_type' => [ 'type' => Type::string()],
             'donate_id' => [ 'type' => Type::string()],
+            'date_from' => [ 'type' => Type::string()],
+            'date_to' => [ 'type' => Type::string()],
         ];
     }
 
@@ -35,7 +37,7 @@ class DonateQuery extends Query {
       $donate_model = new Donate();
 
       if($args['action_type'] == "display_all") {
-        $record = $donate_model->displayAll();
+        $record = $donate_model->displayAll($args['date_from'], $args['date_to']);
       }
 
 
