@@ -31,20 +31,53 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade show" tabindex="-1" id="date_modal" data-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-light">
+          <div class="modal-header">
+            <h5 class="modal-title">Filter Transactions</h5>
+            <button type="button" class="btn-close" @click="closeModal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <label class="form-label">Date From:</label>
+                <DatePicker v-model="date_from" valueType="format" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Date To:</label>
+                <DatePicker v-model="date_to" valueType="format" />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" @click="onClearFilter">Clear Filter</button>
+            <button class="btn btn-secondary" @click="onPopulateData">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
+
 <script>
+import DatePicker from "vue2-datepicker";
+import "vue2-datepicker/index.css";
 export default {
   metaInfo: {
     title: "Admin - Transactions",
   },
+  components: { DatePicker },
 
   data() {
     return {
       transactions: [],
       filteredTransaction: [],
       is_loading: false,
+      date_from: "",
+      date_to: "",
     };
   },
 
@@ -109,14 +142,34 @@ export default {
   },
 
   methods: {
+    closeModal() {
+      $("#date_modal").modal("hide");
+    },
+    handleDateChange() {
+      if (this.date_from > this.date_to) {
+        Swal.fire("Error!", "Date From should not be greater than Date To", "error");
+        return false;
+      }
+      return true;
+    },
+    onClearFilter() {
+      this.date_from = "";
+      this.date_to = "";
+      this.onPopulateData();
+    },
     onPopulateData() {
+      if (!this.handleDateChange()) return;
       this.is_loading = true;
+
       this.$admin_queries("transactions", {
         action_type: "display_all",
+        date_from: this.date_from,
+        date_to: this.date_to,
       })
         .then((res) => {
           this.is_loading = false;
           this.filteredTransaction = res.data.data.transactions;
+          this.closeModal();
         })
         .catch(() => {
           this.is_loading = false;
@@ -150,14 +203,21 @@ export default {
       link.download = `transactions.csv`;
       link.click();
     },
+    onFilter() {
+      // open date-picker calendar through modal
+      $("#date_modal").modal("show");
+    },
   },
 
   watch: {
     transactions() {
       this.$nextTick(() => {
         this.datatable = this.onDatatable("#transaction_table", false);
-        $(".dataTables_filter").append('<button class="btn button--primary ms-4 fw-bold btn-sm onExport">Export</button>');
+        $(".dataTables_filter").append('<button class="btn button--primary ms-4 fw-bold btn-sm onFilter" id="button">Filter</button>');
+        $(".dataTables_filter").append('<button class="btn button--primary ms-2 fw-bold btn-sm onExport">Export</button>');
+
         $(".onExport").on("click", this.onExport);
+        $(".onFilter").on("click", this.onFilter);
       });
     },
 
