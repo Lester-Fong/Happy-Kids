@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class="modal fade show" tabindex="-1" id="date_modal" data-backdrop="static" data-bs-keyboard="false">
+    <div class="modal fade show" id="date_modal" data-backdrop="static" data-bs-keyboard="false">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-light">
           <div class="modal-header">
@@ -53,7 +53,45 @@
           </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" @click="onClearFilter">Clear Filter</button>
-            <button class="btn btn-secondary" @click="onPopulateData">Save</button>
+            <button class="btn btn-secondary" @click="onNextStep">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade show" id="final_modal" data-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content bg-light">
+          <div class="modal-header">
+            <h5 class="modal-title">Transactions</h5>
+            <button type="button" class="btn-close" @click="closeModal"></button>
+          </div>
+          <div class="modal-body">
+            <table class="text-center w-100 mx-auto table table-stripe">
+              <thead>
+                <tr>
+                  <th class="text-dark">Response ID</th>
+                  <th class="text-dark">Status</th>
+                  <th class="text-dark">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="a in transactions" :key="a.id">
+                  <td>
+                    {{ a.response_id }}
+                  </td>
+                  <td>
+                    <span class="badge" :class="badgeClass(a.status)">{{ badgeText(a.status) }}</span>
+                  </td>
+                  <td>
+                    {{ a.date_created | formatTransDateWithTime2 }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" @click="closeModal">Back</button>
+            <button class="btn btn-secondary" @click="onExport">Save</button>
           </div>
         </div>
       </div>
@@ -144,6 +182,7 @@ export default {
   methods: {
     closeModal() {
       $("#date_modal").modal("hide");
+      $("#final_modal").modal("hide");
     },
     handleDateChange() {
       if (this.date_from > this.date_to) {
@@ -157,11 +196,16 @@ export default {
       this.date_to = "";
       this.onPopulateData();
     },
-    onPopulateData() {
+    async onNextStep() {
+      await this.onPopulateData();
+      $("#date_modal").modal("hide");
+      $("#final_modal").modal("show");
+    },
+    async onPopulateData() {
       if (!this.handleDateChange()) return;
       this.is_loading = true;
 
-      this.$admin_queries("transactions", {
+      await this.$admin_queries("transactions", {
         action_type: "display_all",
         date_from: this.date_from,
         date_to: this.date_to,
@@ -169,7 +213,6 @@ export default {
         .then((res) => {
           this.is_loading = false;
           this.filteredTransaction = res.data.data.transactions;
-          this.closeModal();
         })
         .catch(() => {
           this.is_loading = false;
@@ -213,11 +256,9 @@ export default {
     transactions() {
       this.$nextTick(() => {
         this.datatable = this.onDatatable("#transaction_table", false);
-        $(".dataTables_filter").append('<button class="btn button--primary ms-4 fw-bold btn-sm onFilter" id="button">Filter</button>');
-        $(".dataTables_filter").append('<button class="btn button--primary ms-2 fw-bold btn-sm onExport">Export</button>');
+        $(".dataTables_filter").append('<button class="btn button--primary ms-4 fw-bold btn-sm onExport">Export</button>');
 
-        $(".onExport").on("click", this.onExport);
-        $(".onFilter").on("click", this.onFilter);
+        $(".onExport").on("click", this.onFilter);
       });
     },
 
