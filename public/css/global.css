@@ -41,3 +41,11 @@
 h1, h2, h3, h4, h5, h6, p, span, a, li, ul, div {
   font-family: "Nunito", sans-serif !important;
 }
+
+.w-150px {
+  width: 150px !important;
+}
+
+.hk_bg-primary {
+  background-color: rgba(143, 146, 161, 0.6980392157) !important;
+}
