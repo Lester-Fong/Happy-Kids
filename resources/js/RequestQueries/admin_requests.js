@@ -70,7 +70,10 @@ let admin_queries = {
                     lastname,
                     email,
                     country,
-                    date_created
+                    date_created,
+                    transactions_obj {
+                        amount,
+                    }
                 }
         }
     }`,
@@ -225,19 +228,30 @@ let admin_queries = {
             lastname,
             email,
             country,
-            date_created
+            date_created,
+            transactions_obj {
+                amount,
+            }
         }
     }`,
 
-    transactions: `query transactions($action_type: String, $donate_id: String) {
-        transactions(action_type: $action_type, donate_id: $donate_id) {
+    transactions: `query transactions($action_type: String, $donate_id: String, $date_from: String, $date_to: String) {
+        transactions(action_type: $action_type, donate_id: $donate_id, date_from: $date_from, date_to: $date_to) {
             donate_id,
             original_donate_id,
             amount,
             status,
             response_id,
             api_response,
-            date_created
+            date_created,
+            donator {
+                donators_id,
+                firstname,
+                lastname,
+                payer_id,
+                date_created,
+                country,
+            }
         }
     }`,
     sms: `query sms($action_type: String, $sms_id: String) {

@@ -137,7 +137,6 @@ export default {
           action_type: "create_message",
         },
       }).then((res) => {
-        console.log(res);
         const response = res.data.data.sms;
 
         if (response.error) {

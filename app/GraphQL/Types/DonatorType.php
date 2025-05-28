@@ -63,6 +63,9 @@ class DonatorType extends GraphQLType
             'type' => Type::string(),
             'alias' => 'fldDonatorDonateResponseID',
          ],
+         'transactions_obj' => [
+            'type' => GraphQL::type('transactions_type'),
+         ],
       ];
    }
 }

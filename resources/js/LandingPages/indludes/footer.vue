@@ -4,7 +4,7 @@
             <div class="main-footer pt-142 pb-80">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="footer-widget mb-40 footer-widget__about">
                                 <!-- <h3 class="text-white">Happy Kids Logo</h3> -->
                                 <img src="/public/images/happy_kids_logo.jpg" alt="happy_kids_logo" height="100" />
@@ -29,7 +29,7 @@
                             </div>
                             <!-- /.footer-widget footer-widget__about -->
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="footer-widget footer-widget__link mb-40">
                                 <h3 class="footer-widget__title">Explore</h3>
                                 <ul class="list-unstyled footer-widget__link-list">
@@ -46,7 +46,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="footer-widget mb-40 footer-widget__blog">
                                 <h3 class="footer-widget__title">Blog</h3>
                                 <ul class="list-unstyled footer-widget__blog">
@@ -61,7 +61,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <!-- <div class="col-lg-3 col-md-6 col-sm-12">
                             <div class="footer-widget mb-40 footer-widget__newsletter">
                                 <h3 class="footer-widget__title">Newletter</h3>
                                 <p>Signup now to get daily latest news & updates from us</p>
@@ -71,15 +71,10 @@
                                     <div class="footer-widget__newsletter-btn-wrap d-flex justify-content-center">
                                         <button type="submit" class="btn btn-md btn-secondary text-warning">Subscribe Now</button>
                                     </div>
-                                    <!-- /.footer-widget__newsletter-btn-wrap -->
-                                    <!-- /.thm-btn -->
                                 </form>
-                                <!-- /.footer-widget__newsletter-form -->
                                 <div class="mc-form__response"></div>
-                                <!-- /.mc-form__response -->
                             </div>
-                            <!-- /.footer-widget footer-widget__newsletter -->
-                        </div>
+                        </div> -->
                         <!-- /.col-lg-3 col-md-6 col-sm-12 -->
                     </div>
                     <!-- /.row -->

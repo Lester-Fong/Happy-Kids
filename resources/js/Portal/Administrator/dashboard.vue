@@ -15,7 +15,8 @@
                   <tr>
                     <th class="fw-bold text-center">Name</th>
                     <th class="fw-bold text-center">Country</th>
-                    <th class="fw-bold text-center">Email Address</th>
+                    <th class="fw-bold text-center">Amount</th>
+                    <th class="fw-bold text-center w-25">Email Address</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,7 @@
                     <td class="fw-bold text-center">
                       {{ a.country }}
                     </td>
+                    <td class="fw-bold text-center">₱{{ a.transactions_obj?.amount }}</td>
                     <td class="fw-bold text-center">
                       <span>{{ a.email }}</span>
                     </td>
@@ -183,13 +185,13 @@ export default {
           this.seriesPage[0].data = pageViews;
 
           const donateAmount = this.recent_transactions.map((data) => data.amount);
-          const donateDate = this.recent_transactions.map((data) => this.onFormatDateTime(data.created_at));
+          const donateDate = this.recent_transactions.map((data) => this.onFormatDateTime(data.date_created));
           this.chartOptionsDonate.xaxis.categories = donateDate;
           this.seriesDonate[0].data = donateAmount;
         })
         .catch((err) => {
           this.is_loading = false;
-          console.log(err);
+          console.log("error:", err);
           Swal.fire("Error!", this.global_error_message, "error");
         });
     },

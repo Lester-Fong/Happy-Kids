@@ -4,7 +4,7 @@
             <div style=" background-color: rgba(0,0,0, 0.03); width: 100%; min-height: 420px; margin-top: 13px;">
             <div style="background: #fff; width: 100%; min-height: 420px; position: relative; overflow: hidden; display: flex; justify-content: center;">
                 <div style="padding: 20px 20px 0;">
-                    <img src="{{asset('/public/images/happy_kids_logo.jpg')}}" style="display: block; margin: auto; margin-bottom: 16px;">
+                    {{-- <img src="{{asset('/public/images/happy_kids_logo.jpg')}}" style="display: block; margin: auto; margin-bottom: 16px;"> --}}
                     <p style="font-size: 14px;">
                         <table style="margin: auto; padding:0 1rem;" border="0" cellpadding="0" cellspacing="0" width="500">
                             <tr>
