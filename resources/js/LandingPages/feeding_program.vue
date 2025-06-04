@@ -3,7 +3,7 @@
     <!-- Start page-header -->
     <div class="loader-gif" v-if="is_loading"></div>
     <section class="page-header">
-      <div class="page-header__bg" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
+      <div class="page-header__bg" :style="`background-image: url('/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>{{ pages?.title }}</h2>
@@ -23,7 +23,7 @@
     <section class="event-details pt-120">
       <div class="container">
         <div class="block-title text-center">
-          <h4 class="text-success ms-3"><img class="me-3" src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" /> {{ pages?.description?.title }}</h4>
+          <h4 class="text-success ms-3"><img class="me-3" src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" /> {{ pages?.description?.title }}</h4>
           <h3 class="text-center w-50 mx-auto text-info">
             {{ pages?.description?.sub_title }}
           </h3>
@@ -37,7 +37,7 @@
           </div>
           <!-- /.col-md-12 -->
           <div class="col-md-12 col-lg-6">
-            <img :src="`/public/uploads/pages/program_/feeding-program/${pages.description?.program_image_webp}`" :alt="pages?.description?.program_intro_title" class="img-fluid program_img" />
+            <img :src="`/uploads/pages/program_/feeding-program/${pages.description?.program_image_webp}`" :alt="pages?.description?.program_intro_title" class="img-fluid program_img" />
           </div>
           <!-- /.col-md-12 -->
         </div>
@@ -63,7 +63,7 @@
         <div class="team-3-col">
           <div class="team-card text-center content-bg-1" v-for="(a, i) in team" :key="i">
             <div class="team-card__image">
-              <img :src="`/public/uploads/team/${a.original_team_id}/${a.image}`" :alt="a.name + 'profile'" />
+              <img :src="`/uploads/team/${a.original_team_id}/${a.image}`" :alt="a.name + 'profile'" />
             </div>
             <div class="team-card__social">
               <!-- <a href="javascript:void(0)" aria-label="facebook"><i class="fab fa-facebook-square"></i></a> -->

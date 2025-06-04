@@ -177,7 +177,7 @@ export default {
         this.email = this.selected_admin.email;
         this.mobile = this.selected_admin.mobile;
         this.admin_id = this.selected_admin.administrator_id;
-        this.display_profile_image = `/public/uploads/admin/${this.selected_admin.administrator_regular_id}/thumb/${this.selected_admin.image}`;
+        this.display_profile_image = `/uploads/admin/${this.selected_admin.administrator_regular_id}/thumb/${this.selected_admin.image}`;
       }
     },
   },

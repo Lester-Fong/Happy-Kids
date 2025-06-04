@@ -850,35 +850,35 @@ export default {
         if (this.page.title == "Homepage") {
           this.objective_desc = this.page.description && this.page.description.objective_description ? this.page.description.objective_description : [];
           this.objective_sub_desc = this.page.description && this.page.description.objective_sub_description ? this.page.description.objective_sub_description : [];
-          this.objective_background_image_1 = this.page.description && this.page.description.obj_files_webp_0 ? "/public/uploads/pages/objectives_0/homepage/" + this.page.description?.obj_files_webp_0 : "";
+          this.objective_background_image_1 = this.page.description && this.page.description.obj_files_webp_0 ? "/uploads/pages/objectives_0/homepage/" + this.page.description?.obj_files_webp_0 : "";
           this.is_objective_background_image_1 = this.page.description && this.page.description.obj_files_webp_0 ? true : false;
-          this.objective_background_image_2 = this.page.description && this.page.description.obj_files_webp_1 ? "/public/uploads/pages/objectives_1/homepage/" + this.page.description?.obj_files_webp_1 : "";
+          this.objective_background_image_2 = this.page.description && this.page.description.obj_files_webp_1 ? "/uploads/pages/objectives_1/homepage/" + this.page.description?.obj_files_webp_1 : "";
           this.is_objective_background_image_2 = this.page.description && this.page.description.obj_files_webp_1 ? true : false;
-          this.objective_background_image_3 = this.page.description && this.page.description.obj_files_webp_2 ? "/public/uploads/pages/objectives_2/homepage/" + this.page.description?.obj_files_webp_2 : "";
+          this.objective_background_image_3 = this.page.description && this.page.description.obj_files_webp_2 ? "/uploads/pages/objectives_2/homepage/" + this.page.description?.obj_files_webp_2 : "";
           this.is_objective_background_image_3 = this.page.description && this.page.description.obj_files_webp_2 ? true : false;
 
           this.about.title = this.page.description && this.page.description.about_main_title ? this.page.description.about_main_title : "";
           this.about.subtitle = this.page.description && this.page.description.about_subtitle ? this.page.description.about_subtitle : "";
           this.about_title = this.page.description && this.page.description.about_title ? this.page.description.about_title : [];
           this.about_description = this.page.description && this.page.description.about_description ? this.page.description.about_description : [];
-          this.about_background_image = this.page.description && this.page.description.about_image_webp ? "/public/uploads/pages/about_/homepage/" + this.page.description.about_image_webp : "";
+          this.about_background_image = this.page.description && this.page.description.about_image_webp ? "/uploads/pages/about_/homepage/" + this.page.description.about_image_webp : "";
           this.is_about_background_image = this.page.description && this.page.description.about_image_webp ? true : false;
 
           this.video.title = this.page.description && this.page.description.video_title ? this.page.description.video_title : "";
           this.video.subtitle = this.page.description && this.page.description.video_subtitle ? this.page.description.video_subtitle : "";
           this.video.link = this.page.description && this.page.description.video_link ? this.page.description.video_link : "";
-          this.video_background_image = this.page.description && this.page.description.video_image_webp ? "/public/uploads/pages/video_/homepage/" + this.page.description.video_image_webp : "";
+          this.video_background_image = this.page.description && this.page.description.video_image_webp ? "/uploads/pages/video_/homepage/" + this.page.description.video_image_webp : "";
           this.is_video_background_image = this.page.description && this.page.description.video_image_webp ? true : false;
 
           this.faq.title = this.page.description && this.page.description.faq_title ? this.page.description.faq_title : "";
           this.faq.subtitle = this.page.description && this.page.description.faq_subtitle ? this.page.description.faq_subtitle : "";
-          this.faq_background_image = this.page.description && this.page.description.faq_image_webp ? "/public/uploads/pages/faq_/homepage/" + this.page.description.faq_image_webp : "";
+          this.faq_background_image = this.page.description && this.page.description.faq_image_webp ? "/uploads/pages/faq_/homepage/" + this.page.description.faq_image_webp : "";
           this.is_faq_background_image = this.page.description && this.page.description.faq_image_webp ? true : false;
 
           this.testimonial.title = this.page.description && this.page.description.testimonial_title ? this.page.description.testimonial_title : "";
           this.testimonial.subtitle = this.page.description && this.page.description.testimonial_subtitle ? this.page.description.testimonial_subtitle : "";
           this.testimonial.description = this.page.description && this.page.description.testimonial_description ? this.page.description.testimonial_description : "";
-          this.testimonial_background_image = this.page.description && this.page.description.testimonial_image_webp ? "/public/uploads/pages/testimonial_/homepage/" + this.page.description.testimonial_image_webp : "";
+          this.testimonial_background_image = this.page.description && this.page.description.testimonial_image_webp ? "/uploads/pages/testimonial_/homepage/" + this.page.description.testimonial_image_webp : "";
           this.is_testimonial_background_image = this.page.description && this.page.description.testimonial_image_webp ? true : false;
 
           this.donate.title = this.page.description && this.page.description.donate_title ? this.page.description.donate_title : "";
@@ -886,13 +886,13 @@ export default {
           this.donate.description = this.page.description && this.page.description.donate_description ? this.page.description.donate_description : "";
           this.donate.purpose_title = this.page.description && this.page.description.donate_purpose_title ? this.page.description.donate_purpose_title : "";
           this.donate.purpose_description = this.page.description && this.page.description.donate_purpose_description ? this.page.description.donate_purpose_description : "";
-          this.donate_background_image = this.page.description && this.page.description.donate_image_webp ? "/public/uploads/pages/donate_/homepage/" + this.page.description.donate_image_webp : "";
+          this.donate_background_image = this.page.description && this.page.description.donate_image_webp ? "/uploads/pages/donate_/homepage/" + this.page.description.donate_image_webp : "";
           this.is_donate_background_image = this.page.description && this.page.description.donate_image_webp ? true : false;
 
           this.events.title = this.page.description && this.page.description.events_title ? this.page.description.events_title : "";
           this.events.subtitle = this.page.description && this.page.description.events_subtitle ? this.page.description.events_subtitle : "";
           this.events.description = this.page.description && this.page.description.events_description ? this.page.description.events_description : "";
-          this.events_background_image = this.page.description && this.page.description.event_image_webp ? "/public/uploads/pages/event_/homepage/" + this.page.description.event_image_webp : "";
+          this.events_background_image = this.page.description && this.page.description.event_image_webp ? "/uploads/pages/event_/homepage/" + this.page.description.event_image_webp : "";
           this.is_events_background_image = this.page.description && this.page.description.event_image_webp ? true : false;
         } else if (this.page.title == "Our Mission") {
           this.mission_intro.section_title = this.page.description && this.page.description.mission_intro_section_title ? this.page.description.mission_intro_section_title : "";
@@ -906,19 +906,19 @@ export default {
           this.checklist.checklist1 = this.page.description && this.page.description.checklist_checklist1 ? this.page.description.checklist_checklist1 : "";
           this.checklist.checklist2 = this.page.description && this.page.description.checklist_checklist2 ? this.page.description.checklist_checklist2 : "";
           this.checklist.checklist3 = this.page.description && this.page.description.checklist_checklist3 ? this.page.description.checklist_checklist3 : "";
-          this.checklist_background_image = this.page.description && this.page.description.checklist_image_webp ? "/public/uploads/pages/checklist_/our-mission/" + this.page.description.checklist_image_webp : "";
+          this.checklist_background_image = this.page.description && this.page.description.checklist_image_webp ? "/uploads/pages/checklist_/our-mission/" + this.page.description.checklist_image_webp : "";
           this.is_checklist_background_image = this.page.description && this.page.description.checklist_image_webp ? true : false;
 
           this.volunteers.title = this.page.description && this.page.description.volunteers_title ? this.page.description.volunteers_title : "";
           this.volunteers.subtitle = this.page.description && this.page.description.volunteers_subtitle ? this.page.description.volunteers_subtitle : "";
           this.volunteers.description = this.page.description && this.page.description.volunteers_description ? this.page.description.volunteers_description : "";
-          this.volunteers_background_image = this.page.description && this.page.description.volunteer_image_webp ? "/public/uploads/pages/volunteer_/our-mission/" + this.page.description.volunteer_image_webp : "";
+          this.volunteers_background_image = this.page.description && this.page.description.volunteer_image_webp ? "/uploads/pages/volunteer_/our-mission/" + this.page.description.volunteer_image_webp : "";
           this.is_volunteers_background_image = this.page.description && this.page.description.volunteer_image_webp ? true : false;
 
           this.video.title = this.page.description && this.page.description.video_title ? this.page.description.video_title : "";
           this.video.subtitle = this.page.description && this.page.description.video_subtitle ? this.page.description.video_subtitle : "";
           this.video.link = this.page.description && this.page.description.video_link ? this.page.description.video_link : "";
-          this.video_background_image = this.page.description && this.page.description.video_image_webp ? "/public/uploads/pages/video_/our-mission/" + this.page.description.video_image_webp : "";
+          this.video_background_image = this.page.description && this.page.description.video_image_webp ? "/uploads/pages/video_/our-mission/" + this.page.description.video_image_webp : "";
           this.is_video_background_image = this.page.description && this.page.description.video_image_webp ? true : false;
         } else if (this.page.title == "Feeding Program" || this.page.title == "Scholarship Program") {
           this.program.title = this.page.description && this.page.description.program_intro_title ? this.page.description.program_intro_title : "";
@@ -927,7 +927,7 @@ export default {
           this.program.program_description = this.page.description && this.page.description.program_about_description ? this.page.description.program_about_description : "";
           this.program.overview_title = this.page.description && this.page.description.program_overview_title ? this.page.description.program_overview_title : "";
           this.program.overview_description = this.page.description && this.page.description.program_overview_description ? this.page.description.program_overview_description : "";
-          this.feeding_background_image = this.page.description && this.page.description.program_image_webp ? "/public/uploads/pages/program_/" + this.slug + "/" + this.page.description.program_image_webp : "";
+          this.feeding_background_image = this.page.description && this.page.description.program_image_webp ? "/uploads/pages/program_/" + this.slug + "/" + this.page.description.program_image_webp : "";
           this.is_feeding_background_image = this.page.description && this.page.description.program_image_webp ? true : false;
         } else if (this.page.title == "Contact Us") {
           this.contact_description = this.page.description && this.page.description.contact_description ? this.page.description.contact_description : "";
@@ -936,7 +936,7 @@ export default {
       //     if (this.page.description.why_image) {
       //       this.is_background_choose = true;
 
-      //       this.background_image_choose = "/public/uploads/pages/why/" + this.page.pages_id + "/medium/" + this.page.description.why_image;
+      //       this.background_image_choose = "/uploads/pages/why/" + this.page.pages_id + "/medium/" + this.page.description.why_image;
       //     }
 
       //     if (this.page.description.how_image) {
@@ -945,48 +945,48 @@ export default {
       //     }
 
       //     if (this.page.description.how_files_0) {
-      //       this.icon_how_1 = "/public/uploads/pages/how_0/" + this.page.pages_id + "/medium/" + this.page.description.how_files_0;
+      //       this.icon_how_1 = "/uploads/pages/how_0/" + this.page.pages_id + "/medium/" + this.page.description.how_files_0;
       //       this.is_display_icon_1 = true;
       //     }
 
       //     if (this.page.description.how_files_1) {
-      //       this.icon_how_2 = "/public/uploads/pages/how_1/" + this.page.pages_id + "/medium/" + this.page.description.how_files_1;
+      //       this.icon_how_2 = "/uploads/pages/how_1/" + this.page.pages_id + "/medium/" + this.page.description.how_files_1;
       //       this.is_display_icon_2 = true;
       //     }
 
       //     if (this.page.description.how_files_2) {
-      //       this.icon_how_3 = "/public/uploads/pages/how_2/" + this.page.pages_id + "/medium/" + this.page.description.how_files_2;
+      //       this.icon_how_3 = "/uploads/pages/how_2/" + this.page.pages_id + "/medium/" + this.page.description.how_files_2;
       //       this.is_display_icon_3 = true;
       //     }
 
       //     if (this.page.description.how_files_3) {
-      //       this.icon_how_4 = "/public/uploads/pages/how_3/" + this.page.pages_id + "/medium/" + this.page.description.how_files_3;
+      //       this.icon_how_4 = "/uploads/pages/how_3/" + this.page.pages_id + "/medium/" + this.page.description.how_files_3;
       //       this.is_display_icon_4 = true;
       //     }
 
       //     // Roles
       //     if (this.page.pages_id == 10) {
       //       if (this.page.description.roles_files_0) {
-      //         this.icon_roles_1 = "/public/uploads/pages/roles_0/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_0;
+      //         this.icon_roles_1 = "/uploads/pages/roles_0/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_0;
       //         this.is_display_roles_img_1 = true;
       //       }
 
       //       if (this.page.description.roles_files_1) {
-      //         this.icon_roles_2 = "/public/uploads/pages/roles_1/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_1;
+      //         this.icon_roles_2 = "/uploads/pages/roles_1/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_1;
       //         this.is_display_roles_img_2 = true;
       //       }
 
       //       if (this.page.description.roles_files_2) {
-      //         this.icon_roles_3 = "/public/uploads/pages/roles_2/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_2;
+      //         this.icon_roles_3 = "/uploads/pages/roles_2/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_2;
       //         this.is_display_roles_img_3 = true;
       //       }
 
       //       if (this.page.description.roles_files_3) {
-      //         this.icon_roles_4 = "/public/uploads/pages/roles_3/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_3;
+      //         this.icon_roles_4 = "/uploads/pages/roles_3/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_3;
       //         this.is_display_roles_img_4 = true;
       //       }
       //       if (this.page.description.roles_files_4) {
-      //         this.icon_roles_5 = "/public/uploads/pages/roles_4/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_4;
+      //         this.icon_roles_5 = "/uploads/pages/roles_4/" + this.page.pages_id + "/medium/" + this.page.description.roles_files_4;
       //         this.is_display_roles_img_5 = true;
       //       }
       //     }
@@ -1011,8 +1011,8 @@ export default {
 
       //     if (this.page.description.why_image) {
       //       this.is_background_choose = true;
-      //       // console.log("/public/uploads/pages/why/"+this.page.pages_id+"/medium/"+this.page.description.why_image);
-      //       // this.background_image_choose = "/public/uploads/pages/why/"+this.page.pages_id+"/medium/"+this.page.description.why_image;
+      //       // console.log("/uploads/pages/why/"+this.page.pages_id+"/medium/"+this.page.description.why_image);
+      //       // this.background_image_choose = "/uploads/pages/why/"+this.page.pages_id+"/medium/"+this.page.description.why_image;
       //     }
 
       //     if (this.page.description.how_image) {
@@ -1022,31 +1022,31 @@ export default {
 
       //     if (this.page.description.about_image1) {
       //       this.is_background_1 = true;
-      //       this.background_image_1 = "/public/uploads/pages/about/" + this.page.pages_id + "/medium/" + this.page.description.about_image1;
+      //       this.background_image_1 = "/uploads/pages/about/" + this.page.pages_id + "/medium/" + this.page.description.about_image1;
       //     }
 
       //     if (this.page.description.about_image2) {
       //       this.is_background_2 = true;
-      //       this.background_image_2 = "/public/uploads/pages/about/" + this.page.pages_id + "/medium/" + this.page.description.about_image2;
+      //       this.background_image_2 = "/uploads/pages/about/" + this.page.pages_id + "/medium/" + this.page.description.about_image2;
       //     }
 
       //     if (this.page.description.core_files_0) {
-      //       this.icon_core_1 = "/public/uploads/pages/core_0/" + this.page.pages_id + "/medium/" + this.page.description.core_files_0;
+      //       this.icon_core_1 = "/uploads/pages/core_0/" + this.page.pages_id + "/medium/" + this.page.description.core_files_0;
       //       this.is_display_icon_core_1 = true;
       //     }
 
       //     if (this.page.description.core_files_1) {
-      //       this.icon_core_2 = "/public/uploads/pages/core_1/" + this.page.pages_id + "/medium/" + this.page.description.core_files_1;
+      //       this.icon_core_2 = "/uploads/pages/core_1/" + this.page.pages_id + "/medium/" + this.page.description.core_files_1;
       //       this.is_display_icon_core_2 = true;
       //     }
 
       //     if (this.page.description.core_files_2) {
-      //       this.icon_core_3 = "/public/uploads/pages/core_2/" + this.page.pages_id + "/medium/" + this.page.description.core_files_2;
+      //       this.icon_core_3 = "/uploads/pages/core_2/" + this.page.pages_id + "/medium/" + this.page.description.core_files_2;
       //       this.is_display_icon_core_3 = true;
       //     }
 
       //     if (this.page.description.core_files_3) {
-      //       this.icon_core_4 = "/public/uploads/pages/core_2/" + this.page.pages_id + "/medium/" + this.page.description.core_files_3;
+      //       this.icon_core_4 = "/uploads/pages/core_2/" + this.page.pages_id + "/medium/" + this.page.description.core_files_3;
       //       this.is_display_icon_core_4 = true;
       //     }
 
@@ -1062,15 +1062,15 @@ export default {
 
       if (this.page.image != "") {
         this.is_background = true;
-        this.background_image = "/public/uploads/pages/" + this.page.pages_id + "/medium/" + this.page.image;
+        this.background_image = "/uploads/pages/" + this.page.pages_id + "/medium/" + this.page.image;
       }
       if (this.page.extras_image_1 != "") {
         this.is_background_2 = true;
-        this.background_image_2 = "/public/uploads/pages/" + this.page.pages_id + "/medium/" + this.page.extras_image_1;
+        this.background_image_2 = "/uploads/pages/" + this.page.pages_id + "/medium/" + this.page.extras_image_1;
       }
       if (this.page.extras_image_2 != "") {
         this.is_background_3 = true;
-        this.background_image_3 = "/public/uploads/pages/" + this.page.pages_id + "/medium/" + this.page.extras_image_2;
+        this.background_image_3 = "/uploads/pages/" + this.page.pages_id + "/medium/" + this.page.extras_image_2;
       }
     },
     onCancel() {

@@ -2,7 +2,7 @@
   <div>
     <div class="loader-gif" v-if="is_loading"></div>
     <section class="page-header">
-      <div class="page-header__bg" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
+      <div class="page-header__bg" :style="`background-image: url('/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>{{ pages?.title }}</h2>
@@ -25,7 +25,7 @@
           <div v-for="a in displayedBlogs" :key="a.id" class="col-lg-4 col-md-6 col-12 blog-card mb-4 py-3">
             <div class="blog-card__inner">
               <div class="blog-card__image">
-                <img class="thumbnail-img" :src="`/public/uploads/blogs/thumbnail/${a.original_blogs_id}/${a.thumbnail}`" :alt="a.thumbnail" />
+                <img class="thumbnail-img" :src="`/uploads/blogs/thumbnail/${a.original_blogs_id}/${a.thumbnail}`" :alt="a.thumbnail" />
 
                 <div class="blog-card__date">{{ a.date | formatTransDate2 }}</div>
               </div>

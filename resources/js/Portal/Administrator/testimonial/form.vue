@@ -160,7 +160,7 @@ export default {
         this.position = this.testimonial_record.position;
         this.description = this.testimonial_record.description;
         this.testimonial_id = this.testimonial_record.testimonial_id;
-        this.show_file = `/public/uploads/testimonials/${this.testimonial_record.original_testimonial_id}/${this.testimonial_record.image}`;
+        this.show_file = `/uploads/testimonials/${this.testimonial_record.original_testimonial_id}/${this.testimonial_record.image}`;
         this.is_show_file = true;
       }
     },

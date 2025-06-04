@@ -2,7 +2,7 @@
   <div>
     <div class="loader-gif" v-if="is_loading"></div>
     <section class="page-header">
-      <div class="page-header__bg" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
+      <div class="page-header__bg" :style="`background-image: url('/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>{{ pages?.title }}</h2>
@@ -21,7 +21,7 @@
 
     <section class="team-page pt-120 pb-120">
       <div class="block-title text-center">
-        <h4 class="text-success ms-3"><img class="me-3" src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" /> {{ pages?.description?.title }}</h4>
+        <h4 class="text-success ms-3"><img class="me-3" src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" /> {{ pages?.description?.title }}</h4>
         <h3 class="text-center w-50 mx-auto">
           {{ pages?.description?.sub_title }}
         </h3>
@@ -30,7 +30,7 @@
         <div class="team-3-col">
           <div class="team-card text-center content-bg-1" v-for="(a, i) in team" :key="i">
             <div class="team-card__image">
-              <img :src="`/public/uploads/team/${a.original_team_id}/${a.image}`" :alt="a.name + 'profile'" />
+              <img :src="`/uploads/team/${a.original_team_id}/${a.image}`" :alt="a.name + 'profile'" />
             </div>
             <div class="team-card__social">
               <!-- <a href="javascript:void(0)" aria-label="twitter"><i class="fab fa-twitter"></i></a> -->
@@ -45,7 +45,7 @@
           </div>
           <!-- <div class="team-card text-center content-bg-2">
             <div class="team-card__image">
-              <img src="/public/front/assets/images/team/team-1-2.jpg" alt="" />
+              <img src="/front/assets/images/team/team-1-2.jpg" alt="" />
             </div>
             <div class="team-card__social">
               <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
@@ -60,7 +60,7 @@
           </div>
           <div class="team-card text-center content-bg-3">
             <div class="team-card__image">
-              <img src="/public/front/assets/images/team/team-1-3.jpg" alt="" />
+              <img src="/front/assets/images/team/team-1-3.jpg" alt="" />
             </div>
             <div class="team-card__social">
               <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
@@ -75,7 +75,7 @@
           </div>
           <div class="team-card text-center content-bg-4">
             <div class="team-card__image">
-              <img src="/public/front/assets/images/team/team-1-4.jpg" alt="" />
+              <img src="/front/assets/images/team/team-1-4.jpg" alt="" />
             </div>
             <div class="team-card__social">
               <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
@@ -90,7 +90,7 @@
           </div>
           <div class="team-card text-center content-bg-5">
             <div class="team-card__image">
-              <img src="/public/front/assets/images/team/team-1-5.jpg" alt="" />
+              <img src="/front/assets/images/team/team-1-5.jpg" alt="" />
             </div>
             <div class="team-card__social">
               <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
@@ -105,7 +105,7 @@
           </div>
           <div class="team-card text-center content-bg-6">
             <div class="team-card__image">
-              <img src="/public/front/assets/images/team/team-1-6.jpg" alt="" />
+              <img src="/front/assets/images/team/team-1-6.jpg" alt="" />
             </div>
             <div class="team-card__social">
               <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>

@@ -179,7 +179,7 @@ export default {
         this.email = val.email;
         this.mobile = val.mobile;
         this.admin_id = val.administrator_id;
-        this.display_profile_image = `/public/uploads/admin/${val.administrator_regular_id}/thumb/${val.image}`;
+        this.display_profile_image = `/uploads/admin/${val.administrator_regular_id}/thumb/${val.image}`;
         this.is_profile_image = true;
       }
     },

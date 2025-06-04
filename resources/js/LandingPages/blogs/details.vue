@@ -68,7 +68,7 @@
                   <h3>Latest Posts</h3>
                   <ul class="list-unstyled blog-sidebar__post">
                     <li v-for="a in latest_blogs" class="pointer" @click="onRedirectBlog(a)">
-                      <img class="blog-category-thumb" :src="'/public/uploads/blogs/' + a?.original_blogs_id + '/thumb/' + a?.image" />
+                      <img class="blog-category-thumb" :src="'/uploads/blogs/' + a?.original_blogs_id + '/thumb/' + a?.image" />
                       <h3>
                         <a href="javascript:void(0);">{{ a.title }}</a>
                       </h3>
@@ -158,7 +158,7 @@ export default {
           this.blog_categories = response.blog_category;
           this.related_blogs = response.related_blogs;
           // this.popular_blogs = response.blogs;
-          this.cover_image = `/public/uploads/blogs/${this.blogs?.original_blogs_id}/large/${this.blogs?.image}`;
+          this.cover_image = `/uploads/blogs/${this.blogs?.original_blogs_id}/large/${this.blogs?.image}`;
           this.category_name = this.blogs.blog_category?.name ?? "";
         })
         .catch((err) => {

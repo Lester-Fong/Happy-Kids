@@ -2,7 +2,7 @@
   <div class="page-wrapper">
     <div class="loader-gif" v-if="is_loading"></div>
     <section class="page-header">
-      <div class="page-header__bg" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
+      <div class="page-header__bg" :style="`background-image: url('/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>{{ pages?.title }}</h2>
@@ -23,15 +23,15 @@
       <div class="container">
         <div class="row">
           <div class="about-one__award">
-            <img src="/public/front/assets/images/shapes/about-bag-1-1.png" alt="" />
+            <img src="/front/assets/images/shapes/about-bag-1-1.png" alt="" />
           </div>
           <!-- /.about-one__award -->
           <div class="col-lg-6">
-            <img :src="`/public/uploads/pages/${pages.pages_id}/large/${pages.extras_image_1}`" alt="extras image 1" class="about_extras_img img-fluid" />
+            <img :src="`/uploads/pages/${pages.pages_id}/large/${pages.extras_image_1}`" alt="extras image 1" class="about_extras_img img-fluid" />
           </div>
           <!-- /.col-lg-6 -->
           <div class="col-lg-6">
-            <img :src="`/public/uploads/pages/${pages.pages_id}/large/${pages.extras_image_2}`" alt="extras image 2" class="about_extras_img img-fluid" />
+            <img :src="`/uploads/pages/${pages.pages_id}/large/${pages.extras_image_2}`" alt="extras image 2" class="about_extras_img img-fluid" />
           </div>
           <!-- /.col-lg-6 -->
         </div>
@@ -43,7 +43,7 @@
           <div class="row">
             <div class="col-md-12 col-lg-4">
               <div class="block-title">
-                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.mission_intro_title }}</p>
+                <p><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.mission_intro_title }}</p>
                 <h3>{{ pages.description?.mission_intro_section_title }}</h3>
               </div>
               <!-- /.block-title -->
@@ -67,7 +67,7 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="block-title">
-              <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.checklist_title }}</p>
+              <p><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.checklist_title }}</p>
               <h3>{{ pages.description?.checklist_subtitle }}</h3>
             </div>
             <!-- /.block-title -->
@@ -89,11 +89,11 @@
           <div class="col-lg-6">
             <div class="about-counter__image clearfix">
               <div class="about-counter__image-content">
-                <img src="/public/front/assets/images/shapes/about-count-heart-1-1.png" alt="" />
+                <img src="/front/assets/images/shapes/about-count-heart-1-1.png" alt="" />
                 <p>We’re here to support you every step of the way.</p>
               </div>
               <!-- /.about-counter__image-content -->
-              <img :src="`/public/uploads/pages/checklist_/our-mission/${pages.description?.checklist_image_webp}`" alt="float image left" class="float-left checklist-img" />
+              <img :src="`/uploads/pages/checklist_/our-mission/${pages.description?.checklist_image_webp}`" alt="float image left" class="float-left checklist-img" />
             </div>
             <!-- /.about-counter__image -->
           </div>
@@ -105,13 +105,13 @@
     </section>
     <!-- /.about-counter -->
 
-    <section class="team-about pb-120 pt-120" :style="`background-image: url('/public/uploads/pages/volunteer_/our-mission/${pages.description?.volunteer_image_webp}')`">
+    <section class="team-about pb-120 pt-120" :style="`background-image: url('/uploads/pages/volunteer_/our-mission/${pages.description?.volunteer_image_webp}')`">
       <div class="container">
         <div class="team-about__top">
           <div class="row align-items-center">
             <div class="col-md-12 col-lg-7">
               <div class="block-title">
-                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.volunteers_title }}</p>
+                <p><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.volunteers_title }}</p>
                 <h3 class="w-75 pe-5">
                   {{ pages.description?.volunteers_subtitle }}
                 </h3>
@@ -130,7 +130,7 @@
         <div class="team-4-col">
           <div class="team-card text-center content-bg-1" v-for="(a, i) in team" :key="i">
             <div class="team-card__image">
-              <img :src="`/public/uploads/team/${a.original_team_id}/${a.image}`" :alt="a.name + 'profile'" />
+              <img :src="`/uploads/team/${a.original_team_id}/${a.image}`" :alt="a.name + 'profile'" />
             </div>
             <div class="team-card__social">
               <!-- <a href="javascript:void(0)" aria-label="facebook"><i class="fab fa-facebook-square"></i></a> -->
@@ -149,10 +149,10 @@
     </section>
     <!-- /.team-about -->
     <section class="video-card">
-      <div class="video-card__bg" :style="`background-image: url('/public/uploads/pages/video_/our-mission/${pages.description?.video_image_webp}')`"></div>
+      <div class="video-card__bg" :style="`background-image: url('/uploads/pages/video_/our-mission/${pages.description?.video_image_webp}')`"></div>
       <!-- /.video-card__bg -->
       <div class="container text-center pt-120 pb-120">
-        <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.video_title }}</p>
+        <p><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.video_title }}</p>
         <h3 class="w-75 mx-auto text-center">
           {{ pages.description?.video_subtitle }}
         </h3>

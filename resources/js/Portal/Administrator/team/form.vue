@@ -164,7 +164,7 @@ export default {
         this.position = this.team_record.position;
         this.type = this.team_record.type;
         this.team_id = this.team_record.team_id;
-        this.show_file = `/public/uploads/team/${this.team_record.original_team_id}/${this.team_record.image}`;
+        this.show_file = `/uploads/team/${this.team_record.original_team_id}/${this.team_record.image}`;
         this.is_show_file = true;
       }
     },

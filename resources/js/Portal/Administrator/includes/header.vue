@@ -123,7 +123,7 @@ export default {
       this.firstname = val.firstname;
       this.lastname = val.lastname;
       this.email = val.email;
-      this.profile_pic = `/public/uploads/admin/${val.administrator_regular_id}/thumb/${val.image}`;
+      this.profile_pic = `/uploads/admin/${val.administrator_regular_id}/thumb/${val.image}`;
       this.mobile = val.mobile;
       this.admin_data = val;
     },

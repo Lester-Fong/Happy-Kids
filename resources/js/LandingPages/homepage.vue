@@ -6,7 +6,7 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <div class="image-layer" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
+            <div class="image-layer" :style="`background-image: url('/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
@@ -24,7 +24,7 @@
           </div>
           <!-- /.swiper-slide -->
           <div class="swiper-slide">
-            <div class="image-layer" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.extras_image_1}')`"></div>
+            <div class="image-layer" :style="`background-image: url('/uploads/pages/${pages.pages_id}/large/${pages.extras_image_1}')`"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
@@ -42,7 +42,7 @@
           </div>
           <!-- /.swiper-slide -->
           <div class="swiper-slide">
-            <div class="image-layer" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.extras_image_2}')`"></div>
+            <div class="image-layer" :style="`background-image: url('/uploads/pages/${pages.pages_id}/large/${pages.extras_image_2}')`"></div>
             <!-- /.image-layer -->
             <div class="container">
               <div class="row justify-content-start">
@@ -75,7 +75,7 @@
             <div class="mx-auto col-lg-4 col-md-6 col-12" v-for="(item, i) in pages.description?.objective_description" :key="i">
               <div class="service-two__box wow fadeInUp" data-wow-duration="1500ms" :class="i == 0 ? ' background-primary' : i == 1 ? ' background-secondary' : 'background-base'" :style="`background-image: url('${onNameImage(i)}')`">
                 <div class="service-two__box-inner">
-                  <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
+                  <img src="/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
                   <p>{{ item }}</p>
                   <h3 class="w-75" v-for="(sub_item, index) in pages.description?.objective_sub_description" :key="index">
                     <a href="javascript:void(0)" v-if="index == i">{{ sub_item }}</a>
@@ -89,9 +89,9 @@
             </div>
             <!-- /.swiper-slide -->
             <!-- <div class="mx-auto col-lg-4 col-md-6 col-12">
-              <div class="service-two__box background-secondary wow fadeInDown" data-wow-duration="1500ms" data-wow-delay="100ms" style="background-image: url('/public/front/assets/images/backgrounds/card-volunteers.jpg')">
+              <div class="service-two__box background-secondary wow fadeInDown" data-wow-duration="1500ms" data-wow-delay="100ms" style="background-image: url('/front/assets/images/backgrounds/card-volunteers.jpg')">
                 <div class="service-two__box-inner">
-                  <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
+                  <img src="/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
                   <p>Let’s Join</p>
                   <h3>
                     <a href="become-volunteer.html"
@@ -104,9 +104,9 @@
               </div>
             </div>
             <div class="mx-auto col-lg-4 col-md-6 col-12">
-              <div class="service-two__box background-base wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms" style="background-image: url('/public/front/assets/images/backgrounds/card-childeduc.jpg')">
+              <div class="service-two__box background-base wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms" style="background-image: url('/front/assets/images/backgrounds/card-childeduc.jpg')">
                 <div class="service-two__box-inner">
-                  <img src="/public/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
+                  <img src="/front/assets/images/shapes/heart-2-2.png" width="15" alt="" />
                   <p>Quick Funding</p>
                   <h3>
                     <a href="contact.html"
@@ -132,9 +132,9 @@
         <div class="row">
           <div class="col-xl-6">
             <div class="about-two__image wow fadeInLeft" data-wow-duration="1500ms">
-              <img :src="`/public/uploads/pages/about_/homepage/${pages.description?.about_image_webp}`" alt="about us image." class="about-two__image_left" />
+              <img :src="`/uploads/pages/about_/homepage/${pages.description?.about_image_webp}`" alt="about us image." class="about-two__image_left" />
               <div class="about-two__award">
-                <img src="/public/front/assets/images/shapes/about-bag-1-2.png" alt="" />
+                <img src="/front/assets/images/shapes/about-bag-1-2.png" alt="" />
               </div>
               <!-- /.about-two__award -->
             </div>
@@ -144,7 +144,7 @@
           <div class="col-xl-6">
             <div class="about-two__content">
               <div class="block-title mb-4">
-                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" /> {{ pages.description?.about_main_title }}</p>
+                <p><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="" /> {{ pages.description?.about_main_title }}</p>
                 <h3>{{ pages.description?.about_subtitle }}</h3>
               </div>
               <!-- /.block-title -->
@@ -173,10 +173,10 @@
 
     <!-- HELP VIDEO SECTION PART 4-->
     <section class="video-card">
-      <div class="video-card__bg" :style="`background-image: url('/public/uploads/pages/video_/homepage/${pages.description?.video_image_webp}')`"></div>
+      <div class="video-card__bg" :style="`background-image: url('/uploads/pages/video_/homepage/${pages.description?.video_image_webp}')`"></div>
       <!-- /.video-card__bg -->
       <div class="container text-center pt-120 pb-120">
-        <p class="text-info"><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.video_title }}</p>
+        <p class="text-info"><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.video_title }}</p>
         <h3 class="w-75 mx-auto text-center">
           {{ pages.description?.video_subtitle }}
         </h3>
@@ -371,7 +371,7 @@
           <div class="col-lg-6">
             <div class="faq-one__content">
               <div class="block-title">
-                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />{{ pages.description?.faq_title }}</p>
+                <p><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="Heart Icon" />{{ pages.description?.faq_title }}</p>
                 <h3 class="w-75">
                   {{ pages.description?.faq_subtitle }}
                 </h3>
@@ -394,10 +394,10 @@
           <div class="col-lg-6">
             <div class="about-counter__image clearfix">
               <div class="about-counter__image-content">
-                <img src="/public/front/assets/images/shapes/about-count-heart-1-1.png" alt="about-count-heart-1-1" />
+                <img src="/front/assets/images/shapes/about-count-heart-1-1.png" alt="about-count-heart-1-1" />
                 <p>We’re here to support you every step of the way.</p>
               </div>
-              <img :src="`/public/uploads/pages/faq_/homepage/${pages.description?.faq_image_webp}`" alt="charity people" class="float-left part-five__image_right" />
+              <img :src="`/uploads/pages/faq_/homepage/${pages.description?.faq_image_webp}`" alt="charity people" class="float-left part-five__image_right" />
             </div>
           </div>
         </div>
@@ -405,12 +405,12 @@
     </section>
 
     <!-- TESTIMONIALS SECTION PART 6 -->
-    <section class="testimonials-one pt-120 pb-90 part-6" :style="`background-image: url('/public/uploads/pages/testimonial_/homepage/${pages.description?.testimonial_image_webp}')`">
+    <section class="testimonials-one pt-120 pb-90 part-6" :style="`background-image: url('/uploads/pages/testimonial_/homepage/${pages.description?.testimonial_image_webp}')`">
       <!-- <div class="team-about__top container">
         <div class="row align-items-center">
           <div class="col-md-12 col-lg-7">
             <div class="block-title">
-              <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.testimonial_title }}</p>
+              <p><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.testimonial_title }}</p>
               <h3 class="w-75 pe-5">
                 {{ pages.description?.testimonial_subtitle }}
               </h3>
@@ -426,7 +426,7 @@
           <div class="swiper-wrapper">
             <div class="testimonials-one__single swiper-slide w-50" v-for="(a, i) in testimonials" :key="i">
               <div class="testimonials-one__image">
-                <img :src="`/public/uploads/testimonials/${a?.original_testimonial_id}/${a?.image}`" :alt="a?.name + ' picture'" class="testimonial_profile_image" />
+                <img :src="`/uploads/testimonials/${a?.original_testimonial_id}/${a?.image}`" :alt="a?.name + ' picture'" class="testimonial_profile_image" />
               </div>
               <p>{{ a?.description }}</p>
               <h3>{{ a?.name }}</h3>
@@ -447,14 +447,14 @@
                     <div class="col-xl-5">
                         <div class="price-one__main">
                             <div class="block-title">
-                                <p class="text-info"><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" /> {{ pages.description?.donate_title }}</p>
+                                <p class="text-info"><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="" /> {{ pages.description?.donate_title }}</p>
                                 <h3>
                                     {{ pages.description?.donate_subtitle }}
                                 </h3>
                             </div>
                             <p>{{ pages.description?.donate_description }}</p>
                             <div class="price-one__image-box">
-                                <img :src="`/public/uploads/pages/donate_/homepage/${pages.description?.donate_image_webp}`" alt="children-hands" />
+                                <img :src="`/uploads/pages/donate_/homepage/${pages.description?.donate_image_webp}`" alt="children-hands" />
                                 <div class="price-one__image-box-content">
                                     <h3><i class="fa fa-check"></i> {{ pages.description?.donate_purpose_title }}</h3>
                                     <p>{{ pages.description?.donate_purpose_description }}</p>
@@ -502,7 +502,7 @@
     <!-- GALLERY SECTION PART 8 -->
     <!-- <section class="gallery-home-two pt-120 pb-120">
       <div class="container">
-        <img src="/public/front/assets/images/shapes/video-dot-1-1.png" alt="" class="gallery-home-two__dots" />
+        <img src="/front/assets/images/shapes/video-dot-1-1.png" alt="" class="gallery-home-two__dots" />
         <div class="thm-swiper__slider swiper-container swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="index in 8" :key="index">
@@ -519,12 +519,12 @@
     </section> -->
 
     <!-- LATEST EVENT SECTION PART 9 -->
-    <section class="event-home-two py-5" :style="`background-image: url('/public/uploads/pages/event_/homepage/${pages.description?.event_image_webp}')`">
+    <section class="event-home-two py-5" :style="`background-image: url('/uploads/pages/event_/homepage/${pages.description?.event_image_webp}')`">
       <div class="container">
         <div class="row align-items-start align-items-md-center flex-column flex-md-row mb-60">
           <div class="col-lg-7">
             <div class="block-title">
-              <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.events_title }}</p>
+              <p><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.events_title }}</p>
               <h3 class="w-75 pe-5">
                 {{ pages.description?.events_description }}
               </h3>
@@ -545,7 +545,7 @@
               <div class="event-card-image">
                 <div class="event-card-image-inner">
                   <!-- <img src="https://picsum.photos/200/300" alt="" class="latest_event_img" /> -->
-                  <img :src="`/public/uploads/events/${a.original_events_id}/medium/${a.image}`" :alt="a.image" class="latest_event_img" />
+                  <img :src="`/uploads/events/${a.original_events_id}/medium/${a.image}`" :alt="a.image" class="latest_event_img" />
                   <span>{{ a.date_start | formatTransDate3 }}</span>
                 </div>
               </div>
@@ -700,7 +700,7 @@
 
     <!-- PARTNER AND SPONSOR SECTION PART 10 -->
     <!-- <div class="client-carousel py-5 client-carousel__has-border-top part-10">
-      <h2 class="text-center mb-5">Sponsors &nbsp; <img src="/public/front/assets/images/shapes/heart-2-1.png" width="50" alt="favicon heart" /></h2>
+      <h2 class="text-center mb-5">Sponsors &nbsp; <img src="/front/assets/images/shapes/heart-2-1.png" width="50" alt="favicon heart" /></h2>
       <div class="container">
         <div class="thm-swiper__slider swiper-container swiper">
           <div class="swiper-wrapper">
@@ -778,7 +778,7 @@ export default {
 
         // Check if the property exists in pages.description before attempting to access it
         if (propertyName in this.pages.description) {
-          let name = `/public/uploads/pages/objectives_${index}/homepage/${this.pages.description[propertyName]}`;
+          let name = `/uploads/pages/objectives_${index}/homepage/${this.pages.description[propertyName]}`;
           return name;
         }
       }

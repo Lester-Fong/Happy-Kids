@@ -2,7 +2,7 @@
   <div>
     <div class="loader-gif" v-if="is_loading"></div>
     <section class="page-header">
-      <div class="page-header__bg" :style="`background-image: url('/public/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
+      <div class="page-header__bg" :style="`background-image: url('/uploads/pages/${pages.pages_id}/large/${pages.image}')`"></div>
       <!-- /.page-header__bg -->
       <div class="container">
         <h2>{{ pages?.title }}</h2>
@@ -25,7 +25,7 @@
           <div class="col-lg-5">
             <div class="contact-page__content mb-40">
               <div class="block-title">
-                <p><img src="/public/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.title }}</p>
+                <p><img src="/front/assets/images/shapes/heart-2-1.png" width="15" alt="" />{{ pages.description?.title }}</p>
                 <h3>
                   {{ pages.description?.sub_title }}
                 </h3>
