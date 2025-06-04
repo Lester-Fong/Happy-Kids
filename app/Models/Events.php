@@ -26,7 +26,7 @@ use GuzzleHttp\Subscriber\Oauth\Oauth2;
 
 class Events extends Eloquent {
 
-  protected $table = 'tblEvents';
+  protected $table = 'tblevents';
   protected $primaryKey = 'fldEventsID';
   public $timestamps = false;
 

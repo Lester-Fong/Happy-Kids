@@ -27,7 +27,7 @@ use GuzzleHttp\Subscriber\Oauth\Oauth2;
 class Faq extends Eloquent
 {
 
-    protected $table = 'tblFAQ';
+    protected $table = 'tblfaq';
     protected $primaryKey = 'fldFAQID';
     public $timestamps = false;
 

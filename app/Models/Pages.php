@@ -27,7 +27,7 @@ use GuzzleHttp\Subscriber\Oauth\Oauth2;
 class Pages extends Eloquent
 {
 
-    protected $table = 'tblPages';
+    protected $table = 'tblpages';
     protected $primaryKey = 'fldPagesID';
     public $timestamps = false;
 

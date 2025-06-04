@@ -27,7 +27,7 @@ use GuzzleHttp\Subscriber\Oauth\Oauth2;
 class Team extends Eloquent
 {
 
-    protected $table = 'tblTeam';
+    protected $table = 'tblteam';
     protected $primaryKey = 'fldTeamID';
     public $timestamps = false;
 

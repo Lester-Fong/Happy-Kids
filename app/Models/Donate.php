@@ -27,7 +27,7 @@ use GuzzleHttp\Subscriber\Oauth\Oauth2;
 class Donate extends Eloquent
 {
 
-    protected $table = 'tblDonate';
+    protected $table = 'tbldonate';
     protected $primaryKey = 'fldDonateID';
     public $timestamps = false;
 

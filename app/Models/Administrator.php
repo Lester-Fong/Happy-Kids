@@ -19,7 +19,7 @@ use Illuminate\Support\Carbon;
 
 class Administrator extends Authenticatable
 {
-    protected $table = 'tblAdministrator';
+    protected $table = 'tbladministrator';
     protected $primaryKey = 'fldAdministratorID';
     public $timestamps = false;
 

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Config;
 class SMS extends Eloquent
 {
 
-    protected $table = 'tblSMSTransaction';
+    protected $table = 'tblsmstransaction';
     protected $primaryKey = 'fldSMSTransactionID';
     public $timestamps = false;
 

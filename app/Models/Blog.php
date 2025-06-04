@@ -27,7 +27,7 @@ use GuzzleHttp\Subscriber\Oauth\Oauth2;
 class Blog extends Eloquent
 {
 
-  protected $table = 'tblBlog';
+  protected $table = 'tblblog';
   protected $primaryKey = 'fldBlogID';
   public $timestamps = false;
 

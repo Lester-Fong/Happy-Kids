@@ -27,7 +27,7 @@ use GuzzleHttp\Subscriber\Oauth\Oauth2;
 class Testimonial extends Eloquent
 {
 
-    protected $table = 'tblTestimonials';
+    protected $table = 'tbltestimonials';
     protected $primaryKey = 'fldTestimonialsID';
     public $timestamps = false;
 
