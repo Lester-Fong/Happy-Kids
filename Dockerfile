@@ -12,7 +12,7 @@ RUN npm run build
 # Stage 2: Setup Laravel + PHP
 FROM php:7.4-fpm
 
-# Install required PHP extensions
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -33,10 +33,13 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy Laravel app files into container
+# Copy application code
 COPY . .
 
-# Run Laravel optimizations
+# ✅ Install PHP dependencies
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# ✅ Then run Laravel optimization commands
 RUN php artisan config:cache && \
     php artisan route:cache && \
     php artisan view:cache
