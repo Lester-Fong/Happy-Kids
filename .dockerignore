@@ -1,0 +1,33 @@
+# Node modules and Laravel vendor
+node_modules
+vendor
+
+# Laravel & IDE/cache stuff
+.env
+.env.*
+.idea
+.vscode
+*.log
+storage/*.key
+storage/framework/*
+storage/logs/*
+bootstrap/cache/*
+
+# Build artifacts
+/public/storage
+/public/hot
+/public/mix-manifest.json
+
+# OS and editor junk
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Docker build outputs
+docker-compose.override.yml
+Dockerfile.dev
+*.bak
+*.swp
